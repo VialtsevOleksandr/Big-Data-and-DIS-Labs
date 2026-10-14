@@ -35,7 +35,7 @@ db.getCollection('users').aggregate([
             $expr: { $gt: [{ $size: "$colleagues" }, 1] }
         }
     },
-    // 4. Форматуємо результат для красивого виводу
+    // 4. Форматуємо результат
     {
         $project: {
             _id: 0,
