@@ -37,5 +37,3 @@ python driver.py --container my-namenode --worker-container my-nodemanager
 ```
 
 Результати зберігаються в `runs/<run_id>/`: `daily_totals.tsv` містить денні суми в копійках, `winner.tsv` — переможця з десятковою сумою, `job1.log` і `job2.log` — журнали Hadoop, `run.json` — параметри запуску.
-
-CSV, папка `runs` і Word-звіт ігноруються Git.
