@@ -3,3 +3,6 @@
 __pycache__
 .vscode
 data.json
+transactions.csv
+runs/
+/Lab3_MapReduce/*.docx
