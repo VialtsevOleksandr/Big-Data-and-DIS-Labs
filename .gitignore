@@ -6,3 +6,14 @@ data.json
 transactions.csv
 runs/
 /Lab3_MapReduce/*.docx
+.cache
+/Lab3_StorageRetrieval/data/
+/Lab3_StorageRetrieval/.pytest_cache/
+configs
+!/Lab3_StorageRetrieval/configs/
+!/Lab3_StorageRetrieval/configs/*.json
+/Lab3_StorageRetrieval/*.docx
+/Lab3_StorageRetrieval/*.pdf
+/Lab3_StorageRetrieval/**/*.duckdb*
+/Lab3_StorageRetrieval/**/*.tmp
+/Lab3_StorageRetrieval/results/*-recovery-*

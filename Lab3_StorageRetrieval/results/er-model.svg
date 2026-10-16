@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1080pt" height="842.4pt" viewBox="0 0 1080 842.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-16T02:33:23.170308</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 842.4
+L 1080 842.4
+L 1080 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path d="M 302.4 154.8
+L 410.4 154.8
+" clip-path="url(#p3dc53308bc)" style="fill: none; stroke: #7c93ac; stroke-width: 1.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 572.4 223.92
+L 572.4 320.4
+" clip-path="url(#p3dc53308bc)" style="fill: none; stroke: #7c93ac; stroke-width: 1.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 928.8 223.92
+L 928.8 442.8
+L 734.4 442.8
+" clip-path="url(#p3dc53308bc)" style="fill: none; stroke: #7c93ac; stroke-width: 1.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 169.2 468.72
+L 169.2 579.6
+" clip-path="url(#p3dc53308bc)" style="fill: none; stroke: #7c93ac; stroke-width: 1.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 302.4 644.4
+L 410.4 644.4
+" clip-path="url(#p3dc53308bc)" style="fill: none; stroke: #7c93ac; stroke-width: 1.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 572.4 490.32
+L 572.4 579.6
+" clip-path="url(#p3dc53308bc)" style="fill: none; stroke: #7c93ac; stroke-width: 1.8; stroke-linecap: square"/>
+   </g>
+   <g id="patch_2">
+    <path d="M 41.04 97.2
+L 297.36 97.2
+Q 302.4 97.2 302.4 102.24
+L 302.4 197.28
+Q 302.4 202.32 297.36 202.32
+L 41.04 202.32
+Q 36 202.32 36 197.28
+L 36 102.24
+Q 36 97.2 41.04 97.2
+z
+" clip-path="url(#p3dc53308bc)" style="fill: #f7fafd; stroke: #b7c7d8; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 415.44 97.2
+L 729.36 97.2
+Q 734.4 97.2 734.4 102.24
+L 734.4 218.88
+Q 734.4 223.92 729.36 223.92
+L 415.44 223.92
+Q 410.4 223.92 410.4 218.88
+L 410.4 102.24
+Q 410.4 97.2 415.44 97.2
+z
+" clip-path="url(#p3dc53308bc)" style="fill: #f7fafd; stroke: #b7c7d8; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 818.64 97.2
+L 1038.96 97.2
+Q 1044 97.2 1044 102.24
+L 1044 218.88
+Q 1044 223.92 1038.96 223.92
+L 818.64 223.92
+Q 813.6 223.92 813.6 218.88
+L 813.6 102.24
+Q 813.6 97.2 818.64 97.2
+z
+" clip-path="url(#p3dc53308bc)" style="fill: #f7fafd; stroke: #b7c7d8; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 41.04 320.4
+L 297.36 320.4
+Q 302.4 320.4 302.4 325.44
+L 302.4 463.68
+Q 302.4 468.72 297.36 468.72
+L 41.04 468.72
+Q 36 468.72 36 463.68
+L 36 325.44
+Q 36 320.4 41.04 320.4
+z
+" clip-path="url(#p3dc53308bc)" style="fill: #f7fafd; stroke: #b7c7d8; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 415.44 320.4
+L 729.36 320.4
+Q 734.4 320.4 734.4 325.44
+L 734.4 485.28
+Q 734.4 490.32 729.36 490.32
+L 415.44 490.32
+Q 410.4 490.32 410.4 485.28
+L 410.4 325.44
+Q 410.4 320.4 415.44 320.4
+z
+" clip-path="url(#p3dc53308bc)" style="fill: #f7fafd; stroke: #b7c7d8; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 41.04 579.6
+L 297.36 579.6
+Q 302.4 579.6 302.4 584.64
+L 302.4 701.28
+Q 302.4 706.32 297.36 706.32
+L 41.04 706.32
+Q 36 706.32 36 701.28
+L 36 584.64
+Q 36 579.6 41.04 579.6
+z
+" clip-path="url(#p3dc53308bc)" style="fill: #f7fafd; stroke: #b7c7d8; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 415.44 579.6
+L 801.36 579.6
+Q 806.4 579.6 806.4 584.64
+L 806.4 744.48
+Q 806.4 749.52 801.36 749.52
+L 415.44 749.52
+Q 410.4 749.52 410.4 744.48
+L 410.4 584.64
+Q 410.4 579.6 415.44 579.6
+z
+" clip-path="url(#p3dc53308bc)" style="fill: #f7fafd; stroke: #b7c7d8; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 23px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="36" y="34.56" transform="rotate(-0 36 34.56)">ER-модель даних про продажі</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #66788a" x="36" y="56.88" transform="rotate(-0 36 56.88)">Логічна схема PostgreSQL і DuckDB  •  7 таблиць</text>
+   </g>
+   <g id="text_3">
+    <g id="patch_9">
+     <path d="M 311.983203 151.032969
+L 321.616797 151.032969
+L 321.616797 138.407031
+L 311.983203 138.407031
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #173f67" x="316.8" y="147.755313" transform="rotate(-0 316.8 147.755313)">1</text>
+   </g>
+   <g id="text_4">
+    <g id="patch_10">
+     <path d="M 389.687187 151.032969
+L 400.872812 151.032969
+L 400.872812 138.407031
+L 389.687187 138.407031
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #173f67" x="395.28" y="147.755313" transform="rotate(-0 395.28 147.755313)">N</text>
+   </g>
+   <g id="text_5">
+    <g id="patch_11">
+     <path d="M 557.503203 243.912969
+L 567.136797 243.912969
+L 567.136797 231.287031
+L 557.503203 231.287031
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #173f67" x="562.32" y="240.635313" transform="rotate(-0 562.32 240.635313)">1</text>
+   </g>
+   <g id="text_6">
+    <g id="patch_12">
+     <path d="M 556.727187 311.592969
+L 567.912812 311.592969
+L 567.912812 298.967031
+L 556.727187 298.967031
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #173f67" x="562.32" y="308.315313" transform="rotate(-0 562.32 308.315313)">N</text>
+   </g>
+   <g id="text_7">
+    <g id="patch_13">
+     <path d="M 935.503203 244.632969
+L 945.136797 244.632969
+L 945.136797 232.007031
+L 935.503203 232.007031
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #173f67" x="940.32" y="241.355313" transform="rotate(-0 940.32 241.355313)">1</text>
+   </g>
+   <g id="text_8">
+    <g id="patch_14">
+     <path d="M 743.927187 438.312969
+L 755.112812 438.312969
+L 755.112812 425.687031
+L 743.927187 425.687031
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #173f67" x="749.52" y="435.035312" transform="rotate(-0 749.52 435.035312)">N</text>
+   </g>
+   <g id="text_9">
+    <g id="patch_15">
+     <path d="M 152.863203 489.432969
+L 162.496797 489.432969
+L 162.496797 476.807031
+L 152.863203 476.807031
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #173f67" x="157.68" y="486.155312" transform="rotate(-0 157.68 486.155312)">1</text>
+   </g>
+   <g id="text_10">
+    <g id="patch_16">
+     <path d="M 152.087187 570.792969
+L 163.272813 570.792969
+L 163.272813 558.167031
+L 152.087187 558.167031
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #173f67" x="157.68" y="567.515312" transform="rotate(-0 157.68 567.515312)">N</text>
+   </g>
+   <g id="text_11">
+    <g id="patch_17">
+     <path d="M 312.703203 639.912969
+L 322.336797 639.912969
+L 322.336797 627.287031
+L 312.703203 627.287031
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #173f67" x="317.52" y="636.635313" transform="rotate(-0 317.52 636.635313)">1</text>
+   </g>
+   <g id="text_12">
+    <g id="patch_18">
+     <path d="M 389.687187 639.912969
+L 400.872812 639.912969
+L 400.872812 627.287031
+L 389.687187 627.287031
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #173f67" x="395.28" y="636.635313" transform="rotate(-0 395.28 636.635313)">N</text>
+   </g>
+   <g id="text_13">
+    <g id="patch_19">
+     <path d="M 556.783203 510.312969
+L 566.416797 510.312969
+L 566.416797 497.687031
+L 556.783203 497.687031
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #173f67" x="561.6" y="507.035312" transform="rotate(-0 561.6 507.035312)">1</text>
+   </g>
+   <g id="text_14">
+    <g id="patch_20">
+     <path d="M 556.007187 570.792969
+L 567.192812 570.792969
+L 567.192812 558.167031
+L 556.007187 558.167031
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #173f67" x="561.6" y="567.515312" transform="rotate(-0 561.6 567.515312)">N</text>
+   </g>
+   <g id="patch_21">
+    <path d="M 41.04 97.2
+L 297.36 97.2
+Q 302.4 97.2 302.4 102.24
+L 302.4 122.4
+Q 302.4 127.44 297.36 127.44
+L 41.04 127.44
+Q 36 127.44 36 122.4
+L 36 102.24
+Q 36 97.2 41.04 97.2
+z
+" clip-path="url(#p3dc53308bc)" style="fill: #173f67; stroke: #173f67; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 415.44 97.2
+L 729.36 97.2
+Q 734.4 97.2 734.4 102.24
+L 734.4 122.4
+Q 734.4 127.44 729.36 127.44
+L 415.44 127.44
+Q 410.4 127.44 410.4 122.4
+L 410.4 102.24
+Q 410.4 97.2 415.44 97.2
+z
+" clip-path="url(#p3dc53308bc)" style="fill: #173f67; stroke: #173f67; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 818.64 97.2
+L 1038.96 97.2
+Q 1044 97.2 1044 102.24
+L 1044 122.4
+Q 1044 127.44 1038.96 127.44
+L 818.64 127.44
+Q 813.6 127.44 813.6 122.4
+L 813.6 102.24
+Q 813.6 97.2 818.64 97.2
+z
+" clip-path="url(#p3dc53308bc)" style="fill: #173f67; stroke: #173f67; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 41.04 320.4
+L 297.36 320.4
+Q 302.4 320.4 302.4 325.44
+L 302.4 345.6
+Q 302.4 350.64 297.36 350.64
+L 41.04 350.64
+Q 36 350.64 36 345.6
+L 36 325.44
+Q 36 320.4 41.04 320.4
+z
+" clip-path="url(#p3dc53308bc)" style="fill: #173f67; stroke: #173f67; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 415.44 320.4
+L 729.36 320.4
+Q 734.4 320.4 734.4 325.44
+L 734.4 345.6
+Q 734.4 350.64 729.36 350.64
+L 415.44 350.64
+Q 410.4 350.64 410.4 345.6
+L 410.4 325.44
+Q 410.4 320.4 415.44 320.4
+z
+" clip-path="url(#p3dc53308bc)" style="fill: #173f67; stroke: #173f67; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_26">
+    <path d="M 41.04 579.6
+L 297.36 579.6
+Q 302.4 579.6 302.4 584.64
+L 302.4 604.8
+Q 302.4 609.84 297.36 609.84
+L 41.04 609.84
+Q 36 609.84 36 604.8
+L 36 584.64
+Q 36 579.6 41.04 579.6
+z
+" clip-path="url(#p3dc53308bc)" style="fill: #173f67; stroke: #173f67; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_27">
+    <path d="M 415.44 579.6
+L 801.36 579.6
+Q 806.4 579.6 806.4 584.64
+L 806.4 604.8
+Q 806.4 609.84 801.36 609.84
+L 415.44 609.84
+Q 410.4 609.84 410.4 604.8
+L 410.4 584.64
+Q 410.4 579.6 415.44 579.6
+z
+" clip-path="url(#p3dc53308bc)" style="fill: #173f67; stroke: #173f67; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="36" y="792" transform="rotate(-0 36 792)">PK — первинний ключ    FK — зовнішній ключ    1 : N — один до багатьох</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #66788a" x="36" y="813.6" transform="rotate(-0 36 813.6)">У DuckDB ключі фактів receipts і receipt_items є логічними; PK/FK для них не створювалися.</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="47.52" y="116.64" transform="rotate(-0 47.52 116.64)">categories</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #236b9e" x="44.64" y="146.88" transform="rotate(-0 44.64 146.88)">PK</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="67.68" y="146.88" transform="rotate(-0 67.68 146.88)">category_id</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="293.76" y="146.88" transform="rotate(-0 293.76 146.88)">SMALLINT</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="67.68" y="168.48" transform="rotate(-0 67.68 168.48)">name</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="293.76" y="168.48" transform="rotate(-0 293.76 168.48)">VARCHAR(100)</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="67.68" y="190.08" transform="rotate(-0 67.68 190.08)">description</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="293.76" y="190.08" transform="rotate(-0 293.76 190.08)">TEXT</text>
+   </g>
+   <g id="text_25">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="421.92" y="116.64" transform="rotate(-0 421.92 116.64)">product_types</text>
+   </g>
+   <g id="text_26">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #236b9e" x="419.04" y="146.88" transform="rotate(-0 419.04 146.88)">PK</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="442.08" y="146.88" transform="rotate(-0 442.08 146.88)">product_type_id</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="725.76" y="146.88" transform="rotate(-0 725.76 146.88)">SMALLINT</text>
+   </g>
+   <g id="text_29">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #236b9e" x="419.04" y="168.48" transform="rotate(-0 419.04 168.48)">FK</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="442.08" y="168.48" transform="rotate(-0 442.08 168.48)">category_id</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="725.76" y="168.48" transform="rotate(-0 725.76 168.48)">SMALLINT</text>
+   </g>
+   <g id="text_32">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="442.08" y="190.08" transform="rotate(-0 442.08 190.08)">name</text>
+   </g>
+   <g id="text_33">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="725.76" y="190.08" transform="rotate(-0 725.76 190.08)">VARCHAR(100)</text>
+   </g>
+   <g id="text_34">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="442.08" y="211.68" transform="rotate(-0 442.08 211.68)">description</text>
+   </g>
+   <g id="text_35">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="725.76" y="211.68" transform="rotate(-0 725.76 211.68)">TEXT</text>
+   </g>
+   <g id="text_36">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="825.12" y="116.64" transform="rotate(-0 825.12 116.64)">units</text>
+   </g>
+   <g id="text_37">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #236b9e" x="822.24" y="146.88" transform="rotate(-0 822.24 146.88)">PK</text>
+   </g>
+   <g id="text_38">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="845.28" y="146.88" transform="rotate(-0 845.28 146.88)">unit_id</text>
+   </g>
+   <g id="text_39">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="1035.36" y="146.88" transform="rotate(-0 1035.36 146.88)">SMALLINT</text>
+   </g>
+   <g id="text_40">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="845.28" y="168.48" transform="rotate(-0 845.28 168.48)">code</text>
+   </g>
+   <g id="text_41">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="1035.36" y="168.48" transform="rotate(-0 1035.36 168.48)">VARCHAR(8)</text>
+   </g>
+   <g id="text_42">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="845.28" y="190.08" transform="rotate(-0 845.28 190.08)">name</text>
+   </g>
+   <g id="text_43">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="1035.36" y="190.08" transform="rotate(-0 1035.36 190.08)">VARCHAR(50)</text>
+   </g>
+   <g id="text_44">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="845.28" y="211.68" transform="rotate(-0 845.28 211.68)">quantity_scale</text>
+   </g>
+   <g id="text_45">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="1035.36" y="211.68" transform="rotate(-0 1035.36 211.68)">SMALLINT</text>
+   </g>
+   <g id="text_46">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="47.52" y="339.84" transform="rotate(-0 47.52 339.84)">stores</text>
+   </g>
+   <g id="text_47">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #236b9e" x="44.64" y="370.08" transform="rotate(-0 44.64 370.08)">PK</text>
+   </g>
+   <g id="text_48">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="67.68" y="370.08" transform="rotate(-0 67.68 370.08)">store_id</text>
+   </g>
+   <g id="text_49">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="293.76" y="370.08" transform="rotate(-0 293.76 370.08)">SMALLINT</text>
+   </g>
+   <g id="text_50">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="67.68" y="391.68" transform="rotate(-0 67.68 391.68)">name</text>
+   </g>
+   <g id="text_51">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="293.76" y="391.68" transform="rotate(-0 293.76 391.68)">VARCHAR(120)</text>
+   </g>
+   <g id="text_52">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="67.68" y="413.28" transform="rotate(-0 67.68 413.28)">latitude</text>
+   </g>
+   <g id="text_53">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="293.76" y="413.28" transform="rotate(-0 293.76 413.28)">NUMERIC(9,6)</text>
+   </g>
+   <g id="text_54">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="67.68" y="434.88" transform="rotate(-0 67.68 434.88)">longitude</text>
+   </g>
+   <g id="text_55">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="293.76" y="434.88" transform="rotate(-0 293.76 434.88)">NUMERIC(9,6)</text>
+   </g>
+   <g id="text_56">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="67.68" y="456.48" transform="rotate(-0 67.68 456.48)">description</text>
+   </g>
+   <g id="text_57">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="293.76" y="456.48" transform="rotate(-0 293.76 456.48)">TEXT</text>
+   </g>
+   <g id="text_58">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="421.92" y="339.84" transform="rotate(-0 421.92 339.84)">products</text>
+   </g>
+   <g id="text_59">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #236b9e" x="419.04" y="370.08" transform="rotate(-0 419.04 370.08)">PK</text>
+   </g>
+   <g id="text_60">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="442.08" y="370.08" transform="rotate(-0 442.08 370.08)">product_id</text>
+   </g>
+   <g id="text_61">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="725.76" y="370.08" transform="rotate(-0 725.76 370.08)">SMALLINT</text>
+   </g>
+   <g id="text_62">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #236b9e" x="419.04" y="391.68" transform="rotate(-0 419.04 391.68)">FK</text>
+   </g>
+   <g id="text_63">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="442.08" y="391.68" transform="rotate(-0 442.08 391.68)">product_type_id</text>
+   </g>
+   <g id="text_64">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="725.76" y="391.68" transform="rotate(-0 725.76 391.68)">SMALLINT</text>
+   </g>
+   <g id="text_65">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #236b9e" x="419.04" y="413.28" transform="rotate(-0 419.04 413.28)">FK</text>
+   </g>
+   <g id="text_66">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="442.08" y="413.28" transform="rotate(-0 442.08 413.28)">unit_id</text>
+   </g>
+   <g id="text_67">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="725.76" y="413.28" transform="rotate(-0 725.76 413.28)">SMALLINT</text>
+   </g>
+   <g id="text_68">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="442.08" y="434.88" transform="rotate(-0 442.08 434.88)">name</text>
+   </g>
+   <g id="text_69">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="725.76" y="434.88" transform="rotate(-0 725.76 434.88)">VARCHAR(200)</text>
+   </g>
+   <g id="text_70">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="442.08" y="456.48" transform="rotate(-0 442.08 456.48)">description</text>
+   </g>
+   <g id="text_71">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="725.76" y="456.48" transform="rotate(-0 725.76 456.48)">TEXT</text>
+   </g>
+   <g id="text_72">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="442.08" y="478.08" transform="rotate(-0 442.08 478.08)">current_price</text>
+   </g>
+   <g id="text_73">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="725.76" y="478.08" transform="rotate(-0 725.76 478.08)">NUMERIC(10,2)</text>
+   </g>
+   <g id="text_74">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="47.52" y="599.04" transform="rotate(-0 47.52 599.04)">receipts</text>
+   </g>
+   <g id="text_75">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #236b9e" x="44.64" y="629.28" transform="rotate(-0 44.64 629.28)">PK</text>
+   </g>
+   <g id="text_76">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="67.68" y="629.28" transform="rotate(-0 67.68 629.28)">receipt_id</text>
+   </g>
+   <g id="text_77">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="293.76" y="629.28" transform="rotate(-0 293.76 629.28)">INTEGER</text>
+   </g>
+   <g id="text_78">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #236b9e" x="44.64" y="650.88" transform="rotate(-0 44.64 650.88)">FK</text>
+   </g>
+   <g id="text_79">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="67.68" y="650.88" transform="rotate(-0 67.68 650.88)">store_id</text>
+   </g>
+   <g id="text_80">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="293.76" y="650.88" transform="rotate(-0 293.76 650.88)">SMALLINT</text>
+   </g>
+   <g id="text_81">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="67.68" y="672.48" transform="rotate(-0 67.68 672.48)">sold_at</text>
+   </g>
+   <g id="text_82">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="293.76" y="672.48" transform="rotate(-0 293.76 672.48)">TIMESTAMPTZ</text>
+   </g>
+   <g id="text_83">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="67.68" y="694.08" transform="rotate(-0 67.68 694.08)">total_amount</text>
+   </g>
+   <g id="text_84">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="293.76" y="694.08" transform="rotate(-0 293.76 694.08)">NUMERIC(14,2)</text>
+   </g>
+   <g id="text_85">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="421.92" y="599.04" transform="rotate(-0 421.92 599.04)">receipt_items</text>
+   </g>
+   <g id="text_86">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #236b9e" x="419.04" y="629.28" transform="rotate(-0 419.04 629.28)">PK, FK</text>
+   </g>
+   <g id="text_87">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="457.2" y="629.28" transform="rotate(-0 457.2 629.28)">receipt_id</text>
+   </g>
+   <g id="text_88">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="797.76" y="629.28" transform="rotate(-0 797.76 629.28)">INTEGER</text>
+   </g>
+   <g id="text_89">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #236b9e" x="419.04" y="650.88" transform="rotate(-0 419.04 650.88)">PK</text>
+   </g>
+   <g id="text_90">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="457.2" y="650.88" transform="rotate(-0 457.2 650.88)">line_no</text>
+   </g>
+   <g id="text_91">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="797.76" y="650.88" transform="rotate(-0 797.76 650.88)">SMALLINT</text>
+   </g>
+   <g id="text_92">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #236b9e" x="419.04" y="672.48" transform="rotate(-0 419.04 672.48)">FK</text>
+   </g>
+   <g id="text_93">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="457.2" y="672.48" transform="rotate(-0 457.2 672.48)">product_id</text>
+   </g>
+   <g id="text_94">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="797.76" y="672.48" transform="rotate(-0 797.76 672.48)">SMALLINT</text>
+   </g>
+   <g id="text_95">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="457.2" y="694.08" transform="rotate(-0 457.2 694.08)">quantity</text>
+   </g>
+   <g id="text_96">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="797.76" y="694.08" transform="rotate(-0 797.76 694.08)">NUMERIC(10,3)</text>
+   </g>
+   <g id="text_97">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="457.2" y="715.68" transform="rotate(-0 457.2 715.68)">unit_price</text>
+   </g>
+   <g id="text_98">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="797.76" y="715.68" transform="rotate(-0 797.76 715.68)">NUMERIC(10,2)</text>
+   </g>
+   <g id="text_99">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b4d" x="457.2" y="737.28" transform="rotate(-0 457.2 737.28)">line_amount</text>
+   </g>
+   <g id="text_100">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #66788a" x="797.76" y="737.28" transform="rotate(-0 797.76 737.28)">NUMERIC(14,2)</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p3dc53308bc">
+   <rect x="0" y="0" width="1080" height="842.4"/>
+  </clipPath>
+ </defs>
+</svg>

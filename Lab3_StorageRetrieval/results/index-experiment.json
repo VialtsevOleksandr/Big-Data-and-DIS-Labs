@@ -1,0 +1,439 @@
+{
+  "started_at_utc": "2026-10-16T00:30:31.759016+00:00",
+  "finished": true,
+  "method": {
+    "index": "public.idx_receipt_items_product_receipt_cover",
+    "warmups": 1,
+    "runs": 5,
+    "timeout_seconds": 600,
+    "order": [
+      "with_index",
+      "without_index"
+    ],
+    "cache": "warm; caches not cleared",
+    "timing": "execute + fetchall; DDL, EXPLAIN and result saves excluded",
+    "restore": "DROP INDEX in a transaction, always followed by ROLLBACK",
+    "control_query": 3
+  },
+  "queries": [
+    {
+      "query": 3,
+      "name": "Виручка за період C",
+      "sql": "SELECT SUM(total_amount) AS revenue\nFROM receipts\nWHERE sold_at >= TIMESTAMPTZ '2025-07-01 00:00:00+00'\n  AND sold_at <  TIMESTAMPTZ '2025-08-01 00:00:00+00';"
+    },
+    {
+      "query": 4,
+      "name": "Кількість товару A в магазині B за період C",
+      "sql": "-- COUNT(*) рахує чеки, оскільки генератор не повторює product_id у чеку.\nSELECT COALESCE(SUM(ri.quantity), 0) AS total_quantity, COUNT(*) AS receipts\nFROM receipts r\nJOIN receipt_items ri ON ri.receipt_id = r.receipt_id\nWHERE ri.product_id = 568\n  AND r.store_id = 90\n  AND r.sold_at >= TIMESTAMPTZ '2025-07-01 00:00:00+00'\n  AND r.sold_at <  TIMESTAMPTZ '2025-08-01 00:00:00+00';"
+    },
+    {
+      "query": 5,
+      "name": "Кількість товару A в усіх магазинах за період C",
+      "sql": "SELECT COALESCE(SUM(ri.quantity), 0) AS total_quantity, COUNT(*) AS receipts\nFROM receipts r\nJOIN receipt_items ri ON ri.receipt_id = r.receipt_id\nWHERE ri.product_id = 568\n  AND r.sold_at >= TIMESTAMPTZ '2025-07-01 00:00:00+00'\n  AND r.sold_at <  TIMESTAMPTZ '2025-08-01 00:00:00+00';"
+    }
+  ],
+  "sql_sha256": "634195ac82e7be8ab3c9c446a4684a2cf053ecc59d6c2c7ca46e7843d66406dc",
+  "measurements": [
+    {
+      "query": 3,
+      "phase": "with_index",
+      "status": "ok",
+      "seconds": [
+        0.059385100001236424,
+        0.05904819999705069,
+        0.054226899999775924,
+        0.15813880000496283,
+        0.07049850000475999
+      ],
+      "warmup_seconds": 0.06988199999614153,
+      "result": [
+        [
+          "237069520.96"
+        ]
+      ],
+      "plan": [
+        [
+          "Finalize Aggregate  (cost=9928.04..9928.05 rows=1 width=32)"
+        ],
+        [
+          "  ->  Gather  (cost=9927.81..9928.02 rows=2 width=32)"
+        ],
+        [
+          "        Workers Planned: 2"
+        ],
+        [
+          "        ->  Partial Aggregate  (cost=8927.81..8927.82 rows=1 width=32)"
+        ],
+        [
+          "              ->  Parallel Index Only Scan using idx_receipts_time_cover on receipts  (cost=0.43..8663.06 rows=105901 width=6)"
+        ],
+        [
+          "                    Index Cond: ((sold_at >= '2025-07-01 00:00:00+00'::timestamp with time zone) AND (sold_at < '2025-08-01 00:00:00+00'::timestamp with time zone))"
+        ]
+      ],
+      "results_equal": true
+    },
+    {
+      "query": 4,
+      "phase": "with_index",
+      "status": "ok",
+      "seconds": [
+        0.060038899988285266,
+        0.06742790000862442,
+        0.055748300001141615,
+        0.06678340000507887,
+        0.07056880000163801
+      ],
+      "warmup_seconds": 0.06334269999933895,
+      "result": [
+        [
+          "675.197",
+          618
+        ]
+      ],
+      "plan": [
+        [
+          "Finalize Aggregate  (cost=19362.73..19362.74 rows=1 width=40)"
+        ],
+        [
+          "  ->  Gather  (cost=19362.51..19362.72 rows=2 width=40)"
+        ],
+        [
+          "        Workers Planned: 2"
+        ],
+        [
+          "        ->  Partial Aggregate  (cost=18362.51..18362.52 rows=1 width=40)"
+        ],
+        [
+          "              ->  Parallel Hash Join  (cost=8956.92..18361.38 rows=225 width=5)"
+        ],
+        [
+          "                    Hash Cond: (ri.receipt_id = r.receipt_id)"
+        ],
+        [
+          "                    ->  Parallel Index Only Scan using idx_receipt_items_product_receipt_cover on receipt_items ri  (cost=0.56..9081.32 rows=123313 width=9)"
+        ],
+        [
+          "                          Index Cond: (product_id = 568)"
+        ],
+        [
+          "                    ->  Parallel Hash  (cost=8927.81..8927.81 rows=2284 width=4)"
+        ],
+        [
+          "                          ->  Parallel Index Only Scan using idx_receipts_time_cover on receipts r  (cost=0.43..8927.81 rows=2284 width=4)"
+        ],
+        [
+          "                                Index Cond: ((sold_at >= '2025-07-01 00:00:00+00'::timestamp with time zone) AND (sold_at < '2025-08-01 00:00:00+00'::timestamp with time zone))"
+        ],
+        [
+          "                                Filter: (store_id = 90)"
+        ]
+      ],
+      "results_equal": true
+    },
+    {
+      "query": 5,
+      "phase": "with_index",
+      "status": "ok",
+      "seconds": [
+        0.09202749999531079,
+        0.16042729999753647,
+        0.08025630000338424,
+        0.15815529999963474,
+        0.11810370000603143
+      ],
+      "warmup_seconds": 0.08428739999362733,
+      "result": [
+        [
+          "27911.840",
+          25276
+        ]
+      ],
+      "plan": [
+        [
+          "Finalize Aggregate  (cost=20444.30..20444.31 rows=1 width=40)"
+        ],
+        [
+          "  ->  Gather  (cost=20444.08..20444.29 rows=2 width=40)"
+        ],
+        [
+          "        Workers Planned: 2"
+        ],
+        [
+          "        ->  Partial Aggregate  (cost=19444.08..19444.09 rows=1 width=40)"
+        ],
+        [
+          "              ->  Parallel Hash Join  (cost=9987.38..19391.84 rows=10447 width=5)"
+        ],
+        [
+          "                    Hash Cond: (ri.receipt_id = r.receipt_id)"
+        ],
+        [
+          "                    ->  Parallel Index Only Scan using idx_receipt_items_product_receipt_cover on receipt_items ri  (cost=0.56..9081.32 rows=123313 width=9)"
+        ],
+        [
+          "                          Index Cond: (product_id = 568)"
+        ],
+        [
+          "                    ->  Parallel Hash  (cost=8663.06..8663.06 rows=105901 width=4)"
+        ],
+        [
+          "                          ->  Parallel Index Only Scan using idx_receipts_time_cover on receipts r  (cost=0.43..8663.06 rows=105901 width=4)"
+        ],
+        [
+          "                                Index Cond: ((sold_at >= '2025-07-01 00:00:00+00'::timestamp with time zone) AND (sold_at < '2025-08-01 00:00:00+00'::timestamp with time zone))"
+        ]
+      ],
+      "results_equal": true
+    },
+    {
+      "query": 3,
+      "phase": "without_index",
+      "status": "ok",
+      "seconds": [
+        0.08632869999564718,
+        0.07340649999969173,
+        0.17802999999548774,
+        0.12034290000156034,
+        0.09347870000055991
+      ],
+      "warmup_seconds": 0.08673779999662656,
+      "result": [
+        [
+          "237069520.96"
+        ]
+      ],
+      "results_equal": true,
+      "plan": [
+        [
+          "Finalize Aggregate  (cost=9928.04..9928.05 rows=1 width=32)"
+        ],
+        [
+          "  ->  Gather  (cost=9927.81..9928.02 rows=2 width=32)"
+        ],
+        [
+          "        Workers Planned: 2"
+        ],
+        [
+          "        ->  Partial Aggregate  (cost=8927.81..8927.82 rows=1 width=32)"
+        ],
+        [
+          "              ->  Parallel Index Only Scan using idx_receipts_time_cover on receipts  (cost=0.43..8663.06 rows=105901 width=6)"
+        ],
+        [
+          "                    Index Cond: ((sold_at >= '2025-07-01 00:00:00+00'::timestamp with time zone) AND (sold_at < '2025-08-01 00:00:00+00'::timestamp with time zone))"
+        ]
+      ]
+    },
+    {
+      "query": 4,
+      "phase": "without_index",
+      "status": "ok",
+      "seconds": [
+        0.12219279998680577,
+        0.1024011999979848,
+        0.14721710000594612,
+        0.5616328000032809,
+        0.1884515999990981
+      ],
+      "warmup_seconds": 0.10360360000049695,
+      "result": [
+        [
+          "675.197",
+          618
+        ]
+      ],
+      "results_equal": true,
+      "plan": [
+        [
+          "Finalize Aggregate  (cost=189403.12..189403.13 rows=1 width=40)"
+        ],
+        [
+          "  ->  Gather  (cost=189402.89..189403.10 rows=2 width=40)"
+        ],
+        [
+          "        Workers Planned: 2"
+        ],
+        [
+          "        ->  Partial Aggregate  (cost=188402.89..188402.90 rows=1 width=40)"
+        ],
+        [
+          "              ->  Nested Loop  (cost=0.99..188401.76 rows=225 width=5)"
+        ],
+        [
+          "                    ->  Parallel Index Only Scan using idx_receipts_time_cover on receipts r  (cost=0.43..8927.81 rows=2284 width=4)"
+        ],
+        [
+          "                          Index Cond: ((sold_at >= '2025-07-01 00:00:00+00'::timestamp with time zone) AND (sold_at < '2025-08-01 00:00:00+00'::timestamp with time zone))"
+        ],
+        [
+          "                          Filter: (store_id = 90)"
+        ],
+        [
+          "                    ->  Index Scan using receipt_items_pkey on receipt_items ri  (cost=0.56..78.57 rows=1 width=9)"
+        ],
+        [
+          "                          Index Cond: (receipt_id = r.receipt_id)"
+        ],
+        [
+          "                          Filter: (product_id = 568)"
+        ]
+      ]
+    },
+    {
+      "query": 5,
+      "phase": "without_index",
+      "status": "ok",
+      "seconds": [
+        1.4370670999924187,
+        1.1985772000043653,
+        1.5767724000033922,
+        1.556527400010964,
+        1.8073085999931209
+      ],
+      "warmup_seconds": 3.277121500010253,
+      "result": [
+        [
+          "27911.840",
+          25276
+        ]
+      ],
+      "results_equal": true,
+      "plan": [
+        [
+          "Finalize Aggregate  (cost=386051.84..386051.85 rows=1 width=40)"
+        ],
+        [
+          "  ->  Gather  (cost=386051.61..386051.82 rows=2 width=40)"
+        ],
+        [
+          "        Workers Planned: 2"
+        ],
+        [
+          "        ->  Partial Aggregate  (cost=385051.61..385051.62 rows=1 width=40)"
+        ],
+        [
+          "              ->  Parallel Hash Join  (cost=9986.82..384999.37 rows=10447 width=5)"
+        ],
+        [
+          "                    Hash Cond: (ri.receipt_id = r.receipt_id)"
+        ],
+        [
+          "                    ->  Parallel Seq Scan on receipt_items ri  (cost=0.00..374688.85 rows=123313 width=9)"
+        ],
+        [
+          "                          Filter: (product_id = 568)"
+        ],
+        [
+          "                    ->  Parallel Hash  (cost=8663.06..8663.06 rows=105901 width=4)"
+        ],
+        [
+          "                          ->  Parallel Index Only Scan using idx_receipts_time_cover on receipts r  (cost=0.43..8663.06 rows=105901 width=4)"
+        ],
+        [
+          "                                Index Cond: ((sold_at >= '2025-07-01 00:00:00+00'::timestamp with time zone) AND (sold_at < '2025-08-01 00:00:00+00'::timestamp with time zone))"
+        ]
+      ]
+    }
+  ],
+  "database": {
+    "version": "PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit",
+    "settings": [
+      [
+        "data_directory",
+        "C:/PostgreSQL/data",
+        null
+      ],
+      [
+        "effective_cache_size",
+        "524288",
+        "8kB"
+      ],
+      [
+        "jit",
+        "on",
+        null
+      ],
+      [
+        "max_parallel_workers_per_gather",
+        "2",
+        null
+      ],
+      [
+        "shared_buffers",
+        "16384",
+        "8kB"
+      ],
+      [
+        "work_mem",
+        "4096",
+        "kB"
+      ]
+    ],
+    "database_size_bytes": 3766376127,
+    "indexes": [
+      [
+        "categories",
+        "categories_name_key",
+        "CREATE UNIQUE INDEX categories_name_key ON public.categories USING btree (name)"
+      ],
+      [
+        "categories",
+        "categories_pkey",
+        "CREATE UNIQUE INDEX categories_pkey ON public.categories USING btree (category_id)"
+      ],
+      [
+        "product_types",
+        "product_types_category_id_name_key",
+        "CREATE UNIQUE INDEX product_types_category_id_name_key ON public.product_types USING btree (category_id, name)"
+      ],
+      [
+        "product_types",
+        "product_types_pkey",
+        "CREATE UNIQUE INDEX product_types_pkey ON public.product_types USING btree (product_type_id)"
+      ],
+      [
+        "products",
+        "products_pkey",
+        "CREATE UNIQUE INDEX products_pkey ON public.products USING btree (product_id)"
+      ],
+      [
+        "receipt_items",
+        "idx_receipt_items_product_receipt_cover",
+        "CREATE INDEX idx_receipt_items_product_receipt_cover ON public.receipt_items USING btree (product_id, receipt_id) INCLUDE (quantity)"
+      ],
+      [
+        "receipt_items",
+        "receipt_items_pkey",
+        "CREATE UNIQUE INDEX receipt_items_pkey ON public.receipt_items USING btree (receipt_id, line_no) INCLUDE (product_id)"
+      ],
+      [
+        "receipts",
+        "idx_receipts_time_cover",
+        "CREATE INDEX idx_receipts_time_cover ON public.receipts USING btree (sold_at) INCLUDE (receipt_id, store_id, total_amount)"
+      ],
+      [
+        "receipts",
+        "receipts_pkey",
+        "CREATE UNIQUE INDEX receipts_pkey ON public.receipts USING btree (receipt_id)"
+      ],
+      [
+        "stores",
+        "stores_pkey",
+        "CREATE UNIQUE INDEX stores_pkey ON public.stores USING btree (store_id)"
+      ],
+      [
+        "units",
+        "units_code_key",
+        "CREATE UNIQUE INDEX units_code_key ON public.units USING btree (code)"
+      ],
+      [
+        "units",
+        "units_pkey",
+        "CREATE UNIQUE INDEX units_pkey ON public.units USING btree (unit_id)"
+      ]
+    ]
+  },
+  "index_restored": true,
+  "ended_at_utc": "2026-10-16T00:30:46.442840+00:00"
+}

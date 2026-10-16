@@ -1,0 +1,7 @@
+# Python 3.13; tested on Windows.
+duckdb==1.5.6
+psycopg[binary]==3.3.6
+python-dotenv==1.2.4
+tzdata==2026.5; sys_platform == "win32"
+numpy==2.5.3
+pytz==2026.5

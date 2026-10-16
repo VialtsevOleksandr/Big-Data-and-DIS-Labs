@@ -6,5 +6,6 @@
 |---|---|
 | [Lab2_HR](Lab2_HR/) | HR-система в PostgreSQL, MongoDB і Neo4j |
 | [Lab3_MapReduce](Lab3_MapReduce/) | Аналіз транзакцій через Hadoop MapReduce |
+| [Lab3_StorageRetrieval](Lab3_StorageRetrieval/) | Порівняння PostgreSQL і DuckDB на аналітиці продажів |
 
 Опис і команди запуску — у README відповідної лабораторної.

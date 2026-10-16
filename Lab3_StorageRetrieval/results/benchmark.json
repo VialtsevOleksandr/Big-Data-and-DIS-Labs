@@ -1,0 +1,2817 @@
+{
+  "started_at_utc": "2026-10-15T23:20:07.625177+00:00",
+  "finished": true,
+  "method": {
+    "warmups_per_query_per_database": 1,
+    "measured_runs": 5,
+    "timeout_seconds": 600,
+    "cache": "warm; OS and database caches are not cleared",
+    "timing": "perf_counter around execute + fetchall; connection and EXPLAIN excluded",
+    "order": "PostgreSQL queries first, then DuckDB; no concurrent queries",
+    "period_3_to_6": "[2025-07-01,2025-08-01) UTC",
+    "period_7_to_9": "[2025-07-15,2025-07-16) UTC",
+    "product_A": 568,
+    "store_B": 90,
+    "combinations": "distinct product_type_id per receipt"
+  },
+  "python": "3.13.3",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "sql_sha256": "634195ac82e7be8ab3c9c446a4684a2cf053ecc59d6c2c7ca46e7843d66406dc",
+  "queries": [
+    {
+      "query": 1,
+      "name": "Кількість проданого товару за одиницями",
+      "sql": "SELECT u.code AS unit, SUM(ri.quantity) AS total_quantity, COUNT(*) AS lines\nFROM receipt_items ri\nJOIN products p ON p.product_id = ri.product_id\nJOIN units u ON u.unit_id = p.unit_id\nGROUP BY u.code\nORDER BY u.code;"
+    },
+    {
+      "query": 2,
+      "name": "Загальна виручка",
+      "sql": "SELECT SUM(total_amount) AS revenue\nFROM receipts;"
+    },
+    {
+      "query": 3,
+      "name": "Виручка за період C",
+      "sql": "SELECT SUM(total_amount) AS revenue\nFROM receipts\nWHERE sold_at >= TIMESTAMPTZ '2025-07-01 00:00:00+00'\n  AND sold_at <  TIMESTAMPTZ '2025-08-01 00:00:00+00';"
+    },
+    {
+      "query": 4,
+      "name": "Кількість товару A в магазині B за період C",
+      "sql": "-- COUNT(*) рахує чеки, оскільки генератор не повторює product_id у чеку.\nSELECT COALESCE(SUM(ri.quantity), 0) AS total_quantity, COUNT(*) AS receipts\nFROM receipts r\nJOIN receipt_items ri ON ri.receipt_id = r.receipt_id\nWHERE ri.product_id = 568\n  AND r.store_id = 90\n  AND r.sold_at >= TIMESTAMPTZ '2025-07-01 00:00:00+00'\n  AND r.sold_at <  TIMESTAMPTZ '2025-08-01 00:00:00+00';"
+    },
+    {
+      "query": 5,
+      "name": "Кількість товару A в усіх магазинах за період C",
+      "sql": "SELECT COALESCE(SUM(ri.quantity), 0) AS total_quantity, COUNT(*) AS receipts\nFROM receipts r\nJOIN receipt_items ri ON ri.receipt_id = r.receipt_id\nWHERE ri.product_id = 568\n  AND r.sold_at >= TIMESTAMPTZ '2025-07-01 00:00:00+00'\n  AND r.sold_at <  TIMESTAMPTZ '2025-08-01 00:00:00+00';"
+    },
+    {
+      "query": 6,
+      "name": "Виручка кожного магазину за період C",
+      "sql": "-- LEFT JOIN залишає також магазини без продажів за період.\nSELECT s.store_id, s.name AS store_name, COALESCE(SUM(r.total_amount), 0) AS revenue\nFROM stores s\nLEFT JOIN receipts r ON r.store_id = s.store_id\n  AND r.sold_at >= TIMESTAMPTZ '2025-07-01 00:00:00+00'\n  AND r.sold_at <  TIMESTAMPTZ '2025-08-01 00:00:00+00'\nGROUP BY s.store_id, s.name\nORDER BY s.store_id;"
+    },
+    {
+      "query": 7,
+      "name": "Топ-10 пар типів товарів за день",
+      "sql": "WITH basket_types AS MATERIALIZED (\n    SELECT DISTINCT ri.receipt_id, p.product_type_id\n    FROM receipts r\n    JOIN receipt_items ri ON ri.receipt_id = r.receipt_id\n    JOIN products p ON p.product_id = ri.product_id\n    WHERE r.sold_at >= TIMESTAMPTZ '2025-07-15 00:00:00+00'\n      AND r.sold_at <  TIMESTAMPTZ '2025-07-16 00:00:00+00'\n), top_combinations AS (\n    SELECT b1.product_type_id AS type_1, b2.product_type_id AS type_2, COUNT(*) AS receipt_count\n    FROM basket_types b1\n    JOIN basket_types b2 ON b2.receipt_id = b1.receipt_id\n      AND b2.product_type_id > b1.product_type_id\n    GROUP BY b1.product_type_id, b2.product_type_id\n    ORDER BY receipt_count DESC, type_1, type_2\n    LIMIT 10\n)\nSELECT t.type_1, p1.name AS type_1_name,\n       t.type_2, p2.name AS type_2_name,\n       t.receipt_count\nFROM top_combinations t\nJOIN product_types p1 ON p1.product_type_id = t.type_1\nJOIN product_types p2 ON p2.product_type_id = t.type_2\nORDER BY t.receipt_count DESC, t.type_1, t.type_2;"
+    },
+    {
+      "query": 8,
+      "name": "Топ-10 трійок типів товарів за день",
+      "sql": "WITH basket_types AS MATERIALIZED (\n    SELECT DISTINCT ri.receipt_id, p.product_type_id\n    FROM receipts r\n    JOIN receipt_items ri ON ri.receipt_id = r.receipt_id\n    JOIN products p ON p.product_id = ri.product_id\n    WHERE r.sold_at >= TIMESTAMPTZ '2025-07-15 00:00:00+00'\n      AND r.sold_at <  TIMESTAMPTZ '2025-07-16 00:00:00+00'\n), top_combinations AS (\n    SELECT b1.product_type_id AS type_1, b2.product_type_id AS type_2, b3.product_type_id AS type_3, COUNT(*) AS receipt_count\n    FROM basket_types b1\n    JOIN basket_types b2 ON b2.receipt_id = b1.receipt_id\n      AND b2.product_type_id > b1.product_type_id\n    JOIN basket_types b3 ON b3.receipt_id = b1.receipt_id\n      AND b3.product_type_id > b2.product_type_id\n    GROUP BY b1.product_type_id, b2.product_type_id, b3.product_type_id\n    ORDER BY receipt_count DESC, type_1, type_2, type_3\n    LIMIT 10\n)\nSELECT t.type_1, p1.name AS type_1_name,\n       t.type_2, p2.name AS type_2_name,\n       t.type_3, p3.name AS type_3_name,\n       t.receipt_count\nFROM top_combinations t\nJOIN product_types p1 ON p1.product_type_id = t.type_1\nJOIN product_types p2 ON p2.product_type_id = t.type_2\nJOIN product_types p3 ON p3.product_type_id = t.type_3\nORDER BY t.receipt_count DESC, t.type_1, t.type_2, t.type_3;"
+    },
+    {
+      "query": 9,
+      "name": "Топ-10 четвірок типів товарів за день",
+      "sql": "WITH basket_types AS MATERIALIZED (\n    SELECT DISTINCT ri.receipt_id, p.product_type_id\n    FROM receipts r\n    JOIN receipt_items ri ON ri.receipt_id = r.receipt_id\n    JOIN products p ON p.product_id = ri.product_id\n    WHERE r.sold_at >= TIMESTAMPTZ '2025-07-15 00:00:00+00'\n      AND r.sold_at <  TIMESTAMPTZ '2025-07-16 00:00:00+00'\n), top_combinations AS (\n    SELECT b1.product_type_id AS type_1, b2.product_type_id AS type_2, b3.product_type_id AS type_3, b4.product_type_id AS type_4, COUNT(*) AS receipt_count\n    FROM basket_types b1\n    JOIN basket_types b2 ON b2.receipt_id = b1.receipt_id\n      AND b2.product_type_id > b1.product_type_id\n    JOIN basket_types b3 ON b3.receipt_id = b1.receipt_id\n      AND b3.product_type_id > b2.product_type_id\n    JOIN basket_types b4 ON b4.receipt_id = b1.receipt_id\n      AND b4.product_type_id > b3.product_type_id\n    GROUP BY b1.product_type_id, b2.product_type_id, b3.product_type_id, b4.product_type_id\n    ORDER BY receipt_count DESC, type_1, type_2, type_3, type_4\n    LIMIT 10\n)\nSELECT t.type_1, p1.name AS type_1_name,\n       t.type_2, p2.name AS type_2_name,\n       t.type_3, p3.name AS type_3_name,\n       t.type_4, p4.name AS type_4_name,\n       t.receipt_count\nFROM top_combinations t\nJOIN product_types p1 ON p1.product_type_id = t.type_1\nJOIN product_types p2 ON p2.product_type_id = t.type_2\nJOIN product_types p3 ON p3.product_type_id = t.type_3\nJOIN product_types p4 ON p4.product_type_id = t.type_4\nORDER BY t.receipt_count DESC, t.type_1, t.type_2, t.type_3, t.type_4;"
+    }
+  ],
+  "databases": {
+    "PostgreSQL": {
+      "version": "PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit",
+      "settings": [
+        [
+          "data_directory",
+          "C:/PostgreSQL/data",
+          null
+        ],
+        [
+          "effective_cache_size",
+          "524288",
+          "8kB"
+        ],
+        [
+          "jit",
+          "on",
+          null
+        ],
+        [
+          "max_parallel_workers_per_gather",
+          "2",
+          null
+        ],
+        [
+          "shared_buffers",
+          "16384",
+          "8kB"
+        ],
+        [
+          "work_mem",
+          "4096",
+          "kB"
+        ]
+      ],
+      "database_size_bytes": 3766376127,
+      "indexes": [
+        [
+          "categories",
+          "categories_name_key",
+          "CREATE UNIQUE INDEX categories_name_key ON public.categories USING btree (name)"
+        ],
+        [
+          "categories",
+          "categories_pkey",
+          "CREATE UNIQUE INDEX categories_pkey ON public.categories USING btree (category_id)"
+        ],
+        [
+          "product_types",
+          "product_types_category_id_name_key",
+          "CREATE UNIQUE INDEX product_types_category_id_name_key ON public.product_types USING btree (category_id, name)"
+        ],
+        [
+          "product_types",
+          "product_types_pkey",
+          "CREATE UNIQUE INDEX product_types_pkey ON public.product_types USING btree (product_type_id)"
+        ],
+        [
+          "products",
+          "products_pkey",
+          "CREATE UNIQUE INDEX products_pkey ON public.products USING btree (product_id)"
+        ],
+        [
+          "receipt_items",
+          "idx_receipt_items_product_receipt_cover",
+          "CREATE INDEX idx_receipt_items_product_receipt_cover ON public.receipt_items USING btree (product_id, receipt_id) INCLUDE (quantity)"
+        ],
+        [
+          "receipt_items",
+          "receipt_items_pkey",
+          "CREATE UNIQUE INDEX receipt_items_pkey ON public.receipt_items USING btree (receipt_id, line_no) INCLUDE (product_id)"
+        ],
+        [
+          "receipts",
+          "idx_receipts_time_cover",
+          "CREATE INDEX idx_receipts_time_cover ON public.receipts USING btree (sold_at) INCLUDE (receipt_id, store_id, total_amount)"
+        ],
+        [
+          "receipts",
+          "receipts_pkey",
+          "CREATE UNIQUE INDEX receipts_pkey ON public.receipts USING btree (receipt_id)"
+        ],
+        [
+          "stores",
+          "stores_pkey",
+          "CREATE UNIQUE INDEX stores_pkey ON public.stores USING btree (store_id)"
+        ],
+        [
+          "units",
+          "units_code_key",
+          "CREATE UNIQUE INDEX units_code_key ON public.units USING btree (code)"
+        ],
+        [
+          "units",
+          "units_pkey",
+          "CREATE UNIQUE INDEX units_pkey ON public.units USING btree (unit_id)"
+        ]
+      ]
+    },
+    "DuckDB": {
+      "version": "v1.5.6",
+      "settings": [
+        [
+          "memory_limit",
+          "1.8 GiB"
+        ],
+        [
+          "temp_directory",
+          "C:\\Antigravity_Projects\\BigData_DIS\\Lab3_StorageRetrieval\\data\\sales.duckdb.tmp"
+        ],
+        [
+          "threads",
+          "4"
+        ]
+      ],
+      "database_file_bytes": 293875712
+    }
+  },
+  "measurements": [
+    {
+      "query": 1,
+      "name": "Кількість проданого товару за одиницями",
+      "database": "PostgreSQL",
+      "status": "ok",
+      "seconds": [
+        8.101658499988844,
+        7.823584800004028,
+        8.26974329999939,
+        7.845085900000413,
+        7.960235999998986
+      ],
+      "warmup_seconds": 9.571073600003729,
+      "result": [
+        [
+          "kg",
+          "7154313.371",
+          7463825
+        ],
+        [
+          "l",
+          "260107.826",
+          157393
+        ],
+        [
+          "pcs",
+          "29192698.000",
+          22368783
+        ]
+      ],
+      "plan": [
+        [
+          "Finalize GroupAggregate  (cost=550313.61..550314.53 rows=3 width=43)"
+        ],
+        [
+          "  Group Key: u.code"
+        ],
+        [
+          "  ->  Gather Merge  (cost=550313.61..550314.42 rows=7 width=43)"
+        ],
+        [
+          "        Workers Planned: 2"
+        ],
+        [
+          "        ->  Sort  (cost=549313.58..549313.59 rows=3 width=43)"
+        ],
+        [
+          "              Sort Key: u.code"
+        ],
+        [
+          "              ->  Partial HashAggregate  (cost=549313.52..549313.56 rows=3 width=43)"
+        ],
+        [
+          "                    Group Key: u.code"
+        ],
+        [
+          "                    ->  Hash Join  (cost=104.07..455578.61 rows=12497988 width=8)"
+        ],
+        [
+          "                          Hash Cond: (p.unit_id = u.unit_id)"
+        ],
+        [
+          "                          ->  Hash Join  (cost=103.00..376423.62 rows=12497988 width=7)"
+        ],
+        [
+          "                                Hash Cond: (ri.product_id = p.product_id)"
+        ],
+        [
+          "                                ->  Parallel Seq Scan on receipt_items ri  (cost=0.00..343443.88 rows=12497988 width=7)"
+        ],
+        [
+          "                                ->  Hash  (cost=78.00..78.00 rows=2000 width=4)"
+        ],
+        [
+          "                                      ->  Seq Scan on products p  (cost=0.00..78.00 rows=2000 width=4)"
+        ],
+        [
+          "                          ->  Hash  (cost=1.03..1.03 rows=3 width=5)"
+        ],
+        [
+          "                                ->  Seq Scan on units u  (cost=0.00..1.03 rows=3 width=5)"
+        ]
+      ],
+      "results_equal": true
+    },
+    {
+      "query": 2,
+      "name": "Загальна виручка",
+      "database": "PostgreSQL",
+      "status": "ok",
+      "seconds": [
+        0.2239891999925021,
+        0.16109310000319965,
+        0.19523250000202097,
+        0.17646760000206996,
+        0.19619499999680556
+      ],
+      "warmup_seconds": 0.5135683999978937,
+      "result": [
+        [
+          "2834827582.15"
+        ]
+      ],
+      "plan": [
+        [
+          "Finalize Aggregate  (cost=36089.23..36089.24 rows=1 width=32)"
+        ],
+        [
+          "  ->  Gather  (cost=36089.00..36089.21 rows=2 width=32)"
+        ],
+        [
+          "        Workers Planned: 2"
+        ],
+        [
+          "        ->  Partial Aggregate  (cost=35089.00..35089.01 rows=1 width=32)"
+        ],
+        [
+          "              ->  Parallel Seq Scan on receipts  (cost=0.00..31964.00 rows=1250000 width=6)"
+        ]
+      ],
+      "results_equal": true
+    },
+    {
+      "query": 3,
+      "name": "Виручка за період C",
+      "database": "PostgreSQL",
+      "status": "ok",
+      "seconds": [
+        0.06838869999046437,
+        0.07114580000052229,
+        0.09482879999268334,
+        0.17007370000646915,
+        0.09789679999812506
+      ],
+      "warmup_seconds": 0.08698389999335632,
+      "result": [
+        [
+          "237069520.96"
+        ]
+      ],
+      "plan": [
+        [
+          "Finalize Aggregate  (cost=9928.04..9928.05 rows=1 width=32)"
+        ],
+        [
+          "  ->  Gather  (cost=9927.81..9928.02 rows=2 width=32)"
+        ],
+        [
+          "        Workers Planned: 2"
+        ],
+        [
+          "        ->  Partial Aggregate  (cost=8927.81..8927.82 rows=1 width=32)"
+        ],
+        [
+          "              ->  Parallel Index Only Scan using idx_receipts_time_cover on receipts  (cost=0.43..8663.06 rows=105901 width=6)"
+        ],
+        [
+          "                    Index Cond: ((sold_at >= '2025-07-01 00:00:00+00'::timestamp with time zone) AND (sold_at < '2025-08-01 00:00:00+00'::timestamp with time zone))"
+        ]
+      ],
+      "results_equal": true
+    },
+    {
+      "query": 4,
+      "name": "Кількість товару A в магазині B за період C",
+      "database": "PostgreSQL",
+      "status": "ok",
+      "seconds": [
+        0.07229790001292713,
+        0.07687920000171289,
+        0.07879869999305811,
+        0.09644790001038928,
+        0.08571349999692757
+      ],
+      "warmup_seconds": 0.10767100000521168,
+      "result": [
+        [
+          "675.197",
+          618
+        ]
+      ],
+      "plan": [
+        [
+          "Finalize Aggregate  (cost=19362.73..19362.74 rows=1 width=40)"
+        ],
+        [
+          "  ->  Gather  (cost=19362.51..19362.72 rows=2 width=40)"
+        ],
+        [
+          "        Workers Planned: 2"
+        ],
+        [
+          "        ->  Partial Aggregate  (cost=18362.51..18362.52 rows=1 width=40)"
+        ],
+        [
+          "              ->  Parallel Hash Join  (cost=8956.92..18361.38 rows=225 width=5)"
+        ],
+        [
+          "                    Hash Cond: (ri.receipt_id = r.receipt_id)"
+        ],
+        [
+          "                    ->  Parallel Index Only Scan using idx_receipt_items_product_receipt_cover on receipt_items ri  (cost=0.56..9081.32 rows=123313 width=9)"
+        ],
+        [
+          "                          Index Cond: (product_id = 568)"
+        ],
+        [
+          "                    ->  Parallel Hash  (cost=8927.81..8927.81 rows=2284 width=4)"
+        ],
+        [
+          "                          ->  Parallel Index Only Scan using idx_receipts_time_cover on receipts r  (cost=0.43..8927.81 rows=2284 width=4)"
+        ],
+        [
+          "                                Index Cond: ((sold_at >= '2025-07-01 00:00:00+00'::timestamp with time zone) AND (sold_at < '2025-08-01 00:00:00+00'::timestamp with time zone))"
+        ],
+        [
+          "                                Filter: (store_id = 90)"
+        ]
+      ],
+      "results_equal": true
+    },
+    {
+      "query": 5,
+      "name": "Кількість товару A в усіх магазинах за період C",
+      "database": "PostgreSQL",
+      "status": "ok",
+      "seconds": [
+        0.17616000000271015,
+        0.10214529999939259,
+        0.1028974999935599,
+        0.10099110000010114,
+        0.0957627999887336
+      ],
+      "warmup_seconds": 0.11184890000731684,
+      "result": [
+        [
+          "27911.840",
+          25276
+        ]
+      ],
+      "plan": [
+        [
+          "Finalize Aggregate  (cost=20444.30..20444.31 rows=1 width=40)"
+        ],
+        [
+          "  ->  Gather  (cost=20444.08..20444.29 rows=2 width=40)"
+        ],
+        [
+          "        Workers Planned: 2"
+        ],
+        [
+          "        ->  Partial Aggregate  (cost=19444.08..19444.09 rows=1 width=40)"
+        ],
+        [
+          "              ->  Parallel Hash Join  (cost=9987.38..19391.84 rows=10447 width=5)"
+        ],
+        [
+          "                    Hash Cond: (ri.receipt_id = r.receipt_id)"
+        ],
+        [
+          "                    ->  Parallel Index Only Scan using idx_receipt_items_product_receipt_cover on receipt_items ri  (cost=0.56..9081.32 rows=123313 width=9)"
+        ],
+        [
+          "                          Index Cond: (product_id = 568)"
+        ],
+        [
+          "                    ->  Parallel Hash  (cost=8663.06..8663.06 rows=105901 width=4)"
+        ],
+        [
+          "                          ->  Parallel Index Only Scan using idx_receipts_time_cover on receipts r  (cost=0.43..8663.06 rows=105901 width=4)"
+        ],
+        [
+          "                                Index Cond: ((sold_at >= '2025-07-01 00:00:00+00'::timestamp with time zone) AND (sold_at < '2025-08-01 00:00:00+00'::timestamp with time zone))"
+        ]
+      ],
+      "results_equal": true
+    },
+    {
+      "query": 6,
+      "name": "Виручка кожного магазину за період C",
+      "database": "PostgreSQL",
+      "status": "ok",
+      "seconds": [
+        0.19561500000418164,
+        0.21961369999917224,
+        0.18646769999759272,
+        0.2110837999935029,
+        0.20128729999123607
+      ],
+      "warmup_seconds": 0.1940974000026472,
+      "result": [
+        [
+          1,
+          "Магазин біля дому «Джерело» №1",
+          "2002224.41"
+        ],
+        [
+          2,
+          "Магазин біля дому «Злагода» №2",
+          "1083899.17"
+        ],
+        [
+          3,
+          "Супермаркет «Мрія» №3",
+          "2238261.47"
+        ],
+        [
+          4,
+          "Магазин біля дому «Затишок» №4",
+          "960525.21"
+        ],
+        [
+          5,
+          "Супермаркет «Дніпровий» №5",
+          "2713532.72"
+        ],
+        [
+          6,
+          "Гіпермаркет «Калина» №6",
+          "3416406.92"
+        ],
+        [
+          7,
+          "Гіпермаркет «Добрий Кошик» №7",
+          "3759560.12"
+        ],
+        [
+          8,
+          "Супермаркет «Злагода» №8",
+          "2425835.84"
+        ],
+        [
+          9,
+          "Магазин біля дому «Добрий Кошик» №9",
+          "1575503.71"
+        ],
+        [
+          10,
+          "Супермаркет «Вишневий» №10",
+          "3058002.14"
+        ],
+        [
+          11,
+          "Супермаркет «Джерело» №11",
+          "3157805.28"
+        ],
+        [
+          12,
+          "Магазин біля дому «Добрий Кошик» №12",
+          "1957392.78"
+        ],
+        [
+          13,
+          "Магазин біля дому «Мрія» №13",
+          "2057181.81"
+        ],
+        [
+          14,
+          "Супермаркет «Ятрань» №14",
+          "2722272.24"
+        ],
+        [
+          15,
+          "Магазин біля дому «Ятрань» №15",
+          "1245360.79"
+        ],
+        [
+          16,
+          "Гіпермаркет «Світанок» №16",
+          "4213450.09"
+        ],
+        [
+          17,
+          "Супермаркет «Світанок» №17",
+          "2193840.18"
+        ],
+        [
+          18,
+          "Супермаркет «Калина» №18",
+          "3168933.01"
+        ],
+        [
+          19,
+          "Супермаркет «Смачний Двір» №19",
+          "2496643.26"
+        ],
+        [
+          20,
+          "Магазин біля дому «Злагода» №20",
+          "1913540.65"
+        ],
+        [
+          21,
+          "Супермаркет «Ятрань» №21",
+          "2445418.92"
+        ],
+        [
+          22,
+          "Магазин біля дому «Каштан» №22",
+          "2189468.28"
+        ],
+        [
+          23,
+          "Супермаркет «Мрія» №23",
+          "2424888.75"
+        ],
+        [
+          24,
+          "Магазин біля дому «Злагода» №24",
+          "1770219.38"
+        ],
+        [
+          25,
+          "Магазин біля дому «Світанок» №25",
+          "1842018.41"
+        ],
+        [
+          26,
+          "Магазин біля дому «Каштан» №26",
+          "1772638.61"
+        ],
+        [
+          27,
+          "Супермаркет «Барвінок» №27",
+          "3050768.29"
+        ],
+        [
+          28,
+          "Гіпермаркет «Світанок» №28",
+          "3609334.90"
+        ],
+        [
+          29,
+          "Супермаркет «Джерело» №29",
+          "2425135.98"
+        ],
+        [
+          30,
+          "Супермаркет «Злагода» №30",
+          "2999467.89"
+        ],
+        [
+          31,
+          "Магазин біля дому «Затишок» №31",
+          "1915322.53"
+        ],
+        [
+          32,
+          "Супермаркет «Соняшник» №32",
+          "2359917.21"
+        ],
+        [
+          33,
+          "Магазин біля дому «Ятрань» №33",
+          "1435287.24"
+        ],
+        [
+          34,
+          "Магазин біля дому «Сонячний» №34",
+          "2199698.18"
+        ],
+        [
+          35,
+          "Супермаркет «Мрія» №35",
+          "3064170.52"
+        ],
+        [
+          36,
+          "Супермаркет «Добрий Кошик» №36",
+          "2657557.17"
+        ],
+        [
+          37,
+          "Магазин біля дому «Барвінок» №37",
+          "1578352.63"
+        ],
+        [
+          38,
+          "Магазин біля дому «Сусідський» №38",
+          "2185132.42"
+        ],
+        [
+          39,
+          "Магазин біля дому «Калина» №39",
+          "1959477.82"
+        ],
+        [
+          40,
+          "Гіпермаркет «Злагода» №40",
+          "4080233.32"
+        ],
+        [
+          41,
+          "Гіпермаркет «Джерело» №41",
+          "4530670.89"
+        ],
+        [
+          42,
+          "Супермаркет «Пролісок» №42",
+          "2791123.81"
+        ],
+        [
+          43,
+          "Супермаркет «Смачний Двір» №43",
+          "2725039.07"
+        ],
+        [
+          44,
+          "Магазин біля дому «Каштан» №44",
+          "963667.28"
+        ],
+        [
+          45,
+          "Магазин біля дому «Світанок» №45",
+          "1859054.34"
+        ],
+        [
+          46,
+          "Магазин біля дому «Мрія» №46",
+          "1896860.99"
+        ],
+        [
+          47,
+          "Магазин біля дому «Калина» №47",
+          "1752559.94"
+        ],
+        [
+          48,
+          "Магазин біля дому «Джерело» №48",
+          "2304259.31"
+        ],
+        [
+          49,
+          "Магазин біля дому «Вишневий» №49",
+          "1097239.47"
+        ],
+        [
+          50,
+          "Гіпермаркет «Сонячний» №50",
+          "3939540.16"
+        ],
+        [
+          51,
+          "Супермаркет «Барвінок» №51",
+          "2727719.55"
+        ],
+        [
+          52,
+          "Гіпермаркет «Лелека» №52",
+          "4446326.40"
+        ],
+        [
+          53,
+          "Супермаркет «Пролісок» №53",
+          "2698177.49"
+        ],
+        [
+          54,
+          "Магазин біля дому «Оберіг» №54",
+          "1201753.59"
+        ],
+        [
+          55,
+          "Магазин біля дому «Оберіг» №55",
+          "1846570.13"
+        ],
+        [
+          56,
+          "Магазин біля дому «Вишневий» №56",
+          "1382192.33"
+        ],
+        [
+          57,
+          "Супермаркет «Мрія» №57",
+          "2606835.37"
+        ],
+        [
+          58,
+          "Магазин біля дому «Мрія» №58",
+          "1041178.92"
+        ],
+        [
+          59,
+          "Гіпермаркет «Каштан» №59",
+          "4345787.15"
+        ],
+        [
+          60,
+          "Магазин біля дому «Джерело» №60",
+          "1636671.01"
+        ],
+        [
+          61,
+          "Магазин біля дому «Сонячний» №61",
+          "2353804.71"
+        ],
+        [
+          62,
+          "Гіпермаркет «Затишок» №62",
+          "4049910.24"
+        ],
+        [
+          63,
+          "Магазин біля дому «Барвінок» №63",
+          "972695.76"
+        ],
+        [
+          64,
+          "Гіпермаркет «Ятрань» №64",
+          "3577764.56"
+        ],
+        [
+          65,
+          "Магазин біля дому «Сонячний» №65",
+          "1668621.53"
+        ],
+        [
+          66,
+          "Супермаркет «Колосок» №66",
+          "2340596.38"
+        ],
+        [
+          67,
+          "Супермаркет «Злагода» №67",
+          "2583300.23"
+        ],
+        [
+          68,
+          "Гіпермаркет «Добрий Кошик» №68",
+          "3482592.46"
+        ],
+        [
+          69,
+          "Магазин біля дому «Каштан» №69",
+          "1411089.79"
+        ],
+        [
+          70,
+          "Супермаркет «Сонячний» №70",
+          "2544105.40"
+        ],
+        [
+          71,
+          "Магазин біля дому «Оберіг» №71",
+          "1889183.15"
+        ],
+        [
+          72,
+          "Магазин біля дому «Каштан» №72",
+          "1311236.10"
+        ],
+        [
+          73,
+          "Магазин біля дому «Сонячний» №73",
+          "1646626.64"
+        ],
+        [
+          74,
+          "Супермаркет «Оберіг» №74",
+          "2530241.03"
+        ],
+        [
+          75,
+          "Магазин біля дому «Соняшник» №75",
+          "1499049.58"
+        ],
+        [
+          76,
+          "Супермаркет «Ятрань» №76",
+          "2558928.74"
+        ],
+        [
+          77,
+          "Магазин біля дому «Дніпровий» №77",
+          "1210569.05"
+        ],
+        [
+          78,
+          "Супермаркет «Калина» №78",
+          "2471589.93"
+        ],
+        [
+          79,
+          "Магазин біля дому «Колосок» №79",
+          "1676525.96"
+        ],
+        [
+          80,
+          "Супермаркет «Вишневий» №80",
+          "2976021.56"
+        ],
+        [
+          81,
+          "Магазин біля дому «Лелека» №81",
+          "1442283.24"
+        ],
+        [
+          82,
+          "Супермаркет «Світанок» №82",
+          "2826003.97"
+        ],
+        [
+          83,
+          "Магазин біля дому «Пролісок» №83",
+          "1923131.75"
+        ],
+        [
+          84,
+          "Магазин біля дому «Мрія» №84",
+          "1771314.83"
+        ],
+        [
+          85,
+          "Магазин біля дому «Злагода» №85",
+          "1639320.16"
+        ],
+        [
+          86,
+          "Магазин біля дому «Дніпровий» №86",
+          "1768153.96"
+        ],
+        [
+          87,
+          "Супермаркет «Мрія» №87",
+          "3243207.56"
+        ],
+        [
+          88,
+          "Гіпермаркет «Затишок» №88",
+          "3705650.09"
+        ],
+        [
+          89,
+          "Магазин біля дому «Добрий Кошик» №89",
+          "2166950.02"
+        ],
+        [
+          90,
+          "Гіпермаркет «Пролісок» №90",
+          "5290564.91"
+        ],
+        [
+          91,
+          "Магазин біля дому «Каштан» №91",
+          "1707404.77"
+        ],
+        [
+          92,
+          "Супермаркет «Мрія» №92",
+          "2541755.62"
+        ],
+        [
+          93,
+          "Магазин біля дому «Затишок» №93",
+          "2197472.73"
+        ],
+        [
+          94,
+          "Гіпермаркет «Дніпровий» №94",
+          "3335837.11"
+        ],
+        [
+          95,
+          "Супермаркет «Вишневий» №95",
+          "2712226.06"
+        ],
+        [
+          96,
+          "Супермаркет «Затишок» №96",
+          "2115826.58"
+        ],
+        [
+          97,
+          "Магазин біля дому «Вишневий» №97",
+          "1470705.05"
+        ],
+        [
+          98,
+          "Магазин біля дому «Сонячний» №98",
+          "1882385.77"
+        ],
+        [
+          99,
+          "Магазин біля дому «Затишок» №99",
+          "1400375.05"
+        ],
+        [
+          100,
+          "Супермаркет «Калина» №100",
+          "3056591.48"
+        ]
+      ],
+      "plan": [
+        [
+          "Sort  (cost=12121.76..12122.01 rows=100 width=87)"
+        ],
+        [
+          "  Sort Key: s.store_id"
+        ],
+        [
+          "  ->  HashAggregate  (cost=12117.19..12118.44 rows=100 width=87)"
+        ],
+        [
+          "        Group Key: s.store_id"
+        ],
+        [
+          "        ->  Hash Right Join  (cost=5.68..10846.38 rows=254162 width=61)"
+        ],
+        [
+          "              Hash Cond: (r.store_id = s.store_id)"
+        ],
+        [
+          "              ->  Index Only Scan using idx_receipts_time_cover on receipts r  (cost=0.43..10145.67 rows=254162 width=8)"
+        ],
+        [
+          "                    Index Cond: ((sold_at >= '2025-07-01 00:00:00+00'::timestamp with time zone) AND (sold_at < '2025-08-01 00:00:00+00'::timestamp with time zone))"
+        ],
+        [
+          "              ->  Hash  (cost=4.00..4.00 rows=100 width=55)"
+        ],
+        [
+          "                    ->  Seq Scan on stores s  (cost=0.00..4.00 rows=100 width=55)"
+        ]
+      ],
+      "results_equal": true
+    },
+    {
+      "query": 7,
+      "name": "Топ-10 пар типів товарів за день",
+      "database": "PostgreSQL",
+      "status": "ok",
+      "seconds": [
+        0.6807760999945458,
+        0.6084359999949811,
+        0.6252476000081515,
+        0.5791720999986865,
+        0.6284937000018544
+      ],
+      "warmup_seconds": 0.6775996000069426,
+      "result": [
+        [
+          1,
+          "Хліб",
+          14,
+          "Масло вершкове",
+          1327
+        ],
+        [
+          1,
+          "Хліб",
+          41,
+          "Курятина",
+          1220
+        ],
+        [
+          1,
+          "Хліб",
+          20,
+          "Картопля",
+          1208
+        ],
+        [
+          1,
+          "Хліб",
+          32,
+          "Яблука",
+          1188
+        ],
+        [
+          1,
+          "Хліб",
+          48,
+          "Сосиски",
+          1183
+        ],
+        [
+          1,
+          "Хліб",
+          9,
+          "Молоко",
+          1159
+        ],
+        [
+          9,
+          "Молоко",
+          14,
+          "Масло вершкове",
+          1087
+        ],
+        [
+          20,
+          "Картопля",
+          32,
+          "Яблука",
+          971
+        ],
+        [
+          32,
+          "Яблука",
+          41,
+          "Курятина",
+          965
+        ],
+        [
+          20,
+          "Картопля",
+          41,
+          "Курятина",
+          964
+        ]
+      ],
+      "plan": [
+        [
+          "Nested Loop  (cost=628741.34..628776.34 rows=10 width=50)"
+        ],
+        [
+          "  CTE basket_types"
+        ],
+        [
+          "    ->  HashAggregate  (cost=47532.30..48283.07 rows=75077 width=6)"
+        ],
+        [
+          "          Group Key: ri.receipt_id, p.product_type_id"
+        ],
+        [
+          "          ->  Gather  (cost=39336.40..47156.92 rows=75077 width=6)"
+        ],
+        [
+          "                Workers Planned: 2"
+        ],
+        [
+          "                ->  HashAggregate  (cost=38336.40..38649.22 rows=31282 width=6)"
+        ],
+        [
+          "                      Group Key: ri.receipt_id, p.product_type_id"
+        ],
+        [
+          "                      ->  Hash Join  (cost=332.96..38179.99 rows=31282 width=6)"
+        ],
+        [
+          "                            Hash Cond: (ri.product_id = p.product_id)"
+        ],
+        [
+          "                            ->  Nested Loop  (cost=229.96..37994.70 rows=31282 width=6)"
+        ],
+        [
+          "                                  ->  Parallel Bitmap Heap Scan on receipts r  (cost=229.40..14716.46 rows=3129 width=4)"
+        ],
+        [
+          "                                        Recheck Cond: ((sold_at >= '2025-07-15 00:00:00+00'::timestamp with time zone) AND (sold_at < '2025-07-16 00:00:00+00'::timestamp with time zone))"
+        ],
+        [
+          "                                        ->  Bitmap Index Scan on idx_receipts_time_cover  (cost=0.00..227.52 rows=7509 width=0)"
+        ],
+        [
+          "                                              Index Cond: ((sold_at >= '2025-07-15 00:00:00+00'::timestamp with time zone) AND (sold_at < '2025-07-16 00:00:00+00'::timestamp with time zone))"
+        ],
+        [
+          "                                  ->  Index Only Scan using receipt_items_pkey on receipt_items ri  (cost=0.56..6.36 rows=108 width=6)"
+        ],
+        [
+          "                                        Index Cond: (receipt_id = r.receipt_id)"
+        ],
+        [
+          "                            ->  Hash  (cost=78.00..78.00 rows=2000 width=4)"
+        ],
+        [
+          "                                  ->  Seq Scan on products p  (cost=0.00..78.00 rows=2000 width=4)"
+        ],
+        [
+          "  ->  Nested Loop  (cost=580458.13..580475.64 rows=10 width=31)"
+        ],
+        [
+          "        ->  Limit  (cost=580457.98..580458.01 rows=10 width=12)"
+        ],
+        [
+          "              ->  Sort  (cost=580457.98..580557.98 rows=40000 width=12)"
+        ],
+        [
+          "                    Sort Key: (count(*)) DESC, b1.product_type_id, b2.product_type_id"
+        ],
+        [
+          "                    ->  HashAggregate  (cost=579193.60..579593.60 rows=40000 width=12)"
+        ],
+        [
+          "                          Group Key: b1.product_type_id, b2.product_type_id"
+        ],
+        [
+          "                          ->  Merge Join  (cost=15162.61..508736.65 rows=9394260 width=4)"
+        ],
+        [
+          "                                Merge Cond: (b1.receipt_id = b2.receipt_id)"
+        ],
+        [
+          "                                Join Filter: (b2.product_type_id > b1.product_type_id)"
+        ],
+        [
+          "                                ->  Sort  (cost=7581.31..7769.00 rows=75077 width=6)"
+        ],
+        [
+          "                                      Sort Key: b1.receipt_id"
+        ],
+        [
+          "                                      ->  CTE Scan on basket_types b1  (cost=0.00..1501.54 rows=75077 width=6)"
+        ],
+        [
+          "                                ->  Sort  (cost=7581.31..7769.00 rows=75077 width=6)"
+        ],
+        [
+          "                                      Sort Key: b2.receipt_id"
+        ],
+        [
+          "                                      ->  CTE Scan on basket_types b2  (cost=0.00..1501.54 rows=75077 width=6)"
+        ],
+        [
+          "        ->  Index Scan using product_types_pkey on product_types p1  (cost=0.14..1.76 rows=1 width=21)"
+        ],
+        [
+          "              Index Cond: (product_type_id = b1.product_type_id)"
+        ],
+        [
+          "  ->  Index Scan using product_types_pkey on product_types p2  (cost=0.14..1.76 rows=1 width=21)"
+        ],
+        [
+          "        Index Cond: (product_type_id = b2.product_type_id)"
+        ]
+      ],
+      "results_equal": true
+    },
+    {
+      "query": 8,
+      "name": "Топ-10 трійок типів товарів за день",
+      "database": "PostgreSQL",
+      "status": "ok",
+      "seconds": [
+        3.6526392999949167,
+        3.7213674999948125,
+        3.7580065000074683,
+        3.73217809999187,
+        3.778646100006881
+      ],
+      "warmup_seconds": 3.898871400000644,
+      "result": [
+        [
+          1,
+          "Хліб",
+          9,
+          "Молоко",
+          14,
+          "Масло вершкове",
+          605
+        ],
+        [
+          1,
+          "Хліб",
+          20,
+          "Картопля",
+          32,
+          "Яблука",
+          604
+        ],
+        [
+          1,
+          "Хліб",
+          14,
+          "Масло вершкове",
+          41,
+          "Курятина",
+          596
+        ],
+        [
+          1,
+          "Хліб",
+          20,
+          "Картопля",
+          41,
+          "Курятина",
+          590
+        ],
+        [
+          1,
+          "Хліб",
+          32,
+          "Яблука",
+          41,
+          "Курятина",
+          582
+        ],
+        [
+          1,
+          "Хліб",
+          9,
+          "Молоко",
+          41,
+          "Курятина",
+          570
+        ],
+        [
+          1,
+          "Хліб",
+          14,
+          "Масло вершкове",
+          32,
+          "Яблука",
+          569
+        ],
+        [
+          1,
+          "Хліб",
+          14,
+          "Масло вершкове",
+          20,
+          "Картопля",
+          567
+        ],
+        [
+          2,
+          "Батон",
+          9,
+          "Молоко",
+          14,
+          "Масло вершкове",
+          567
+        ],
+        [
+          1,
+          "Хліб",
+          9,
+          "Молоко",
+          20,
+          "Картопля",
+          553
+        ]
+      ],
+      "plan": [
+        [
+          "Nested Loop  (cost=143713125.74..143713178.22 rows=10 width=71)"
+        ],
+        [
+          "  CTE basket_types"
+        ],
+        [
+          "    ->  HashAggregate  (cost=47532.30..48283.07 rows=75077 width=6)"
+        ],
+        [
+          "          Group Key: ri.receipt_id, p.product_type_id"
+        ],
+        [
+          "          ->  Gather  (cost=39336.40..47156.92 rows=75077 width=6)"
+        ],
+        [
+          "                Workers Planned: 2"
+        ],
+        [
+          "                ->  HashAggregate  (cost=38336.40..38649.22 rows=31282 width=6)"
+        ],
+        [
+          "                      Group Key: ri.receipt_id, p.product_type_id"
+        ],
+        [
+          "                      ->  Hash Join  (cost=332.96..38179.99 rows=31282 width=6)"
+        ],
+        [
+          "                            Hash Cond: (ri.product_id = p.product_id)"
+        ],
+        [
+          "                            ->  Nested Loop  (cost=229.96..37994.70 rows=31282 width=6)"
+        ],
+        [
+          "                                  ->  Parallel Bitmap Heap Scan on receipts r  (cost=229.40..14716.46 rows=3129 width=4)"
+        ],
+        [
+          "                                        Recheck Cond: ((sold_at >= '2025-07-15 00:00:00+00'::timestamp with time zone) AND (sold_at < '2025-07-16 00:00:00+00'::timestamp with time zone))"
+        ],
+        [
+          "                                        ->  Bitmap Index Scan on idx_receipts_time_cover  (cost=0.00..227.52 rows=7509 width=0)"
+        ],
+        [
+          "                                              Index Cond: ((sold_at >= '2025-07-15 00:00:00+00'::timestamp with time zone) AND (sold_at < '2025-07-16 00:00:00+00'::timestamp with time zone))"
+        ],
+        [
+          "                                  ->  Index Only Scan using receipt_items_pkey on receipt_items ri  (cost=0.56..6.36 rows=108 width=6)"
+        ],
+        [
+          "                                        Index Cond: (receipt_id = r.receipt_id)"
+        ],
+        [
+          "                            ->  Hash  (cost=78.00..78.00 rows=2000 width=4)"
+        ],
+        [
+          "                                  ->  Seq Scan on products p  (cost=0.00..78.00 rows=2000 width=4)"
+        ],
+        [
+          "  ->  Nested Loop  (cost=143664842.52..143664877.52 rows=10 width=52)"
+        ],
+        [
+          "        ->  Nested Loop  (cost=143664842.38..143664859.89 rows=10 width=33)"
+        ],
+        [
+          "              ->  Limit  (cost=143664842.24..143664842.26 rows=10 width=14)"
+        ],
+        [
+          "                    ->  Sort  (cost=143664842.24..143684842.24 rows=8000000 width=14)"
+        ],
+        [
+          "                          Sort Key: (count(*)) DESC, b1.product_type_id, b2.product_type_id, b3.product_type_id"
+        ],
+        [
+          "                          ->  HashAggregate  (cost=134228464.36..143491965.11 rows=8000000 width=14)"
+        ],
+        [
+          "                                Group Key: b1.product_type_id, b2.product_type_id, b3.product_type_id"
+        ],
+        [
+          "                                Planned Partitions: 128"
+        ],
+        [
+          "                                ->  Merge Join  (cost=22743.92..62229818.42 rows=1175488097 width=6)"
+        ],
+        [
+          "                                      Merge Cond: (b3.receipt_id = b2.receipt_id)"
+        ],
+        [
+          "                                      Join Filter: (b3.product_type_id > b2.product_type_id)"
+        ],
+        [
+          "                                      ->  Sort  (cost=7581.31..7769.00 rows=75077 width=6)"
+        ],
+        [
+          "                                            Sort Key: b3.receipt_id"
+        ],
+        [
+          "                                            ->  CTE Scan on basket_types b3  (cost=0.00..1501.54 rows=75077 width=6)"
+        ],
+        [
+          "                                      ->  Materialize  (cost=15162.61..532222.30 rows=9394260 width=12)"
+        ],
+        [
+          "                                            ->  Merge Join  (cost=15162.61..508736.65 rows=9394260 width=12)"
+        ],
+        [
+          "                                                  Merge Cond: (b1.receipt_id = b2.receipt_id)"
+        ],
+        [
+          "                                                  Join Filter: (b2.product_type_id > b1.product_type_id)"
+        ],
+        [
+          "                                                  ->  Sort  (cost=7581.31..7769.00 rows=75077 width=6)"
+        ],
+        [
+          "                                                        Sort Key: b1.receipt_id"
+        ],
+        [
+          "                                                        ->  CTE Scan on basket_types b1  (cost=0.00..1501.54 rows=75077 width=6)"
+        ],
+        [
+          "                                                  ->  Sort  (cost=7581.31..7769.00 rows=75077 width=6)"
+        ],
+        [
+          "                                                        Sort Key: b2.receipt_id"
+        ],
+        [
+          "                                                        ->  CTE Scan on basket_types b2  (cost=0.00..1501.54 rows=75077 width=6)"
+        ],
+        [
+          "              ->  Index Scan using product_types_pkey on product_types p1  (cost=0.14..1.76 rows=1 width=21)"
+        ],
+        [
+          "                    Index Cond: (product_type_id = b1.product_type_id)"
+        ],
+        [
+          "        ->  Index Scan using product_types_pkey on product_types p2  (cost=0.14..1.76 rows=1 width=21)"
+        ],
+        [
+          "              Index Cond: (product_type_id = b2.product_type_id)"
+        ],
+        [
+          "  ->  Index Scan using product_types_pkey on product_types p3  (cost=0.14..1.76 rows=1 width=21)"
+        ],
+        [
+          "        Index Cond: (product_type_id = b3.product_type_id)"
+        ]
+      ],
+      "results_equal": true
+    },
+    {
+      "query": 9,
+      "name": "Топ-10 четвірок типів товарів за день",
+      "database": "PostgreSQL",
+      "status": "ok",
+      "seconds": [
+        22.363233299998683,
+        22.350371699998504,
+        23.05112150000059,
+        22.718051200004993,
+        22.620168200010085
+      ],
+      "warmup_seconds": 22.809936200006632,
+      "result": [
+        [
+          1,
+          "Хліб",
+          9,
+          "Молоко",
+          14,
+          "Масло вершкове",
+          41,
+          "Курятина",
+          309
+        ],
+        [
+          1,
+          "Хліб",
+          9,
+          "Молоко",
+          20,
+          "Картопля",
+          32,
+          "Яблука",
+          306
+        ],
+        [
+          1,
+          "Хліб",
+          20,
+          "Картопля",
+          32,
+          "Яблука",
+          41,
+          "Курятина",
+          306
+        ],
+        [
+          1,
+          "Хліб",
+          14,
+          "Масло вершкове",
+          20,
+          "Картопля",
+          41,
+          "Курятина",
+          305
+        ],
+        [
+          1,
+          "Хліб",
+          2,
+          "Батон",
+          9,
+          "Молоко",
+          14,
+          "Масло вершкове",
+          303
+        ],
+        [
+          1,
+          "Хліб",
+          9,
+          "Молоко",
+          20,
+          "Картопля",
+          41,
+          "Курятина",
+          302
+        ],
+        [
+          1,
+          "Хліб",
+          9,
+          "Молоко",
+          32,
+          "Яблука",
+          41,
+          "Курятина",
+          298
+        ],
+        [
+          1,
+          "Хліб",
+          20,
+          "Картопля",
+          32,
+          "Яблука",
+          48,
+          "Сосиски",
+          297
+        ],
+        [
+          1,
+          "Хліб",
+          9,
+          "Молоко",
+          14,
+          "Масло вершкове",
+          20,
+          "Картопля",
+          295
+        ],
+        [
+          1,
+          "Хліб",
+          9,
+          "Молоко",
+          14,
+          "Масло вершкове",
+          32,
+          "Яблука",
+          289
+        ]
+      ],
+      "plan": [
+        [
+          "Nested Loop  (cost=26986947177.81..26986947247.78 rows=10 width=92)"
+        ],
+        [
+          "  CTE basket_types"
+        ],
+        [
+          "    ->  HashAggregate  (cost=47532.30..48283.07 rows=75077 width=6)"
+        ],
+        [
+          "          Group Key: ri.receipt_id, p.product_type_id"
+        ],
+        [
+          "          ->  Gather  (cost=39336.40..47156.92 rows=75077 width=6)"
+        ],
+        [
+          "                Workers Planned: 2"
+        ],
+        [
+          "                ->  HashAggregate  (cost=38336.40..38649.22 rows=31282 width=6)"
+        ],
+        [
+          "                      Group Key: ri.receipt_id, p.product_type_id"
+        ],
+        [
+          "                      ->  Hash Join  (cost=332.96..38179.99 rows=31282 width=6)"
+        ],
+        [
+          "                            Hash Cond: (ri.product_id = p.product_id)"
+        ],
+        [
+          "                            ->  Nested Loop  (cost=229.96..37994.70 rows=31282 width=6)"
+        ],
+        [
+          "                                  ->  Parallel Bitmap Heap Scan on receipts r  (cost=229.40..14716.46 rows=3129 width=4)"
+        ],
+        [
+          "                                        Recheck Cond: ((sold_at >= '2025-07-15 00:00:00+00'::timestamp with time zone) AND (sold_at < '2025-07-16 00:00:00+00'::timestamp with time zone))"
+        ],
+        [
+          "                                        ->  Bitmap Index Scan on idx_receipts_time_cover  (cost=0.00..227.52 rows=7509 width=0)"
+        ],
+        [
+          "                                              Index Cond: ((sold_at >= '2025-07-15 00:00:00+00'::timestamp with time zone) AND (sold_at < '2025-07-16 00:00:00+00'::timestamp with time zone))"
+        ],
+        [
+          "                                  ->  Index Only Scan using receipt_items_pkey on receipt_items ri  (cost=0.56..6.36 rows=108 width=6)"
+        ],
+        [
+          "                                        Index Cond: (receipt_id = r.receipt_id)"
+        ],
+        [
+          "                            ->  Hash  (cost=78.00..78.00 rows=2000 width=4)"
+        ],
+        [
+          "                                  ->  Seq Scan on products p  (cost=0.00..78.00 rows=2000 width=4)"
+        ],
+        [
+          "  ->  Nested Loop  (cost=26986898894.60..26986898947.08 rows=10 width=73)"
+        ],
+        [
+          "        ->  Nested Loop  (cost=26986898894.46..26986898929.45 rows=10 width=54)"
+        ],
+        [
+          "              ->  Nested Loop  (cost=26986898894.31..26986898911.82 rows=10 width=35)"
+        ],
+        [
+          "                    ->  Limit  (cost=26986898894.17..26986898894.20 rows=10 width=16)"
+        ],
+        [
+          "                          ->  Sort  (cost=26986898894.17..26990898894.17 rows=1600000000 width=16)"
+        ],
+        [
+          "                                Sort Key: (count(*)) DESC, b1.product_type_id, b2.product_type_id, b3.product_type_id, b4.product_type_id"
+        ],
+        [
+          "                                ->  HashAggregate  (cost=24638091181.43..26952323469.41 rows=1600000000 width=16)"
+        ],
+        [
+          "                                      Group Key: b1.product_type_id, b2.product_type_id, b3.product_type_id, b4.product_type_id"
+        ],
+        [
+          "                                      Planned Partitions: 256"
+        ],
+        [
+          "                                      ->  Merge Join  (cost=30325.23..7723101541.86 rows=147086866431 width=8)"
+        ],
+        [
+          "                                            Merge Cond: (b2.receipt_id = b3.receipt_id)"
+        ],
+        [
+          "                                            Join Filter: (b3.product_type_id > b2.product_type_id)"
+        ],
+        [
+          "                                            ->  Merge Join  (cost=15162.61..508736.65 rows=9394260 width=12)"
+        ],
+        [
+          "                                                  Merge Cond: (b1.receipt_id = b2.receipt_id)"
+        ],
+        [
+          "                                                  Join Filter: (b2.product_type_id > b1.product_type_id)"
+        ],
+        [
+          "                                                  ->  Sort  (cost=7581.31..7769.00 rows=75077 width=6)"
+        ],
+        [
+          "                                                        Sort Key: b1.receipt_id"
+        ],
+        [
+          "                                                        ->  CTE Scan on basket_types b1  (cost=0.00..1501.54 rows=75077 width=6)"
+        ],
+        [
+          "                                                  ->  Sort  (cost=7581.31..7769.00 rows=75077 width=6)"
+        ],
+        [
+          "                                                        Sort Key: b2.receipt_id"
+        ],
+        [
+          "                                                        ->  CTE Scan on basket_types b2  (cost=0.00..1501.54 rows=75077 width=6)"
+        ],
+        [
+          "                                            ->  Materialize  (cost=15162.61..532222.30 rows=9394260 width=12)"
+        ],
+        [
+          "                                                  ->  Merge Join  (cost=15162.61..508736.65 rows=9394260 width=12)"
+        ],
+        [
+          "                                                        Merge Cond: (b3.receipt_id = b4.receipt_id)"
+        ],
+        [
+          "                                                        Join Filter: (b4.product_type_id > b3.product_type_id)"
+        ],
+        [
+          "                                                        ->  Sort  (cost=7581.31..7769.00 rows=75077 width=6)"
+        ],
+        [
+          "                                                              Sort Key: b3.receipt_id"
+        ],
+        [
+          "                                                              ->  CTE Scan on basket_types b3  (cost=0.00..1501.54 rows=75077 width=6)"
+        ],
+        [
+          "                                                        ->  Sort  (cost=7581.31..7769.00 rows=75077 width=6)"
+        ],
+        [
+          "                                                              Sort Key: b4.receipt_id"
+        ],
+        [
+          "                                                              ->  CTE Scan on basket_types b4  (cost=0.00..1501.54 rows=75077 width=6)"
+        ],
+        [
+          "                    ->  Index Scan using product_types_pkey on product_types p1  (cost=0.14..1.76 rows=1 width=21)"
+        ],
+        [
+          "                          Index Cond: (product_type_id = b1.product_type_id)"
+        ],
+        [
+          "              ->  Index Scan using product_types_pkey on product_types p2  (cost=0.14..1.76 rows=1 width=21)"
+        ],
+        [
+          "                    Index Cond: (product_type_id = b2.product_type_id)"
+        ],
+        [
+          "        ->  Index Scan using product_types_pkey on product_types p3  (cost=0.14..1.76 rows=1 width=21)"
+        ],
+        [
+          "              Index Cond: (product_type_id = b3.product_type_id)"
+        ],
+        [
+          "  ->  Index Scan using product_types_pkey on product_types p4  (cost=0.14..1.76 rows=1 width=21)"
+        ],
+        [
+          "        Index Cond: (product_type_id = b4.product_type_id)"
+        ]
+      ],
+      "results_equal": true
+    },
+    {
+      "query": 1,
+      "name": "Кількість проданого товару за одиницями",
+      "database": "DuckDB",
+      "status": "ok",
+      "seconds": [
+        0.07518869999330491,
+        0.07644719998643268,
+        0.07721660000970587,
+        0.07974699999613222,
+        0.08392530000128318
+      ],
+      "warmup_seconds": 0.4691600000078324,
+      "result": [
+        [
+          "kg",
+          "7154313.371",
+          7463825
+        ],
+        [
+          "l",
+          "260107.826",
+          157393
+        ],
+        [
+          "pcs",
+          "29192698.000",
+          22368783
+        ]
+      ],
+      "results_equal": true,
+      "plan": [
+        [
+          "physical_plan",
+          "┌───────────────────────────┐\n│         PROJECTION        │\n│    ────────────────────   │\n│__internal_decompress_strin│\n│           g(#0)           │\n│             #1            │\n│             #2            │\n│                           │\n│          ~0 rows          │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│          ORDER_BY         │\n│    ────────────────────   │\n│         u.code ASC        │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│         PROJECTION        │\n│    ────────────────────   │\n│__internal_compress_string_│\n│        uinteger(#0)       │\n│             #1            │\n│             #2            │\n│                           │\n│        ~5,516 rows        │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│         PROJECTION        │\n│    ────────────────────   │\n│__internal_decompress_strin│\n│           g(#0)           │\n│             #1            │\n│             #2            │\n│                           │\n│        ~5,516 rows        │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│       HASH_GROUP_BY       │\n│    ────────────────────   │\n│         Groups: #0        │\n│                           │\n│        Aggregates:        │\n│          sum(#1)          │\n│        count_star()       │\n│                           │\n│        ~5,516 rows        │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│         PROJECTION        │\n│    ────────────────────   │\n│            code           │\n│          quantity         │\n│                           │\n│      ~25,987,869 rows     │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│         PROJECTION        │\n│    ────────────────────   │\n│             #0            │\n│__internal_compress_string_│\n│        uinteger(#1)       │\n│                           │\n│      ~25,987,869 rows     │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│         HASH_JOIN         │\n│    ────────────────────   │\n│      Join Type: INNER     │\n│                           │\n│        Conditions:        ├──────────────┐\n│  product_id = product_id  │              │\n│                           │              │\n│      ~25,987,869 rows     │              │\n└─────────────┬─────────────┘              │\n┌─────────────┴─────────────┐┌─────────────┴─────────────┐\n│          SEQ_SCAN         ││         HASH_JOIN         │\n│    ────────────────────   ││    ────────────────────   │\n│           Table:          ││      Join Type: INNER     │\n│  sales.main.receipt_items ││                           │\n│                           ││        Conditions:        │\n│   Type: Sequential Scan   ││     unit_id = unit_id     │\n│                           ││                           ├──────────────┐\n│        Projections:       ││                           │              │\n│         product_id        ││                           │              │\n│          quantity         ││                           │              │\n│                           ││                           │              │\n│      ~29,990,001 rows     ││        ~2,000 rows        │              │\n└───────────────────────────┘└─────────────┬─────────────┘              │\n                             ┌─────────────┴─────────────┐┌─────────────┴─────────────┐\n                             │          SEQ_SCAN         ││          SEQ_SCAN         │\n                             │    ────────────────────   ││    ────────────────────   │\n                             │           Table:          ││           Table:          │\n                             │    sales.main.products    ││      sales.main.units     │\n                             │                           ││                           │\n                             │   Type: Sequential Scan   ││   Type: Sequential Scan   │\n                             │                           ││                           │\n                             │        Projections:       ││        Projections:       │\n                             │         product_id        ││          unit_id          │\n                             │          unit_id          ││            code           │\n                             │                           ││                           │\n                             │        ~2,000 rows        ││          ~3 rows          │\n                             └───────────────────────────┘└───────────────────────────┘\n"
+        ]
+      ]
+    },
+    {
+      "query": 2,
+      "name": "Загальна виручка",
+      "database": "DuckDB",
+      "status": "ok",
+      "seconds": [
+        0.0036177000001771376,
+        0.004827600001590326,
+        0.0037429999938467517,
+        0.0037566999963019043,
+        0.003095799998845905
+      ],
+      "warmup_seconds": 0.03301559999817982,
+      "result": [
+        [
+          "2834827582.15"
+        ]
+      ],
+      "results_equal": true,
+      "plan": [
+        [
+          "physical_plan",
+          "┌───────────────────────────┐\n│    UNGROUPED_AGGREGATE    │\n│    ────────────────────   │\n│        Aggregates:        │\n│    sum_no_overflow(#0)    │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│         PROJECTION        │\n│    ────────────────────   │\n│        total_amount       │\n│                           │\n│      ~3,000,000 rows      │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│          SEQ_SCAN         │\n│    ────────────────────   │\n│           Table:          │\n│    sales.main.receipts    │\n│                           │\n│   Type: Sequential Scan   │\n│                           │\n│        Projections:       │\n│        total_amount       │\n│                           │\n│      ~3,000,000 rows      │\n└───────────────────────────┘\n"
+        ]
+      ]
+    },
+    {
+      "query": 3,
+      "name": "Виручка за період C",
+      "database": "DuckDB",
+      "status": "ok",
+      "seconds": [
+        0.0022911999985808507,
+        0.0016264000005321577,
+        0.0023234999971464276,
+        0.0014656999992439523,
+        0.0015434999950230122
+      ],
+      "warmup_seconds": 0.0052392999932635576,
+      "result": [
+        [
+          "237069520.96"
+        ]
+      ],
+      "results_equal": true,
+      "plan": [
+        [
+          "physical_plan",
+          "┌───────────────────────────┐\n│    UNGROUPED_AGGREGATE    │\n│    ────────────────────   │\n│        Aggregates:        │\n│    sum_no_overflow(#0)    │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│         PROJECTION        │\n│    ────────────────────   │\n│        total_amount       │\n│                           │\n│       ~600,000 rows       │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│          SEQ_SCAN         │\n│    ────────────────────   │\n│           Table:          │\n│    sales.main.receipts    │\n│                           │\n│   Type: Sequential Scan   │\n│                           │\n│        Projections:       │\n│        total_amount       │\n│                           │\n│          Filters:         │\n│ sold_at>='2025-07-01 00:00│\n│  :00+00'::TIMESTAMP WITH  │\n│   TIME ZONE AND sold_at<  │\n│ '2025-08-01 00:00:00+00': │\n│ :TIMESTAMP WITH TIME ZONE │\n│                           │\n│       ~600,000 rows       │\n└───────────────────────────┘\n"
+        ]
+      ]
+    },
+    {
+      "query": 4,
+      "name": "Кількість товару A в магазині B за період C",
+      "database": "DuckDB",
+      "status": "ok",
+      "seconds": [
+        0.0653491999983089,
+        0.062082799995550886,
+        0.09233980000135489,
+        0.0703289999946719,
+        0.0662573000008706
+      ],
+      "warmup_seconds": 0.08136820000072476,
+      "result": [
+        [
+          "675.197",
+          618
+        ]
+      ],
+      "results_equal": true,
+      "plan": [
+        [
+          "physical_plan",
+          "┌───────────────────────────┐\n│         PROJECTION        │\n│    ────────────────────   │\n│       total_quantity      │\n│          receipts         │\n│                           │\n│           ~1 row          │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│    UNGROUPED_AGGREGATE    │\n│    ────────────────────   │\n│        Aggregates:        │\n│          sum(#0)          │\n│        count_star()       │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│         PROJECTION        │\n│    ────────────────────   │\n│          quantity         │\n│                           │\n│         ~166 rows         │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│         HASH_JOIN         │\n│    ────────────────────   │\n│      Join Type: INNER     │\n│                           │\n│        Conditions:        ├──────────────┐\n│  receipt_id = receipt_id  │              │\n│                           │              │\n│         ~166 rows         │              │\n└─────────────┬─────────────┘              │\n┌─────────────┴─────────────┐┌─────────────┴─────────────┐\n│          SEQ_SCAN         ││          SEQ_SCAN         │\n│    ────────────────────   ││    ────────────────────   │\n│           Table:          ││           Table:          │\n│    sales.main.receipts    ││  sales.main.receipt_items │\n│                           ││                           │\n│   Type: Sequential Scan   ││   Type: Sequential Scan   │\n│                           ││                           │\n│        Projections:       ││        Projections:       │\n│         receipt_id        ││         receipt_id        │\n│                           ││          quantity         │\n│          Filters:         ││                           │\n│        store_id=90        ││          Filters:         │\n│ sold_at>='2025-07-01 00:00││       product_id=568      │\n│  :00+00'::TIMESTAMP WITH  ││                           │\n│   TIME ZONE AND sold_at<  ││                           │\n│ '2025-08-01 00:00:00+00': ││                           │\n│ :TIMESTAMP WITH TIME ZONE ││                           │\n│                           ││                           │\n│        ~31,250 rows       ││        ~12,994 rows       │\n└───────────────────────────┘└───────────────────────────┘\n"
+        ]
+      ]
+    },
+    {
+      "query": 5,
+      "name": "Кількість товару A в усіх магазинах за період C",
+      "database": "DuckDB",
+      "status": "ok",
+      "seconds": [
+        0.06286799999361392,
+        0.058695100000477396,
+        0.06419769999047276,
+        0.061390999995637685,
+        0.06621330000052694
+      ],
+      "warmup_seconds": 0.0895613000029698,
+      "result": [
+        [
+          "27911.840",
+          25276
+        ]
+      ],
+      "results_equal": true,
+      "plan": [
+        [
+          "physical_plan",
+          "┌───────────────────────────┐\n│         PROJECTION        │\n│    ────────────────────   │\n│       total_quantity      │\n│          receipts         │\n│                           │\n│           ~1 row          │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│    UNGROUPED_AGGREGATE    │\n│    ────────────────────   │\n│        Aggregates:        │\n│          sum(#0)          │\n│        count_star()       │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│         PROJECTION        │\n│    ────────────────────   │\n│          quantity         │\n│                           │\n│        ~3,197 rows        │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│         HASH_JOIN         │\n│    ────────────────────   │\n│      Join Type: INNER     │\n│                           │\n│        Conditions:        ├──────────────┐\n│  receipt_id = receipt_id  │              │\n│                           │              │\n│        ~3,197 rows        │              │\n└─────────────┬─────────────┘              │\n┌─────────────┴─────────────┐┌─────────────┴─────────────┐\n│          SEQ_SCAN         ││          SEQ_SCAN         │\n│    ────────────────────   ││    ────────────────────   │\n│           Table:          ││           Table:          │\n│    sales.main.receipts    ││  sales.main.receipt_items │\n│                           ││                           │\n│   Type: Sequential Scan   ││   Type: Sequential Scan   │\n│                           ││                           │\n│        Projections:       ││        Projections:       │\n│         receipt_id        ││         receipt_id        │\n│                           ││          quantity         │\n│          Filters:         ││                           │\n│ sold_at>='2025-07-01 00:00││          Filters:         │\n│  :00+00'::TIMESTAMP WITH  ││       product_id=568      │\n│   TIME ZONE AND sold_at<  ││                           │\n│ '2025-08-01 00:00:00+00': ││                           │\n│ :TIMESTAMP WITH TIME ZONE ││                           │\n│                           ││                           │\n│       ~600,000 rows       ││        ~12,994 rows       │\n└───────────────────────────┘└───────────────────────────┘\n"
+        ]
+      ]
+    },
+    {
+      "query": 6,
+      "name": "Виручка кожного магазину за період C",
+      "database": "DuckDB",
+      "status": "ok",
+      "seconds": [
+        0.011779599997680634,
+        0.012480899997171946,
+        0.01414929999737069,
+        0.015496099993470125,
+        0.013072600006125867
+      ],
+      "warmup_seconds": 0.01957859999674838,
+      "result": [
+        [
+          1,
+          "Магазин біля дому «Джерело» №1",
+          "2002224.41"
+        ],
+        [
+          2,
+          "Магазин біля дому «Злагода» №2",
+          "1083899.17"
+        ],
+        [
+          3,
+          "Супермаркет «Мрія» №3",
+          "2238261.47"
+        ],
+        [
+          4,
+          "Магазин біля дому «Затишок» №4",
+          "960525.21"
+        ],
+        [
+          5,
+          "Супермаркет «Дніпровий» №5",
+          "2713532.72"
+        ],
+        [
+          6,
+          "Гіпермаркет «Калина» №6",
+          "3416406.92"
+        ],
+        [
+          7,
+          "Гіпермаркет «Добрий Кошик» №7",
+          "3759560.12"
+        ],
+        [
+          8,
+          "Супермаркет «Злагода» №8",
+          "2425835.84"
+        ],
+        [
+          9,
+          "Магазин біля дому «Добрий Кошик» №9",
+          "1575503.71"
+        ],
+        [
+          10,
+          "Супермаркет «Вишневий» №10",
+          "3058002.14"
+        ],
+        [
+          11,
+          "Супермаркет «Джерело» №11",
+          "3157805.28"
+        ],
+        [
+          12,
+          "Магазин біля дому «Добрий Кошик» №12",
+          "1957392.78"
+        ],
+        [
+          13,
+          "Магазин біля дому «Мрія» №13",
+          "2057181.81"
+        ],
+        [
+          14,
+          "Супермаркет «Ятрань» №14",
+          "2722272.24"
+        ],
+        [
+          15,
+          "Магазин біля дому «Ятрань» №15",
+          "1245360.79"
+        ],
+        [
+          16,
+          "Гіпермаркет «Світанок» №16",
+          "4213450.09"
+        ],
+        [
+          17,
+          "Супермаркет «Світанок» №17",
+          "2193840.18"
+        ],
+        [
+          18,
+          "Супермаркет «Калина» №18",
+          "3168933.01"
+        ],
+        [
+          19,
+          "Супермаркет «Смачний Двір» №19",
+          "2496643.26"
+        ],
+        [
+          20,
+          "Магазин біля дому «Злагода» №20",
+          "1913540.65"
+        ],
+        [
+          21,
+          "Супермаркет «Ятрань» №21",
+          "2445418.92"
+        ],
+        [
+          22,
+          "Магазин біля дому «Каштан» №22",
+          "2189468.28"
+        ],
+        [
+          23,
+          "Супермаркет «Мрія» №23",
+          "2424888.75"
+        ],
+        [
+          24,
+          "Магазин біля дому «Злагода» №24",
+          "1770219.38"
+        ],
+        [
+          25,
+          "Магазин біля дому «Світанок» №25",
+          "1842018.41"
+        ],
+        [
+          26,
+          "Магазин біля дому «Каштан» №26",
+          "1772638.61"
+        ],
+        [
+          27,
+          "Супермаркет «Барвінок» №27",
+          "3050768.29"
+        ],
+        [
+          28,
+          "Гіпермаркет «Світанок» №28",
+          "3609334.90"
+        ],
+        [
+          29,
+          "Супермаркет «Джерело» №29",
+          "2425135.98"
+        ],
+        [
+          30,
+          "Супермаркет «Злагода» №30",
+          "2999467.89"
+        ],
+        [
+          31,
+          "Магазин біля дому «Затишок» №31",
+          "1915322.53"
+        ],
+        [
+          32,
+          "Супермаркет «Соняшник» №32",
+          "2359917.21"
+        ],
+        [
+          33,
+          "Магазин біля дому «Ятрань» №33",
+          "1435287.24"
+        ],
+        [
+          34,
+          "Магазин біля дому «Сонячний» №34",
+          "2199698.18"
+        ],
+        [
+          35,
+          "Супермаркет «Мрія» №35",
+          "3064170.52"
+        ],
+        [
+          36,
+          "Супермаркет «Добрий Кошик» №36",
+          "2657557.17"
+        ],
+        [
+          37,
+          "Магазин біля дому «Барвінок» №37",
+          "1578352.63"
+        ],
+        [
+          38,
+          "Магазин біля дому «Сусідський» №38",
+          "2185132.42"
+        ],
+        [
+          39,
+          "Магазин біля дому «Калина» №39",
+          "1959477.82"
+        ],
+        [
+          40,
+          "Гіпермаркет «Злагода» №40",
+          "4080233.32"
+        ],
+        [
+          41,
+          "Гіпермаркет «Джерело» №41",
+          "4530670.89"
+        ],
+        [
+          42,
+          "Супермаркет «Пролісок» №42",
+          "2791123.81"
+        ],
+        [
+          43,
+          "Супермаркет «Смачний Двір» №43",
+          "2725039.07"
+        ],
+        [
+          44,
+          "Магазин біля дому «Каштан» №44",
+          "963667.28"
+        ],
+        [
+          45,
+          "Магазин біля дому «Світанок» №45",
+          "1859054.34"
+        ],
+        [
+          46,
+          "Магазин біля дому «Мрія» №46",
+          "1896860.99"
+        ],
+        [
+          47,
+          "Магазин біля дому «Калина» №47",
+          "1752559.94"
+        ],
+        [
+          48,
+          "Магазин біля дому «Джерело» №48",
+          "2304259.31"
+        ],
+        [
+          49,
+          "Магазин біля дому «Вишневий» №49",
+          "1097239.47"
+        ],
+        [
+          50,
+          "Гіпермаркет «Сонячний» №50",
+          "3939540.16"
+        ],
+        [
+          51,
+          "Супермаркет «Барвінок» №51",
+          "2727719.55"
+        ],
+        [
+          52,
+          "Гіпермаркет «Лелека» №52",
+          "4446326.40"
+        ],
+        [
+          53,
+          "Супермаркет «Пролісок» №53",
+          "2698177.49"
+        ],
+        [
+          54,
+          "Магазин біля дому «Оберіг» №54",
+          "1201753.59"
+        ],
+        [
+          55,
+          "Магазин біля дому «Оберіг» №55",
+          "1846570.13"
+        ],
+        [
+          56,
+          "Магазин біля дому «Вишневий» №56",
+          "1382192.33"
+        ],
+        [
+          57,
+          "Супермаркет «Мрія» №57",
+          "2606835.37"
+        ],
+        [
+          58,
+          "Магазин біля дому «Мрія» №58",
+          "1041178.92"
+        ],
+        [
+          59,
+          "Гіпермаркет «Каштан» №59",
+          "4345787.15"
+        ],
+        [
+          60,
+          "Магазин біля дому «Джерело» №60",
+          "1636671.01"
+        ],
+        [
+          61,
+          "Магазин біля дому «Сонячний» №61",
+          "2353804.71"
+        ],
+        [
+          62,
+          "Гіпермаркет «Затишок» №62",
+          "4049910.24"
+        ],
+        [
+          63,
+          "Магазин біля дому «Барвінок» №63",
+          "972695.76"
+        ],
+        [
+          64,
+          "Гіпермаркет «Ятрань» №64",
+          "3577764.56"
+        ],
+        [
+          65,
+          "Магазин біля дому «Сонячний» №65",
+          "1668621.53"
+        ],
+        [
+          66,
+          "Супермаркет «Колосок» №66",
+          "2340596.38"
+        ],
+        [
+          67,
+          "Супермаркет «Злагода» №67",
+          "2583300.23"
+        ],
+        [
+          68,
+          "Гіпермаркет «Добрий Кошик» №68",
+          "3482592.46"
+        ],
+        [
+          69,
+          "Магазин біля дому «Каштан» №69",
+          "1411089.79"
+        ],
+        [
+          70,
+          "Супермаркет «Сонячний» №70",
+          "2544105.40"
+        ],
+        [
+          71,
+          "Магазин біля дому «Оберіг» №71",
+          "1889183.15"
+        ],
+        [
+          72,
+          "Магазин біля дому «Каштан» №72",
+          "1311236.10"
+        ],
+        [
+          73,
+          "Магазин біля дому «Сонячний» №73",
+          "1646626.64"
+        ],
+        [
+          74,
+          "Супермаркет «Оберіг» №74",
+          "2530241.03"
+        ],
+        [
+          75,
+          "Магазин біля дому «Соняшник» №75",
+          "1499049.58"
+        ],
+        [
+          76,
+          "Супермаркет «Ятрань» №76",
+          "2558928.74"
+        ],
+        [
+          77,
+          "Магазин біля дому «Дніпровий» №77",
+          "1210569.05"
+        ],
+        [
+          78,
+          "Супермаркет «Калина» №78",
+          "2471589.93"
+        ],
+        [
+          79,
+          "Магазин біля дому «Колосок» №79",
+          "1676525.96"
+        ],
+        [
+          80,
+          "Супермаркет «Вишневий» №80",
+          "2976021.56"
+        ],
+        [
+          81,
+          "Магазин біля дому «Лелека» №81",
+          "1442283.24"
+        ],
+        [
+          82,
+          "Супермаркет «Світанок» №82",
+          "2826003.97"
+        ],
+        [
+          83,
+          "Магазин біля дому «Пролісок» №83",
+          "1923131.75"
+        ],
+        [
+          84,
+          "Магазин біля дому «Мрія» №84",
+          "1771314.83"
+        ],
+        [
+          85,
+          "Магазин біля дому «Злагода» №85",
+          "1639320.16"
+        ],
+        [
+          86,
+          "Магазин біля дому «Дніпровий» №86",
+          "1768153.96"
+        ],
+        [
+          87,
+          "Супермаркет «Мрія» №87",
+          "3243207.56"
+        ],
+        [
+          88,
+          "Гіпермаркет «Затишок» №88",
+          "3705650.09"
+        ],
+        [
+          89,
+          "Магазин біля дому «Добрий Кошик» №89",
+          "2166950.02"
+        ],
+        [
+          90,
+          "Гіпермаркет «Пролісок» №90",
+          "5290564.91"
+        ],
+        [
+          91,
+          "Магазин біля дому «Каштан» №91",
+          "1707404.77"
+        ],
+        [
+          92,
+          "Супермаркет «Мрія» №92",
+          "2541755.62"
+        ],
+        [
+          93,
+          "Магазин біля дому «Затишок» №93",
+          "2197472.73"
+        ],
+        [
+          94,
+          "Гіпермаркет «Дніпровий» №94",
+          "3335837.11"
+        ],
+        [
+          95,
+          "Супермаркет «Вишневий» №95",
+          "2712226.06"
+        ],
+        [
+          96,
+          "Супермаркет «Затишок» №96",
+          "2115826.58"
+        ],
+        [
+          97,
+          "Магазин біля дому «Вишневий» №97",
+          "1470705.05"
+        ],
+        [
+          98,
+          "Магазин біля дому «Сонячний» №98",
+          "1882385.77"
+        ],
+        [
+          99,
+          "Магазин біля дому «Затишок» №99",
+          "1400375.05"
+        ],
+        [
+          100,
+          "Супермаркет «Калина» №100",
+          "3056591.48"
+        ]
+      ],
+      "results_equal": true,
+      "plan": [
+        [
+          "physical_plan",
+          "┌───────────────────────────┐\n│         PROJECTION        │\n│    ────────────────────   │\n│__internal_decompress_integ│\n│    ral_smallint(#0, 1)    │\n│             #1            │\n│             #2            │\n│                           │\n│          ~0 rows          │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│          ORDER_BY         │\n│    ────────────────────   │\n│       s.store_id ASC      │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│         PROJECTION        │\n│    ────────────────────   │\n│__internal_compress_integra│\n│     l_utinyint(#0, 1)     │\n│             #1            │\n│             #2            │\n│                           │\n│        ~9,120 rows        │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│         PROJECTION        │\n│    ────────────────────   │\n│          store_id         │\n│         store_name        │\n│          revenue          │\n│                           │\n│        ~9,120 rows        │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│         PROJECTION        │\n│    ────────────────────   │\n│__internal_decompress_integ│\n│    ral_smallint(#0, 1)    │\n│             #1            │\n│             #2            │\n│                           │\n│        ~9,120 rows        │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│       HASH_GROUP_BY       │\n│    ────────────────────   │\n│          Groups:          │\n│             #0            │\n│             #1            │\n│                           │\n│    Aggregates: sum(#2)    │\n│                           │\n│        ~9,120 rows        │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│         PROJECTION        │\n│    ────────────────────   │\n│          store_id         │\n│            name           │\n│        total_amount       │\n│                           │\n│       ~600,000 rows       │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│         PROJECTION        │\n│    ────────────────────   │\n│             #0            │\n│__internal_compress_integra│\n│     l_utinyint(#1, 1)     │\n│             #2            │\n│                           │\n│       ~600,000 rows       │\n└─────────────┬─────────────┘\n┌─────────────┴─────────────┐\n│         HASH_JOIN         │\n│    ────────────────────   │\n│      Join Type: RIGHT     │\n│                           │\n│        Conditions:        ├──────────────┐\n│    store_id = store_id    │              │\n│                           │              │\n│       ~600,000 rows       │              │\n└─────────────┬─────────────┘              │\n┌─────────────┴─────────────┐┌─────────────┴─────────────┐\n│          SEQ_SCAN         ││          SEQ_SCAN         │\n│    ────────────────────   ││    ────────────────────   │\n│           Table:          ││           Table:          │\n│    sales.main.receipts    ││     sales.main.stores     │\n│                           ││                           │\n│   Type: Sequential Scan   ││   Type: Sequential Scan   │\n│                           ││                           │\n│        Projections:       ││        Projections:       │\n│          store_id         ││          store_id         │\n│        total_amount       ││            name           │\n│                           ││                           │\n│          Filters:         ││                           │\n│ sold_at>='2025-07-01 00:00││                           │\n│  :00+00'::TIMESTAMP WITH  ││                           │\n│   TIME ZONE AND sold_at<  ││                           │\n│ '2025-08-01 00:00:00+00': ││                           │\n│ :TIMESTAMP WITH TIME ZONE ││                           │\n│                           ││                           │\n│       ~600,000 rows       ││         ~100 rows         │\n└───────────────────────────┘└───────────────────────────┘\n"
+        ]
+      ]
+    },
+    {
+      "query": 7,
+      "name": "Топ-10 пар типів товарів за день",
+      "database": "DuckDB",
+      "status": "ok",
+      "seconds": [
+        0.022187900001881644,
+        0.02712509999400936,
+        0.02130970000871457,
+        0.020421799999894574,
+        0.01969069999177009
+      ],
+      "warmup_seconds": 0.031580599999870174,
+      "result": [
+        [
+          1,
+          "Хліб",
+          14,
+          "Масло вершкове",
+          1327
+        ],
+        [
+          1,
+          "Хліб",
+          41,
+          "Курятина",
+          1220
+        ],
+        [
+          1,
+          "Хліб",
+          20,
+          "Картопля",
+          1208
+        ],
+        [
+          1,
+          "Хліб",
+          32,
+          "Яблука",
+          1188
+        ],
+        [
+          1,
+          "Хліб",
+          48,
+          "Сосиски",
+          1183
+        ],
+        [
+          1,
+          "Хліб",
+          9,
+          "Молоко",
+          1159
+        ],
+        [
+          9,
+          "Молоко",
+          14,
+          "Масло вершкове",
+          1087
+        ],
+        [
+          20,
+          "Картопля",
+          32,
+          "Яблука",
+          971
+        ],
+        [
+          32,
+          "Яблука",
+          41,
+          "Курятина",
+          965
+        ],
+        [
+          20,
+          "Картопля",
+          41,
+          "Курятина",
+          964
+        ]
+      ],
+      "results_equal": true,
+      "plan": [
+        [
+          "physical_plan",
+          "┌───────────────────────────┐\n│            CTE            │\n│    ────────────────────   │\n│         CTE Name:         │\n│        basket_types       │\n│                           ├────────────────────────────────────────────────────────────────────────┐\n│       Table Index: 0      │                                                                        │\n│                           │                                                                        │\n│          ~0 rows          │                                                                        │\n└─────────────┬─────────────┘                                                                        │\n┌─────────────┴─────────────┐                                                          ┌─────────────┴─────────────┐\n│         PROJECTION        │                                                          │          ORDER_BY         │\n│    ────────────────────   │                                                          │    ────────────────────   │\n│             #0            │                                                          │    t.receipt_count DESC   │\n│__internal_decompress_integ│                                                          │        t.type_1 ASC       │\n│    ral_smallint(#1, 1)    │                                                          │        t.type_2 ASC       │\n│                           │                                                          │                           │\n│      ~6,394,301 rows      │                                                          │                           │\n└─────────────┬─────────────┘                                                          └─────────────┬─────────────┘\n┌─────────────┴─────────────┐                                                          ┌─────────────┴─────────────┐\n│       HASH_GROUP_BY       │                                                          │         PROJECTION        │\n│    ────────────────────   │                                                          │    ────────────────────   │\n│          Groups:          │                                                          │           type_1          │\n│             #0            │                                                          │        type_1_name        │\n│             #1            │                                                          │           type_2          │\n│                           │                                                          │        type_2_name        │\n│                           │                                                          │       receipt_count       │\n│                           │                                                          │                           │\n│      ~6,394,301 rows      │                                                          │          ~0 rows          │\n└─────────────┬─────────────┘                                                          └─────────────┬─────────────┘\n┌─────────────┴─────────────┐                                                          ┌─────────────┴─────────────┐\n│         PROJECTION        │                                                          │         HASH_JOIN         │\n│    ────────────────────   │                                                          │    ────────────────────   │\n│         receipt_id        │                                                          │      Join Type: INNER     │\n│      product_type_id      │                                                          │                           │\n│                           │                                                          │        Conditions:        ├──────────────┐\n│                           │                                                          │  product_type_id = type_1 │              │\n│                           │                                                          │                           │              │\n│      ~6,394,301 rows      │                                                          │          ~0 rows          │              │\n└─────────────┬─────────────┘                                                          └─────────────┬─────────────┘              │\n┌─────────────┴─────────────┐                                                          ┌─────────────┴─────────────┐┌─────────────┴─────────────┐\n│         PROJECTION        │                                                          │          SEQ_SCAN         ││         HASH_JOIN         │\n│    ────────────────────   │                                                          │    ────────────────────   ││    ────────────────────   │\n│             #0            │                                                          │           Table:          ││      Join Type: INNER     │\n│__internal_compress_integra│                                                          │  sales.main.product_types ││                           │\n│     l_utinyint(#1, 1)     │                                                          │                           ││        Conditions:        │\n│                           │                                                          │   Type: Sequential Scan   ││  product_type_id = type_2 │\n│                           │                                                          │                           ││                           ├──────────────┐\n│                           │                                                          │        Projections:       ││                           │              │\n│                           │                                                          │      product_type_id      ││                           │              │\n│                           │                                                          │            name           ││                           │              │\n│                           │                                                          │                           ││                           │              │\n│      ~6,394,301 rows      │                                                          │         ~115 rows         ││          ~0 rows          │              │\n└─────────────┬─────────────┘                                                          └───────────────────────────┘└─────────────┬─────────────┘              │\n┌─────────────┴─────────────┐                                                                                       ┌─────────────┴─────────────┐┌─────────────┴─────────────┐\n│         HASH_JOIN         │                                                                                       │          SEQ_SCAN         ││           TOP_N           │\n│    ────────────────────   │                                                                                       │    ────────────────────   ││    ────────────────────   │\n│      Join Type: INNER     │                                                                                       │           Table:          ││          Top: 10          │\n│                           │                                                                                       │  sales.main.product_types ││                           │\n│        Conditions:        │                                                                                       │                           ││         Order By:         │\n│  product_id = product_id  │                                                                                       │   Type: Sequential Scan   ││     count_star() DESC     │\n│                           ├───────────────────────────────────────────┐                                           │                           ││   b1.product_type_id ASC  │\n│                           │                                           │                                           │        Projections:       ││   b2.product_type_id ASC  │\n│                           │                                           │                                           │      product_type_id      ││                           │\n│                           │                                           │                                           │            name           ││                           │\n│                           │                                           │                                           │                           ││                           │\n│      ~6,394,301 rows      │                                           │                                           │         ~115 rows         ││                           │\n└─────────────┬─────────────┘                                           │                                           └───────────────────────────┘└─────────────┬─────────────┘\n┌─────────────┴─────────────┐                             ┌─────────────┴─────────────┐                                                          ┌─────────────┴─────────────┐\n│         HASH_JOIN         │                             │          SEQ_SCAN         │                                                          │       HASH_GROUP_BY       │\n│    ────────────────────   │                             │    ────────────────────   │                                                          │    ────────────────────   │\n│      Join Type: INNER     │                             │           Table:          │                                                          │          Groups:          │\n│                           │                             │    sales.main.products    │                                                          │             #0            │\n│        Conditions:        │                             │                           │                                                          │             #1            │\n│  receipt_id = receipt_id  │                             │   Type: Sequential Scan   │                                                          │                           │\n│                           ├──────────────┐              │                           │                                                          │        Aggregates:        │\n│                           │              │              │        Projections:       │                                                          │        count_star()       │\n│                           │              │              │         product_id        │                                                          │                           │\n│                           │              │              │      product_type_id      │                                                          │                           │\n│                           │              │              │                           │                                                          │                           │\n│      ~7,379,023 rows      │              │              │        ~2,000 rows        │                                                          │    ~1,057,350,501 rows    │\n└─────────────┬─────────────┘              │              └───────────────────────────┘                                                          └─────────────┬─────────────┘\n┌─────────────┴─────────────┐┌─────────────┴─────────────┐                                                                                       ┌─────────────┴─────────────┐\n│          SEQ_SCAN         ││          SEQ_SCAN         │                                                                                       │         PROJECTION        │\n│    ────────────────────   ││    ────────────────────   │                                                                                       │    ────────────────────   │\n│           Table:          ││           Table:          │                                                                                       │      product_type_id      │\n│  sales.main.receipt_items ││    sales.main.receipts    │                                                                                       │      product_type_id      │\n│                           ││                           │                                                                                       │                           │\n│   Type: Sequential Scan   ││   Type: Sequential Scan   │                                                                                       │                           │\n│                           ││                           │                                                                                       │                           │\n│        Projections:       ││        Projections:       │                                                                                       │                           │\n│         receipt_id        ││         receipt_id        │                                                                                       │                           │\n│         product_id        ││                           │                                                                                       │                           │\n│                           ││          Filters:         │                                                                                       │                           │\n│                           ││ sold_at>='2025-07-15 00:00│                                                                                       │                           │\n│                           ││  :00+00'::TIMESTAMP WITH  │                                                                                       │                           │\n│                           ││   TIME ZONE AND sold_at<  │                                                                                       │                           │\n│                           ││ '2025-07-16 00:00:00+00': │                                                                                       │                           │\n│                           ││ :TIMESTAMP WITH TIME ZONE │                                                                                       │                           │\n│                           ││                           │                                                                                       │                           │\n│      ~29,990,001 rows     ││       ~600,000 rows       │                                                                                       │    ~1,057,431,938 rows    │\n└───────────────────────────┘└───────────────────────────┘                                                                                       └─────────────┬─────────────┘\n                                                                                                                                                 ┌─────────────┴─────────────┐\n                                                                                                                                                 │         HASH_JOIN         │\n                                                                                                                                                 │    ────────────────────   │\n                                                                                                                                                 │      Join Type: INNER     │\n                                                                                                                                                 │                           │\n                                                                                                                                                 │        Conditions:        │\n                                                                                                                                                 │  receipt_id = receipt_id  ├──────────────┐\n                                                                                                                                                 │     product_type_id <     │              │\n                                                                                                                                                 │       product_type_id     │              │\n                                                                                                                                                 │                           │              │\n                                                                                                                                                 │    ~1,057,431,938 rows    │              │\n                                                                                                                                                 └─────────────┬─────────────┘              │\n                                                                                                                                                 ┌─────────────┴─────────────┐┌─────────────┴─────────────┐\n                                                                                                                                                 │          CTE_SCAN         ││          CTE_SCAN         │\n                                                                                                                                                 │    ────────────────────   ││    ────────────────────   │\n                                                                                                                                                 │        CTE Index: 0       ││        CTE Index: 0       │\n                                                                                                                                                 │                           ││                           │\n                                                                                                                                                 │      ~6,394,301 rows      ││      ~6,394,301 rows      │\n                                                                                                                                                 └───────────────────────────┘└───────────────────────────┘\n"
+        ]
+      ]
+    },
+    {
+      "query": 8,
+      "name": "Топ-10 трійок типів товарів за день",
+      "database": "DuckDB",
+      "status": "ok",
+      "seconds": [
+        0.12108519999310374,
+        0.12688320000597741,
+        0.15570379998825956,
+        0.13247289998980705,
+        0.1247884000040358
+      ],
+      "warmup_seconds": 0.13144800000009127,
+      "result": [
+        [
+          1,
+          "Хліб",
+          9,
+          "Молоко",
+          14,
+          "Масло вершкове",
+          605
+        ],
+        [
+          1,
+          "Хліб",
+          20,
+          "Картопля",
+          32,
+          "Яблука",
+          604
+        ],
+        [
+          1,
+          "Хліб",
+          14,
+          "Масло вершкове",
+          41,
+          "Курятина",
+          596
+        ],
+        [
+          1,
+          "Хліб",
+          20,
+          "Картопля",
+          41,
+          "Курятина",
+          590
+        ],
+        [
+          1,
+          "Хліб",
+          32,
+          "Яблука",
+          41,
+          "Курятина",
+          582
+        ],
+        [
+          1,
+          "Хліб",
+          9,
+          "Молоко",
+          41,
+          "Курятина",
+          570
+        ],
+        [
+          1,
+          "Хліб",
+          14,
+          "Масло вершкове",
+          32,
+          "Яблука",
+          569
+        ],
+        [
+          1,
+          "Хліб",
+          14,
+          "Масло вершкове",
+          20,
+          "Картопля",
+          567
+        ],
+        [
+          2,
+          "Батон",
+          9,
+          "Молоко",
+          14,
+          "Масло вершкове",
+          567
+        ],
+        [
+          1,
+          "Хліб",
+          9,
+          "Молоко",
+          20,
+          "Картопля",
+          553
+        ]
+      ],
+      "results_equal": true,
+      "plan": [
+        [
+          "physical_plan",
+          "┌───────────────────────┐\n│          CTE          │\n│    ────────────────   │\n│       CTE Name:       │\n│      basket_types     │\n│                       ├──────────────────────────────────────────────────────────────┐\n│     Table Index: 0    │                                                              │\n│                       │                                                              │\n│        ~0 rows        │                                                              │\n└───────────┬───────────┘                                                              │\n┌───────────┴───────────┐                                                  ┌───────────┴───────────┐\n│       PROJECTION      │                                                  │        ORDER_BY       │\n│    ────────────────   │                                                  │    ────────────────   │\n│           #0          │                                                  │  t.receipt_count DESC │\n│__internal_decompress_i│                                                  │      t.type_1 ASC     │\n│ntegral_smallint(#1, 1)│                                                  │      t.type_2 ASC     │\n│                       │                                                  │      t.type_3 ASC     │\n│    ~6,394,301 rows    │                                                  │                       │\n└───────────┬───────────┘                                                  └───────────┬───────────┘\n┌───────────┴───────────┐                                                  ┌───────────┴───────────┐\n│     HASH_GROUP_BY     │                                                  │       PROJECTION      │\n│    ────────────────   │                                                  │    ────────────────   │\n│        Groups:        │                                                  │         type_1        │\n│           #0          │                                                  │      type_1_name      │\n│           #1          │                                                  │         type_2        │\n│                       │                                                  │      type_2_name      │\n│                       │                                                  │         type_3        │\n│                       │                                                  │      type_3_name      │\n│                       │                                                  │     receipt_count     │\n│                       │                                                  │                       │\n│    ~6,394,301 rows    │                                                  │        ~0 rows        │\n└───────────┬───────────┘                                                  └───────────┬───────────┘\n┌───────────┴───────────┐                                                  ┌───────────┴───────────┐\n│       PROJECTION      │                                                  │       HASH_JOIN       │\n│    ────────────────   │                                                  │    ────────────────   │\n│       receipt_id      │                                                  │    Join Type: INNER   │\n│    product_type_id    │                                                  │                       │\n│                       │                                                  │      Conditions:      ├────────────┐\n│                       │                                                  │   product_type_id =   │            │\n│                       │                                                  │         type_3        │            │\n│                       │                                                  │                       │            │\n│    ~6,394,301 rows    │                                                  │        ~0 rows        │            │\n└───────────┬───────────┘                                                  └───────────┬───────────┘            │\n┌───────────┴───────────┐                                                  ┌───────────┴───────────┐┌───────────┴───────────┐\n│       PROJECTION      │                                                  │        SEQ_SCAN       ││       HASH_JOIN       │\n│    ────────────────   │                                                  │    ────────────────   ││    ────────────────   │\n│           #0          │                                                  │         Table:        ││    Join Type: INNER   │\n│__internal_compress_int│                                                  │       sales.main      ││                       │\n│ egral_utinyint(#1, 1) │                                                  │     .product_types    ││      Conditions:      │\n│                       │                                                  │                       ││   product_type_id =   │\n│                       │                                                  │         Type:         ││         type_1        │\n│                       │                                                  │    Sequential Scan    ││                       ├────────────┐\n│                       │                                                  │                       ││                       │            │\n│                       │                                                  │      Projections:     ││                       │            │\n│                       │                                                  │    product_type_id    ││                       │            │\n│                       │                                                  │          name         ││                       │            │\n│                       │                                                  │                       ││                       │            │\n│    ~6,394,301 rows    │                                                  │       ~115 rows       ││        ~0 rows        │            │\n└───────────┬───────────┘                                                  └───────────────────────┘└───────────┬───────────┘            │\n┌───────────┴───────────┐                                                                           ┌───────────┴───────────┐┌───────────┴───────────┐\n│       HASH_JOIN       │                                                                           │        SEQ_SCAN       ││       HASH_JOIN       │\n│    ────────────────   │                                                                           │    ────────────────   ││    ────────────────   │\n│    Join Type: INNER   │                                                                           │         Table:        ││    Join Type: INNER   │\n│                       │                                                                           │       sales.main      ││                       │\n│      Conditions:      │                                                                           │     .product_types    ││      Conditions:      │\n│product_id = product_id│                                                                           │                       ││   product_type_id =   │\n│                       │                                                                           │         Type:         ││         type_2        │\n│                       ├─────────────────────────────────────┐                                     │    Sequential Scan    ││                       ├────────────┐\n│                       │                                     │                                     │                       ││                       │            │\n│                       │                                     │                                     │      Projections:     ││                       │            │\n│                       │                                     │                                     │    product_type_id    ││                       │            │\n│                       │                                     │                                     │          name         ││                       │            │\n│                       │                                     │                                     │                       ││                       │            │\n│    ~6,394,301 rows    │                                     │                                     │       ~115 rows       ││        ~0 rows        │            │\n└───────────┬───────────┘                                     │                                     └───────────────────────┘└───────────┬───────────┘            │\n┌───────────┴───────────┐                         ┌───────────┴───────────┐                                                  ┌───────────┴───────────┐┌───────────┴───────────┐\n│       HASH_JOIN       │                         │        SEQ_SCAN       │                                                  │        SEQ_SCAN       ││         TOP_N         │\n│    ────────────────   │                         │    ────────────────   │                                                  │    ────────────────   ││    ────────────────   │\n│    Join Type: INNER   │                         │         Table:        │                                                  │         Table:        ││        Top: 10        │\n│                       │                         │  sales.main.products  │                                                  │       sales.main      ││                       │\n│      Conditions:      │                         │                       │                                                  │     .product_types    ││       Order By:       │\n│receipt_id = receipt_id│                         │         Type:         │                                                  │                       ││   count_star() DESC   │\n│                       │                         │    Sequential Scan    │                                                  │         Type:         ││ b1.product_type_id ASC│\n│                       ├────────────┐            │                       │                                                  │    Sequential Scan    ││ b2.product_type_id ASC│\n│                       │            │            │      Projections:     │                                                  │                       ││ b3.product_type_id ASC│\n│                       │            │            │       product_id      │                                                  │      Projections:     ││                       │\n│                       │            │            │    product_type_id    │                                                  │    product_type_id    ││                       │\n│                       │            │            │                       │                                                  │          name         ││                       │\n│                       │            │            │                       │                                                  │                       ││                       │\n│    ~7,379,023 rows    │            │            │      ~2,000 rows      │                                                  │       ~115 rows       ││                       │\n└───────────┬───────────┘            │            └───────────────────────┘                                                  └───────────────────────┘└───────────┬───────────┘\n┌───────────┴───────────┐┌───────────┴───────────┐                                                                                                    ┌───────────┴───────────┐\n│        SEQ_SCAN       ││        SEQ_SCAN       │                                                                                                    │     HASH_GROUP_BY     │\n│    ────────────────   ││    ────────────────   │                                                                                                    │    ────────────────   │\n│         Table:        ││         Table:        │                                                                                                    │        Groups:        │\n│       sales.main      ││  sales.main.receipts  │                                                                                                    │           #0          │\n│     .receipt_items    ││                       │                                                                                                    │           #1          │\n│                       ││         Type:         │                                                                                                    │           #2          │\n│         Type:         ││    Sequential Scan    │                                                                                                    │                       │\n│    Sequential Scan    ││                       │                                                                                                    │      Aggregates:      │\n│                       ││      Projections:     │                                                                                                    │      count_star()     │\n│      Projections:     ││       receipt_id      │                                                                                                    │                       │\n│       receipt_id      ││                       │                                                                                                    │                       │\n│       product_id      ││        Filters:       │                                                                                                    │                       │\n│                       ││  sold_at>='2025-07-15 │                                                                                                    │                       │\n│                       ││      00:00:00+00':    │                                                                                                    │                       │\n│                       ││  :TIMESTAMP WITH TIME │                                                                                                    │                       │\n│                       ││    ZONE AND sold_at<  │                                                                                                    │                       │\n│                       ││  '2025-07-16 00:00:00 │                                                                                                    │                       │\n│                       ││  +00'::TIMESTAMP WITH │                                                                                                    │                       │\n│                       ││        TIME ZONE      │                                                                                                    │                       │\n│                       ││                       │                                                                                                    │                       │\n│    ~29,990,001 rows   ││     ~600,000 rows     │                                                                                                    │ ~349,737,147,384 rows │\n└───────────────────────┘└───────────────────────┘                                                                                                    └───────────┬───────────┘\n                                                                                                                                                      ┌───────────┴───────────┐\n                                                                                                                                                      │       PROJECTION      │\n                                                                                                                                                      │    ────────────────   │\n                                                                                                                                                      │    product_type_id    │\n                                                                                                                                                      │    product_type_id    │\n                                                                                                                                                      │    product_type_id    │\n                                                                                                                                                      │                       │\n                                                                                                                                                      │ ~349,737,150,195 rows │\n                                                                                                                                                      └───────────┬───────────┘\n                                                                                                                                                      ┌───────────┴───────────┐\n                                                                                                                                                      │       HASH_JOIN       │\n                                                                                                                                                      │    ────────────────   │\n                                                                                                                                                      │    Join Type: INNER   │\n                                                                                                                                                      │                       │\n                                                                                                                                                      │      Conditions:      │\n                                                                                                                                                      │receipt_id = receipt_id│\n                                                                                                                                                      │   product_type_id <   ├─────────────────────────────────────┐\n                                                                                                                                                      │     product_type_id   │                                     │\n                                                                                                                                                      │   product_type_id >   │                                     │\n                                                                                                                                                      │     product_type_id   │                                     │\n                                                                                                                                                      │                       │                                     │\n                                                                                                                                                      │ ~349,737,150,195 rows │                                     │\n                                                                                                                                                      └───────────┬───────────┘                                     │\n                                                                                                                                                      ┌───────────┴───────────┐                         ┌───────────┴───────────┐\n                                                                                                                                                      │       HASH_JOIN       │                         │        CTE_SCAN       │\n                                                                                                                                                      │    ────────────────   │                         │    ────────────────   │\n                                                                                                                                                      │    Join Type: INNER   │                         │      CTE Index: 0     │\n                                                                                                                                                      │                       │                         │                       │\n                                                                                                                                                      │      Conditions:      ├────────────┐            │                       │\n                                                                                                                                                      │receipt_id = receipt_id│            │            │                       │\n                                                                                                                                                      │                       │            │            │                       │\n                                                                                                                                                      │    ~16,767,076 rows   │            │            │    ~6,394,301 rows    │\n                                                                                                                                                      └───────────┬───────────┘            │            └───────────────────────┘\n                                                                                                                                                      ┌───────────┴───────────┐┌───────────┴───────────┐\n                                                                                                                                                      │        CTE_SCAN       ││        CTE_SCAN       │\n                                                                                                                                                      │    ────────────────   ││    ────────────────   │\n                                                                                                                                                      │      CTE Index: 0     ││      CTE Index: 0     │\n                                                                                                                                                      │                       ││                       │\n                                                                                                                                                      │    ~6,394,301 rows    ││    ~6,394,301 rows    │\n                                                                                                                                                      └───────────────────────┘└───────────────────────┘\n"
+        ]
+      ]
+    },
+    {
+      "query": 9,
+      "name": "Топ-10 четвірок типів товарів за день",
+      "database": "DuckDB",
+      "status": "ok",
+      "seconds": [
+        1.0690920999913942,
+        0.9587933000002522,
+        1.0260134999989532,
+        1.095441400000709,
+        1.3101699000108056
+      ],
+      "warmup_seconds": 1.1248179999965942,
+      "result": [
+        [
+          1,
+          "Хліб",
+          9,
+          "Молоко",
+          14,
+          "Масло вершкове",
+          41,
+          "Курятина",
+          309
+        ],
+        [
+          1,
+          "Хліб",
+          9,
+          "Молоко",
+          20,
+          "Картопля",
+          32,
+          "Яблука",
+          306
+        ],
+        [
+          1,
+          "Хліб",
+          20,
+          "Картопля",
+          32,
+          "Яблука",
+          41,
+          "Курятина",
+          306
+        ],
+        [
+          1,
+          "Хліб",
+          14,
+          "Масло вершкове",
+          20,
+          "Картопля",
+          41,
+          "Курятина",
+          305
+        ],
+        [
+          1,
+          "Хліб",
+          2,
+          "Батон",
+          9,
+          "Молоко",
+          14,
+          "Масло вершкове",
+          303
+        ],
+        [
+          1,
+          "Хліб",
+          9,
+          "Молоко",
+          20,
+          "Картопля",
+          41,
+          "Курятина",
+          302
+        ],
+        [
+          1,
+          "Хліб",
+          9,
+          "Молоко",
+          32,
+          "Яблука",
+          41,
+          "Курятина",
+          298
+        ],
+        [
+          1,
+          "Хліб",
+          20,
+          "Картопля",
+          32,
+          "Яблука",
+          48,
+          "Сосиски",
+          297
+        ],
+        [
+          1,
+          "Хліб",
+          9,
+          "Молоко",
+          14,
+          "Масло вершкове",
+          20,
+          "Картопля",
+          295
+        ],
+        [
+          1,
+          "Хліб",
+          9,
+          "Молоко",
+          14,
+          "Масло вершкове",
+          32,
+          "Яблука",
+          289
+        ]
+      ],
+      "results_equal": true,
+      "plan": [
+        [
+          "physical_plan",
+          "┌───────────────────┐\n│        CTE        │\n│    ────────────   │\n│     CTE Name:     │\n│    basket_types   │\n│                   ├────────────────────────────────────────────────────┐\n│    Table Index:   │                                                    │\n│         0         │                                                    │\n│                   │                                                    │\n│      ~0 rows      │                                                    │\n└─────────┬─────────┘                                                    │\n┌─────────┴─────────┐                                          ┌─────────┴─────────┐\n│     PROJECTION    │                                          │      ORDER_BY     │\n│    ────────────   │                                          │    ────────────   │\n│         #0        │                                          │  t.receipt_count  │\n│__internal_decompre│                                          │        DESC       │\n│ss_integral_smallin│                                          │    t.type_1 ASC   │\n│      t(#1, 1)     │                                          │    t.type_2 ASC   │\n│                   │                                          │    t.type_3 ASC   │\n│  ~6,394,301 rows  │                                          │    t.type_4 ASC   │\n└─────────┬─────────┘                                          └─────────┬─────────┘\n┌─────────┴─────────┐                                          ┌─────────┴─────────┐\n│   HASH_GROUP_BY   │                                          │     PROJECTION    │\n│    ────────────   │                                          │    ────────────   │\n│      Groups:      │                                          │       type_1      │\n│         #0        │                                          │    type_1_name    │\n│         #1        │                                          │       type_2      │\n│                   │                                          │    type_2_name    │\n│                   │                                          │       type_3      │\n│                   │                                          │    type_3_name    │\n│                   │                                          │       type_4      │\n│                   │                                          │    type_4_name    │\n│                   │                                          │   receipt_count   │\n│                   │                                          │                   │\n│  ~6,394,301 rows  │                                          │      ~0 rows      │\n└─────────┬─────────┘                                          └─────────┬─────────┘\n┌─────────┴─────────┐                                          ┌─────────┴─────────┐\n│     PROJECTION    │                                          │     HASH_JOIN     │\n│    ────────────   │                                          │    ────────────   │\n│     receipt_id    │                                          │     Join Type:    │\n│  product_type_id  │                                          │       INNER       │\n│                   │                                          │                   │\n│                   │                                          │    Conditions:    ├──────────┐\n│                   │                                          │ product_type_id = │          │\n│                   │                                          │       type_3      │          │\n│                   │                                          │                   │          │\n│  ~6,394,301 rows  │                                          │      ~0 rows      │          │\n└─────────┬─────────┘                                          └─────────┬─────────┘          │\n┌─────────┴─────────┐                                          ┌─────────┴─────────┐┌─────────┴─────────┐\n│     PROJECTION    │                                          │      SEQ_SCAN     ││     HASH_JOIN     │\n│    ────────────   │                                          │    ────────────   ││    ────────────   │\n│         #0        │                                          │       Table:      ││     Join Type:    │\n│__internal_compress│                                          │     sales.main    ││       INNER       │\n│ _integral_utinyint│                                          │   .product_types  ││                   │\n│      (#1, 1)      │                                          │                   ││    Conditions:    │\n│                   │                                          │       Type:       ││ product_type_id = │\n│                   │                                          │  Sequential Scan  ││       type_1      ├──────────┐\n│                   │                                          │                   ││                   │          │\n│                   │                                          │    Projections:   ││                   │          │\n│                   │                                          │  product_type_id  ││                   │          │\n│                   │                                          │        name       ││                   │          │\n│                   │                                          │                   ││                   │          │\n│  ~6,394,301 rows  │                                          │     ~115 rows     ││      ~0 rows      │          │\n└─────────┬─────────┘                                          └───────────────────┘└─────────┬─────────┘          │\n┌─────────┴─────────┐                                                               ┌─────────┴─────────┐┌─────────┴─────────┐\n│     HASH_JOIN     │                                                               │      SEQ_SCAN     ││     HASH_JOIN     │\n│    ────────────   │                                                               │    ────────────   ││    ────────────   │\n│     Join Type:    │                                                               │       Table:      ││     Join Type:    │\n│       INNER       │                                                               │     sales.main    ││       INNER       │\n│                   │                                                               │   .product_types  ││                   │\n│    Conditions:    │                                                               │                   ││    Conditions:    │\n│    product_id =   │                                                               │       Type:       ││ product_type_id = │\n│     product_id    ├───────────────────────────────┐                               │  Sequential Scan  ││       type_4      ├──────────┐\n│                   │                               │                               │                   ││                   │          │\n│                   │                               │                               │    Projections:   ││                   │          │\n│                   │                               │                               │  product_type_id  ││                   │          │\n│                   │                               │                               │        name       ││                   │          │\n│                   │                               │                               │                   ││                   │          │\n│  ~6,394,301 rows  │                               │                               │     ~115 rows     ││      ~0 rows      │          │\n└─────────┬─────────┘                               │                               └───────────────────┘└─────────┬─────────┘          │\n┌─────────┴─────────┐                     ┌─────────┴─────────┐                                          ┌─────────┴─────────┐┌─────────┴─────────┐\n│     HASH_JOIN     │                     │      SEQ_SCAN     │                                          │      SEQ_SCAN     ││     HASH_JOIN     │\n│    ────────────   │                     │    ────────────   │                                          │    ────────────   ││    ────────────   │\n│     Join Type:    │                     │       Table:      │                                          │       Table:      ││     Join Type:    │\n│       INNER       │                     │sales.main.products│                                          │     sales.main    ││       INNER       │\n│                   │                     │                   │                                          │   .product_types  ││                   │\n│    Conditions:    │                     │       Type:       │                                          │                   ││    Conditions:    │\n│    receipt_id =   │                     │  Sequential Scan  │                                          │       Type:       ││ product_type_id = │\n│     receipt_id    ├──────────┐          │                   │                                          │  Sequential Scan  ││       type_2      ├──────────┐\n│                   │          │          │    Projections:   │                                          │                   ││                   │          │\n│                   │          │          │     product_id    │                                          │    Projections:   ││                   │          │\n│                   │          │          │  product_type_id  │                                          │  product_type_id  ││                   │          │\n│                   │          │          │                   │                                          │        name       ││                   │          │\n│                   │          │          │                   │                                          │                   ││                   │          │\n│  ~7,379,023 rows  │          │          │    ~2,000 rows    │                                          │     ~115 rows     ││      ~0 rows      │          │\n└─────────┬─────────┘          │          └───────────────────┘                                          └───────────────────┘└─────────┬─────────┘          │\n┌─────────┴─────────┐┌─────────┴─────────┐                                                                                    ┌─────────┴─────────┐┌─────────┴─────────┐\n│      SEQ_SCAN     ││      SEQ_SCAN     │                                                                                    │      SEQ_SCAN     ││       TOP_N       │\n│    ────────────   ││    ────────────   │                                                                                    │    ────────────   ││    ────────────   │\n│       Table:      ││       Table:      │                                                                                    │       Table:      ││      Top: 10      │\n│     sales.main    ││sales.main.receipts│                                                                                    │     sales.main    ││                   │\n│   .receipt_items  ││                   │                                                                                    │   .product_types  ││     Order By:     │\n│                   ││       Type:       │                                                                                    │                   ││ count_star() DESC │\n│       Type:       ││  Sequential Scan  │                                                                                    │       Type:       ││ b1.product_type_id│\n│  Sequential Scan  ││                   │                                                                                    │  Sequential Scan  ││         ASC       │\n│                   ││    Projections:   │                                                                                    │                   ││ b2.product_type_id│\n│    Projections:   ││     receipt_id    │                                                                                    │    Projections:   ││         ASC       │\n│     receipt_id    ││                   │                                                                                    │  product_type_id  ││ b3.product_type_id│\n│     product_id    ││      Filters:     │                                                                                    │        name       ││         ASC       │\n│                   ││ sold_at>='2025-07 │                                                                                    │                   ││ b4.product_type_id│\n│                   ││ -15 00:00:00+00': │                                                                                    │                   ││         ASC       │\n│                   ││  :TIMESTAMP WITH  │                                                                                    │                   ││                   │\n│                   ││    TIME ZONE AND  │                                                                                    │                   ││                   │\n│                   ││  sold_at<'2025-07 │                                                                                    │                   ││                   │\n│                   ││ -16 00:00:00+00': │                                                                                    │                   ││                   │\n│                   ││  :TIMESTAMP WITH  │                                                                                    │                   ││                   │\n│                   ││      TIME ZONE    │                                                                                    │                   ││                   │\n│                   ││                   │                                                                                    │                   ││                   │\n│  ~29,990,001 rows ││   ~600,000 rows   │                                                                                    │     ~115 rows     ││                   │\n└───────────────────┘└───────────────────┘                                                                                    └───────────────────┘└─────────┬─────────┘\n                                                                                                                                                   ┌─────────┴─────────┐\n                                                                                                                                                   │   HASH_GROUP_BY   │\n                                                                                                                                                   │    ────────────   │\n                                                                                                                                                   │      Groups:      │\n                                                                                                                                                   │         #0        │\n                                                                                                                                                   │         #1        │\n                                                                                                                                                   │         #2        │\n                                                                                                                                                   │         #3        │\n                                                                                                                                                   │                   │\n                                                                                                                                                   │    Aggregates:    │\n                                                                                                                                                   │    count_star()   │\n                                                                                                                                                   │                   │\n                                                                                                                                                   │~115,672,763,2...  │\n                                                                                                                                                   └─────────┬─────────┘\n                                                                                                                                                   ┌─────────┴─────────┐\n                                                                                                                                                   │     PROJECTION    │\n                                                                                                                                                   │    ────────────   │\n                                                                                                                                                   │  product_type_id  │\n                                                                                                                                                   │  product_type_id  │\n                                                                                                                                                   │  product_type_id  │\n                                                                                                                                                   │  product_type_id  │\n                                                                                                                                                   │                   │\n                                                                                                                                                   │~115,672,763,2...  │\n                                                                                                                                                   └─────────┬─────────┘\n                                                                                                                                                   ┌─────────┴─────────┐\n                                                                                                                                                   │     HASH_JOIN     │\n                                                                                                                                                   │    ────────────   │\n                                                                                                                                                   │     Join Type:    │\n                                                                                                                                                   │       INNER       │\n                                                                                                                                                   │                   │\n                                                                                                                                                   │    Conditions:    │\n                                                                                                                                                   │    receipt_id =   │\n                                                                                                                                                   │     receipt_id    │\n                                                                                                                                                   │ product_type_id < ├───────────────────────────────┐\n                                                                                                                                                   │   product_type_id │                               │\n                                                                                                                                                   │ product_type_id > │                               │\n                                                                                                                                                   │   product_type_id │                               │\n                                                                                                                                                   │ product_type_id < │                               │\n                                                                                                                                                   │   product_type_id │                               │\n                                                                                                                                                   │                   │                               │\n                                                                                                                                                   │~115,672,763,2...  │                               │\n                                                                                                                                                   └─────────┬─────────┘                               │\n                                                                                                                                                   ┌─────────┴─────────┐                     ┌─────────┴─────────┐\n                                                                                                                                                   │     HASH_JOIN     │                     │     HASH_JOIN     │\n                                                                                                                                                   │    ────────────   │                     │    ────────────   │\n                                                                                                                                                   │     Join Type:    │                     │     Join Type:    │\n                                                                                                                                                   │       INNER       │                     │       INNER       │\n                                                                                                                                                   │                   │                     │                   │\n                                                                                                                                                   │    Conditions:    ├──────────┐          │    Conditions:    ├──────────┐\n                                                                                                                                                   │    receipt_id =   │          │          │    receipt_id =   │          │\n                                                                                                                                                   │     receipt_id    │          │          │     receipt_id    │          │\n                                                                                                                                                   │                   │          │          │                   │          │\n                                                                                                                                                   │  ~16,767,076 rows │          │          │  ~16,767,076 rows │          │\n                                                                                                                                                   └─────────┬─────────┘          │          └─────────┬─────────┘          │\n                                                                                                                                                   ┌─────────┴─────────┐┌─────────┴─────────┐┌─────────┴─────────┐┌─────────┴─────────┐\n                                                                                                                                                   │      CTE_SCAN     ││      CTE_SCAN     ││      CTE_SCAN     ││      CTE_SCAN     │\n                                                                                                                                                   │    ────────────   ││    ────────────   ││    ────────────   ││    ────────────   │\n                                                                                                                                                   │    CTE Index: 0   ││    CTE Index: 0   ││    CTE Index: 0   ││    CTE Index: 0   │\n                                                                                                                                                   │                   ││                   ││                   ││                   │\n                                                                                                                                                   │  ~6,394,301 rows  ││  ~6,394,301 rows  ││  ~6,394,301 rows  ││  ~6,394,301 rows  │\n                                                                                                                                                   └───────────────────┘└───────────────────┘└───────────────────┘└───────────────────┘\n"
+        ]
+      ]
+    }
+  ],
+  "hardware": {
+    "cpu": {
+      "Name": "12th Gen Intel(R) Core(TM) i5-12450H",
+      "NumberOfCores": 8,
+      "NumberOfLogicalProcessors": 12
+    },
+    "memory": {
+      "TotalPhysicalMemory": 16873676800
+    },
+    "disks": {
+      "FriendlyName": "Phison CFESR512GMTCT-E9C-2",
+      "MediaType": "SSD",
+      "BusType": "NVMe",
+      "Size": 512110190592
+    },
+    "system_disk": {
+      "Number": 0,
+      "FriendlyName": "Phison CFESR512GMTCT-E9C-2",
+      "BusType": "NVMe",
+      "Size": 512110190592
+    }
+  },
+  "dataset": {
+    "seed": 20050406,
+    "row_counts": {
+      "units": 3,
+      "categories": 16,
+      "product_types": 115,
+      "stores": 100,
+      "products": 2000,
+      "receipts": 3000000,
+      "receipt_items": 29990001
+    },
+    "data_fingerprint_sha256": "8b6a54a4be3fa66d1bcabfe2b780470c9df7d58c9236432a79afe0f3abfa1a83"
+  },
+  "ended_at_utc": "2026-10-15T23:23:55.485222+00:00"
+}

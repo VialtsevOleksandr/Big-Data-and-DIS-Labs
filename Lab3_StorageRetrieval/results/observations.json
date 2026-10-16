@@ -1,0 +1,33 @@
+{
+  "source": "user messages; historical run log and approximate manual observations",
+  "generation_and_load": {
+    "receipts": 3000000,
+    "receipt_items": 29990001,
+    "stores": 100,
+    "products": 2000,
+    "product_types": 115,
+    "year": 2025,
+    "csv_mib": 1062.9,
+    "generation_seconds": 51.1,
+    "postgres_import_constraints_indexes_seconds": 255.71,
+    "duckdb_sorted_import_seconds": 6.59,
+    "revenue_uah": "2834827582.15",
+    "all_values_compared_equal": true,
+    "timing_scope": "Import times exclude subsequent cross-database comparison, final commits, VACUUM and CHECKPOINT"
+  },
+  "manual_query_observations": {
+    "source": "user, approximate, before automated benchmark",
+    "database": "not explicitly specified by user",
+    "original_queries_2_and_3_seconds_approx": [
+      2,
+      3
+    ],
+    "optimized_query_2_ms_approx": [
+      250,
+      400
+    ],
+    "optimized_query_3_ms_approx": 100,
+    "optimization": "SUM(receipts.total_amount) instead of receipt_items aggregation/join",
+    "not_formal_medians": true
+  }
+}

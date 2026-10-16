@@ -1,0 +1,22 @@
+{
+  "cpu": {
+    "Name": "12th Gen Intel(R) Core(TM) i5-12450H",
+    "NumberOfCores": 8,
+    "NumberOfLogicalProcessors": 12
+  },
+  "memory": {
+    "TotalPhysicalMemory": 16873676800
+  },
+  "disks": {
+    "FriendlyName": "Phison CFESR512GMTCT-E9C-2",
+    "MediaType": "SSD",
+    "BusType": "NVMe",
+    "Size": 512110190592
+  },
+  "system_disk": {
+    "Number": 0,
+    "FriendlyName": "Phison CFESR512GMTCT-E9C-2",
+    "BusType": "NVMe",
+    "Size": 512110190592
+  }
+}
