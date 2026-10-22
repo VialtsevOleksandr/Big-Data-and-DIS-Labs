@@ -1,0 +1,124 @@
+name: lab4-hdfs
+
+x-hadoop: &hadoop
+  image: apache/hadoop:3.5.0
+  env_file:
+    - ./hadoop.env
+  volumes:
+    - type: bind
+      source: ../Lab3_MapReduce/transactions.csv
+      target: /data/transactions.csv
+      read_only: true
+      bind:
+        create_host_path: false
+
+services:
+  init-storage:
+    image: apache/hadoop:3.5.0
+    user: root
+    entrypoint: ["/bin/bash", "-ec"]
+    command:
+      - chown hadoop:users /state/nn /state/dn1 /state/dn2 /state/dn3 /state/dn4
+    volumes:
+      - nn-data:/state/nn
+      - dn1-data:/state/dn1
+      - dn2-data:/state/dn2
+      - dn3-data:/state/dn3
+      - dn4-data:/state/dn4
+
+  namenode:
+    <<: *hadoop
+    hostname: namenode
+    command: ["hdfs", "namenode"]
+    environment:
+      ENSURE_NAMENODE_DIR: /hadoop/dfs/name
+    ports:
+      - "127.0.0.1:9870:9870"
+    depends_on:
+      init-storage:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9870/"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+      start_period: 10s
+    volumes:
+      - nn-data:/hadoop/dfs
+      - type: bind
+        source: ../Lab3_MapReduce/transactions.csv
+        target: /data/transactions.csv
+        read_only: true
+        bind:
+          create_host_path: false
+
+  dn1:
+    <<: *hadoop
+    hostname: dn1
+    command: ["hdfs", "datanode"]
+    depends_on:
+      namenode:
+        condition: service_healthy
+    volumes:
+      - dn1-data:/hadoop/dfs
+      - type: bind
+        source: ../Lab3_MapReduce/transactions.csv
+        target: /data/transactions.csv
+        read_only: true
+        bind:
+          create_host_path: false
+
+  dn2:
+    <<: *hadoop
+    hostname: dn2
+    command: ["hdfs", "datanode"]
+    depends_on:
+      namenode:
+        condition: service_healthy
+    volumes:
+      - dn2-data:/hadoop/dfs
+      - type: bind
+        source: ../Lab3_MapReduce/transactions.csv
+        target: /data/transactions.csv
+        read_only: true
+        bind:
+          create_host_path: false
+
+  dn3:
+    <<: *hadoop
+    hostname: dn3
+    command: ["hdfs", "datanode"]
+    depends_on:
+      namenode:
+        condition: service_healthy
+    volumes:
+      - dn3-data:/hadoop/dfs
+      - type: bind
+        source: ../Lab3_MapReduce/transactions.csv
+        target: /data/transactions.csv
+        read_only: true
+        bind:
+          create_host_path: false
+
+  dn4:
+    <<: *hadoop
+    hostname: dn4
+    command: ["hdfs", "datanode"]
+    depends_on:
+      namenode:
+        condition: service_healthy
+    volumes:
+      - dn4-data:/hadoop/dfs
+      - type: bind
+        source: ../Lab3_MapReduce/transactions.csv
+        target: /data/transactions.csv
+        read_only: true
+        bind:
+          create_host_path: false
+
+volumes:
+  nn-data:
+  dn1-data:
+  dn2-data:
+  dn3-data:
+  dn4-data:
