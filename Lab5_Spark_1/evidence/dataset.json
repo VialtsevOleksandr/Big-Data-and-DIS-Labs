@@ -1,0 +1,28 @@
+{
+  "file": "../Lab3_MapReduce/transactions.csv",
+  "container_file": "/data/transactions.csv",
+  "header": [
+    "user_id",
+    "timestamp",
+    "category",
+    "amount"
+  ],
+  "bytes": 331348600,
+  "rows_excluding_header": 8000000,
+  "users": 9000,
+  "categories": 10,
+  "distinct_dates": 360,
+  "first_date": "2026-01-01",
+  "last_date": "2026-12-26",
+  "sha256": "026b87727f205e884d154965d9c2d4e47b675b474a7e48cf3281aab6bdb80b52",
+  "generation": {
+    "generator": "../Lab3_MapReduce/generate_transactions.py",
+    "thousands": 8000,
+    "seed": 20050406,
+    "start": "2026-01-01",
+    "days": 360,
+    "max_mb": 400,
+    "command_from_generator_directory": "python generate_transactions.py 8000 transactions.csv --seed 20050406 --days 360 --max-mb 400",
+    "parameters_source": "User-provided original generation command; first three data rows reproduced successfully."
+  }
+}

@@ -1,0 +1,79 @@
+name: lab5-spark
+
+x-spark: &spark
+  image: apache/spark:4.2.0-scala2.13-java21-python3-ubuntu
+  environment:
+    SPARK_CONF_DIR: /opt/spark/conf
+    PYSPARK_PYTHON: python3
+    PATH: /opt/spark/bin:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+services:
+  init-events:
+    <<: *spark
+    user: root
+    entrypoint: ["/bin/bash", "-ec"]
+    command: ["chown 185:185 /opt/spark-events"]
+    volumes:
+      - spark-events:/opt/spark-events
+
+  history:
+    <<: *spark
+    environment:
+      SPARK_CONF_DIR: /opt/spark/conf
+      SPARK_DAEMON_MEMORY: 512m
+    command:
+      - /opt/spark/bin/spark-class
+      - org.apache.spark.deploy.history.HistoryServer
+    ports:
+      - "127.0.0.1:18080:18080"
+    depends_on:
+      init-events:
+        condition: service_completed_successfully
+    volumes:
+      - spark-events:/opt/spark-events
+      - type: bind
+        source: ./conf/spark-defaults.conf
+        target: /opt/spark/conf/spark-defaults.conf
+        read_only: true
+        bind:
+          create_host_path: false
+    healthcheck:
+      test:
+        - CMD
+        - python3
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:18080', timeout=3).close()"
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+
+  spark:
+    <<: *spark
+    working_dir: /work
+    command: ["/opt/spark/bin/spark-submit", "--version"]
+    ports:
+      - "127.0.0.1:4040:4040"
+    depends_on:
+      init-events:
+        condition: service_completed_successfully
+    volumes:
+      - spark-events:/opt/spark-events
+      - type: bind
+        source: .
+        target: /work
+      - type: bind
+        source: ../Lab3_MapReduce/transactions.csv
+        target: /data/transactions.csv
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./conf/spark-defaults.conf
+        target: /opt/spark/conf/spark-defaults.conf
+        read_only: true
+        bind:
+          create_host_path: false
+
+volumes:
+  spark-events:

@@ -1,0 +1,87 @@
+ Container lab5-spark-init-events-1 Starting 
+ Container lab5-spark-init-events-1 Started 
+ Container lab5-spark-init-events-1 Waiting 
+ Container lab5-spark-init-events-1 Exited 
+ Container lab5-spark-spark-run-6e7e00a88320 Creating 
+ Container lab5-spark-spark-run-6e7e00a88320 Created 
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/10/28 20:23:19 INFO SparkContext: Running Spark version 4.2.0
+26/10/28 20:23:19 INFO SparkContext: OS info Linux, 5.15.146.1-microsoft-standard-WSL2, amd64
+26/10/28 20:23:19 INFO SparkContext: Java version 21.0.11+10-LTS
+26/10/28 20:23:19 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/10/28 20:23:19 INFO ResourceUtils: ==============================================================
+26/10/28 20:23:19 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/10/28 20:23:19 INFO ResourceUtils: ==============================================================
+26/10/28 20:23:19 INFO SparkContext: Submitted application: Lab5_Part3_local4_128MiB
+26/10/28 20:23:19 INFO SecurityManager: Changing view acls to: spark
+26/10/28 20:23:19 INFO SecurityManager: Changing modify acls to: spark
+26/10/28 20:23:19 INFO SecurityManager: Changing view acls groups to: spark
+26/10/28 20:23:19 INFO SecurityManager: Changing modify acls groups to: spark
+26/10/28 20:23:19 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: spark groups with view permissions: EMPTY; users with modify permissions: spark; groups with modify permissions: EMPTY; RPC SSL disabled
+26/10/28 20:23:19 INFO Utils: Successfully started service 'sparkDriver' on port 44541.
+26/10/28 20:23:19 INFO SparkEnv: Registering MapOutputTracker
+26/10/28 20:23:19 INFO SparkEnv: Registering BlockManagerMaster
+26/10/28 20:23:19 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/10/28 20:23:19 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/10/28 20:23:19 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/10/28 20:23:19 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-e49a14b1-5879-4c74-8339-e068941478fd
+26/10/28 20:23:19 INFO SparkEnv: Registering OutputCommitCoordinator
+26/10/28 20:23:20 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+26/10/28 20:23:20 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+26/10/28 20:23:20 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 2048, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/10/28 20:23:20 INFO ResourceProfile: Limiting resource is cpu
+26/10/28 20:23:20 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/10/28 20:23:20 INFO SecurityManager: Changing view acls to: spark
+26/10/28 20:23:20 INFO SecurityManager: Changing modify acls to: spark
+26/10/28 20:23:20 INFO SecurityManager: Changing view acls groups to: spark
+26/10/28 20:23:20 INFO SecurityManager: Changing modify acls groups to: spark
+26/10/28 20:23:20 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: spark groups with view permissions: EMPTY; users with modify permissions: spark; groups with modify permissions: EMPTY; RPC SSL disabled
+26/10/28 20:23:20 INFO Executor: Starting executor ID driver on host 8559ba341ef8
+26/10/28 20:23:20 INFO Executor: Running Spark version 4.2.0
+26/10/28 20:23:20 INFO Executor: OS info Linux, 5.15.146.1-microsoft-standard-WSL2, amd64
+26/10/28 20:23:20 INFO Executor: Java version 21.0.11+10-LTS
+26/10/28 20:23:20 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+26/10/28 20:23:20 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@75acccd7 for default.
+26/10/28 20:23:20 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 43157.
+26/10/28 20:23:20 INFO NettyBlockTransferService: Server created on 8559ba341ef8:43157
+26/10/28 20:23:20 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/10/28 20:23:20 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 8559ba341ef8, 43157, None)
+26/10/28 20:23:20 INFO BlockManagerMasterEndpoint: Registering block manager 8559ba341ef8:43157 with 1048.8 MiB RAM, BlockManagerId(driver, 8559ba341ef8, 43157, None)
+26/10/28 20:23:20 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 8559ba341ef8, 43157, None)
+26/10/28 20:23:20 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 8559ba341ef8, 43157, None)
+26/10/28 20:23:20 INFO RollingEventLogFilesWriter: Logging events to file:/opt/spark-events/eventlog_v2_local-1793219000450/events_1_local-1793219000450.zstd
+Application: Lab5_Part3_local4_128MiB; ID: local-1793219000450
+Spark: 4.2.0; master: local[4]; block_bytes=134217728
+Input: /data/transactions.csv; bytes=331348600
+Container CPUs: 12; JVM available processors: 12
+warmup: partitions=3; job=0; tasks=10; action_seconds=15.678855
+  stage=0; tasks=3
+  stage=1; tasks=3
+  stage=2; tasks=3
+  stage=3; tasks=1
+  reading_stage=0; reading_tasks=3; leader=travel; amount=328460729.51; task1_records=3600
+repeat_1: partitions=3; job=1; tasks=10; action_seconds=14.056285
+  stage=4; tasks=3
+  stage=5; tasks=3
+  stage=6; tasks=3
+  stage=7; tasks=1
+  reading_stage=4; reading_tasks=3; leader=travel; amount=328460729.51; task1_records=3600
+repeat_2: partitions=3; job=2; tasks=10; action_seconds=14.588696
+  stage=8; tasks=3
+  stage=9; tasks=3
+  stage=10; tasks=3
+  stage=11; tasks=1
+  reading_stage=8; reading_tasks=3; leader=travel; amount=328460729.51; task1_records=3600
+repeat_3: partitions=3; job=3; tasks=10; action_seconds=13.871979
+  stage=12; tasks=3
+  stage=13; tasks=3
+  stage=14; tasks=3
+  stage=15; tasks=1
+  reading_stage=12; reading_tasks=3; leader=travel; amount=328460729.51; task1_records=3600
+Measured seconds: 14.056285, 14.588696, 13.871979
+Median seconds: 14.056285
+Results JSON: /work/evidence/part3/local4_128MiB.json
+Timeline: repeat_1, job=1, first stage=4, reading_tasks=3
+Spark UI: http://localhost:4040
+PAUSE_FOR_SCREENSHOTS: /work/evidence/part3/local4_128MiB.continue

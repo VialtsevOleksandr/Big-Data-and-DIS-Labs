@@ -1,0 +1,127 @@
+{
+  "application": "Lab5_Part3_local4_32MiB",
+  "application_id": "local-1793217489029",
+  "spark_version": "4.2.0",
+  "master": "local[4]",
+  "block_bytes": 33554432,
+  "input": "/data/transactions.csv",
+  "input_bytes": 331348600,
+  "container_cpu_count": 12,
+  "jvm_available_processors": 12,
+  "runs": [
+    {
+      "label": "warmup",
+      "seconds": 14.171694837001269,
+      "input_partitions": 10,
+      "job_id": 0,
+      "stages": [
+        {
+          "stage_id": 0,
+          "tasks": 10
+        },
+        {
+          "stage_id": 1,
+          "tasks": 10
+        },
+        {
+          "stage_id": 2,
+          "tasks": 10
+        },
+        {
+          "stage_id": 3,
+          "tasks": 1
+        }
+      ],
+      "tasks": 31,
+      "reading_stage_id": 0,
+      "reading_tasks": 10
+    },
+    {
+      "label": "repeat_1",
+      "seconds": 12.341497973000514,
+      "input_partitions": 10,
+      "job_id": 1,
+      "stages": [
+        {
+          "stage_id": 4,
+          "tasks": 10
+        },
+        {
+          "stage_id": 5,
+          "tasks": 10
+        },
+        {
+          "stage_id": 6,
+          "tasks": 10
+        },
+        {
+          "stage_id": 7,
+          "tasks": 1
+        }
+      ],
+      "tasks": 31,
+      "reading_stage_id": 4,
+      "reading_tasks": 10
+    },
+    {
+      "label": "repeat_2",
+      "seconds": 11.930600004998269,
+      "input_partitions": 10,
+      "job_id": 2,
+      "stages": [
+        {
+          "stage_id": 8,
+          "tasks": 10
+        },
+        {
+          "stage_id": 9,
+          "tasks": 10
+        },
+        {
+          "stage_id": 10,
+          "tasks": 10
+        },
+        {
+          "stage_id": 11,
+          "tasks": 1
+        }
+      ],
+      "tasks": 31,
+      "reading_stage_id": 8,
+      "reading_tasks": 10
+    },
+    {
+      "label": "repeat_3",
+      "seconds": 11.988153769008932,
+      "input_partitions": 10,
+      "job_id": 3,
+      "stages": [
+        {
+          "stage_id": 12,
+          "tasks": 10
+        },
+        {
+          "stage_id": 13,
+          "tasks": 10
+        },
+        {
+          "stage_id": 14,
+          "tasks": 10
+        },
+        {
+          "stage_id": 15,
+          "tasks": 1
+        }
+      ],
+      "tasks": 31,
+      "reading_stage_id": 12,
+      "reading_tasks": 10
+    }
+  ],
+  "median_seconds": 11.988153769008932,
+  "leader": {
+    "category": "travel",
+    "amount_cents": 32846072951
+  },
+  "task1_records": 3600
+}
