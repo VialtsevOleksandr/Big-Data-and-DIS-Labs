@@ -22,13 +22,5 @@ AGENTS.md
 # Python bytecode
 *.py[cod]
 
-# Spark runtime files; experiment evidence remains versioned
-/Lab5_Spark_1/spark-events/
-/Lab5_Spark_1/spark-warehouse/
-/Lab5_Spark_1/metastore_db/
-/Lab5_Spark_1/.sparkStaging/
-/Lab5_Spark_1/derby.log
-/Lab5_Spark_1/hs_err_pid*.log
-/Lab5_Spark_1/replay_pid*.log
-/Lab5_Spark_1/**/*.continue
-/Lab5_Spark_1/**/*.tmp
+# Keep new Spark lab files local; previously committed files remain tracked.
+/Lab5_Spark_1/

@@ -1,0 +1,94 @@
+{
+  "count": 10000,
+  "warmup_runs": 1,
+  "measured_runs": 5,
+  "dataset_sha256": "0797999aaf36399de3dabc4741e4474b39aaab8e11ef38d42a02c73891f989b9",
+  "json_to_protobuf_size_ratio": 2.905102108283708,
+  "formats": [
+    {
+      "format": "JSON",
+      "bytes": 9886077,
+      "encode_ms": 141.4085,
+      "decode_ms": 174.8609
+    },
+    {
+      "format": "Protobuf",
+      "bytes": 3403005,
+      "encode_ms": 14.0569,
+      "decode_ms": 23.716
+    }
+  ],
+  "runs": [
+    {
+      "run": 1,
+      "format": "Protobuf",
+      "bytes": 3403005,
+      "encode_ms": 14.2836,
+      "decode_ms": 26.6918
+    },
+    {
+      "run": 1,
+      "format": "JSON",
+      "bytes": 9886077,
+      "encode_ms": 184.0364,
+      "decode_ms": 181.2626
+    },
+    {
+      "run": 2,
+      "format": "JSON",
+      "bytes": 9886077,
+      "encode_ms": 131.7413,
+      "decode_ms": 206.3678
+    },
+    {
+      "run": 2,
+      "format": "Protobuf",
+      "bytes": 3403005,
+      "encode_ms": 11.4487,
+      "decode_ms": 23.716
+    },
+    {
+      "run": 3,
+      "format": "Protobuf",
+      "bytes": 3403005,
+      "encode_ms": 11.1997,
+      "decode_ms": 16.1478
+    },
+    {
+      "run": 3,
+      "format": "JSON",
+      "bytes": 9886077,
+      "encode_ms": 138.3679,
+      "decode_ms": 174.8609
+    },
+    {
+      "run": 4,
+      "format": "JSON",
+      "bytes": 9886077,
+      "encode_ms": 141.4085,
+      "decode_ms": 174.691
+    },
+    {
+      "run": 4,
+      "format": "Protobuf",
+      "bytes": 3403005,
+      "encode_ms": 14.0569,
+      "decode_ms": 17.1345
+    },
+    {
+      "run": 5,
+      "format": "Protobuf",
+      "bytes": 3403005,
+      "encode_ms": 16.4333,
+      "decode_ms": 24.7584
+    },
+    {
+      "run": 5,
+      "format": "JSON",
+      "bytes": 9886077,
+      "encode_ms": 144.5656,
+      "decode_ms": 150.6222
+    }
+  ],
+  "methodology": "Independent compact UTF-8 JSON payloads, no JSONL separators. Disk IO, dict-to-message conversion and equality checks excluded. JSON decode returns dicts; Protobuf decode returns generated Order objects. Timing includes output allocation. Format order alternates."
+}

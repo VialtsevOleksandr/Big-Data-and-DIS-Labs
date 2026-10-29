@@ -1,0 +1,35 @@
+{
+  "order_id": "52b30682-307b-4019-9de9-ea18bb650c8d",
+  "buyer_id": "buyer-0064",
+  "created_at": "2026-01-01T00:00:00Z",
+  "status": "ORDER_STATUS_PENDING",
+  "shipping_address": {
+    "country": "UA",
+    "city": "Дніпро",
+    "street": "вул. Університетська, 46",
+    "postal_code": "83226"
+  },
+  "items": [
+    {
+      "product_id": "sku-0716",
+      "quantity": 3,
+      "unit_price_minor": 85004
+    },
+    {
+      "product_id": "sku-0771",
+      "quantity": 2,
+      "unit_price_minor": 26006
+    },
+    {
+      "product_id": "sku-0945",
+      "quantity": 7,
+      "unit_price_minor": 6876
+    },
+    {
+      "product_id": "sku-0264",
+      "quantity": 1,
+      "unit_price_minor": 2222
+    }
+  ],
+  "comment": "Доставка після 18:00"
+}

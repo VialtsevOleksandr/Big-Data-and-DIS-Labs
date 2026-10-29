@@ -1,0 +1,2 @@
+# Preserve serialized Protobuf evidence byte for byte, including line-feed bytes.
+*.pb binary

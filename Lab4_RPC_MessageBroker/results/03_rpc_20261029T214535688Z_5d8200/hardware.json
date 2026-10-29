@@ -1,0 +1,12 @@
+﻿{
+    "collected_utc":  "2026-10-29T21:45:35.7006410Z",
+    "cpu":  [
+                {
+                    "Name":  "12th Gen Intel(R) Core(TM) i5-12450H",
+                    "NumberOfCores":  8,
+                    "NumberOfLogicalProcessors":  12
+                }
+            ],
+    "ram_bytes":  16873676800,
+    "os":  "Майкрософт Windows 11 Домашняя 10.0.26300"
+}

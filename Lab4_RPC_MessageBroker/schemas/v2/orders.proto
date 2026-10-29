@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package dis.orders;
+option csharp_namespace = "Dis.Orders.V2";
+
+import "google/protobuf/timestamp.proto";
+
+service OrderService {
+  rpc CreateOrder(CreateOrderRequest) returns (Order);
+  rpc GetOrder(GetOrderRequest) returns (Order);
+  rpc ListOrdersByBuyer(ListOrdersByBuyerRequest) returns (ListOrdersByBuyerResponse);
+}
+
+enum OrderStatus {
+  ORDER_STATUS_UNSPECIFIED = 0;
+  ORDER_STATUS_PENDING = 1;
+  ORDER_STATUS_CONFIRMED = 2;
+  ORDER_STATUS_REJECTED = 3;
+}
+
+message Address {
+  string country = 1;
+  string city = 2;
+  string street = 3;
+  string postal_code = 4;
+}
+
+message OrderItem {
+  string product_id = 1;
+  uint32 quantity = 2;
+  // All prices are in UAH minor units (kopecks), never floating point.
+  int64 unit_price_minor = 3;
+}
+
+message Order {
+  string order_id = 1;
+  string buyer_id = 2;
+  google.protobuf.Timestamp created_at = 3;
+  OrderStatus status = 4;
+  Address shipping_address = 5;
+  repeated OrderItem items = 6;
+  reserved 7;
+  reserved "comment";
+  optional string promo_code = 8;
+}
+
+message CreateOrderRequest {
+  // Reuse this ID for a retry of the same logical request.
+  string request_id = 1;
+  string buyer_id = 2;
+  Address shipping_address = 3;
+  repeated OrderItem items = 4;
+  reserved 5;
+  reserved "comment";
+  optional string promo_code = 6;
+}
+
+message GetOrderRequest {
+  string order_id = 1;
+}
+
+message ListOrdersByBuyerRequest {
+  string buyer_id = 1;
+}
+
+message ListOrdersByBuyerResponse {
+  repeated Order orders = 1;
+}
+
+message OrderCreated {
+  string event_id = 1;
+  Order order = 2;
+}
+
+message OrderProcessed {
+  string event_id = 1;
+  string order_id = 2;
+  OrderStatus status = 3;
+  string reason = 4;
+}

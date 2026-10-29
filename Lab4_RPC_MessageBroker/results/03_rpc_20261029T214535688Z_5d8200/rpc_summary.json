@@ -1,0 +1,127 @@
+{
+  "client": {
+    "client": "C#",
+    "transport": "gRPC",
+    "schema": "orders.proto",
+    "count": 10000,
+    "warmup_runs": 1,
+    "measured_runs": 5,
+    "total_created_including_warmup": 60000,
+    "median_p50_ms": 0.3559,
+    "median_p95_ms": 0.6667249999999996,
+    "median_p99_ms": 0.9115150000000003,
+    "median_mean_ms": 0.3918594999999992,
+    "percentile_method": "linear interpolation: position=(n-1)*p",
+    "calls": "sequential; one reused gRPC channel; distinct request_id per call; broker integration disabled",
+    "runs": [
+      {
+        "run": 1,
+        "count": 10000,
+        "p50_ms": 0.3493,
+        "p95_ms": 0.530764999999999,
+        "p99_ms": 0.9104430000000009,
+        "mean_ms": 0.37812797999999936
+      },
+      {
+        "run": 2,
+        "count": 10000,
+        "p50_ms": 0.3559,
+        "p95_ms": 0.6667249999999996,
+        "p99_ms": 0.9115150000000003,
+        "mean_ms": 0.3918594999999992
+      },
+      {
+        "run": 3,
+        "count": 10000,
+        "p50_ms": 0.4015,
+        "p95_ms": 0.7965199999999997,
+        "p99_ms": 1.0890630000000014,
+        "mean_ms": 0.4553845799999978
+      },
+      {
+        "run": 4,
+        "count": 10000,
+        "p50_ms": 0.3981,
+        "p95_ms": 0.6685,
+        "p99_ms": 0.9396420000000009,
+        "mean_ms": 0.43445655999999927
+      },
+      {
+        "run": 5,
+        "count": 10000,
+        "p50_ms": 0.3525,
+        "p95_ms": 0.4569099999999998,
+        "p99_ms": 0.546802,
+        "mean_ms": 0.36498806000000006
+      }
+    ],
+    "client_codec": {
+      "request_encode_ns_per_call": 2488.12,
+      "response_decode_ns_per_call": 5933.96,
+      "runs": [
+        {
+          "run": 1,
+          "request_encode_ms": 24.8812,
+          "response_decode_ms": 30.9785
+        },
+        {
+          "run": 2,
+          "request_encode_ms": 27.4395,
+          "response_decode_ms": 59.3396
+        },
+        {
+          "run": 3,
+          "request_encode_ms": 17.1412,
+          "response_decode_ms": 112.2882
+        },
+        {
+          "run": 4,
+          "request_encode_ms": 28.6058,
+          "response_decode_ms": 35.2249
+        },
+        {
+          "run": 5,
+          "request_encode_ms": 7.8579,
+          "response_decode_ms": 75.6637
+        }
+      ],
+      "method": "Separate generated-message microbenchmarks on dataset fixtures, not direct gRPC marshaller instrumentation"
+    }
+  },
+  "server_codec": {
+    "request_decode_ns_per_call": 1664.4300000000003,
+    "response_encode_ns_per_call": 1021.36,
+    "runs": [
+      {
+        "run": 1,
+        "request_decode_ms": 21.5064,
+        "response_encode_ms": 10.4642
+      },
+      {
+        "run": 2,
+        "request_decode_ms": 16.6443,
+        "response_encode_ms": 10.7319
+      },
+      {
+        "run": 3,
+        "request_decode_ms": 14.0856,
+        "response_encode_ms": 10.2026
+      },
+      {
+        "run": 4,
+        "request_decode_ms": 14.6995,
+        "response_encode_ms": 10.2136
+      },
+      {
+        "run": 5,
+        "request_decode_ms": 16.6541,
+        "response_encode_ms": 10.1985
+      }
+    ],
+    "method": "Separate Python generated-message microbenchmarks on dataset fixtures"
+  },
+  "estimated_codec_ns_per_call": 11107.87,
+  "estimated_codec_share_percent": 2.8346562990051343,
+  "dataset_sha256": "0797999aaf36399de3dabc4741e4474b39aaab8e11ef38d42a02c73891f989b9",
+  "codec_estimate_limit": "An estimate from separate fixture microbenchmarks, not a direct measurement inside the RPC. Fixtures use dataset IDs/timestamps, not the newly generated server responses. Network framing, gRPC scheduling, object conversion and business logic are not codec time."
+}

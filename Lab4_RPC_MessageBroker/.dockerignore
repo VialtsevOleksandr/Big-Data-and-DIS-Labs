@@ -1,0 +1,7 @@
+.venv
+client
+tests
+results
+data
+__pycache__
+**/__pycache__

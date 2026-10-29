@@ -1,0 +1,32 @@
+# Local Python environment and caches
+/.venv/
+__pycache__/
+.pytest_cache/
+
+# Build outputs and code regenerated from the committed .proto schemas
+/client/bin/
+/client/obj/
+/server/generated/
+
+# Dataset reproduced by scripts/01-generate-data.ps1 using the saved seed
+/data/
+
+# Local development checks, not part of the lab submission
+/tests/
+/scripts/verify.ps1
+/.test-output/
+
+# Runtime logs and machine/process-specific execution details
+/results/*.jsonl
+/results/**/*.log
+/results/**/console.txt
+/results/**/invocation.json
+/results/**/server_instance.json
+/results/**/dotnet-info.txt
+
+# Large raw RPC samples and intermediate copies already summarized in rpc_summary.json
+/results/**/rpc_samples.csv
+/results/**/rpc_client.json
+/results/**/server_codec.json
+
+# Keep summaries, result tables, environment/hardware metadata, screenshots and hex dumps.

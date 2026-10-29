@@ -1,0 +1,16 @@
+{
+  "seed": 20050406,
+  "count": 10000,
+  "unique_order_ids": 10000,
+  "min_items": 1,
+  "max_items": 20,
+  "total_items": 105478,
+  "with_comment": 4990,
+  "without_comment": 5010,
+  "dataset": "C:\\Antigravity_Projects\\BigData_DIS\\Lab4_RPC_MessageBroker\\data\\orders.jsonl",
+  "sha256": "0797999aaf36399de3dabc4741e4474b39aaab8e11ef38d42a02c73891f989b9",
+  "file_bytes": 9896077,
+  "currency": "UAH",
+  "price_unit": "kopeck",
+  "json_encoding": "compact UTF-8, no ASCII escaping"
+}

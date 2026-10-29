@@ -1,0 +1,39 @@
+name: dis-lab4
+services:
+  rabbitmq:
+    image: rabbitmq:4.2-management@sha256:d1fb8b38bd0805935907a22b2b7483fba38c9a8dd7e8a74bfba4a6e7a9e91707
+    environment:
+      RABBITMQ_DEFAULT_USER: dis
+      RABBITMQ_DEFAULT_PASS: dis-local
+    ports:
+      - "127.0.0.1:5673:5672"
+      - "127.0.0.1:15673:15672"
+    volumes:
+      - rabbit-data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 24
+  warehouse:
+    image: dis-lab4-warehouse:local
+    profiles: [workers]
+    build:
+      context: .
+      dockerfile: Dockerfile.warehouse
+    command:
+      - --broker-url
+      - amqp://dis:dis-local@rabbitmq:5672/%2F
+      - --schema
+      - ${DIS_SCHEMA:-v1}
+      - --namespace
+      - ${DIS_NAMESPACE:-lab}
+      - --audit
+      - /app/results/warehouse.jsonl
+    volumes:
+      - ./results:/app/results
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+volumes:
+  rabbit-data:

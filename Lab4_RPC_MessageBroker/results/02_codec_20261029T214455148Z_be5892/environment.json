@@ -1,0 +1,15 @@
+{
+  "experiment": "02_codec",
+  "utc_time": "2026-10-29T21:44:59Z",
+  "python": "3.12.6",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "libraries": {
+    "grpcio": "1.85.0",
+    "grpcio-tools": "1.85.0",
+    "protobuf": "7.36.2",
+    "pika": "1.4.4"
+  },
+  "schema_v1_sha256": "8a5411015871de6e216016bd1860c1509415ff02b50a14d03c58b694acdb8fa5",
+  "dataset": "C:\\Antigravity_Projects\\BigData_DIS\\Lab4_RPC_MessageBroker\\data\\orders.jsonl",
+  "dataset_sha256": "0797999aaf36399de3dabc4741e4474b39aaab8e11ef38d42a02c73891f989b9"
+}

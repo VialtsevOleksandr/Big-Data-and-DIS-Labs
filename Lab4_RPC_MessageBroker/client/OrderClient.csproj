@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <SchemaVersion Condition="'$(SchemaVersion)' == ''">v1</SchemaVersion>
+    <DefineConstants Condition="'$(SchemaVersion)' == 'v2'">$(DefineConstants);SCHEMA_V2</DefineConstants>
+    <DefineConstants Condition="'$(SchemaVersion)' == 'v2_breaking'">$(DefineConstants);SCHEMA_BREAKING</DefineConstants>
+    <OutputPath>bin/$(Configuration)/$(SchemaVersion)/</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.36.2" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.84.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.85.0" PrivateAssets="All" />
+    <Protobuf Include="../schemas/$(SchemaVersion)/orders.proto" GrpcServices="Client" OutputDir="$(IntermediateOutputPath)$(SchemaVersion)" />
+  </ItemGroup>
+</Project>
