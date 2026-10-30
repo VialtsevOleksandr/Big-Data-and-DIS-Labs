@@ -1,0 +1,48 @@
+{
+  "complete": true,
+  "sent_count": 10000,
+  "processing_attempts": 10000,
+  "unique_processed": 10000,
+  "unique_acked": 10000,
+  "duplicate_attempts": 0,
+  "result_deliveries": 10000,
+  "unique_results": 10000,
+  "duplicate_results_ignored": 0,
+  "confirmed_publications": 10000,
+  "missing_order_ids": [],
+  "lost_order_ids": [],
+  "duplicate_order_ids": [],
+  "unexpected_order_ids": [],
+  "queued_after_worker_stopped": 0,
+  "confirmed": 4245,
+  "rejected": 5755,
+  "pending": 0,
+  "final_queue": {
+    "orders": {
+      "name": "dis.failure-74f7bc02ead44539.orders",
+      "ready": 0,
+      "consumers": 0
+    },
+    "results": {
+      "name": "dis.failure-74f7bc02ead44539.results",
+      "ready": 0,
+      "consumers": 1
+    }
+  },
+  "scenario": "backlog",
+  "queue_before_warehouse": {
+    "orders": {
+      "name": "dis.failure-74f7bc02ead44539.orders",
+      "ready": 10000,
+      "consumers": 0
+    },
+    "results": {
+      "name": "dis.failure-74f7bc02ead44539.results",
+      "ready": 0,
+      "consumers": 1
+    }
+  },
+  "processing_definition": "processed audit entry after inventory handling and confirmed result publication, before input ack",
+  "evidence_io": "Warehouse audit flushes each JSONL line to the host bind mount; the crash checkpoint additionally fsyncs before waiting. Audit is evidence, not order storage or persistent deduplication.",
+  "restart_limitation": "Inventory and deduplication are in process memory; a new worker can process/reserve the same order again. The order service deduplicates result event IDs while it stays running."
+}

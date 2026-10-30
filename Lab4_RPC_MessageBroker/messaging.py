@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 import re
 import time
+from threading import Lock
 
 import pika
 
@@ -42,20 +43,31 @@ def publish(channel, queue, message, message_id):
 
 class Audit:
     """Evidence only, not order storage or a persistent deduplication database."""
-    def __init__(self, filename=None):
+    def __init__(self, filename=None, durable=True):
         self.file = None
+        self.durable = durable
+        self.lock = Lock()
         if filename:
             path = Path(filename)
             path.parent.mkdir(parents=True, exist_ok=True)
             self.file = path.open("a", encoding="utf-8", buffering=1)
 
     def write(self, kind, **fields):
-        if self.file:
-            self.file.write(json.dumps(dict(kind=kind, time_ns=time.time_ns(), **fields), ensure_ascii=False) + "\n")
-            self.file.flush()
-            # Allows a deterministic kill after the processing evidence reached disk.
-            os.fsync(self.file.fileno())
+        with self.lock:
+            if self.file:
+                self.file.write(json.dumps(dict(kind=kind, time_ns=time.time_ns(), **fields), ensure_ascii=False) + "\n")
+                self.file.flush()
+                if self.durable:
+                    os.fsync(self.file.fileno())
+
+    def flush_durable(self):
+        with self.lock:
+            if self.file:
+                self.file.flush()
+                os.fsync(self.file.fileno())
 
     def close(self):
-        if self.file:
-            self.file.close()
+        with self.lock:
+            if self.file:
+                self.file.close()
+                self.file = None

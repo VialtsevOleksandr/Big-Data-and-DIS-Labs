@@ -1,0 +1,9 @@
+﻿client,sender,reader,sent_price,decoded_price,outcome,sender_comment,sender_promo,reader_comment,reader_promo,final_status,return_writer,return_reader,result_returned,negative_price_accepted,order_id
+v1,v1,v1,16000,16000,OK,set:NOTE_V1,unknown,set:NOTE_V1,unknown,ORDER_STATUS_CONFIRMED,v1,v1,True,False,7aa2c744-a2a0-4b6d-b508-e3993efdbf61
+v1,v1,v1,15999,15999,OK,set:NOTE_V1,unknown,set:NOTE_V1,unknown,ORDER_STATUS_CONFIRMED,v1,v1,True,False,0f3034ad-e318-4b5f-bc2d-ca8a434bb07b
+v1,v1,v2_breaking,16000,8000,silent_corruption,set:NOTE_V1,unknown,set:NOTE_V1,unknown,ORDER_STATUS_CONFIRMED,v2_breaking,v1,True,False,92e34822-d370-4a3b-ac7b-bfcc9e8ba755
+v1,v1,v2_breaking,15999,-8000,silent_corruption,set:NOTE_V1,unknown,set:NOTE_V1,unknown,ORDER_STATUS_CONFIRMED,v2_breaking,v1,True,True,8dcd7e14-d3b5-4296-b6a5-808a81d4524e
+v2_breaking,v2_breaking,v1,16000,32000,silent_corruption,set:NOTE_V1,unknown,set:NOTE_V1,unknown,ORDER_STATUS_CONFIRMED,v1,v2_breaking,True,False,e7fb390e-5f30-4ddf-a5bb-7b94006bf2de
+v2_breaking,v2_breaking,v1,15999,31998,silent_corruption,set:NOTE_V1,unknown,set:NOTE_V1,unknown,ORDER_STATUS_CONFIRMED,v1,v2_breaking,True,False,a312aa06-88a0-406b-8fd8-29ccb661e10a
+v2_breaking,v2_breaking,v2_breaking,16000,16000,OK,set:NOTE_V1,unknown,set:NOTE_V1,unknown,ORDER_STATUS_CONFIRMED,v2_breaking,v2_breaking,True,False,2da6a059-1f4d-4f2f-8837-63d9dcb37dd1
+v2_breaking,v2_breaking,v2_breaking,15999,15999,OK,set:NOTE_V1,unknown,set:NOTE_V1,unknown,ORDER_STATUS_CONFIRMED,v2_breaking,v2_breaking,True,False,78ea241b-34c4-40cb-9a00-1d138920456e

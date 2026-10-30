@@ -11,7 +11,7 @@ from server.service import OrderRepository, OrderService
 
 
 def create_server(*, address="127.0.0.1:50051", idempotency=True, create_response_delay_ms=0,
-                  schema="v1", events=False):
+                  schema="v1", events=False, observations=None):
     _, orders_pb2_grpc = load_schema(schema)
     server = grpc.server(
         futures.ThreadPoolExecutor(max_workers=8),
@@ -20,7 +20,7 @@ def create_server(*, address="127.0.0.1:50051", idempotency=True, create_respons
     )
     repository = OrderRepository(idempotency=idempotency, schema=schema, events=events)
     orders_pb2_grpc.add_OrderServiceServicer_to_server(
-        OrderService(repository, create_response_delay_ms=create_response_delay_ms), server
+        OrderService(repository, create_response_delay_ms=create_response_delay_ms, observations=observations), server
     )
     port = server.add_insecure_port(address)
     if port == 0:
@@ -37,22 +37,29 @@ def main():
     parser.add_argument("--broker-url", help="Enable asynchronous warehouse integration")
     parser.add_argument("--namespace", default="lab")
     parser.add_argument("--audit", help="JSONL audit file for results")
+    parser.add_argument("--observations", help="Optional decoded request/order snapshots for schema checks")
+    parser.add_argument("--publication-audit", help="Optional confirmed-publish IDs for delivery experiments")
     parser.add_argument("--quiet", action="store_true")
     args = parser.parse_args()
     if args.create_response_delay_ms < 0:
         parser.error("--create-response-delay-ms must not be negative")
     logging.basicConfig(level=logging.WARNING if args.quiet else logging.INFO, format="%(asctime)s %(message)s")
     logging.getLogger("pika").setLevel(logging.WARNING)
+    observations = None
+    if args.observations:
+        from messaging import Audit
+        observations = Audit(args.observations)
     server, repository, _ = create_server(
         address=args.address,
         idempotency=not args.disable_idempotency,
         create_response_delay_ms=args.create_response_delay_ms,
         schema=args.schema, events=bool(args.broker_url),
+        observations=observations,
     )
     bridge = None
     if args.broker_url:
         from server.broker import BrokerBridge
-        bridge = BrokerBridge(repository, args.broker_url, args.namespace, args.audit)
+        bridge = BrokerBridge(repository, args.broker_url, args.namespace, args.audit, args.publication_audit)
         bridge.start()
     server.start()
     logging.info("Listening on %s; schema=%s; storage=memory; idempotency=%s; broker=%s",
@@ -64,6 +71,8 @@ def main():
     finally:
         if bridge:
             bridge.stop()
+        if observations:
+            observations.close()
 
 
 if __name__ == "__main__":

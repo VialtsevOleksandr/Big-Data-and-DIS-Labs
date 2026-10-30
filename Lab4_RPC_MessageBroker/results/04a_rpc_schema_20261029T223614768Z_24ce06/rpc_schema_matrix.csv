@@ -1,0 +1,9 @@
+﻿client,server,scenario,sent,decoded,stored,reply,rpc,outcome,server_comment,server_promo,reply_comment,reply_promo
+v1,v1,set,16000,16000,16000,16000,OK,OK,set:NOTE_V1,unknown,set:NOTE_V1,unknown
+v1,v1,absent,16000,16000,16000,16000,OK,OK,absent:default='',unknown,absent:default='',unknown
+v1,v2,set,16000,16000,16000,16000,OK,OK,unknown,absent:default='',absent:default='',unknown
+v1,v2,absent,16000,16000,16000,16000,OK,OK,unknown,absent:default='',absent:default='',unknown
+v2,v1,set,16000,16000,16000,16000,OK,OK,absent:default='',unknown,unknown,absent:default=''
+v2,v1,absent,16000,16000,16000,16000,OK,OK,absent:default='',unknown,unknown,absent:default=''
+v2,v2,set,16000,16000,16000,16000,OK,OK,unknown,set:PROMO_V2,unknown,set:PROMO_V2
+v2,v2,absent,16000,16000,16000,16000,OK,OK,unknown,absent:default='',unknown,absent:default=''

@@ -3,9 +3,11 @@ from collections import Counter
 import logging
 import time
 from threading import Event
+from uuid import uuid4
 
 from messaging import Audit, DEFAULT_URL, connect, publish, queue_names
 from schema import load_schema, VERSIONS
+from observations import snapshot
 
 
 class Inventory:
@@ -44,15 +46,20 @@ def main():
     parser.add_argument("--delay-before-ack-ms", type=int, default=0)
     parser.add_argument("--delay-order-id", help="Delay only this order; deterministic crash experiment")
     parser.add_argument("--stock-per-product", type=int, default=1000000)
+    parser.add_argument("--instance-id", default=None)
+    parser.add_argument("--compact-audit", action="store_true")
+    parser.add_argument("--audit-buffered", action="store_true", help="Flush each line; fsync at explicit crash checkpoints")
+    parser.add_argument("--quiet", action="store_true")
     args = parser.parse_args()
     if args.delay_before_ack_ms < 0 or args.stock_per_product < 0:
         parser.error("Delay and stock must not be negative")
     queue_names(args.namespace)
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
+    logging.basicConfig(level=logging.WARNING if args.quiet else logging.INFO, format="%(asctime)s %(message)s")
     logging.getLogger("pika").setLevel(logging.WARNING)
     pb, _ = load_schema(args.schema)
     inventory = Inventory(args.stock_per_product)
-    audit = Audit(args.audit)
+    audit = Audit(args.audit, durable=not args.audit_buffered)
+    instance = args.instance_id or uuid4().hex
     stopping = Event()
     try:
         while not stopping.is_set():
@@ -75,14 +82,21 @@ def main():
                     audit.write("processed", order_id=order.order_id, event_id=event.event_id,
                                 status=result.status, reason=reason, duplicate_in_memory=duplicate,
                                 reserved=accepted and not duplicate, redelivered=method.redelivered,
-                                schema=args.schema)
+                                schema=args.schema, instance_id=instance,
+                                received=snapshot(order) if args.audit and not args.compact_audit else None,
+                                sent_result=snapshot(result) if args.audit and not args.compact_audit else None)
                     if args.delay_before_ack_ms and (not args.delay_order_id or order.order_id == args.delay_order_id):
+                        audit.flush_durable()
+                        audit.write("before_ack", order_id=order.order_id, event_id=event.event_id,
+                                    instance_id=instance, delay_ms=args.delay_before_ack_ms)
+                        audit.flush_durable()
                         # Heartbeats continue even while this delivery remains unacknowledged.
                         connection.sleep(args.delay_before_ack_ms / 1000)
                     ch.basic_ack(method.delivery_tag)
-                    audit.write("acked", order_id=order.order_id)
+                    audit.write("acked", order_id=order.order_id, instance_id=instance)
 
                 channel.basic_consume(orders_queue, callback, auto_ack=False)
+                audit.write("ready", schema=args.schema, namespace=args.namespace, instance_id=instance)
                 channel.start_consuming()
             except KeyboardInterrupt:
                 stopping.set()

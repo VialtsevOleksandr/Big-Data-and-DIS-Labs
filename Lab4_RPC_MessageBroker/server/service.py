@@ -10,6 +10,7 @@ from queue import Queue
 import grpc
 
 from schema import load_schema
+from observations import snapshot
 
 
 class InvalidOrder(ValueError):
@@ -43,6 +44,7 @@ def validate_create(request) -> None:
 class OrderRepository:
     def __init__(self, *, idempotency: bool = True, schema="v1", events=False):
         self.pb, _ = load_schema(schema)
+        self.schema = schema
         self._lock = Lock()
         self._orders = {}
         self._by_buyer: dict[str, list[str]] = defaultdict(list)
@@ -113,19 +115,29 @@ class OrderRepository:
 
 
 class OrderService:
-    def __init__(self, repository: OrderRepository, *, create_response_delay_ms: int = 0):
+    def __init__(self, repository: OrderRepository, *, create_response_delay_ms: int = 0, observations=None):
         self.repository = repository
         self.pb = repository.pb
         self.delay_seconds = create_response_delay_ms / 1000
+        self.observations = observations
 
     def CreateOrder(self, request, context):
+        if self.observations:
+            self.observations.write("rpc_request", schema=self.repository.schema,
+                                    request_id=request.request_id, received=snapshot(request))
         try:
             order, created = self.repository.create(request)
         except InvalidOrder as error:
+            if self.observations:
+                self.observations.write("rpc_rejected", request_id=request.request_id,
+                                        code="INVALID_ARGUMENT", reason=str(error))
             context.abort(grpc.StatusCode.INVALID_ARGUMENT, str(error))
         except RequestConflict as error:
             context.abort(grpc.StatusCode.ALREADY_EXISTS, str(error))
         logging.info("request_id=%s order_id=%s created=%s", request.request_id, order.order_id, created)
+        if self.observations:
+            self.observations.write("rpc_created" if created else "rpc_reused", request_id=request.request_id,
+                                    order_id=order.order_id, stored=snapshot(order))
         # Delay AFTER committing: a client deadline does not roll back the order.
         if self.delay_seconds:
             time.sleep(self.delay_seconds)

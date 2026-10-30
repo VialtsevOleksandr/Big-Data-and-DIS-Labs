@@ -1,0 +1,4 @@
+﻿case,idempotency,first_status,retry_status,created_orders
+server_absent,-,Unavailable,not_attempted,0
+timeout_then_retry,on,DeadlineExceeded,OK,1
+timeout_then_retry,off,DeadlineExceeded,OK,2

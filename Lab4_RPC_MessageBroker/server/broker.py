@@ -4,13 +4,15 @@ from queue import Empty
 from threading import Event, Thread
 
 from messaging import Audit, connect, publish, queue_names
+from observations import snapshot
 
 
 class BrokerBridge:
-    def __init__(self, repository, url, namespace, audit=None):
+    def __init__(self, repository, url, namespace, audit=None, publication_audit=None):
         queue_names(namespace)
         self.repository = repository
         self.url, self.namespace, self.audit = url, namespace, audit
+        self.publication_audit = publication_audit
         self.stopping = Event()
         self.threads = []
 
@@ -26,6 +28,13 @@ class BrokerBridge:
             thread.join(timeout=12)
 
     def _publish(self):
+        audit = Audit(self.publication_audit, durable=False)
+        try:
+            self._publish_loop(audit)
+        finally:
+            audit.close()
+
+    def _publish_loop(self, audit):
         pending = None
         while not self.stopping.is_set():
             connection = None
@@ -39,6 +48,8 @@ class BrokerBridge:
                             connection.process_data_events(time_limit=0)
                             continue
                     publish(channel, orders_queue, pending, pending.event_id)
+                    if self.publication_audit:
+                        audit.write("published", order_id=pending.order.order_id, event_id=pending.event_id)
                     logging.info("Published order_id=%s to %s", pending.order.order_id, orders_queue)
                     self.repository.outbox.task_done()
                     pending = None
@@ -67,7 +78,8 @@ class BrokerBridge:
                             ch.basic_reject(method.delivery_tag, requeue=False)
                             return
                         audit.write("result", order_id=result.order_id, event_id=result.event_id,
-                                    status=result.status, updated=updated, redelivered=method.redelivered)
+                                    status=result.status, updated=updated, redelivered=method.redelivered,
+                                    received=snapshot(result), schema=self.repository.schema)
                         logging.info("Warehouse result order_id=%s status=%s updated=%s",
                                      result.order_id, result.status, updated)
                         ch.basic_ack(method.delivery_tag)

@@ -1,0 +1,4 @@
+﻿order_id,writer,restarted_reader,reader_comment,reader_promo,final_status
+dd74cb24-b4cb-4d41-93c4-3c1c452466a1,v1,v2,unknown,absent:default='',ORDER_STATUS_CONFIRMED
+bab3d7f5-eb8d-474e-b001-7c79c17c2ac8,v1,v2,unknown,absent:default='',ORDER_STATUS_CONFIRMED
+b9b0549e-95aa-4025-9c44-a27336a5329c,v1,v2,unknown,absent:default='',ORDER_STATUS_CONFIRMED

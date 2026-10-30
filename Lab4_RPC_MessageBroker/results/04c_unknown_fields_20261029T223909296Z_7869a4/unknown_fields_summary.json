@@ -1,0 +1,827 @@
+{
+  "complete": true,
+  "source": {
+    "message_type": "dis.orders.Order",
+    "body": {
+      "order_id": "relay-order",
+      "buyer_id": "relay-buyer",
+      "created_at": "2026-01-01T00:00:00Z",
+      "status": "ORDER_STATUS_PENDING",
+      "shipping_address": {
+        "country": "UA",
+        "city": "Київ",
+        "street": "вул. Тестова, 1",
+        "postal_code": "01001"
+      },
+      "items": [
+        {
+          "product_id": "sku-001",
+          "quantity": 2,
+          "unit_price_minor": "16000"
+        }
+      ],
+      "promo_code": "PROMO_V2"
+    },
+    "comment": {
+      "known": false,
+      "present": null,
+      "value": null
+    },
+    "promo_code": {
+      "known": true,
+      "present": true,
+      "value": "PROMO_V2"
+    },
+    "prices_minor": [
+      16000
+    ]
+  },
+  "rows": [
+    {
+      "language": "Python",
+      "mode": "direct",
+      "old_knows_promo": false,
+      "recovered": "set:PROMO_V2",
+      "retained": true,
+      "input_sha256": "f78ca69cb98f2d469f905291b63deb7c6acbf3e5db408c130d195e89ad5b7644",
+      "output_sha256": "f78ca69cb98f2d469f905291b63deb7c6acbf3e5db408c130d195e89ad5b7644"
+    },
+    {
+      "language": "Python",
+      "mode": "json",
+      "old_knows_promo": false,
+      "recovered": "absent:default=''",
+      "retained": false,
+      "input_sha256": "f78ca69cb98f2d469f905291b63deb7c6acbf3e5db408c130d195e89ad5b7644",
+      "output_sha256": "ffaede50dd4fb74c18fa63343a9c49a7945f82d9953b06ff7ed5c5e2ccc77575"
+    },
+    {
+      "language": "Python",
+      "mode": "fields",
+      "old_knows_promo": false,
+      "recovered": "absent:default=''",
+      "retained": false,
+      "input_sha256": "f78ca69cb98f2d469f905291b63deb7c6acbf3e5db408c130d195e89ad5b7644",
+      "output_sha256": "ffaede50dd4fb74c18fa63343a9c49a7945f82d9953b06ff7ed5c5e2ccc77575"
+    },
+    {
+      "language": "C#",
+      "mode": "direct",
+      "old_knows_promo": false,
+      "recovered": "set:PROMO_V2",
+      "retained": true,
+      "input_sha256": "f78ca69cb98f2d469f905291b63deb7c6acbf3e5db408c130d195e89ad5b7644",
+      "output_sha256": "f78ca69cb98f2d469f905291b63deb7c6acbf3e5db408c130d195e89ad5b7644"
+    },
+    {
+      "language": "C#",
+      "mode": "json",
+      "old_knows_promo": false,
+      "recovered": "absent:default=''",
+      "retained": false,
+      "input_sha256": "f78ca69cb98f2d469f905291b63deb7c6acbf3e5db408c130d195e89ad5b7644",
+      "output_sha256": "ffaede50dd4fb74c18fa63343a9c49a7945f82d9953b06ff7ed5c5e2ccc77575"
+    },
+    {
+      "language": "C#",
+      "mode": "fields",
+      "old_knows_promo": false,
+      "recovered": "absent:default=''",
+      "retained": false,
+      "input_sha256": "f78ca69cb98f2d469f905291b63deb7c6acbf3e5db408c130d195e89ad5b7644",
+      "output_sha256": "ffaede50dd4fb74c18fa63343a9c49a7945f82d9953b06ff7ed5c5e2ccc77575"
+    }
+  ],
+  "observations": [
+    {
+      "row": {
+        "language": "Python",
+        "mode": "direct",
+        "old_knows_promo": false,
+        "recovered": "set:PROMO_V2",
+        "retained": true,
+        "input_sha256": "f78ca69cb98f2d469f905291b63deb7c6acbf3e5db408c130d195e89ad5b7644",
+        "output_sha256": "f78ca69cb98f2d469f905291b63deb7c6acbf3e5db408c130d195e89ad5b7644"
+      },
+      "old_receiver": {
+        "language": "Python",
+        "schema": "v1",
+        "operation": "relay",
+        "mode": "direct",
+        "before": {
+          "message_type": "dis.orders.Order",
+          "body": {
+            "order_id": "relay-order",
+            "buyer_id": "relay-buyer",
+            "created_at": "2026-01-01T00:00:00Z",
+            "status": "ORDER_STATUS_PENDING",
+            "shipping_address": {
+              "country": "UA",
+              "city": "Київ",
+              "street": "вул. Тестова, 1",
+              "postal_code": "01001"
+            },
+            "items": [
+              {
+                "product_id": "sku-001",
+                "quantity": 2,
+                "unit_price_minor": "16000"
+              }
+            ]
+          },
+          "comment": {
+            "known": true,
+            "present": false,
+            "value": ""
+          },
+          "promo_code": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "prices_minor": [
+            16000
+          ]
+        },
+        "after": {
+          "message_type": "dis.orders.Order",
+          "body": {
+            "order_id": "relay-order",
+            "buyer_id": "relay-buyer",
+            "created_at": "2026-01-01T00:00:00Z",
+            "status": "ORDER_STATUS_PENDING",
+            "shipping_address": {
+              "country": "UA",
+              "city": "Київ",
+              "street": "вул. Тестова, 1",
+              "postal_code": "01001"
+            },
+            "items": [
+              {
+                "product_id": "sku-001",
+                "quantity": 2,
+                "unit_price_minor": "16000"
+              }
+            ]
+          },
+          "comment": {
+            "known": true,
+            "present": false,
+            "value": ""
+          },
+          "promo_code": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "prices_minor": [
+            16000
+          ]
+        }
+      },
+      "new_receiver": {
+        "message_type": "dis.orders.Order",
+        "body": {
+          "order_id": "relay-order",
+          "buyer_id": "relay-buyer",
+          "created_at": "2026-01-01T00:00:00Z",
+          "status": "ORDER_STATUS_PENDING",
+          "shipping_address": {
+            "country": "UA",
+            "city": "Київ",
+            "street": "вул. Тестова, 1",
+            "postal_code": "01001"
+          },
+          "items": [
+            {
+              "product_id": "sku-001",
+              "quantity": 2,
+              "unit_price_minor": "16000"
+            }
+          ],
+          "promo_code": "PROMO_V2"
+        },
+        "comment": {
+          "known": false,
+          "present": null,
+          "value": null
+        },
+        "promo_code": {
+          "known": true,
+          "present": true,
+          "value": "PROMO_V2"
+        },
+        "prices_minor": [
+          16000
+        ]
+      }
+    },
+    {
+      "row": {
+        "language": "Python",
+        "mode": "json",
+        "old_knows_promo": false,
+        "recovered": "absent:default=''",
+        "retained": false,
+        "input_sha256": "f78ca69cb98f2d469f905291b63deb7c6acbf3e5db408c130d195e89ad5b7644",
+        "output_sha256": "ffaede50dd4fb74c18fa63343a9c49a7945f82d9953b06ff7ed5c5e2ccc77575"
+      },
+      "old_receiver": {
+        "language": "Python",
+        "schema": "v1",
+        "operation": "relay",
+        "mode": "json",
+        "before": {
+          "message_type": "dis.orders.Order",
+          "body": {
+            "order_id": "relay-order",
+            "buyer_id": "relay-buyer",
+            "created_at": "2026-01-01T00:00:00Z",
+            "status": "ORDER_STATUS_PENDING",
+            "shipping_address": {
+              "country": "UA",
+              "city": "Київ",
+              "street": "вул. Тестова, 1",
+              "postal_code": "01001"
+            },
+            "items": [
+              {
+                "product_id": "sku-001",
+                "quantity": 2,
+                "unit_price_minor": "16000"
+              }
+            ]
+          },
+          "comment": {
+            "known": true,
+            "present": false,
+            "value": ""
+          },
+          "promo_code": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "prices_minor": [
+            16000
+          ]
+        },
+        "after": {
+          "message_type": "dis.orders.Order",
+          "body": {
+            "order_id": "relay-order",
+            "buyer_id": "relay-buyer",
+            "created_at": "2026-01-01T00:00:00Z",
+            "status": "ORDER_STATUS_PENDING",
+            "shipping_address": {
+              "country": "UA",
+              "city": "Київ",
+              "street": "вул. Тестова, 1",
+              "postal_code": "01001"
+            },
+            "items": [
+              {
+                "product_id": "sku-001",
+                "quantity": 2,
+                "unit_price_minor": "16000"
+              }
+            ]
+          },
+          "comment": {
+            "known": true,
+            "present": false,
+            "value": ""
+          },
+          "promo_code": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "prices_minor": [
+            16000
+          ]
+        }
+      },
+      "new_receiver": {
+        "message_type": "dis.orders.Order",
+        "body": {
+          "order_id": "relay-order",
+          "buyer_id": "relay-buyer",
+          "created_at": "2026-01-01T00:00:00Z",
+          "status": "ORDER_STATUS_PENDING",
+          "shipping_address": {
+            "country": "UA",
+            "city": "Київ",
+            "street": "вул. Тестова, 1",
+            "postal_code": "01001"
+          },
+          "items": [
+            {
+              "product_id": "sku-001",
+              "quantity": 2,
+              "unit_price_minor": "16000"
+            }
+          ]
+        },
+        "comment": {
+          "known": false,
+          "present": null,
+          "value": null
+        },
+        "promo_code": {
+          "known": true,
+          "present": false,
+          "value": ""
+        },
+        "prices_minor": [
+          16000
+        ]
+      }
+    },
+    {
+      "row": {
+        "language": "Python",
+        "mode": "fields",
+        "old_knows_promo": false,
+        "recovered": "absent:default=''",
+        "retained": false,
+        "input_sha256": "f78ca69cb98f2d469f905291b63deb7c6acbf3e5db408c130d195e89ad5b7644",
+        "output_sha256": "ffaede50dd4fb74c18fa63343a9c49a7945f82d9953b06ff7ed5c5e2ccc77575"
+      },
+      "old_receiver": {
+        "language": "Python",
+        "schema": "v1",
+        "operation": "relay",
+        "mode": "fields",
+        "before": {
+          "message_type": "dis.orders.Order",
+          "body": {
+            "order_id": "relay-order",
+            "buyer_id": "relay-buyer",
+            "created_at": "2026-01-01T00:00:00Z",
+            "status": "ORDER_STATUS_PENDING",
+            "shipping_address": {
+              "country": "UA",
+              "city": "Київ",
+              "street": "вул. Тестова, 1",
+              "postal_code": "01001"
+            },
+            "items": [
+              {
+                "product_id": "sku-001",
+                "quantity": 2,
+                "unit_price_minor": "16000"
+              }
+            ]
+          },
+          "comment": {
+            "known": true,
+            "present": false,
+            "value": ""
+          },
+          "promo_code": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "prices_minor": [
+            16000
+          ]
+        },
+        "after": {
+          "message_type": "dis.orders.Order",
+          "body": {
+            "order_id": "relay-order",
+            "buyer_id": "relay-buyer",
+            "created_at": "2026-01-01T00:00:00Z",
+            "status": "ORDER_STATUS_PENDING",
+            "shipping_address": {
+              "country": "UA",
+              "city": "Київ",
+              "street": "вул. Тестова, 1",
+              "postal_code": "01001"
+            },
+            "items": [
+              {
+                "product_id": "sku-001",
+                "quantity": 2,
+                "unit_price_minor": "16000"
+              }
+            ]
+          },
+          "comment": {
+            "known": true,
+            "present": false,
+            "value": ""
+          },
+          "promo_code": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "prices_minor": [
+            16000
+          ]
+        }
+      },
+      "new_receiver": {
+        "message_type": "dis.orders.Order",
+        "body": {
+          "order_id": "relay-order",
+          "buyer_id": "relay-buyer",
+          "created_at": "2026-01-01T00:00:00Z",
+          "status": "ORDER_STATUS_PENDING",
+          "shipping_address": {
+            "country": "UA",
+            "city": "Київ",
+            "street": "вул. Тестова, 1",
+            "postal_code": "01001"
+          },
+          "items": [
+            {
+              "product_id": "sku-001",
+              "quantity": 2,
+              "unit_price_minor": "16000"
+            }
+          ]
+        },
+        "comment": {
+          "known": false,
+          "present": null,
+          "value": null
+        },
+        "promo_code": {
+          "known": true,
+          "present": false,
+          "value": ""
+        },
+        "prices_minor": [
+          16000
+        ]
+      }
+    },
+    {
+      "row": {
+        "language": "C#",
+        "mode": "direct",
+        "old_knows_promo": false,
+        "recovered": "set:PROMO_V2",
+        "retained": true,
+        "input_sha256": "f78ca69cb98f2d469f905291b63deb7c6acbf3e5db408c130d195e89ad5b7644",
+        "output_sha256": "f78ca69cb98f2d469f905291b63deb7c6acbf3e5db408c130d195e89ad5b7644"
+      },
+      "old_receiver": {
+        "language": "C#",
+        "schema_namespace": "Dis.Orders.V1",
+        "mode": "direct",
+        "before": {
+          "body": {
+            "orderId": "relay-order",
+            "buyerId": "relay-buyer",
+            "createdAt": "2026-01-01T00:00:00Z",
+            "status": "ORDER_STATUS_PENDING",
+            "shippingAddress": {
+              "country": "UA",
+              "city": "Київ",
+              "street": "вул. Тестова, 1",
+              "postalCode": "01001"
+            },
+            "items": [
+              {
+                "productId": "sku-001",
+                "quantity": 2,
+                "unitPriceMinor": "16000"
+              }
+            ]
+          },
+          "comment": {
+            "known": true,
+            "present": false,
+            "value": ""
+          },
+          "promo_code": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "prices_minor": [
+            16000
+          ]
+        },
+        "after": {
+          "body": {
+            "orderId": "relay-order",
+            "buyerId": "relay-buyer",
+            "createdAt": "2026-01-01T00:00:00Z",
+            "status": "ORDER_STATUS_PENDING",
+            "shippingAddress": {
+              "country": "UA",
+              "city": "Київ",
+              "street": "вул. Тестова, 1",
+              "postalCode": "01001"
+            },
+            "items": [
+              {
+                "productId": "sku-001",
+                "quantity": 2,
+                "unitPriceMinor": "16000"
+              }
+            ]
+          },
+          "comment": {
+            "known": true,
+            "present": false,
+            "value": ""
+          },
+          "promo_code": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "prices_minor": [
+            16000
+          ]
+        }
+      },
+      "new_receiver": {
+        "message_type": "dis.orders.Order",
+        "body": {
+          "order_id": "relay-order",
+          "buyer_id": "relay-buyer",
+          "created_at": "2026-01-01T00:00:00Z",
+          "status": "ORDER_STATUS_PENDING",
+          "shipping_address": {
+            "country": "UA",
+            "city": "Київ",
+            "street": "вул. Тестова, 1",
+            "postal_code": "01001"
+          },
+          "items": [
+            {
+              "product_id": "sku-001",
+              "quantity": 2,
+              "unit_price_minor": "16000"
+            }
+          ],
+          "promo_code": "PROMO_V2"
+        },
+        "comment": {
+          "known": false,
+          "present": null,
+          "value": null
+        },
+        "promo_code": {
+          "known": true,
+          "present": true,
+          "value": "PROMO_V2"
+        },
+        "prices_minor": [
+          16000
+        ]
+      }
+    },
+    {
+      "row": {
+        "language": "C#",
+        "mode": "json",
+        "old_knows_promo": false,
+        "recovered": "absent:default=''",
+        "retained": false,
+        "input_sha256": "f78ca69cb98f2d469f905291b63deb7c6acbf3e5db408c130d195e89ad5b7644",
+        "output_sha256": "ffaede50dd4fb74c18fa63343a9c49a7945f82d9953b06ff7ed5c5e2ccc77575"
+      },
+      "old_receiver": {
+        "language": "C#",
+        "schema_namespace": "Dis.Orders.V1",
+        "mode": "json",
+        "before": {
+          "body": {
+            "orderId": "relay-order",
+            "buyerId": "relay-buyer",
+            "createdAt": "2026-01-01T00:00:00Z",
+            "status": "ORDER_STATUS_PENDING",
+            "shippingAddress": {
+              "country": "UA",
+              "city": "Київ",
+              "street": "вул. Тестова, 1",
+              "postalCode": "01001"
+            },
+            "items": [
+              {
+                "productId": "sku-001",
+                "quantity": 2,
+                "unitPriceMinor": "16000"
+              }
+            ]
+          },
+          "comment": {
+            "known": true,
+            "present": false,
+            "value": ""
+          },
+          "promo_code": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "prices_minor": [
+            16000
+          ]
+        },
+        "after": {
+          "body": {
+            "orderId": "relay-order",
+            "buyerId": "relay-buyer",
+            "createdAt": "2026-01-01T00:00:00Z",
+            "status": "ORDER_STATUS_PENDING",
+            "shippingAddress": {
+              "country": "UA",
+              "city": "Київ",
+              "street": "вул. Тестова, 1",
+              "postalCode": "01001"
+            },
+            "items": [
+              {
+                "productId": "sku-001",
+                "quantity": 2,
+                "unitPriceMinor": "16000"
+              }
+            ]
+          },
+          "comment": {
+            "known": true,
+            "present": false,
+            "value": ""
+          },
+          "promo_code": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "prices_minor": [
+            16000
+          ]
+        }
+      },
+      "new_receiver": {
+        "message_type": "dis.orders.Order",
+        "body": {
+          "order_id": "relay-order",
+          "buyer_id": "relay-buyer",
+          "created_at": "2026-01-01T00:00:00Z",
+          "status": "ORDER_STATUS_PENDING",
+          "shipping_address": {
+            "country": "UA",
+            "city": "Київ",
+            "street": "вул. Тестова, 1",
+            "postal_code": "01001"
+          },
+          "items": [
+            {
+              "product_id": "sku-001",
+              "quantity": 2,
+              "unit_price_minor": "16000"
+            }
+          ]
+        },
+        "comment": {
+          "known": false,
+          "present": null,
+          "value": null
+        },
+        "promo_code": {
+          "known": true,
+          "present": false,
+          "value": ""
+        },
+        "prices_minor": [
+          16000
+        ]
+      }
+    },
+    {
+      "row": {
+        "language": "C#",
+        "mode": "fields",
+        "old_knows_promo": false,
+        "recovered": "absent:default=''",
+        "retained": false,
+        "input_sha256": "f78ca69cb98f2d469f905291b63deb7c6acbf3e5db408c130d195e89ad5b7644",
+        "output_sha256": "ffaede50dd4fb74c18fa63343a9c49a7945f82d9953b06ff7ed5c5e2ccc77575"
+      },
+      "old_receiver": {
+        "language": "C#",
+        "schema_namespace": "Dis.Orders.V1",
+        "mode": "fields",
+        "before": {
+          "body": {
+            "orderId": "relay-order",
+            "buyerId": "relay-buyer",
+            "createdAt": "2026-01-01T00:00:00Z",
+            "status": "ORDER_STATUS_PENDING",
+            "shippingAddress": {
+              "country": "UA",
+              "city": "Київ",
+              "street": "вул. Тестова, 1",
+              "postalCode": "01001"
+            },
+            "items": [
+              {
+                "productId": "sku-001",
+                "quantity": 2,
+                "unitPriceMinor": "16000"
+              }
+            ]
+          },
+          "comment": {
+            "known": true,
+            "present": false,
+            "value": ""
+          },
+          "promo_code": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "prices_minor": [
+            16000
+          ]
+        },
+        "after": {
+          "body": {
+            "orderId": "relay-order",
+            "buyerId": "relay-buyer",
+            "createdAt": "2026-01-01T00:00:00Z",
+            "status": "ORDER_STATUS_PENDING",
+            "shippingAddress": {
+              "country": "UA",
+              "city": "Київ",
+              "street": "вул. Тестова, 1",
+              "postalCode": "01001"
+            },
+            "items": [
+              {
+                "productId": "sku-001",
+                "quantity": 2,
+                "unitPriceMinor": "16000"
+              }
+            ]
+          },
+          "comment": {
+            "known": true,
+            "present": false,
+            "value": ""
+          },
+          "promo_code": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "prices_minor": [
+            16000
+          ]
+        }
+      },
+      "new_receiver": {
+        "message_type": "dis.orders.Order",
+        "body": {
+          "order_id": "relay-order",
+          "buyer_id": "relay-buyer",
+          "created_at": "2026-01-01T00:00:00Z",
+          "status": "ORDER_STATUS_PENDING",
+          "shipping_address": {
+            "country": "UA",
+            "city": "Київ",
+            "street": "вул. Тестова, 1",
+            "postal_code": "01001"
+          },
+          "items": [
+            {
+              "product_id": "sku-001",
+              "quantity": 2,
+              "unit_price_minor": "16000"
+            }
+          ]
+        },
+        "comment": {
+          "known": false,
+          "present": null,
+          "value": null
+        },
+        "promo_code": {
+          "known": true,
+          "present": false,
+          "value": ""
+        },
+        "prices_minor": [
+          16000
+        ]
+      }
+    }
+  ],
+  "modes": {
+    "direct": "Decode and serialize the same message object",
+    "json": "Convert through known-field JSON",
+    "fields": "Rebuild the top-level Order from known fields; nested messages are copied"
+  }
+}

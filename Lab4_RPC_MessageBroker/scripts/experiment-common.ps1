@@ -1,5 +1,18 @@
 . "$PSScriptRoot\common.ps1"
 
+function Initialize-LabFailureWarehouse {
+    Assert-LabPython
+    Push-Location $LabRoot
+    try {
+        docker compose up -d --wait rabbitmq
+        if ($LASTEXITCODE -ne 0) { throw 'RabbitMQ startup failed. Check Docker Desktop.' }
+        docker compose build warehouse
+        if ($LASTEXITCODE -ne 0) { throw 'Warehouse image build failed. Run scripts/setup.ps1 if generated schemas are missing.' }
+    } finally {
+        Pop-Location
+    }
+}
+
 function Invoke-LabExperiment {
     param(
         [Parameter(Mandatory)][string]$Step,

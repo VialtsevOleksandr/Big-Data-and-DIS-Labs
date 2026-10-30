@@ -17,7 +17,7 @@ __pycache__/
 /.test-output/
 
 # Runtime logs and machine/process-specific execution details
-/results/*.jsonl
+/results/**/*.jsonl
 /results/**/*.log
 /results/**/console.txt
 /results/**/invocation.json
@@ -29,4 +29,32 @@ __pycache__/
 /results/**/rpc_client.json
 /results/**/server_codec.json
 
-# Keep summaries, result tables, environment/hardware metadata, screenshots and hex dumps.
+# Per-case diagnostic folders; retain their consolidated matrices and summaries
+/results/**/pipeline_*/
+/results/**/rpc_v*_to_v*/
+/results/**/backlog_v1_then_reader_v2/
+/results/**/retry_idempotency_*/
+/results/**/server_not_running/
+
+# Intermediate relay payloads/inspections; the report sample remains in examples/
+/results/04c_unknown_fields_*/csharp_*
+/results/04c_unknown_fields_*/python_*
+/results/04c_unknown_fields_*/original_*
+
+# Local process/container setup and duplicated per-case result copies
+/results/**/*_client.json
+/results/**/queue_*.json
+/results/**/worker_*.json
+/results/**/before_*.json
+/results/**/after_*.json
+/results/**/docker_kill.json
+/results/**/delivery_summary.json
+
+# Repeated machine metadata/status markers and lists included in per_order_results.csv
+/results/**/environment.json
+/results/**/hardware.json
+/results/**/run_status.json
+/results/**/sent_orders.csv
+/results/**/final_order_statuses.csv
+
+# Keep summaries, result tables, per-order verification, screenshots and hex dumps.

@@ -1,0 +1,463 @@
+{
+  "complete": true,
+  "sent_order_ids": [
+    "dd74cb24-b4cb-4d41-93c4-3c1c452466a1",
+    "bab3d7f5-eb8d-474e-b001-7c79c17c2ac8",
+    "b9b0549e-95aa-4025-9c44-a27336a5329c"
+  ],
+  "processed_order_ids": [
+    "b9b0549e-95aa-4025-9c44-a27336a5329c",
+    "bab3d7f5-eb8d-474e-b001-7c79c17c2ac8",
+    "dd74cb24-b4cb-4d41-93c4-3c1c452466a1"
+  ],
+  "missing_order_ids": [],
+  "queue_before_restart": {
+    "orders": {
+      "name": "dis.compat-1115f0beb2d044eb.orders",
+      "ready": 3,
+      "consumers": 0
+    },
+    "results": {
+      "name": "dis.compat-1115f0beb2d044eb.results",
+      "ready": 0,
+      "consumers": 1
+    }
+  },
+  "queue_after_processing": {
+    "orders": {
+      "name": "dis.compat-1115f0beb2d044eb.orders",
+      "ready": 0,
+      "consumers": 1
+    },
+    "results": {
+      "name": "dis.compat-1115f0beb2d044eb.results",
+      "ready": 0,
+      "consumers": 1
+    }
+  },
+  "rows": [
+    {
+      "order_id": "dd74cb24-b4cb-4d41-93c4-3c1c452466a1",
+      "writer": "v1",
+      "restarted_reader": "v2",
+      "reader_comment": "unknown",
+      "reader_promo": "absent:default=''",
+      "final_status": "ORDER_STATUS_CONFIRMED"
+    },
+    {
+      "order_id": "bab3d7f5-eb8d-474e-b001-7c79c17c2ac8",
+      "writer": "v1",
+      "restarted_reader": "v2",
+      "reader_comment": "unknown",
+      "reader_promo": "absent:default=''",
+      "final_status": "ORDER_STATUS_CONFIRMED"
+    },
+    {
+      "order_id": "b9b0549e-95aa-4025-9c44-a27336a5329c",
+      "writer": "v1",
+      "restarted_reader": "v2",
+      "reader_comment": "unknown",
+      "reader_promo": "absent:default=''",
+      "final_status": "ORDER_STATUS_CONFIRMED"
+    }
+  ],
+  "observations": [
+    {
+      "warehouse": {
+        "kind": "processed",
+        "time_ns": 1793313494128697800,
+        "order_id": "dd74cb24-b4cb-4d41-93c4-3c1c452466a1",
+        "event_id": "0dc78b7f-0053-4919-950b-871772320d3e",
+        "status": 2,
+        "reason": "",
+        "duplicate_in_memory": false,
+        "reserved": true,
+        "redelivered": false,
+        "schema": "v2",
+        "received": {
+          "message_type": "dis.orders.Order",
+          "body": {
+            "order_id": "dd74cb24-b4cb-4d41-93c4-3c1c452466a1",
+            "buyer_id": "buyer-schema",
+            "created_at": "2026-10-29T22:38:12.766950Z",
+            "status": "ORDER_STATUS_PENDING",
+            "shipping_address": {
+              "country": "UA",
+              "city": "Київ",
+              "street": "Хрещатик, 1",
+              "postal_code": "01001"
+            },
+            "items": [
+              {
+                "product_id": "sku-001",
+                "quantity": 2,
+                "unit_price_minor": "16000"
+              }
+            ]
+          },
+          "comment": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "promo_code": {
+            "known": true,
+            "present": false,
+            "value": ""
+          },
+          "prices_minor": [
+            16000
+          ]
+        },
+        "sent_result": {
+          "message_type": "dis.orders.OrderProcessed",
+          "body": {
+            "event_id": "0dc78b7f-0053-4919-950b-871772320d3e",
+            "order_id": "dd74cb24-b4cb-4d41-93c4-3c1c452466a1",
+            "status": "ORDER_STATUS_CONFIRMED"
+          },
+          "comment": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "promo_code": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "prices_minor": []
+        }
+      },
+      "server_result": {
+        "kind": "result",
+        "time_ns": 1793313494128133400,
+        "order_id": "dd74cb24-b4cb-4d41-93c4-3c1c452466a1",
+        "event_id": "0dc78b7f-0053-4919-950b-871772320d3e",
+        "status": 2,
+        "updated": true,
+        "redelivered": false,
+        "received": {
+          "message_type": "dis.orders.OrderProcessed",
+          "body": {
+            "event_id": "0dc78b7f-0053-4919-950b-871772320d3e",
+            "order_id": "dd74cb24-b4cb-4d41-93c4-3c1c452466a1",
+            "status": "ORDER_STATUS_CONFIRMED"
+          },
+          "comment": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "promo_code": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "prices_minor": []
+        },
+        "schema": "v1"
+      },
+      "client_final": {
+        "body": {
+          "orderId": "dd74cb24-b4cb-4d41-93c4-3c1c452466a1",
+          "buyerId": "buyer-schema",
+          "createdAt": "2026-10-29T22:38:12.766950Z",
+          "status": "ORDER_STATUS_CONFIRMED",
+          "shippingAddress": {
+            "country": "UA",
+            "city": "Київ",
+            "street": "Хрещатик, 1",
+            "postalCode": "01001"
+          },
+          "items": [
+            {
+              "productId": "sku-001",
+              "quantity": 2,
+              "unitPriceMinor": "16000"
+            }
+          ],
+          "comment": "NOTE_V1"
+        },
+        "comment": {
+          "known": true,
+          "present": true,
+          "value": "NOTE_V1"
+        },
+        "promo_code": {
+          "known": false,
+          "present": null,
+          "value": null
+        },
+        "prices_minor": [
+          16000
+        ]
+      }
+    },
+    {
+      "warehouse": {
+        "kind": "processed",
+        "time_ns": 1793313494145023500,
+        "order_id": "bab3d7f5-eb8d-474e-b001-7c79c17c2ac8",
+        "event_id": "97673750-1741-41d7-9c40-b7350bc642c8",
+        "status": 2,
+        "reason": "",
+        "duplicate_in_memory": false,
+        "reserved": true,
+        "redelivered": false,
+        "schema": "v2",
+        "received": {
+          "message_type": "dis.orders.Order",
+          "body": {
+            "order_id": "bab3d7f5-eb8d-474e-b001-7c79c17c2ac8",
+            "buyer_id": "buyer-schema",
+            "created_at": "2026-10-29T22:38:13.149309Z",
+            "status": "ORDER_STATUS_PENDING",
+            "shipping_address": {
+              "country": "UA",
+              "city": "Київ",
+              "street": "Хрещатик, 1",
+              "postal_code": "01001"
+            },
+            "items": [
+              {
+                "product_id": "sku-001",
+                "quantity": 2,
+                "unit_price_minor": "16000"
+              }
+            ]
+          },
+          "comment": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "promo_code": {
+            "known": true,
+            "present": false,
+            "value": ""
+          },
+          "prices_minor": [
+            16000
+          ]
+        },
+        "sent_result": {
+          "message_type": "dis.orders.OrderProcessed",
+          "body": {
+            "event_id": "97673750-1741-41d7-9c40-b7350bc642c8",
+            "order_id": "bab3d7f5-eb8d-474e-b001-7c79c17c2ac8",
+            "status": "ORDER_STATUS_CONFIRMED"
+          },
+          "comment": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "promo_code": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "prices_minor": []
+        }
+      },
+      "server_result": {
+        "kind": "result",
+        "time_ns": 1793313494144347200,
+        "order_id": "bab3d7f5-eb8d-474e-b001-7c79c17c2ac8",
+        "event_id": "97673750-1741-41d7-9c40-b7350bc642c8",
+        "status": 2,
+        "updated": true,
+        "redelivered": false,
+        "received": {
+          "message_type": "dis.orders.OrderProcessed",
+          "body": {
+            "event_id": "97673750-1741-41d7-9c40-b7350bc642c8",
+            "order_id": "bab3d7f5-eb8d-474e-b001-7c79c17c2ac8",
+            "status": "ORDER_STATUS_CONFIRMED"
+          },
+          "comment": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "promo_code": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "prices_minor": []
+        },
+        "schema": "v1"
+      },
+      "client_final": {
+        "body": {
+          "orderId": "bab3d7f5-eb8d-474e-b001-7c79c17c2ac8",
+          "buyerId": "buyer-schema",
+          "createdAt": "2026-10-29T22:38:13.149309Z",
+          "status": "ORDER_STATUS_CONFIRMED",
+          "shippingAddress": {
+            "country": "UA",
+            "city": "Київ",
+            "street": "Хрещатик, 1",
+            "postalCode": "01001"
+          },
+          "items": [
+            {
+              "productId": "sku-001",
+              "quantity": 2,
+              "unitPriceMinor": "16000"
+            }
+          ],
+          "comment": "NOTE_V1"
+        },
+        "comment": {
+          "known": true,
+          "present": true,
+          "value": "NOTE_V1"
+        },
+        "promo_code": {
+          "known": false,
+          "present": null,
+          "value": null
+        },
+        "prices_minor": [
+          16000
+        ]
+      }
+    },
+    {
+      "warehouse": {
+        "kind": "processed",
+        "time_ns": 1793313494160488500,
+        "order_id": "b9b0549e-95aa-4025-9c44-a27336a5329c",
+        "event_id": "9d99483f-be47-4d86-883a-68889d0c1c0f",
+        "status": 2,
+        "reason": "",
+        "duplicate_in_memory": false,
+        "reserved": true,
+        "redelivered": false,
+        "schema": "v2",
+        "received": {
+          "message_type": "dis.orders.Order",
+          "body": {
+            "order_id": "b9b0549e-95aa-4025-9c44-a27336a5329c",
+            "buyer_id": "buyer-schema",
+            "created_at": "2026-10-29T22:38:13.525815Z",
+            "status": "ORDER_STATUS_PENDING",
+            "shipping_address": {
+              "country": "UA",
+              "city": "Київ",
+              "street": "Хрещатик, 1",
+              "postal_code": "01001"
+            },
+            "items": [
+              {
+                "product_id": "sku-001",
+                "quantity": 2,
+                "unit_price_minor": "16000"
+              }
+            ]
+          },
+          "comment": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "promo_code": {
+            "known": true,
+            "present": false,
+            "value": ""
+          },
+          "prices_minor": [
+            16000
+          ]
+        },
+        "sent_result": {
+          "message_type": "dis.orders.OrderProcessed",
+          "body": {
+            "event_id": "9d99483f-be47-4d86-883a-68889d0c1c0f",
+            "order_id": "b9b0549e-95aa-4025-9c44-a27336a5329c",
+            "status": "ORDER_STATUS_CONFIRMED"
+          },
+          "comment": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "promo_code": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "prices_minor": []
+        }
+      },
+      "server_result": {
+        "kind": "result",
+        "time_ns": 1793313494159891600,
+        "order_id": "b9b0549e-95aa-4025-9c44-a27336a5329c",
+        "event_id": "9d99483f-be47-4d86-883a-68889d0c1c0f",
+        "status": 2,
+        "updated": true,
+        "redelivered": false,
+        "received": {
+          "message_type": "dis.orders.OrderProcessed",
+          "body": {
+            "event_id": "9d99483f-be47-4d86-883a-68889d0c1c0f",
+            "order_id": "b9b0549e-95aa-4025-9c44-a27336a5329c",
+            "status": "ORDER_STATUS_CONFIRMED"
+          },
+          "comment": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "promo_code": {
+            "known": false,
+            "present": null,
+            "value": null
+          },
+          "prices_minor": []
+        },
+        "schema": "v1"
+      },
+      "client_final": {
+        "body": {
+          "orderId": "b9b0549e-95aa-4025-9c44-a27336a5329c",
+          "buyerId": "buyer-schema",
+          "createdAt": "2026-10-29T22:38:13.525815Z",
+          "status": "ORDER_STATUS_CONFIRMED",
+          "shippingAddress": {
+            "country": "UA",
+            "city": "Київ",
+            "street": "Хрещатик, 1",
+            "postalCode": "01001"
+          },
+          "items": [
+            {
+              "productId": "sku-001",
+              "quantity": 2,
+              "unitPriceMinor": "16000"
+            }
+          ],
+          "comment": "NOTE_V1"
+        },
+        "comment": {
+          "known": true,
+          "present": true,
+          "value": "NOTE_V1"
+        },
+        "promo_code": {
+          "known": false,
+          "present": null,
+          "value": null
+        },
+        "prices_minor": [
+          16000
+        ]
+      }
+    }
+  ],
+  "scope": "Three targeted schema-upgrade fixtures; not the separate 10000-message failure experiment"
+}

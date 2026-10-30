@@ -26,6 +26,11 @@ static async Task<int> RunAsync(string[] args)
             PrintHelp();
             return 0;
         }
+        if (options.Command == "schema-relay")
+        {
+            SchemaRelay.Run(options.Values);
+            return 0;
+        }
         using var channel = GrpcChannel.ForAddress(options.Address, new GrpcChannelOptions
         {
             MaxReceiveMessageSize = 32 * 1024 * 1024,
@@ -61,6 +66,15 @@ static async Task ExecuteAsync(OrderService.OrderServiceClient client, Options o
 {
     switch (options.Command)
     {
+        case "retry-demo":
+            await FailureClient.RetryAsync(client, CreateRequest(options), options.Values, options.TimeoutSeconds);
+            break;
+        case "load-orders":
+            await FailureClient.LoadAsync(client, options.Values, options.TimeoutSeconds);
+            break;
+        case "order-statuses":
+            await FailureClient.StatusAsync(client, options.Values, options.TimeoutSeconds);
+            break;
         case "bench":
             await RpcBenchmark.RunAsync(client, options.Values, options.TimeoutSeconds);
             break;
@@ -230,6 +244,10 @@ static void PrintHelp() => Console.WriteLine("""
       demo
       help
       bench --dataset PATH --output-dir PATH [--runs 5] [--run-id TEXT]
+      schema-relay --input PATH --output PATH [--mode direct|json|fields]
+      retry-demo --buyer ID --request-id ID --timeout 0.5 --retry-timeout 10
+      load-orders --dataset PATH --manifest PATH --buyer ID --run-id TEXT [--count 10000]
+      order-statuses --buyer ID --status-file PATH
     Спільні параметри: --address http://127.0.0.1:50051 --timeout 5
     Ціни — у копійках, валюта — гривня. Результати команд — Protobuf JSON.
     Коди виходу: 0 — успіх; 1 — помилка аргументів; 2 — помилка RPC.
@@ -249,7 +267,7 @@ sealed class Options
     {
         var result = new Options();
         var positionals = new List<string>();
-        string[] allowed = ["address", "timeout", "buyer", "request-id", "comment", "promo-code", "item", "country", "city", "street", "postal-code", "dataset", "output-dir", "runs", "run-id"];
+        string[] allowed = ["address", "timeout", "buyer", "request-id", "comment", "promo-code", "item", "country", "city", "street", "postal-code", "dataset", "output-dir", "runs", "run-id", "input", "output", "mode", "retry-timeout", "manifest", "count", "status-file"];
         for (var index = 0; index < args.Length; index++)
         {
             if (args[index] is "--help" or "-h") { result.Command = "help"; return result; }

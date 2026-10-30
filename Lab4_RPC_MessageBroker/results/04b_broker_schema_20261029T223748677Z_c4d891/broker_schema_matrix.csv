@@ -1,0 +1,5 @@
+﻿client,sender,reader,sent_price,decoded_price,outcome,sender_comment,sender_promo,reader_comment,reader_promo,final_status,return_writer,return_reader,result_returned,negative_price_accepted,order_id
+v1,v1,v1,16000,16000,OK,set:NOTE_V1,unknown,set:NOTE_V1,unknown,ORDER_STATUS_CONFIRMED,v1,v1,True,False,b6f62432-b23f-46ce-970e-c7a70145153e
+v1,v1,v2,16000,16000,OK,set:NOTE_V1,unknown,unknown,absent:default='',ORDER_STATUS_CONFIRMED,v2,v1,True,False,3b923953-1531-44ed-8874-916548f5ab3b
+v2,v2,v1,16000,16000,OK,unknown,set:PROMO_V2,absent:default='',unknown,ORDER_STATUS_CONFIRMED,v1,v2,True,False,96a07ef2-66d0-4ada-8f9d-3359af56baf6
+v2,v2,v2,16000,16000,OK,unknown,set:PROMO_V2,unknown,set:PROMO_V2,ORDER_STATUS_CONFIRMED,v2,v2,True,False,68ab4908-dd95-4e51-afa0-5b82016fbe89

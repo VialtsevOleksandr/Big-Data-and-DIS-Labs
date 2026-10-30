@@ -1,0 +1,9 @@
+﻿client,server,scenario,sent,decoded,stored,reply,rpc,outcome,server_comment,server_promo,reply_comment,reply_promo
+v1,v1,even,16000,16000,16000,16000,OK,OK,set:NOTE_V1,unknown,set:NOTE_V1,unknown
+v1,v1,odd,15999,15999,15999,15999,OK,OK,set:NOTE_V1,unknown,set:NOTE_V1,unknown
+v1,v2_breaking,even,16000,8000,8000,16000,OK,silent_corruption,set:NOTE_V1,unknown,set:NOTE_V1,unknown
+v1,v2_breaking,odd,15999,-8000,-,-,INVALID_ARGUMENT,application_error,set:NOTE_V1,unknown,-,-
+v2_breaking,v1,even,16000,32000,32000,16000,OK,silent_corruption,set:NOTE_V1,unknown,set:NOTE_V1,unknown
+v2_breaking,v1,odd,15999,31998,31998,15999,OK,silent_corruption,set:NOTE_V1,unknown,set:NOTE_V1,unknown
+v2_breaking,v2_breaking,even,16000,16000,16000,16000,OK,OK,set:NOTE_V1,unknown,set:NOTE_V1,unknown
+v2_breaking,v2_breaking,odd,15999,15999,15999,15999,OK,OK,set:NOTE_V1,unknown,set:NOTE_V1,unknown

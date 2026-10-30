@@ -1,0 +1,2 @@
+﻿index,source_order_id,request_id,order_id,processing_attempts,acknowledgement_attempts,reservation_attempts,result_deliveries,redelivered_attempts,worker_instances,final_status
+5002,f3ab7d5a-fa54-4677-8f53-74aeeae71bf9,failure-f25c3f474b2f4b20a81d5d81f5ae6198-5002,2015c67c-dd03-40b0-be8b-8375e1331151,2,1,2,2,1,2,2
