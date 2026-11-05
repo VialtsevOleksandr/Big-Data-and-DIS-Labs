@@ -1,0 +1,35 @@
+== Parsed Logical Plan ==
+GlobalLimit 5
++- LocalLimit 5
+   +- Sort [revenue#107 DESC NULLS LAST, date#106 ASC NULLS FIRST], true
+      +- Aggregate [to_date(timestamp#102, None, Some(UTC), true)], [to_date(timestamp#102, None, Some(UTC), true) AS date#106, sum(amount#103) AS revenue#107]
+         +- Filter (category#104 = books)
+            +- Relation [user_id#101L,timestamp#102,amount#103,category#104] parquet
+
+== Analyzed Logical Plan ==
+date: date, revenue: decimal(28,2)
+GlobalLimit 5
++- LocalLimit 5
+   +- Sort [revenue#107 DESC NULLS LAST, date#106 ASC NULLS FIRST], true
+      +- Aggregate [to_date(timestamp#102, None, Some(UTC), true)], [to_date(timestamp#102, None, Some(UTC), true) AS date#106, sum(amount#103) AS revenue#107]
+         +- Filter (category#104 = books)
+            +- Relation [user_id#101L,timestamp#102,amount#103,category#104] parquet
+
+== Optimized Logical Plan ==
+GlobalLimit 5
++- LocalLimit 5
+   +- Sort [revenue#107 DESC NULLS LAST, date#106 ASC NULLS FIRST], true
+      +- Aggregate [_groupingexpression#113], [_groupingexpression#113 AS date#106, sum(amount#103) AS revenue#107]
+         +- Project [amount#103, cast(timestamp#102 as date) AS _groupingexpression#113]
+            +- Filter (isnotnull(category#104) AND (category#104 = books))
+               +- Relation [user_id#101L,timestamp#102,amount#103,category#104] parquet
+
+== Physical Plan ==
+AdaptiveSparkPlan isFinalPlan=false
++- TakeOrderedAndProject(limit=5, orderBy=[revenue#107 DESC NULLS LAST,date#106 ASC NULLS FIRST], output=[date#106,revenue#107])
+   +- HashAggregate(keys=[_groupingexpression#113], functions=[sum(amount#103)], output=[date#106, revenue#107])
+      +- Exchange hashpartitioning(_groupingexpression#113, 200), ENSURE_REQUIREMENTS, [plan_id=305]
+         +- HashAggregate(keys=[_groupingexpression#113], functions=[partial_sum(amount#103)], output=[_groupingexpression#113, sum#116, isEmpty#117])
+            +- Project [amount#103, cast(timestamp#102 as date) AS _groupingexpression#113]
+               +- FileScan parquet [timestamp#102,amount#103,category#104] Batched: true, DataFilters: [], Format: Parquet, Location: InMemoryFileIndex(1 paths)[file:/work2/data/tx_by_category.parquet], PartitionFilters: [isnotnull(category#104), (category#104 = books)], PushedFilters: [], ReadSchema: struct<timestamp:timestamp,amount:decimal(18,2)>
+

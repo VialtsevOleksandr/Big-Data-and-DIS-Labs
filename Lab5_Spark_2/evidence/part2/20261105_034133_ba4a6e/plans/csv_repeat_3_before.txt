@@ -1,0 +1,36 @@
+== Parsed Logical Plan ==
+GlobalLimit 5
++- LocalLimit 5
+   +- Sort [revenue#218 DESC NULLS LAST, date#217 ASC NULLS FIRST], true
+      +- Aggregate [to_date(timestamp#213, None, Some(UTC), true)], [to_date(timestamp#213, None, Some(UTC), true) AS date#217, sum(amount#215) AS revenue#218]
+         +- Filter (category#214 = books)
+            +- Relation [user_id#212L,timestamp#213,category#214,amount#215] csv
+
+== Analyzed Logical Plan ==
+date: date, revenue: decimal(28,2)
+GlobalLimit 5
++- LocalLimit 5
+   +- Sort [revenue#218 DESC NULLS LAST, date#217 ASC NULLS FIRST], true
+      +- Aggregate [to_date(timestamp#213, None, Some(UTC), true)], [to_date(timestamp#213, None, Some(UTC), true) AS date#217, sum(amount#215) AS revenue#218]
+         +- Filter (category#214 = books)
+            +- Relation [user_id#212L,timestamp#213,category#214,amount#215] csv
+
+== Optimized Logical Plan ==
+GlobalLimit 5
++- LocalLimit 5
+   +- Sort [revenue#218 DESC NULLS LAST, date#217 ASC NULLS FIRST], true
+      +- Aggregate [_groupingexpression#224], [_groupingexpression#224 AS date#217, sum(amount#215) AS revenue#218]
+         +- Project [amount#215, cast(timestamp#213 as date) AS _groupingexpression#224]
+            +- Filter (isnotnull(category#214) AND (category#214 = books))
+               +- Relation [user_id#212L,timestamp#213,category#214,amount#215] csv
+
+== Physical Plan ==
+AdaptiveSparkPlan isFinalPlan=false
++- TakeOrderedAndProject(limit=5, orderBy=[revenue#218 DESC NULLS LAST,date#217 ASC NULLS FIRST], output=[date#217,revenue#218])
+   +- HashAggregate(keys=[_groupingexpression#224], functions=[sum(amount#215)], output=[date#217, revenue#218])
+      +- Exchange hashpartitioning(_groupingexpression#224, 200), ENSURE_REQUIREMENTS, [plan_id=612]
+         +- HashAggregate(keys=[_groupingexpression#224], functions=[partial_sum(amount#215)], output=[_groupingexpression#224, sum#227, isEmpty#228])
+            +- Project [amount#215, cast(timestamp#213 as date) AS _groupingexpression#224]
+               +- Filter (isnotnull(category#214) AND (category#214 = books))
+                  +- FileScan csv [timestamp#213,category#214,amount#215] Batched: false, DataFilters: [isnotnull(category#214), (category#214 = books)], Format: CSV, Location: InMemoryFileIndex(1 paths)[file:/work2/data/transactions.csv], PartitionFilters: [], PushedFilters: [IsNotNull(category), EqualTo(category,books)], ReadSchema: struct<timestamp:timestamp,category:string,amount:decimal(18,2)>
+

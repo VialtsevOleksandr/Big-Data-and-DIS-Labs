@@ -1,0 +1,48 @@
+== Parsed Logical Plan ==
+'Aggregate ['city], ['city, 'sum('amount) AS revenue#31]
++- Project [user_id#22L, amount#25, city#27]
+   +- Join Inner, (user_id#22L = user_id#26L)
+      :- Filter NOT (user_id#22L = cast(0 as bigint))
+      :  +- Project [user_id#22L, amount#25]
+      :     +- Relation [user_id#22L,timestamp#23,category#24,amount#25] parquet
+      +- Project [user_id#26L, city#27]
+         +- Relation [user_id#26L,city#27,signup_date#28] csv
+
+== Analyzed Logical Plan ==
+city: string, revenue: decimal(28,2)
+Aggregate [city#27], [city#27, sum(amount#25) AS revenue#31]
++- Project [user_id#22L, amount#25, city#27]
+   +- Join Inner, (user_id#22L = user_id#26L)
+      :- Filter NOT (user_id#22L = cast(0 as bigint))
+      :  +- Project [user_id#22L, amount#25]
+      :     +- Relation [user_id#22L,timestamp#23,category#24,amount#25] parquet
+      +- Project [user_id#26L, city#27]
+         +- Relation [user_id#26L,city#27,signup_date#28] csv
+
+== Optimized Logical Plan ==
+Aggregate [city#27], [city#27, sum(amount#25) AS revenue#31]
++- Project [amount#25, city#27]
+   +- Join Inner, (user_id#22L = user_id#26L)
+      :- Project [user_id#22L, amount#25]
+      :  +- Filter (isnotnull(user_id#22L) AND NOT (user_id#22L = 0))
+      :     +- Relation [user_id#22L,timestamp#23,category#24,amount#25] parquet
+      +- Project [user_id#26L, city#27]
+         +- Filter (NOT (user_id#26L = 0) AND isnotnull(user_id#26L))
+            +- Relation [user_id#26L,city#27,signup_date#28] csv
+
+== Physical Plan ==
+*(6) HashAggregate(keys=[city#27], functions=[sum(amount#25)], output=[city#27, revenue#31])
++- Exchange hashpartitioning(city#27, 8), ENSURE_REQUIREMENTS, [plan_id=188]
+   +- *(5) HashAggregate(keys=[city#27], functions=[partial_sum(amount#25)], output=[city#27, sum#38, isEmpty#39])
+      +- *(5) Project [amount#25, city#27]
+         +- *(5) SortMergeJoin [user_id#22L], [user_id#26L], Inner
+            :- *(2) Sort [user_id#22L ASC NULLS FIRST], false, 0
+            :  +- Exchange hashpartitioning(user_id#22L, 8), ENSURE_REQUIREMENTS, [plan_id=171]
+            :     +- *(1) Filter (isnotnull(user_id#22L) AND NOT (user_id#22L = 0))
+            :        +- *(1) ColumnarToRow
+            :           +- FileScan parquet [user_id#22L,amount#25] Batched: true, DataFilters: [isnotnull(user_id#22L), NOT (user_id#22L = 0)], Format: Parquet, Location: InMemoryFileIndex(1 paths)[file:/work2/data/tx.parquet], PartitionFilters: [], PushedFilters: [IsNotNull(user_id), Not(EqualTo(user_id,0))], ReadSchema: struct<user_id:bigint,amount:decimal(18,2)>
+            +- *(4) Sort [user_id#26L ASC NULLS FIRST], false, 0
+               +- Exchange hashpartitioning(user_id#26L, 8), ENSURE_REQUIREMENTS, [plan_id=179]
+                  +- *(3) Filter (NOT (user_id#26L = 0) AND isnotnull(user_id#26L))
+                     +- FileScan csv [user_id#26L,city#27] Batched: false, DataFilters: [NOT (user_id#26L = 0), isnotnull(user_id#26L)], Format: CSV, Location: InMemoryFileIndex(1 paths)[file:/work2/data/users.csv], PartitionFilters: [], PushedFilters: [Not(EqualTo(user_id,0)), IsNotNull(user_id)], ReadSchema: struct<user_id:bigint,city:string>
+

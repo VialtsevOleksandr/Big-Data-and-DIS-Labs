@@ -1,0 +1,49 @@
+== Parsed Logical Plan ==
+GlobalLimit 5
++- LocalLimit 5
+   +- Sort [revenue#242 DESC NULLS LAST, date#241 ASC NULLS FIRST], true
+      +- Aggregate [to_date(timestamp#237, None, Some(UTC), true)], [to_date(timestamp#237, None, Some(UTC), true) AS date#241, sum(amount#239) AS revenue#242]
+         +- Filter (category#238 = books)
+            +- Relation [user_id#236L,timestamp#237,category#238,amount#239] parquet
+
+== Analyzed Logical Plan ==
+date: date, revenue: decimal(28,2)
+GlobalLimit 5
++- LocalLimit 5
+   +- Sort [revenue#242 DESC NULLS LAST, date#241 ASC NULLS FIRST], true
+      +- Aggregate [to_date(timestamp#237, None, Some(UTC), true)], [to_date(timestamp#237, None, Some(UTC), true) AS date#241, sum(amount#239) AS revenue#242]
+         +- Filter (category#238 = books)
+            +- Relation [user_id#236L,timestamp#237,category#238,amount#239] parquet
+
+== Optimized Logical Plan ==
+GlobalLimit 5
++- LocalLimit 5
+   +- Sort [revenue#242 DESC NULLS LAST, date#241 ASC NULLS FIRST], true
+      +- Aggregate [_groupingexpression#248], [_groupingexpression#248 AS date#241, sum(amount#239) AS revenue#242]
+         +- Project [amount#239, cast(timestamp#237 as date) AS _groupingexpression#248]
+            +- Filter (isnotnull(category#238) AND (category#238 = books))
+               +- Relation [user_id#236L,timestamp#237,category#238,amount#239] parquet
+
+== Physical Plan ==
+AdaptiveSparkPlan isFinalPlan=true
++- == Final Plan ==
+   ResultQueryStage 1
+   +- TakeOrderedAndProject(limit=5, orderBy=[revenue#242 DESC NULLS LAST,date#241 ASC NULLS FIRST], output=[date#241,revenue#242])
+      +- *(2) HashAggregate(keys=[_groupingexpression#248], functions=[sum(amount#239)], output=[date#241, revenue#242])
+         +- AQEShuffleRead coalesced
+            +- ShuffleQueryStage 0
+               +- Exchange hashpartitioning(_groupingexpression#248, 200), ENSURE_REQUIREMENTS, [plan_id=695]
+                  +- *(1) HashAggregate(keys=[_groupingexpression#248], functions=[partial_sum(amount#239)], output=[_groupingexpression#248, sum#251, isEmpty#252])
+                     +- *(1) Project [amount#239, cast(timestamp#237 as date) AS _groupingexpression#248]
+                        +- *(1) Filter (isnotnull(category#238) AND (category#238 = books))
+                           +- *(1) ColumnarToRow
+                              +- FileScan parquet [timestamp#237,category#238,amount#239] Batched: true, DataFilters: [isnotnull(category#238), (category#238 = books)], Format: Parquet, Location: InMemoryFileIndex(1 paths)[file:/work2/data/tx.parquet], PartitionFilters: [], PushedFilters: [IsNotNull(category), EqualTo(category,books)], ReadSchema: struct<timestamp:timestamp,category:string,amount:decimal(18,2)>
++- == Initial Plan ==
+   TakeOrderedAndProject(limit=5, orderBy=[revenue#242 DESC NULLS LAST,date#241 ASC NULLS FIRST], output=[date#241,revenue#242])
+   +- HashAggregate(keys=[_groupingexpression#248], functions=[sum(amount#239)], output=[date#241, revenue#242])
+      +- Exchange hashpartitioning(_groupingexpression#248, 200), ENSURE_REQUIREMENTS, [plan_id=672]
+         +- HashAggregate(keys=[_groupingexpression#248], functions=[partial_sum(amount#239)], output=[_groupingexpression#248, sum#251, isEmpty#252])
+            +- Project [amount#239, cast(timestamp#237 as date) AS _groupingexpression#248]
+               +- Filter (isnotnull(category#238) AND (category#238 = books))
+                  +- FileScan parquet [timestamp#237,category#238,amount#239] Batched: true, DataFilters: [isnotnull(category#238), (category#238 = books)], Format: Parquet, Location: InMemoryFileIndex(1 paths)[file:/work2/data/tx.parquet], PartitionFilters: [], PushedFilters: [IsNotNull(category), EqualTo(category,books)], ReadSchema: struct<timestamp:timestamp,category:string,amount:decimal(18,2)>
+

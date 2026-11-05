@@ -1,0 +1,6 @@
+# Generated CSV and Parquet datasets stay local; keep their generation metadata.
+/data/*
+!/data/transactions.metadata.json
+
+# Python cache files stay local. Evidence and the final report are versioned.
+__pycache__/

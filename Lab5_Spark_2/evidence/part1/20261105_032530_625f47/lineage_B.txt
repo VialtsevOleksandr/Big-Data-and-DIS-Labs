@@ -1,0 +1,7 @@
+(10) 03_reduceByKey_user_totals PythonRDD[15] at RDD at PythonRDD.scala:59 []
+ |   MapPartitionsRDD[14] at mapPartitions at PythonRDD.scala:197 []
+ |   ShuffledRDD[13] at partitionBy at DirectMethodHandleAccessor.java:103 []
+ +-(10) PairwiseRDD[12] at reduceByKey at /work2/part1.py:62 []
+    |   PythonRDD[11] at reduceByKey at /work2/part1.py:62 []
+    |   01_transactions_csv MapPartitionsRDD[9] at textFile at DirectMethodHandleAccessor.java:103 []
+    |   /work2/data/transactions.csv HadoopRDD[8] at textFile at DirectMethodHandleAccessor.java:103 []

@@ -1,0 +1,6 @@
+# Preserve binary reports and screenshots without line-ending conversion.
+*.pdf binary
+*.png binary
+
+# Keep the original Spark output unchanged, including its whitespace.
+evidence/** -text -whitespace

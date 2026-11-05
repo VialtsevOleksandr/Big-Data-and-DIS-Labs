@@ -1,0 +1,51 @@
+{
+  "mode": "with_guests_and_users",
+  "seed": 20050406,
+  "transaction_rows": 8000000,
+  "registered_users": 9000,
+  "guest_percent": 30,
+  "guest_rows": 2400000,
+  "registered_transaction_rows": 5600000,
+  "categories": [
+    "groceries",
+    "restaurants",
+    "transport",
+    "clothing",
+    "electronics",
+    "books",
+    "entertainment",
+    "health",
+    "utilities",
+    "travel"
+  ],
+  "cities": [
+    "Kyiv",
+    "Lviv",
+    "Odesa",
+    "Dnipro",
+    "Kharkiv",
+    "Vinnytsia",
+    "Poltava",
+    "Chernihiv",
+    "Cherkasy",
+    "Sumy",
+    "Zhytomyr",
+    "Rivne",
+    "Lutsk",
+    "Ternopil",
+    "Ivano-Frankivsk"
+  ],
+  "start": "2026-01-01",
+  "days": 360,
+  "transactions": {
+    "path": "C:\\Antigravity_Projects\\BigData_DIS\\Lab5_Spark_2\\data\\transactions.csv",
+    "bytes": 324159809,
+    "sha256": "97485d8b3c2354e413c3d31104c47e96c13f0daa413b583b0a7d1e26ac75a8fc"
+  },
+  "users": {
+    "path": "C:\\Antigravity_Projects\\BigData_DIS\\Lab5_Spark_2\\data\\users.csv",
+    "bytes": 215425,
+    "sha256": "9208f206a59148acb289f7d12cacf736e1360d768dda4ac04a936225f8c0cc39"
+  },
+  "meets_lab_minimums": true
+}

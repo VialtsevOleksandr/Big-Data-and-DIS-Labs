@@ -1,0 +1,60 @@
+== Parsed Logical Plan ==
+'Aggregate ['city], ['city, 'sum('amount) AS revenue#87]
++- Project [user_id#78L, amount#81, city#83]
+   +- Join Inner, (user_id#78L = user_id#82L)
+      :- Project [user_id#78L, amount#81]
+      :  +- Relation [user_id#78L,timestamp#79,category#80,amount#81] parquet
+      +- Project [user_id#82L, city#83]
+         +- Relation [user_id#82L,city#83,signup_date#84] csv
+
+== Analyzed Logical Plan ==
+city: string, revenue: decimal(28,2)
+Aggregate [city#83], [city#83, sum(amount#81) AS revenue#87]
++- Project [user_id#78L, amount#81, city#83]
+   +- Join Inner, (user_id#78L = user_id#82L)
+      :- Project [user_id#78L, amount#81]
+      :  +- Relation [user_id#78L,timestamp#79,category#80,amount#81] parquet
+      +- Project [user_id#82L, city#83]
+         +- Relation [user_id#82L,city#83,signup_date#84] csv
+
+== Optimized Logical Plan ==
+Aggregate [city#83], [city#83, sum(amount#81) AS revenue#87]
++- Project [amount#81, city#83]
+   +- Join Inner, (user_id#78L = user_id#82L)
+      :- Project [user_id#78L, amount#81]
+      :  +- Filter isnotnull(user_id#78L)
+      :     +- Relation [user_id#78L,timestamp#79,category#80,amount#81] parquet
+      +- Project [user_id#82L, city#83]
+         +- Filter isnotnull(user_id#82L)
+            +- Relation [user_id#82L,city#83,signup_date#84] csv
+
+== Physical Plan ==
+AdaptiveSparkPlan isFinalPlan=true
++- == Final Plan ==
+   ResultQueryStage 2
+   +- *(3) HashAggregate(keys=[city#83], functions=[sum(amount#81)], output=[city#83, revenue#87])
+      +- AQEShuffleRead coalesced
+         +- ShuffleQueryStage 1
+            +- Exchange hashpartitioning(city#83, 200), ENSURE_REQUIREMENTS, [plan_id=540]
+               +- *(2) HashAggregate(keys=[city#83], functions=[partial_sum(amount#81)], output=[city#83, sum#94, isEmpty#95])
+                  +- *(2) Project [amount#81, city#83]
+                     +- *(2) BroadcastHashJoin [user_id#78L], [user_id#82L], Inner, BuildRight, false, false
+                        :- *(2) Filter isnotnull(user_id#78L)
+                        :  +- *(2) ColumnarToRow
+                        :     +- FileScan parquet [user_id#78L,amount#81] Batched: true, DataFilters: [isnotnull(user_id#78L)], Format: Parquet, Location: InMemoryFileIndex(1 paths)[file:/work2/data/tx.parquet], PartitionFilters: [], PushedFilters: [IsNotNull(user_id)], ReadSchema: struct<user_id:bigint,amount:decimal(18,2)>
+                        +- BroadcastQueryStage 0
+                           +- BroadcastExchange HashedRelationBroadcastMode(List(input[0, bigint, false]),false), [plan_id=483]
+                              +- *(1) Filter isnotnull(user_id#82L)
+                                 +- FileScan csv [user_id#82L,city#83] Batched: false, DataFilters: [isnotnull(user_id#82L)], Format: CSV, Location: InMemoryFileIndex(1 paths)[file:/work2/data/users.csv], PartitionFilters: [], PushedFilters: [IsNotNull(user_id)], ReadSchema: struct<user_id:bigint,city:string>
++- == Initial Plan ==
+   HashAggregate(keys=[city#83], functions=[sum(amount#81)], output=[city#83, revenue#87])
+   +- Exchange hashpartitioning(city#83, 200), ENSURE_REQUIREMENTS, [plan_id=463]
+      +- HashAggregate(keys=[city#83], functions=[partial_sum(amount#81)], output=[city#83, sum#94, isEmpty#95])
+         +- Project [amount#81, city#83]
+            +- BroadcastHashJoin [user_id#78L], [user_id#82L], Inner, BuildRight, false, false
+               :- Filter isnotnull(user_id#78L)
+               :  +- FileScan parquet [user_id#78L,amount#81] Batched: true, DataFilters: [isnotnull(user_id#78L)], Format: Parquet, Location: InMemoryFileIndex(1 paths)[file:/work2/data/tx.parquet], PartitionFilters: [], PushedFilters: [IsNotNull(user_id)], ReadSchema: struct<user_id:bigint,amount:decimal(18,2)>
+               +- BroadcastExchange HashedRelationBroadcastMode(List(input[0, bigint, false]),false), [plan_id=458]
+                  +- Filter isnotnull(user_id#82L)
+                     +- FileScan csv [user_id#82L,city#83] Batched: false, DataFilters: [isnotnull(user_id#82L)], Format: CSV, Location: InMemoryFileIndex(1 paths)[file:/work2/data/users.csv], PartitionFilters: [], PushedFilters: [IsNotNull(user_id)], ReadSchema: struct<user_id:bigint,city:string>
+

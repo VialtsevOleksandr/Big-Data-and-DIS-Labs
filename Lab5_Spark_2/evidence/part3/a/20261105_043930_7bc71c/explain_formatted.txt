@@ -1,0 +1,149 @@
+== Physical Plan ==
+AdaptiveSparkPlan (24)
++- == Final Plan ==
+   ResultQueryStage (15)
+   +- * HashAggregate (14)
+      +- AQEShuffleRead (13), coalesced
+         +- ShuffleQueryStage (12), Statistics(sizeInBytes=3.4 KiB, rowCount=60)
+            +- Exchange (11)
+               +- * HashAggregate (10)
+                  +- * Project (9)
+                     +- * BroadcastHashJoin Inner BuildRight (8)
+                        :- * Filter (3)
+                        :  +- * ColumnarToRow (2)
+                        :     +- Scan parquet  (1)
+                        +- BroadcastQueryStage (7), Statistics(sizeInBytes=64.1 MiB, rowCount=9.00E+3)
+                           +- BroadcastExchange (6)
+                              +- * Filter (5)
+                                 +- Scan csv  (4)
++- == Initial Plan ==
+   HashAggregate (23)
+   +- Exchange (22)
+      +- HashAggregate (21)
+         +- Project (20)
+            +- BroadcastHashJoin Inner BuildRight (19)
+               :- Filter (16)
+               :  +- Scan parquet  (1)
+               +- BroadcastExchange (18)
+                  +- Filter (17)
+                     +- Scan csv  (4)
+
+
+(1) Scan parquet 
+Output [2]: [user_id#26L, amount#29]
+Batched: true
+Location: InMemoryFileIndex [file:/work2/data/tx.parquet]
+PushedFilters: [IsNotNull(user_id)]
+ReadSchema: struct<user_id:bigint,amount:decimal(18,2)>
+
+(2) ColumnarToRow [codegen id : 2]
+Input [2]: [user_id#26L, amount#29]
+
+(3) Filter [codegen id : 2]
+Input [2]: [user_id#26L, amount#29]
+Condition : isnotnull(user_id#26L)
+
+(4) Scan csv 
+Output [2]: [user_id#30L, city#31]
+Batched: false
+Location: InMemoryFileIndex [file:/work2/data/users.csv]
+PushedFilters: [IsNotNull(user_id)]
+ReadSchema: struct<user_id:bigint,city:string>
+
+(5) Filter [codegen id : 1]
+Input [2]: [user_id#30L, city#31]
+Condition : isnotnull(user_id#30L)
+
+(6) BroadcastExchange
+Input [2]: [user_id#30L, city#31]
+Arguments: HashedRelationBroadcastMode(List(input[0, bigint, false]),false), [plan_id=201]
+
+(7) BroadcastQueryStage
+Output [2]: [user_id#30L, city#31]
+Arguments: 0
+
+(8) BroadcastHashJoin [codegen id : 2]
+Left keys [1]: [user_id#26L]
+Right keys [1]: [user_id#30L]
+Join type: Inner
+Join condition: None
+
+(9) Project [codegen id : 2]
+Output [2]: [amount#29, city#31]
+Input [4]: [user_id#26L, amount#29, user_id#30L, city#31]
+
+(10) HashAggregate [codegen id : 2]
+Input [2]: [amount#29, city#31]
+Keys [1]: [city#31]
+Functions [1]: [partial_sum(amount#29)]
+Aggregate Attributes [2]: [sum#40, isEmpty#41]
+Results [3]: [city#31, sum#42, isEmpty#43]
+
+(11) Exchange
+Input [3]: [city#31, sum#42, isEmpty#43]
+Arguments: hashpartitioning(city#31, 200), ENSURE_REQUIREMENTS, [plan_id=258]
+
+(12) ShuffleQueryStage
+Output [3]: [city#31, sum#42, isEmpty#43]
+Arguments: 1
+
+(13) AQEShuffleRead
+Input [3]: [city#31, sum#42, isEmpty#43]
+Arguments: coalesced
+
+(14) HashAggregate [codegen id : 3]
+Input [3]: [city#31, sum#42, isEmpty#43]
+Keys [1]: [city#31]
+Functions [1]: [sum(amount#29)]
+Aggregate Attributes [1]: [sum(amount#29)#39]
+Results [2]: [city#31, sum(amount#29)#39 AS revenue#35]
+
+(15) ResultQueryStage
+Output [2]: [city#31, revenue#35]
+Arguments: 2
+
+(16) Filter
+Input [2]: [user_id#26L, amount#29]
+Condition : isnotnull(user_id#26L)
+
+(17) Filter
+Input [2]: [user_id#30L, city#31]
+Condition : isnotnull(user_id#30L)
+
+(18) BroadcastExchange
+Input [2]: [user_id#30L, city#31]
+Arguments: HashedRelationBroadcastMode(List(input[0, bigint, false]),false), [plan_id=176]
+
+(19) BroadcastHashJoin
+Left keys [1]: [user_id#26L]
+Right keys [1]: [user_id#30L]
+Join type: Inner
+Join condition: None
+
+(20) Project
+Output [2]: [amount#29, city#31]
+Input [4]: [user_id#26L, amount#29, user_id#30L, city#31]
+
+(21) HashAggregate
+Input [2]: [amount#29, city#31]
+Keys [1]: [city#31]
+Functions [1]: [partial_sum(amount#29)]
+Aggregate Attributes [2]: [sum#40, isEmpty#41]
+Results [3]: [city#31, sum#42, isEmpty#43]
+
+(22) Exchange
+Input [3]: [city#31, sum#42, isEmpty#43]
+Arguments: hashpartitioning(city#31, 200), ENSURE_REQUIREMENTS, [plan_id=181]
+
+(23) HashAggregate
+Input [3]: [city#31, sum#42, isEmpty#43]
+Keys [1]: [city#31]
+Functions [1]: [sum(amount#29)]
+Aggregate Attributes [1]: [sum(amount#29)#39]
+Results [2]: [city#31, sum(amount#29)#39 AS revenue#35]
+
+(24) AdaptiveSparkPlan
+Output [2]: [city#31, revenue#35]
+Arguments: isFinalPlan=true
+
+

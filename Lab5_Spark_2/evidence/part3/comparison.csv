@@ -1,0 +1,4 @@
+﻿variant,application_id,join_strategy,seconds,median_seconds,sql_execution_id,join_stage_id,max_records,median_records,max_over_median,join_shuffle_read_bytes,source_shuffle_write_bytes,total_shuffle_write_bytes,results_file
+a,local-1793846380548,BroadcastHashJoin,1.200856; 1.052608; 0.990872,1.052607864001402,1,,,,,,,5328,C:\Antigravity_Projects\BigData_DIS\Lab5_Spark_2\evidence\part3\a\20261105_043930_7bc71c\results.json
+b,local-1793846429376,SortMergeJoin,2.757795; 2.529061; 2.531134,2.53113375599969,1,8,3108367,702186.0,4.426700332960213,71977372,71977372,71983922,C:\Antigravity_Projects\BigData_DIS\Lab5_Spark_2\evidence\part3\b\20261105_044021_1105a4\results.json
+c,local-1793846464545,SortMergeJoin,1.812856; 1.711875; 1.672431,1.711874501001148,1,8,717257,702186.0,1.0214629741977197,56156385,56156385,56162935,C:\Antigravity_Projects\BigData_DIS\Lab5_Spark_2\evidence\part3\c\20261105_044056_09b0d6\results.json

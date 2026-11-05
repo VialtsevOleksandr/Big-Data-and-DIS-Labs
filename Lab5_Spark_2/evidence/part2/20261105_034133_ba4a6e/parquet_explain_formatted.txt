@@ -1,0 +1,111 @@
+== Physical Plan ==
+AdaptiveSparkPlan (18)
++- == Final Plan ==
+   ResultQueryStage (11)
+   +- TakeOrderedAndProject (10)
+      +- * HashAggregate (9)
+         +- AQEShuffleRead (8), coalesced
+            +- ShuffleQueryStage (7), Statistics(sizeInBytes=67.5 KiB, rowCount=1.44E+3)
+               +- Exchange (6)
+                  +- * HashAggregate (5)
+                     +- * Project (4)
+                        +- * Filter (3)
+                           +- * ColumnarToRow (2)
+                              +- Scan parquet  (1)
++- == Initial Plan ==
+   TakeOrderedAndProject (17)
+   +- HashAggregate (16)
+      +- Exchange (15)
+         +- HashAggregate (14)
+            +- Project (13)
+               +- Filter (12)
+                  +- Scan parquet  (1)
+
+
+(1) Scan parquet 
+Output [3]: [timestamp#81, category#82, amount#83]
+Batched: true
+Location: InMemoryFileIndex [file:/work2/data/tx.parquet]
+PushedFilters: [IsNotNull(category), EqualTo(category,books)]
+ReadSchema: struct<timestamp:timestamp,category:string,amount:decimal(18,2)>
+
+(2) ColumnarToRow [codegen id : 1]
+Input [3]: [timestamp#81, category#82, amount#83]
+
+(3) Filter [codegen id : 1]
+Input [3]: [timestamp#81, category#82, amount#83]
+Condition : (isnotnull(category#82) AND (category#82 = books))
+
+(4) Project [codegen id : 1]
+Output [2]: [amount#83, cast(timestamp#81 as date) AS _groupingexpression#92]
+Input [3]: [timestamp#81, category#82, amount#83]
+
+(5) HashAggregate [codegen id : 1]
+Input [2]: [amount#83, _groupingexpression#92]
+Keys [1]: [_groupingexpression#92]
+Functions [1]: [partial_sum(amount#83)]
+Aggregate Attributes [2]: [sum#93, isEmpty#94]
+Results [3]: [_groupingexpression#92, sum#95, isEmpty#96]
+
+(6) Exchange
+Input [3]: [_groupingexpression#92, sum#95, isEmpty#96]
+Arguments: hashpartitioning(_groupingexpression#92, 200), ENSURE_REQUIREMENTS, [plan_id=263]
+
+(7) ShuffleQueryStage
+Output [3]: [_groupingexpression#92, sum#95, isEmpty#96]
+Arguments: 0
+
+(8) AQEShuffleRead
+Input [3]: [_groupingexpression#92, sum#95, isEmpty#96]
+Arguments: coalesced
+
+(9) HashAggregate [codegen id : 2]
+Input [3]: [_groupingexpression#92, sum#95, isEmpty#96]
+Keys [1]: [_groupingexpression#92]
+Functions [1]: [sum(amount#83)]
+Aggregate Attributes [1]: [sum(amount#83)#91]
+Results [2]: [_groupingexpression#92 AS date#85, sum(amount#83)#91 AS revenue#86]
+
+(10) TakeOrderedAndProject
+Input [2]: [date#85, revenue#86]
+Arguments: 5, [revenue#86 DESC NULLS LAST, date#85 ASC NULLS FIRST], [date#85, revenue#86]
+
+(11) ResultQueryStage
+Output [2]: [date#85, revenue#86]
+Arguments: 1
+
+(12) Filter
+Input [3]: [timestamp#81, category#82, amount#83]
+Condition : (isnotnull(category#82) AND (category#82 = books))
+
+(13) Project
+Output [2]: [amount#83, cast(timestamp#81 as date) AS _groupingexpression#92]
+Input [3]: [timestamp#81, category#82, amount#83]
+
+(14) HashAggregate
+Input [2]: [amount#83, _groupingexpression#92]
+Keys [1]: [_groupingexpression#92]
+Functions [1]: [partial_sum(amount#83)]
+Aggregate Attributes [2]: [sum#93, isEmpty#94]
+Results [3]: [_groupingexpression#92, sum#95, isEmpty#96]
+
+(15) Exchange
+Input [3]: [_groupingexpression#92, sum#95, isEmpty#96]
+Arguments: hashpartitioning(_groupingexpression#92, 200), ENSURE_REQUIREMENTS, [plan_id=240]
+
+(16) HashAggregate
+Input [3]: [_groupingexpression#92, sum#95, isEmpty#96]
+Keys [1]: [_groupingexpression#92]
+Functions [1]: [sum(amount#83)]
+Aggregate Attributes [1]: [sum(amount#83)#91]
+Results [2]: [_groupingexpression#92 AS date#85, sum(amount#83)#91 AS revenue#86]
+
+(17) TakeOrderedAndProject
+Input [2]: [date#85, revenue#86]
+Arguments: 5, [revenue#86 DESC NULLS LAST, date#85 ASC NULLS FIRST], [date#85, revenue#86]
+
+(18) AdaptiveSparkPlan
+Output [2]: [date#85, revenue#86]
+Arguments: isFinalPlan=true
+
+

@@ -1,0 +1,4 @@
+﻿source,disk_bytes,data_file_bytes,seconds,median_seconds,scan_number_of_files_read,scan_size_of_files_read_bytes,scan_number_of_output_rows,scan_reference_label,sql_execution_id
+csv,324159809,324159809,3.964848; 3.844562; 3.946952,3.9469515939999837,1,324159809,481269,repeat_1,7
+parquet,110360258,109504706,0.859387; 0.845087; 0.918026,0.8593869789992823,4,109504706,8000000,repeat_1,5
+parquet_by_category,112274401,111403637,0.302538; 0.289484; 0.275756,0.2894838830006847,4,6801420,481269,repeat_1,6

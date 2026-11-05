@@ -1,0 +1,1138 @@
+{
+  "variant": "b",
+  "application": "Lab5_Spark_2_Part3_B",
+  "application_id": "local-1793846429376",
+  "spark_version": "4.2.0",
+  "master": "local[4]",
+  "inputs": {
+    "parquet_files": [
+      {
+        "file": "part-00000-eef9eb58-8848-4d03-a852-2f582c6810a6-c000.snappy.parquet",
+        "bytes": 27698448,
+        "sha256": "2014fdf2f197656339de3c4850295ec2e03fdea294a801ed69a16add3c5155b9"
+      },
+      {
+        "file": "part-00001-eef9eb58-8848-4d03-a852-2f582c6810a6-c000.snappy.parquet",
+        "bytes": 27733628,
+        "sha256": "c438e73cc01238cc958b9886e9e0a0b6225416109c567c0f7021306a55a77dc9"
+      },
+      {
+        "file": "part-00002-eef9eb58-8848-4d03-a852-2f582c6810a6-c000.snappy.parquet",
+        "bytes": 27733346,
+        "sha256": "6f556f8abb5f3b88eb561721f9343125507fcde2ed9d8921957e5c3f8e75aa13"
+      },
+      {
+        "file": "part-00003-eef9eb58-8848-4d03-a852-2f582c6810a6-c000.snappy.parquet",
+        "bytes": 26339284,
+        "sha256": "32f9b1ddb13f2ffb58693433a6669f9ead7746d03d62ef9116b882703cb05f08"
+      }
+    ],
+    "parquet_bytes": 109504706,
+    "parquet_fingerprint": "fe8f51cfb0ec1c65e1fc98871400d7fad2c224786ca422bdc98daf17e1f71b09",
+    "users_sha256": "9208f206a59148acb289f7d12cacf736e1360d768dda4ac04a936225f8c0cc39",
+    "users_bytes": 215425,
+    "registered_users": 9000,
+    "cities": 15,
+    "guest_user_in_directory": false
+  },
+  "transactions": "/work2/data/tx.parquet",
+  "users": "/work2/data/users.csv",
+  "generator_metadata": {
+    "mode": "with_guests_and_users",
+    "seed": 20050406,
+    "transaction_rows": 8000000,
+    "registered_users": 9000,
+    "guest_percent": 30,
+    "guest_rows": 2400000,
+    "registered_transaction_rows": 5600000,
+    "categories": [
+      "groceries",
+      "restaurants",
+      "transport",
+      "clothing",
+      "electronics",
+      "books",
+      "entertainment",
+      "health",
+      "utilities",
+      "travel"
+    ],
+    "cities": [
+      "Kyiv",
+      "Lviv",
+      "Odesa",
+      "Dnipro",
+      "Kharkiv",
+      "Vinnytsia",
+      "Poltava",
+      "Chernihiv",
+      "Cherkasy",
+      "Sumy",
+      "Zhytomyr",
+      "Rivne",
+      "Lutsk",
+      "Ternopil",
+      "Ivano-Frankivsk"
+    ],
+    "start": "2026-01-01",
+    "days": 360,
+    "transactions": {
+      "path": "C:\\Antigravity_Projects\\BigData_DIS\\Lab5_Spark_2\\data\\transactions.csv",
+      "bytes": 324159809,
+      "sha256": "97485d8b3c2354e413c3d31104c47e96c13f0daa413b583b0a7d1e26ac75a8fc"
+    },
+    "users": {
+      "path": "C:\\Antigravity_Projects\\BigData_DIS\\Lab5_Spark_2\\data\\users.csv",
+      "bytes": 215425,
+      "sha256": "9208f206a59148acb289f7d12cacf736e1360d768dda4ac04a936225f8c0cc39"
+    },
+    "meets_lab_minimums": true
+  },
+  "warmups": 1,
+  "repeats": 3,
+  "runs": [
+    {
+      "label": "warmup",
+      "seconds": 5.345015212998987,
+      "sql_execution_id": 0,
+      "join_strategy": "SortMergeJoin",
+      "result": [
+        {
+          "city": "Cherkasy",
+          "revenue": "54819918.24"
+        },
+        {
+          "city": "Chernihiv",
+          "revenue": "54935957.08"
+        },
+        {
+          "city": "Dnipro",
+          "revenue": "54853393.04"
+        },
+        {
+          "city": "Ivano-Frankivsk",
+          "revenue": "54388400.72"
+        },
+        {
+          "city": "Kharkiv",
+          "revenue": "54777737.68"
+        },
+        {
+          "city": "Kyiv",
+          "revenue": "54845804.47"
+        },
+        {
+          "city": "Lutsk",
+          "revenue": "54574010.37"
+        },
+        {
+          "city": "Lviv",
+          "revenue": "55034200.01"
+        },
+        {
+          "city": "Odesa",
+          "revenue": "54874091.50"
+        },
+        {
+          "city": "Poltava",
+          "revenue": "54490979.26"
+        },
+        {
+          "city": "Rivne",
+          "revenue": "54994977.71"
+        },
+        {
+          "city": "Sumy",
+          "revenue": "54363989.83"
+        },
+        {
+          "city": "Ternopil",
+          "revenue": "54617180.18"
+        },
+        {
+          "city": "Vinnytsia",
+          "revenue": "54791265.98"
+        },
+        {
+          "city": "Zhytomyr",
+          "revenue": "54962451.38"
+        }
+      ],
+      "job_ids": [
+        1
+      ],
+      "stages": [
+        {
+          "stage_id": 1,
+          "attempt_id": 0,
+          "tasks": 4,
+          "name": "collect at /work2/part3.py:152",
+          "shuffle_read_bytes": 0,
+          "shuffle_read_records": 0,
+          "shuffle_write_bytes": 71882967,
+          "shuffle_write_records": 8000000,
+          "input_bytes": 106460,
+          "input_records": 8000000,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        },
+        {
+          "stage_id": 2,
+          "attempt_id": 0,
+          "tasks": 1,
+          "name": "collect at /work2/part3.py:152",
+          "shuffle_read_bytes": 0,
+          "shuffle_read_records": 0,
+          "shuffle_write_bytes": 94405,
+          "shuffle_write_records": 9000,
+          "input_bytes": 215425,
+          "input_records": 9000,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        },
+        {
+          "stage_id": 3,
+          "attempt_id": 0,
+          "tasks": 8,
+          "name": "collect at /work2/part3.py:152",
+          "shuffle_read_bytes": 71977372,
+          "shuffle_read_records": 8009000,
+          "shuffle_write_bytes": 6550,
+          "shuffle_write_records": 120,
+          "input_bytes": 0,
+          "input_records": 0,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        },
+        {
+          "stage_id": 4,
+          "attempt_id": 0,
+          "tasks": 8,
+          "name": "collect at /work2/part3.py:152",
+          "shuffle_read_bytes": 6550,
+          "shuffle_read_records": 120,
+          "shuffle_write_bytes": 0,
+          "shuffle_write_records": 0,
+          "input_bytes": 0,
+          "input_records": 0,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        }
+      ],
+      "skipped_stage_ids": [],
+      "total_shuffle_write_bytes": 71983922,
+      "join_stage": {
+        "stage_id": 3,
+        "attempt_id": 0,
+        "tasks": 8,
+        "name": "collect at /work2/part3.py:152",
+        "shuffle_read_bytes": 71977372,
+        "shuffle_read_records": 8009000,
+        "shuffle_write_bytes": 6550,
+        "shuffle_write_records": 120,
+        "input_bytes": 0,
+        "input_records": 0,
+        "memory_bytes_spilled": 0,
+        "disk_bytes_spilled": 0,
+        "task_metrics": [
+          {
+            "index": 0,
+            "task_id": 6,
+            "attempt": 0,
+            "duration_ms": 1282,
+            "shuffle_read_records": 695870,
+            "shuffle_read_bytes": 6956274,
+            "shuffle_write_bytes": 816,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 1,
+            "task_id": 7,
+            "attempt": 0,
+            "duration_ms": 1243,
+            "shuffle_read_records": 688090,
+            "shuffle_read_bytes": 6895755,
+            "shuffle_write_bytes": 822,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 2,
+            "task_id": 8,
+            "attempt": 0,
+            "duration_ms": 1279,
+            "shuffle_read_records": 686196,
+            "shuffle_read_bytes": 6861695,
+            "shuffle_write_bytes": 826,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 3,
+            "task_id": 9,
+            "attempt": 0,
+            "duration_ms": 1282,
+            "shuffle_read_records": 717257,
+            "shuffle_read_bytes": 7177451,
+            "shuffle_write_bytes": 821,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 4,
+            "task_id": 10,
+            "attempt": 0,
+            "duration_ms": 637,
+            "shuffle_read_records": 708848,
+            "shuffle_read_bytes": 7118852,
+            "shuffle_write_bytes": 820,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 5,
+            "task_id": 11,
+            "attempt": 0,
+            "duration_ms": 1486,
+            "shuffle_read_records": 3108367,
+            "shuffle_read_bytes": 22906355,
+            "shuffle_write_bytes": 810,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 6,
+            "task_id": 12,
+            "attempt": 0,
+            "duration_ms": 650,
+            "shuffle_read_records": 696990,
+            "shuffle_read_bytes": 6978976,
+            "shuffle_write_bytes": 817,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 7,
+            "task_id": 13,
+            "attempt": 0,
+            "duration_ms": 607,
+            "shuffle_read_records": 707382,
+            "shuffle_read_bytes": 7082014,
+            "shuffle_write_bytes": 818,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          }
+        ],
+        "max_records": 3108367,
+        "median_records": 702186.0,
+        "max_over_median": 4.426700332960213,
+        "largest_task_read_bytes": 22906355,
+        "source_shuffle_write_bytes": 71977372
+      }
+    },
+    {
+      "label": "repeat_1",
+      "seconds": 2.757795243000146,
+      "sql_execution_id": 1,
+      "join_strategy": "SortMergeJoin",
+      "result": [
+        {
+          "city": "Cherkasy",
+          "revenue": "54819918.24"
+        },
+        {
+          "city": "Chernihiv",
+          "revenue": "54935957.08"
+        },
+        {
+          "city": "Dnipro",
+          "revenue": "54853393.04"
+        },
+        {
+          "city": "Ivano-Frankivsk",
+          "revenue": "54388400.72"
+        },
+        {
+          "city": "Kharkiv",
+          "revenue": "54777737.68"
+        },
+        {
+          "city": "Kyiv",
+          "revenue": "54845804.47"
+        },
+        {
+          "city": "Lutsk",
+          "revenue": "54574010.37"
+        },
+        {
+          "city": "Lviv",
+          "revenue": "55034200.01"
+        },
+        {
+          "city": "Odesa",
+          "revenue": "54874091.50"
+        },
+        {
+          "city": "Poltava",
+          "revenue": "54490979.26"
+        },
+        {
+          "city": "Rivne",
+          "revenue": "54994977.71"
+        },
+        {
+          "city": "Sumy",
+          "revenue": "54363989.83"
+        },
+        {
+          "city": "Ternopil",
+          "revenue": "54617180.18"
+        },
+        {
+          "city": "Vinnytsia",
+          "revenue": "54791265.98"
+        },
+        {
+          "city": "Zhytomyr",
+          "revenue": "54962451.38"
+        }
+      ],
+      "job_ids": [
+        3
+      ],
+      "stages": [
+        {
+          "stage_id": 6,
+          "attempt_id": 0,
+          "tasks": 4,
+          "name": "collect at /work2/part3.py:152",
+          "shuffle_read_bytes": 0,
+          "shuffle_read_records": 0,
+          "shuffle_write_bytes": 71882967,
+          "shuffle_write_records": 8000000,
+          "input_bytes": 106460,
+          "input_records": 8000000,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        },
+        {
+          "stage_id": 7,
+          "attempt_id": 0,
+          "tasks": 1,
+          "name": "collect at /work2/part3.py:152",
+          "shuffle_read_bytes": 0,
+          "shuffle_read_records": 0,
+          "shuffle_write_bytes": 94405,
+          "shuffle_write_records": 9000,
+          "input_bytes": 215425,
+          "input_records": 9000,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        },
+        {
+          "stage_id": 8,
+          "attempt_id": 0,
+          "tasks": 8,
+          "name": "collect at /work2/part3.py:152",
+          "shuffle_read_bytes": 71977372,
+          "shuffle_read_records": 8009000,
+          "shuffle_write_bytes": 6550,
+          "shuffle_write_records": 120,
+          "input_bytes": 0,
+          "input_records": 0,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        },
+        {
+          "stage_id": 9,
+          "attempt_id": 0,
+          "tasks": 8,
+          "name": "collect at /work2/part3.py:152",
+          "shuffle_read_bytes": 6550,
+          "shuffle_read_records": 120,
+          "shuffle_write_bytes": 0,
+          "shuffle_write_records": 0,
+          "input_bytes": 0,
+          "input_records": 0,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        }
+      ],
+      "skipped_stage_ids": [],
+      "total_shuffle_write_bytes": 71983922,
+      "join_stage": {
+        "stage_id": 8,
+        "attempt_id": 0,
+        "tasks": 8,
+        "name": "collect at /work2/part3.py:152",
+        "shuffle_read_bytes": 71977372,
+        "shuffle_read_records": 8009000,
+        "shuffle_write_bytes": 6550,
+        "shuffle_write_records": 120,
+        "input_bytes": 0,
+        "input_records": 0,
+        "memory_bytes_spilled": 0,
+        "disk_bytes_spilled": 0,
+        "task_metrics": [
+          {
+            "index": 0,
+            "task_id": 28,
+            "attempt": 0,
+            "duration_ms": 575,
+            "shuffle_read_records": 695870,
+            "shuffle_read_bytes": 6956274,
+            "shuffle_write_bytes": 816,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 1,
+            "task_id": 29,
+            "attempt": 0,
+            "duration_ms": 543,
+            "shuffle_read_records": 688090,
+            "shuffle_read_bytes": 6895755,
+            "shuffle_write_bytes": 822,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 2,
+            "task_id": 30,
+            "attempt": 0,
+            "duration_ms": 545,
+            "shuffle_read_records": 686196,
+            "shuffle_read_bytes": 6861695,
+            "shuffle_write_bytes": 826,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 3,
+            "task_id": 31,
+            "attempt": 0,
+            "duration_ms": 561,
+            "shuffle_read_records": 717257,
+            "shuffle_read_bytes": 7177451,
+            "shuffle_write_bytes": 821,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 4,
+            "task_id": 32,
+            "attempt": 0,
+            "duration_ms": 483,
+            "shuffle_read_records": 708848,
+            "shuffle_read_bytes": 7118852,
+            "shuffle_write_bytes": 820,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 5,
+            "task_id": 33,
+            "attempt": 0,
+            "duration_ms": 1156,
+            "shuffle_read_records": 3108367,
+            "shuffle_read_bytes": 22906355,
+            "shuffle_write_bytes": 810,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 6,
+            "task_id": 34,
+            "attempt": 0,
+            "duration_ms": 458,
+            "shuffle_read_records": 696990,
+            "shuffle_read_bytes": 6978976,
+            "shuffle_write_bytes": 817,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 7,
+            "task_id": 35,
+            "attempt": 0,
+            "duration_ms": 473,
+            "shuffle_read_records": 707382,
+            "shuffle_read_bytes": 7082014,
+            "shuffle_write_bytes": 818,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          }
+        ],
+        "max_records": 3108367,
+        "median_records": 702186.0,
+        "max_over_median": 4.426700332960213,
+        "largest_task_read_bytes": 22906355,
+        "source_shuffle_write_bytes": 71977372
+      }
+    },
+    {
+      "label": "repeat_2",
+      "seconds": 2.529060806000416,
+      "sql_execution_id": 2,
+      "join_strategy": "SortMergeJoin",
+      "result": [
+        {
+          "city": "Cherkasy",
+          "revenue": "54819918.24"
+        },
+        {
+          "city": "Chernihiv",
+          "revenue": "54935957.08"
+        },
+        {
+          "city": "Dnipro",
+          "revenue": "54853393.04"
+        },
+        {
+          "city": "Ivano-Frankivsk",
+          "revenue": "54388400.72"
+        },
+        {
+          "city": "Kharkiv",
+          "revenue": "54777737.68"
+        },
+        {
+          "city": "Kyiv",
+          "revenue": "54845804.47"
+        },
+        {
+          "city": "Lutsk",
+          "revenue": "54574010.37"
+        },
+        {
+          "city": "Lviv",
+          "revenue": "55034200.01"
+        },
+        {
+          "city": "Odesa",
+          "revenue": "54874091.50"
+        },
+        {
+          "city": "Poltava",
+          "revenue": "54490979.26"
+        },
+        {
+          "city": "Rivne",
+          "revenue": "54994977.71"
+        },
+        {
+          "city": "Sumy",
+          "revenue": "54363989.83"
+        },
+        {
+          "city": "Ternopil",
+          "revenue": "54617180.18"
+        },
+        {
+          "city": "Vinnytsia",
+          "revenue": "54791265.98"
+        },
+        {
+          "city": "Zhytomyr",
+          "revenue": "54962451.38"
+        }
+      ],
+      "job_ids": [
+        5
+      ],
+      "stages": [
+        {
+          "stage_id": 11,
+          "attempt_id": 0,
+          "tasks": 4,
+          "name": "collect at /work2/part3.py:152",
+          "shuffle_read_bytes": 0,
+          "shuffle_read_records": 0,
+          "shuffle_write_bytes": 71882967,
+          "shuffle_write_records": 8000000,
+          "input_bytes": 106460,
+          "input_records": 8000000,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        },
+        {
+          "stage_id": 12,
+          "attempt_id": 0,
+          "tasks": 1,
+          "name": "collect at /work2/part3.py:152",
+          "shuffle_read_bytes": 0,
+          "shuffle_read_records": 0,
+          "shuffle_write_bytes": 94405,
+          "shuffle_write_records": 9000,
+          "input_bytes": 215425,
+          "input_records": 9000,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        },
+        {
+          "stage_id": 13,
+          "attempt_id": 0,
+          "tasks": 8,
+          "name": "collect at /work2/part3.py:152",
+          "shuffle_read_bytes": 71977372,
+          "shuffle_read_records": 8009000,
+          "shuffle_write_bytes": 6550,
+          "shuffle_write_records": 120,
+          "input_bytes": 0,
+          "input_records": 0,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        },
+        {
+          "stage_id": 14,
+          "attempt_id": 0,
+          "tasks": 8,
+          "name": "collect at /work2/part3.py:152",
+          "shuffle_read_bytes": 6550,
+          "shuffle_read_records": 120,
+          "shuffle_write_bytes": 0,
+          "shuffle_write_records": 0,
+          "input_bytes": 0,
+          "input_records": 0,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        }
+      ],
+      "skipped_stage_ids": [],
+      "total_shuffle_write_bytes": 71983922,
+      "join_stage": {
+        "stage_id": 13,
+        "attempt_id": 0,
+        "tasks": 8,
+        "name": "collect at /work2/part3.py:152",
+        "shuffle_read_bytes": 71977372,
+        "shuffle_read_records": 8009000,
+        "shuffle_write_bytes": 6550,
+        "shuffle_write_records": 120,
+        "input_bytes": 0,
+        "input_records": 0,
+        "memory_bytes_spilled": 0,
+        "disk_bytes_spilled": 0,
+        "task_metrics": [
+          {
+            "index": 0,
+            "task_id": 50,
+            "attempt": 0,
+            "duration_ms": 438,
+            "shuffle_read_records": 695870,
+            "shuffle_read_bytes": 6956274,
+            "shuffle_write_bytes": 816,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 1,
+            "task_id": 51,
+            "attempt": 0,
+            "duration_ms": 437,
+            "shuffle_read_records": 688090,
+            "shuffle_read_bytes": 6895755,
+            "shuffle_write_bytes": 822,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 2,
+            "task_id": 52,
+            "attempt": 0,
+            "duration_ms": 438,
+            "shuffle_read_records": 686196,
+            "shuffle_read_bytes": 6861695,
+            "shuffle_write_bytes": 826,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 3,
+            "task_id": 53,
+            "attempt": 0,
+            "duration_ms": 471,
+            "shuffle_read_records": 717257,
+            "shuffle_read_bytes": 7177451,
+            "shuffle_write_bytes": 821,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 4,
+            "task_id": 54,
+            "attempt": 0,
+            "duration_ms": 479,
+            "shuffle_read_records": 708848,
+            "shuffle_read_bytes": 7118852,
+            "shuffle_write_bytes": 820,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 5,
+            "task_id": 55,
+            "attempt": 0,
+            "duration_ms": 1087,
+            "shuffle_read_records": 3108367,
+            "shuffle_read_bytes": 22906355,
+            "shuffle_write_bytes": 810,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 6,
+            "task_id": 56,
+            "attempt": 0,
+            "duration_ms": 479,
+            "shuffle_read_records": 696990,
+            "shuffle_read_bytes": 6978976,
+            "shuffle_write_bytes": 817,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 7,
+            "task_id": 57,
+            "attempt": 0,
+            "duration_ms": 492,
+            "shuffle_read_records": 707382,
+            "shuffle_read_bytes": 7082014,
+            "shuffle_write_bytes": 818,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          }
+        ],
+        "max_records": 3108367,
+        "median_records": 702186.0,
+        "max_over_median": 4.426700332960213,
+        "largest_task_read_bytes": 22906355,
+        "source_shuffle_write_bytes": 71977372
+      }
+    },
+    {
+      "label": "repeat_3",
+      "seconds": 2.53113375599969,
+      "sql_execution_id": 3,
+      "join_strategy": "SortMergeJoin",
+      "result": [
+        {
+          "city": "Cherkasy",
+          "revenue": "54819918.24"
+        },
+        {
+          "city": "Chernihiv",
+          "revenue": "54935957.08"
+        },
+        {
+          "city": "Dnipro",
+          "revenue": "54853393.04"
+        },
+        {
+          "city": "Ivano-Frankivsk",
+          "revenue": "54388400.72"
+        },
+        {
+          "city": "Kharkiv",
+          "revenue": "54777737.68"
+        },
+        {
+          "city": "Kyiv",
+          "revenue": "54845804.47"
+        },
+        {
+          "city": "Lutsk",
+          "revenue": "54574010.37"
+        },
+        {
+          "city": "Lviv",
+          "revenue": "55034200.01"
+        },
+        {
+          "city": "Odesa",
+          "revenue": "54874091.50"
+        },
+        {
+          "city": "Poltava",
+          "revenue": "54490979.26"
+        },
+        {
+          "city": "Rivne",
+          "revenue": "54994977.71"
+        },
+        {
+          "city": "Sumy",
+          "revenue": "54363989.83"
+        },
+        {
+          "city": "Ternopil",
+          "revenue": "54617180.18"
+        },
+        {
+          "city": "Vinnytsia",
+          "revenue": "54791265.98"
+        },
+        {
+          "city": "Zhytomyr",
+          "revenue": "54962451.38"
+        }
+      ],
+      "job_ids": [
+        7
+      ],
+      "stages": [
+        {
+          "stage_id": 16,
+          "attempt_id": 0,
+          "tasks": 1,
+          "name": "collect at /work2/part3.py:152",
+          "shuffle_read_bytes": 0,
+          "shuffle_read_records": 0,
+          "shuffle_write_bytes": 94405,
+          "shuffle_write_records": 9000,
+          "input_bytes": 215425,
+          "input_records": 9000,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        },
+        {
+          "stage_id": 17,
+          "attempt_id": 0,
+          "tasks": 4,
+          "name": "collect at /work2/part3.py:152",
+          "shuffle_read_bytes": 0,
+          "shuffle_read_records": 0,
+          "shuffle_write_bytes": 71882967,
+          "shuffle_write_records": 8000000,
+          "input_bytes": 106460,
+          "input_records": 8000000,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        },
+        {
+          "stage_id": 18,
+          "attempt_id": 0,
+          "tasks": 8,
+          "name": "collect at /work2/part3.py:152",
+          "shuffle_read_bytes": 71977372,
+          "shuffle_read_records": 8009000,
+          "shuffle_write_bytes": 6550,
+          "shuffle_write_records": 120,
+          "input_bytes": 0,
+          "input_records": 0,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        },
+        {
+          "stage_id": 19,
+          "attempt_id": 0,
+          "tasks": 8,
+          "name": "collect at /work2/part3.py:152",
+          "shuffle_read_bytes": 6550,
+          "shuffle_read_records": 120,
+          "shuffle_write_bytes": 0,
+          "shuffle_write_records": 0,
+          "input_bytes": 0,
+          "input_records": 0,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        }
+      ],
+      "skipped_stage_ids": [],
+      "total_shuffle_write_bytes": 71983922,
+      "join_stage": {
+        "stage_id": 18,
+        "attempt_id": 0,
+        "tasks": 8,
+        "name": "collect at /work2/part3.py:152",
+        "shuffle_read_bytes": 71977372,
+        "shuffle_read_records": 8009000,
+        "shuffle_write_bytes": 6550,
+        "shuffle_write_records": 120,
+        "input_bytes": 0,
+        "input_records": 0,
+        "memory_bytes_spilled": 0,
+        "disk_bytes_spilled": 0,
+        "task_metrics": [
+          {
+            "index": 0,
+            "task_id": 72,
+            "attempt": 0,
+            "duration_ms": 440,
+            "shuffle_read_records": 695870,
+            "shuffle_read_bytes": 6956274,
+            "shuffle_write_bytes": 816,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 1,
+            "task_id": 73,
+            "attempt": 0,
+            "duration_ms": 421,
+            "shuffle_read_records": 688090,
+            "shuffle_read_bytes": 6895755,
+            "shuffle_write_bytes": 822,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 2,
+            "task_id": 74,
+            "attempt": 0,
+            "duration_ms": 466,
+            "shuffle_read_records": 686196,
+            "shuffle_read_bytes": 6861695,
+            "shuffle_write_bytes": 826,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 3,
+            "task_id": 75,
+            "attempt": 0,
+            "duration_ms": 467,
+            "shuffle_read_records": 717257,
+            "shuffle_read_bytes": 7177451,
+            "shuffle_write_bytes": 821,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 4,
+            "task_id": 76,
+            "attempt": 0,
+            "duration_ms": 476,
+            "shuffle_read_records": 708848,
+            "shuffle_read_bytes": 7118852,
+            "shuffle_write_bytes": 820,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 5,
+            "task_id": 77,
+            "attempt": 0,
+            "duration_ms": 1152,
+            "shuffle_read_records": 3108367,
+            "shuffle_read_bytes": 22906355,
+            "shuffle_write_bytes": 810,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 6,
+            "task_id": 78,
+            "attempt": 0,
+            "duration_ms": 462,
+            "shuffle_read_records": 696990,
+            "shuffle_read_bytes": 6978976,
+            "shuffle_write_bytes": 817,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          },
+          {
+            "index": 7,
+            "task_id": 79,
+            "attempt": 0,
+            "duration_ms": 450,
+            "shuffle_read_records": 707382,
+            "shuffle_read_bytes": 7082014,
+            "shuffle_write_bytes": 818,
+            "memory_bytes_spilled": 0,
+            "disk_bytes_spilled": 0
+          }
+        ],
+        "max_records": 3108367,
+        "median_records": 702186.0,
+        "max_over_median": 4.426700332960213,
+        "largest_task_read_bytes": 22906355,
+        "source_shuffle_write_bytes": 71977372
+      }
+    }
+  ],
+  "timing_scope": "query.collect() only; excludes input fingerprinting, DataFrame creation, explain, metrics and driver sorting",
+  "cache_policy": "no Spark cache/persist; OS cache is not cleared",
+  "settings": {
+    "spark.sql.autoBroadcastJoinThreshold": "-1",
+    "spark.sql.adaptive.enabled": "false",
+    "spark.sql.shuffle.partitions": "8",
+    "spark.sql.join.preferSortMergeJoin": "true",
+    "spark.sql.adaptive.skewJoin.enabled": "true",
+    "spark.sql.adaptive.skewJoin.skewedPartitionFactor": "5.0",
+    "spark.sql.adaptive.skewJoin.skewedPartitionThresholdInBytes": "268435456b"
+  },
+  "broadcast_threshold_bytes": -1,
+  "users_estimated_plan_bytes": 193882,
+  "status": "complete",
+  "result": [
+    {
+      "city": "Cherkasy",
+      "revenue": "54819918.24"
+    },
+    {
+      "city": "Chernihiv",
+      "revenue": "54935957.08"
+    },
+    {
+      "city": "Dnipro",
+      "revenue": "54853393.04"
+    },
+    {
+      "city": "Ivano-Frankivsk",
+      "revenue": "54388400.72"
+    },
+    {
+      "city": "Kharkiv",
+      "revenue": "54777737.68"
+    },
+    {
+      "city": "Kyiv",
+      "revenue": "54845804.47"
+    },
+    {
+      "city": "Lutsk",
+      "revenue": "54574010.37"
+    },
+    {
+      "city": "Lviv",
+      "revenue": "55034200.01"
+    },
+    {
+      "city": "Odesa",
+      "revenue": "54874091.50"
+    },
+    {
+      "city": "Poltava",
+      "revenue": "54490979.26"
+    },
+    {
+      "city": "Rivne",
+      "revenue": "54994977.71"
+    },
+    {
+      "city": "Sumy",
+      "revenue": "54363989.83"
+    },
+    {
+      "city": "Ternopil",
+      "revenue": "54617180.18"
+    },
+    {
+      "city": "Vinnytsia",
+      "revenue": "54791265.98"
+    },
+    {
+      "city": "Zhytomyr",
+      "revenue": "54962451.38"
+    }
+  ],
+  "repeats_equal": true,
+  "seconds": [
+    2.757795243000146,
+    2.529060806000416,
+    2.53113375599969
+  ],
+  "median_seconds": 2.53113375599969
+}

@@ -1,0 +1,326 @@
+{
+  "results_equal": true,
+  "reference": "repeat_1 metrics; medians from all three measured repeats",
+  "comparison": [
+    {
+      "variant": "a",
+      "application_id": "local-1793846380548",
+      "join_strategy": "BroadcastHashJoin",
+      "seconds": "1.200856; 1.052608; 0.990872",
+      "median_seconds": 1.052607864001402,
+      "sql_execution_id": 1,
+      "join_stage_id": null,
+      "max_records": null,
+      "median_records": null,
+      "max_over_median": null,
+      "join_shuffle_read_bytes": null,
+      "source_shuffle_write_bytes": null,
+      "total_shuffle_write_bytes": 5328,
+      "results_file": "C:\\Antigravity_Projects\\BigData_DIS\\Lab5_Spark_2\\evidence\\part3\\a\\20261105_043930_7bc71c\\results.json"
+    },
+    {
+      "variant": "b",
+      "application_id": "local-1793846429376",
+      "join_strategy": "SortMergeJoin",
+      "seconds": "2.757795; 2.529061; 2.531134",
+      "median_seconds": 2.53113375599969,
+      "sql_execution_id": 1,
+      "join_stage_id": 8,
+      "max_records": 3108367,
+      "median_records": 702186.0,
+      "max_over_median": 4.426700332960213,
+      "join_shuffle_read_bytes": 71977372,
+      "source_shuffle_write_bytes": 71977372,
+      "total_shuffle_write_bytes": 71983922,
+      "results_file": "C:\\Antigravity_Projects\\BigData_DIS\\Lab5_Spark_2\\evidence\\part3\\b\\20261105_044021_1105a4\\results.json"
+    },
+    {
+      "variant": "c",
+      "application_id": "local-1793846464545",
+      "join_strategy": "SortMergeJoin",
+      "seconds": "1.812856; 1.711875; 1.672431",
+      "median_seconds": 1.711874501001148,
+      "sql_execution_id": 1,
+      "join_stage_id": 8,
+      "max_records": 717257,
+      "median_records": 702186.0,
+      "max_over_median": 1.0214629741977197,
+      "join_shuffle_read_bytes": 56156385,
+      "source_shuffle_write_bytes": 56156385,
+      "total_shuffle_write_bytes": 56162935,
+      "results_file": "C:\\Antigravity_Projects\\BigData_DIS\\Lab5_Spark_2\\evidence\\part3\\c\\20261105_044056_09b0d6\\results.json"
+    }
+  ],
+  "join_tasks": [
+    {
+      "variant": "b",
+      "stage_id": 8,
+      "index": 0,
+      "task_id": 28,
+      "attempt": 0,
+      "duration_ms": 575,
+      "shuffle_read_records": 695870,
+      "shuffle_read_bytes": 6956274,
+      "shuffle_write_bytes": 816,
+      "memory_bytes_spilled": 0,
+      "disk_bytes_spilled": 0
+    },
+    {
+      "variant": "b",
+      "stage_id": 8,
+      "index": 1,
+      "task_id": 29,
+      "attempt": 0,
+      "duration_ms": 543,
+      "shuffle_read_records": 688090,
+      "shuffle_read_bytes": 6895755,
+      "shuffle_write_bytes": 822,
+      "memory_bytes_spilled": 0,
+      "disk_bytes_spilled": 0
+    },
+    {
+      "variant": "b",
+      "stage_id": 8,
+      "index": 2,
+      "task_id": 30,
+      "attempt": 0,
+      "duration_ms": 545,
+      "shuffle_read_records": 686196,
+      "shuffle_read_bytes": 6861695,
+      "shuffle_write_bytes": 826,
+      "memory_bytes_spilled": 0,
+      "disk_bytes_spilled": 0
+    },
+    {
+      "variant": "b",
+      "stage_id": 8,
+      "index": 3,
+      "task_id": 31,
+      "attempt": 0,
+      "duration_ms": 561,
+      "shuffle_read_records": 717257,
+      "shuffle_read_bytes": 7177451,
+      "shuffle_write_bytes": 821,
+      "memory_bytes_spilled": 0,
+      "disk_bytes_spilled": 0
+    },
+    {
+      "variant": "b",
+      "stage_id": 8,
+      "index": 4,
+      "task_id": 32,
+      "attempt": 0,
+      "duration_ms": 483,
+      "shuffle_read_records": 708848,
+      "shuffle_read_bytes": 7118852,
+      "shuffle_write_bytes": 820,
+      "memory_bytes_spilled": 0,
+      "disk_bytes_spilled": 0
+    },
+    {
+      "variant": "b",
+      "stage_id": 8,
+      "index": 5,
+      "task_id": 33,
+      "attempt": 0,
+      "duration_ms": 1156,
+      "shuffle_read_records": 3108367,
+      "shuffle_read_bytes": 22906355,
+      "shuffle_write_bytes": 810,
+      "memory_bytes_spilled": 0,
+      "disk_bytes_spilled": 0
+    },
+    {
+      "variant": "b",
+      "stage_id": 8,
+      "index": 6,
+      "task_id": 34,
+      "attempt": 0,
+      "duration_ms": 458,
+      "shuffle_read_records": 696990,
+      "shuffle_read_bytes": 6978976,
+      "shuffle_write_bytes": 817,
+      "memory_bytes_spilled": 0,
+      "disk_bytes_spilled": 0
+    },
+    {
+      "variant": "b",
+      "stage_id": 8,
+      "index": 7,
+      "task_id": 35,
+      "attempt": 0,
+      "duration_ms": 473,
+      "shuffle_read_records": 707382,
+      "shuffle_read_bytes": 7082014,
+      "shuffle_write_bytes": 818,
+      "memory_bytes_spilled": 0,
+      "disk_bytes_spilled": 0
+    },
+    {
+      "variant": "c",
+      "stage_id": 8,
+      "index": 0,
+      "task_id": 28,
+      "attempt": 0,
+      "duration_ms": 505,
+      "shuffle_read_records": 695870,
+      "shuffle_read_bytes": 6956274,
+      "shuffle_write_bytes": 816,
+      "memory_bytes_spilled": 0,
+      "disk_bytes_spilled": 0
+    },
+    {
+      "variant": "c",
+      "stage_id": 8,
+      "index": 1,
+      "task_id": 29,
+      "attempt": 0,
+      "duration_ms": 496,
+      "shuffle_read_records": 688090,
+      "shuffle_read_bytes": 6895755,
+      "shuffle_write_bytes": 822,
+      "memory_bytes_spilled": 0,
+      "disk_bytes_spilled": 0
+    },
+    {
+      "variant": "c",
+      "stage_id": 8,
+      "index": 2,
+      "task_id": 30,
+      "attempt": 0,
+      "duration_ms": 483,
+      "shuffle_read_records": 686196,
+      "shuffle_read_bytes": 6861695,
+      "shuffle_write_bytes": 826,
+      "memory_bytes_spilled": 0,
+      "disk_bytes_spilled": 0
+    },
+    {
+      "variant": "c",
+      "stage_id": 8,
+      "index": 3,
+      "task_id": 31,
+      "attempt": 0,
+      "duration_ms": 495,
+      "shuffle_read_records": 717257,
+      "shuffle_read_bytes": 7177451,
+      "shuffle_write_bytes": 821,
+      "memory_bytes_spilled": 0,
+      "disk_bytes_spilled": 0
+    },
+    {
+      "variant": "c",
+      "stage_id": 8,
+      "index": 4,
+      "task_id": 32,
+      "attempt": 0,
+      "duration_ms": 473,
+      "shuffle_read_records": 708848,
+      "shuffle_read_bytes": 7118852,
+      "shuffle_write_bytes": 820,
+      "memory_bytes_spilled": 0,
+      "disk_bytes_spilled": 0
+    },
+    {
+      "variant": "c",
+      "stage_id": 8,
+      "index": 5,
+      "task_id": 33,
+      "attempt": 0,
+      "duration_ms": 471,
+      "shuffle_read_records": 708367,
+      "shuffle_read_bytes": 7085368,
+      "shuffle_write_bytes": 810,
+      "memory_bytes_spilled": 0,
+      "disk_bytes_spilled": 0
+    },
+    {
+      "variant": "c",
+      "stage_id": 8,
+      "index": 6,
+      "task_id": 34,
+      "attempt": 0,
+      "duration_ms": 451,
+      "shuffle_read_records": 696990,
+      "shuffle_read_bytes": 6978976,
+      "shuffle_write_bytes": 817,
+      "memory_bytes_spilled": 0,
+      "disk_bytes_spilled": 0
+    },
+    {
+      "variant": "c",
+      "stage_id": 8,
+      "index": 7,
+      "task_id": 35,
+      "attempt": 0,
+      "duration_ms": 470,
+      "shuffle_read_records": 707382,
+      "shuffle_read_bytes": 7082014,
+      "shuffle_write_bytes": 818,
+      "memory_bytes_spilled": 0,
+      "disk_bytes_spilled": 0
+    }
+  ],
+  "city_revenue": [
+    {
+      "city": "Cherkasy",
+      "revenue": "54819918.24"
+    },
+    {
+      "city": "Chernihiv",
+      "revenue": "54935957.08"
+    },
+    {
+      "city": "Dnipro",
+      "revenue": "54853393.04"
+    },
+    {
+      "city": "Ivano-Frankivsk",
+      "revenue": "54388400.72"
+    },
+    {
+      "city": "Kharkiv",
+      "revenue": "54777737.68"
+    },
+    {
+      "city": "Kyiv",
+      "revenue": "54845804.47"
+    },
+    {
+      "city": "Lutsk",
+      "revenue": "54574010.37"
+    },
+    {
+      "city": "Lviv",
+      "revenue": "55034200.01"
+    },
+    {
+      "city": "Odesa",
+      "revenue": "54874091.50"
+    },
+    {
+      "city": "Poltava",
+      "revenue": "54490979.26"
+    },
+    {
+      "city": "Rivne",
+      "revenue": "54994977.71"
+    },
+    {
+      "city": "Sumy",
+      "revenue": "54363989.83"
+    },
+    {
+      "city": "Ternopil",
+      "revenue": "54617180.18"
+    },
+    {
+      "city": "Vinnytsia",
+      "revenue": "54791265.98"
+    },
+    {
+      "city": "Zhytomyr",
+      "revenue": "54962451.38"
+    }
+  ]
+}

@@ -1,0 +1,1018 @@
+{
+  "application": "Lab5_Spark_2_Part2_CSV_Parquet",
+  "application_id": "local-1793842903787",
+  "spark_version": "4.2.0",
+  "master": "local[4]",
+  "input": "/work2/data/transactions.csv",
+  "input_sha256": "97485d8b3c2354e413c3d31104c47e96c13f0daa413b583b0a7d1e26ac75a8fc",
+  "category": "books",
+  "generator_metadata": {
+    "mode": "with_guests_and_users",
+    "seed": 20050406,
+    "transaction_rows": 8000000,
+    "registered_users": 9000,
+    "guest_percent": 30,
+    "guest_rows": 2400000,
+    "registered_transaction_rows": 5600000,
+    "categories": [
+      "groceries",
+      "restaurants",
+      "transport",
+      "clothing",
+      "electronics",
+      "books",
+      "entertainment",
+      "health",
+      "utilities",
+      "travel"
+    ],
+    "cities": [
+      "Kyiv",
+      "Lviv",
+      "Odesa",
+      "Dnipro",
+      "Kharkiv",
+      "Vinnytsia",
+      "Poltava",
+      "Chernihiv",
+      "Cherkasy",
+      "Sumy",
+      "Zhytomyr",
+      "Rivne",
+      "Lutsk",
+      "Ternopil",
+      "Ivano-Frankivsk"
+    ],
+    "start": "2026-01-01",
+    "days": 360,
+    "transactions": {
+      "path": "C:\\Antigravity_Projects\\BigData_DIS\\Lab5_Spark_2\\data\\transactions.csv",
+      "bytes": 324159809,
+      "sha256": "97485d8b3c2354e413c3d31104c47e96c13f0daa413b583b0a7d1e26ac75a8fc"
+    },
+    "users": {
+      "path": "C:\\Antigravity_Projects\\BigData_DIS\\Lab5_Spark_2\\data\\users.csv",
+      "bytes": 215425,
+      "sha256": "9208f206a59148acb289f7d12cacf736e1360d768dda4ac04a936225f8c0cc39"
+    },
+    "meets_lab_minimums": true
+  },
+  "warmups_per_source": 1,
+  "repeats_per_source": 3,
+  "runs": [
+    {
+      "source": "csv",
+      "input": "/work2/data/transactions.csv",
+      "label": "warmup",
+      "seconds": 4.7077908629999,
+      "sql_execution_id": 2,
+      "job_ids": [
+        2,
+        3
+      ],
+      "scan": {
+        "node_id": 47,
+        "node_name": "Scan csv ",
+        "number_of_files_read": 1,
+        "size_of_files_read_bytes": 324159809,
+        "number_of_output_rows": 481269,
+        "all_metrics": {
+          "numOutputRows": {
+            "name": "number of output rows",
+            "value": 481269,
+            "accumulator_id": 191
+          },
+          "numFiles": {
+            "name": "number of files read",
+            "value": 1,
+            "accumulator_id": 192
+          },
+          "metadataTime": {
+            "name": "metadata time",
+            "value": 0,
+            "accumulator_id": 193
+          },
+          "filesSize": {
+            "name": "size of files read",
+            "value": 324159809,
+            "accumulator_id": 194
+          }
+        }
+      },
+      "result": [
+        {
+          "date": "2026-03-07",
+          "revenue": "47383.76"
+        },
+        {
+          "date": "2026-07-05",
+          "revenue": "46564.94"
+        },
+        {
+          "date": "2026-12-15",
+          "revenue": "46536.28"
+        },
+        {
+          "date": "2026-08-10",
+          "revenue": "46483.50"
+        },
+        {
+          "date": "2026-02-18",
+          "revenue": "46162.17"
+        }
+      ],
+      "plan_file": "/work2/evidence/part2/20261105_034133_ba4a6e/plans/csv_warmup_after.txt"
+    },
+    {
+      "source": "parquet",
+      "input": "/work2/data/tx.parquet",
+      "label": "warmup",
+      "seconds": 1.2151680490005674,
+      "sql_execution_id": 3,
+      "job_ids": [
+        4,
+        5,
+        6
+      ],
+      "scan": {
+        "node_id": 107,
+        "node_name": "Scan parquet ",
+        "number_of_files_read": 4,
+        "size_of_files_read_bytes": 109504706,
+        "number_of_output_rows": 8000000,
+        "all_metrics": {
+          "numFiles": {
+            "name": "number of files read",
+            "value": 4,
+            "accumulator_id": 450
+          },
+          "scanTime": {
+            "name": "scan time",
+            "value": 2569,
+            "accumulator_id": 449
+          },
+          "metadataTime": {
+            "name": "metadata time",
+            "value": 0,
+            "accumulator_id": 451
+          },
+          "filesSize": {
+            "name": "size of files read",
+            "value": 109504706,
+            "accumulator_id": 452
+          },
+          "numOutputRows": {
+            "name": "number of output rows",
+            "value": 8000000,
+            "accumulator_id": 448
+          }
+        }
+      },
+      "result": [
+        {
+          "date": "2026-03-07",
+          "revenue": "47383.76"
+        },
+        {
+          "date": "2026-07-05",
+          "revenue": "46564.94"
+        },
+        {
+          "date": "2026-12-15",
+          "revenue": "46536.28"
+        },
+        {
+          "date": "2026-08-10",
+          "revenue": "46483.50"
+        },
+        {
+          "date": "2026-02-18",
+          "revenue": "46162.17"
+        }
+      ],
+      "plan_file": "/work2/evidence/part2/20261105_034133_ba4a6e/plans/parquet_warmup_after.txt"
+    },
+    {
+      "source": "parquet_by_category",
+      "input": "/work2/data/tx_by_category.parquet",
+      "label": "warmup",
+      "seconds": 0.421050945999923,
+      "sql_execution_id": 4,
+      "job_ids": [
+        7,
+        8,
+        9
+      ],
+      "scan": {
+        "node_id": 173,
+        "node_name": "Scan parquet ",
+        "number_of_files_read": 4,
+        "size_of_files_read_bytes": 6801420,
+        "number_of_output_rows": 481269,
+        "all_metrics": {
+          "numFiles": {
+            "name": "number of files read",
+            "value": 4,
+            "accumulator_id": 709
+          },
+          "scanTime": {
+            "name": "scan time",
+            "value": 342,
+            "accumulator_id": 708
+          },
+          "pruningTime": {
+            "name": "dynamic partition pruning time",
+            "value": 0,
+            "accumulator_id": 713
+          },
+          "metadataTime": {
+            "name": "metadata time",
+            "value": 9,
+            "accumulator_id": 710
+          },
+          "filesSize": {
+            "name": "size of files read",
+            "value": 6801420,
+            "accumulator_id": 711
+          },
+          "numOutputRows": {
+            "name": "number of output rows",
+            "value": 481269,
+            "accumulator_id": 707
+          },
+          "numPartitions": {
+            "name": "number of partitions read",
+            "value": 1,
+            "accumulator_id": 712
+          }
+        }
+      },
+      "result": [
+        {
+          "date": "2026-03-07",
+          "revenue": "47383.76"
+        },
+        {
+          "date": "2026-07-05",
+          "revenue": "46564.94"
+        },
+        {
+          "date": "2026-12-15",
+          "revenue": "46536.28"
+        },
+        {
+          "date": "2026-08-10",
+          "revenue": "46483.50"
+        },
+        {
+          "date": "2026-02-18",
+          "revenue": "46162.17"
+        }
+      ],
+      "plan_file": "/work2/evidence/part2/20261105_034133_ba4a6e/plans/parquet_by_category_warmup_after.txt"
+    },
+    {
+      "source": "parquet",
+      "input": "/work2/data/tx.parquet",
+      "label": "repeat_1",
+      "seconds": 0.8593869789992823,
+      "sql_execution_id": 5,
+      "job_ids": [
+        10,
+        11,
+        12
+      ],
+      "scan": {
+        "node_id": 233,
+        "node_name": "Scan parquet ",
+        "number_of_files_read": 4,
+        "size_of_files_read_bytes": 109504706,
+        "number_of_output_rows": 8000000,
+        "all_metrics": {
+          "numFiles": {
+            "name": "number of files read",
+            "value": 4,
+            "accumulator_id": 970
+          },
+          "scanTime": {
+            "name": "scan time",
+            "value": 1709,
+            "accumulator_id": 969
+          },
+          "metadataTime": {
+            "name": "metadata time",
+            "value": 0,
+            "accumulator_id": 971
+          },
+          "filesSize": {
+            "name": "size of files read",
+            "value": 109504706,
+            "accumulator_id": 972
+          },
+          "numOutputRows": {
+            "name": "number of output rows",
+            "value": 8000000,
+            "accumulator_id": 968
+          }
+        }
+      },
+      "result": [
+        {
+          "date": "2026-03-07",
+          "revenue": "47383.76"
+        },
+        {
+          "date": "2026-07-05",
+          "revenue": "46564.94"
+        },
+        {
+          "date": "2026-12-15",
+          "revenue": "46536.28"
+        },
+        {
+          "date": "2026-08-10",
+          "revenue": "46483.50"
+        },
+        {
+          "date": "2026-02-18",
+          "revenue": "46162.17"
+        }
+      ],
+      "plan_file": "/work2/evidence/part2/20261105_034133_ba4a6e/plans/parquet_repeat_1_after.txt"
+    },
+    {
+      "source": "parquet_by_category",
+      "input": "/work2/data/tx_by_category.parquet",
+      "label": "repeat_1",
+      "seconds": 0.3025382579999132,
+      "sql_execution_id": 6,
+      "job_ids": [
+        13,
+        14,
+        15
+      ],
+      "scan": {
+        "node_id": 299,
+        "node_name": "Scan parquet ",
+        "number_of_files_read": 4,
+        "size_of_files_read_bytes": 6801420,
+        "number_of_output_rows": 481269,
+        "all_metrics": {
+          "numFiles": {
+            "name": "number of files read",
+            "value": 4,
+            "accumulator_id": 1229
+          },
+          "scanTime": {
+            "name": "scan time",
+            "value": 309,
+            "accumulator_id": 1228
+          },
+          "pruningTime": {
+            "name": "dynamic partition pruning time",
+            "value": 0,
+            "accumulator_id": 1233
+          },
+          "metadataTime": {
+            "name": "metadata time",
+            "value": 0,
+            "accumulator_id": 1230
+          },
+          "filesSize": {
+            "name": "size of files read",
+            "value": 6801420,
+            "accumulator_id": 1231
+          },
+          "numOutputRows": {
+            "name": "number of output rows",
+            "value": 481269,
+            "accumulator_id": 1227
+          },
+          "numPartitions": {
+            "name": "number of partitions read",
+            "value": 1,
+            "accumulator_id": 1232
+          }
+        }
+      },
+      "result": [
+        {
+          "date": "2026-03-07",
+          "revenue": "47383.76"
+        },
+        {
+          "date": "2026-07-05",
+          "revenue": "46564.94"
+        },
+        {
+          "date": "2026-12-15",
+          "revenue": "46536.28"
+        },
+        {
+          "date": "2026-08-10",
+          "revenue": "46483.50"
+        },
+        {
+          "date": "2026-02-18",
+          "revenue": "46162.17"
+        }
+      ],
+      "plan_file": "/work2/evidence/part2/20261105_034133_ba4a6e/plans/parquet_by_category_repeat_1_after.txt"
+    },
+    {
+      "source": "csv",
+      "input": "/work2/data/transactions.csv",
+      "label": "repeat_1",
+      "seconds": 3.9648480690002543,
+      "sql_execution_id": 7,
+      "job_ids": [
+        16,
+        17
+      ],
+      "scan": {
+        "node_id": 359,
+        "node_name": "Scan csv ",
+        "number_of_files_read": 1,
+        "size_of_files_read_bytes": 324159809,
+        "number_of_output_rows": 481269,
+        "all_metrics": {
+          "numOutputRows": {
+            "name": "number of output rows",
+            "value": 481269,
+            "accumulator_id": 1451
+          },
+          "numFiles": {
+            "name": "number of files read",
+            "value": 1,
+            "accumulator_id": 1452
+          },
+          "metadataTime": {
+            "name": "metadata time",
+            "value": 0,
+            "accumulator_id": 1453
+          },
+          "filesSize": {
+            "name": "size of files read",
+            "value": 324159809,
+            "accumulator_id": 1454
+          }
+        }
+      },
+      "result": [
+        {
+          "date": "2026-03-07",
+          "revenue": "47383.76"
+        },
+        {
+          "date": "2026-07-05",
+          "revenue": "46564.94"
+        },
+        {
+          "date": "2026-12-15",
+          "revenue": "46536.28"
+        },
+        {
+          "date": "2026-08-10",
+          "revenue": "46483.50"
+        },
+        {
+          "date": "2026-02-18",
+          "revenue": "46162.17"
+        }
+      ],
+      "plan_file": "/work2/evidence/part2/20261105_034133_ba4a6e/plans/csv_repeat_1_after.txt"
+    },
+    {
+      "source": "parquet_by_category",
+      "input": "/work2/data/tx_by_category.parquet",
+      "label": "repeat_2",
+      "seconds": 0.2894838830006847,
+      "sql_execution_id": 8,
+      "job_ids": [
+        18,
+        19,
+        20
+      ],
+      "scan": {
+        "node_id": 418,
+        "node_name": "Scan parquet ",
+        "number_of_files_read": 4,
+        "size_of_files_read_bytes": 6801420,
+        "number_of_output_rows": 481269,
+        "all_metrics": {
+          "numFiles": {
+            "name": "number of files read",
+            "value": 4,
+            "accumulator_id": 1709
+          },
+          "scanTime": {
+            "name": "scan time",
+            "value": 368,
+            "accumulator_id": 1708
+          },
+          "pruningTime": {
+            "name": "dynamic partition pruning time",
+            "value": 0,
+            "accumulator_id": 1713
+          },
+          "metadataTime": {
+            "name": "metadata time",
+            "value": 1,
+            "accumulator_id": 1710
+          },
+          "filesSize": {
+            "name": "size of files read",
+            "value": 6801420,
+            "accumulator_id": 1711
+          },
+          "numOutputRows": {
+            "name": "number of output rows",
+            "value": 481269,
+            "accumulator_id": 1707
+          },
+          "numPartitions": {
+            "name": "number of partitions read",
+            "value": 1,
+            "accumulator_id": 1712
+          }
+        }
+      },
+      "result": [
+        {
+          "date": "2026-03-07",
+          "revenue": "47383.76"
+        },
+        {
+          "date": "2026-07-05",
+          "revenue": "46564.94"
+        },
+        {
+          "date": "2026-12-15",
+          "revenue": "46536.28"
+        },
+        {
+          "date": "2026-08-10",
+          "revenue": "46483.50"
+        },
+        {
+          "date": "2026-02-18",
+          "revenue": "46162.17"
+        }
+      ],
+      "plan_file": "/work2/evidence/part2/20261105_034133_ba4a6e/plans/parquet_by_category_repeat_2_after.txt"
+    },
+    {
+      "source": "csv",
+      "input": "/work2/data/transactions.csv",
+      "label": "repeat_2",
+      "seconds": 3.8445620729999064,
+      "sql_execution_id": 9,
+      "job_ids": [
+        21,
+        22
+      ],
+      "scan": {
+        "node_id": 478,
+        "node_name": "Scan csv ",
+        "number_of_files_read": 1,
+        "size_of_files_read_bytes": 324159809,
+        "number_of_output_rows": 481269,
+        "all_metrics": {
+          "numOutputRows": {
+            "name": "number of output rows",
+            "value": 481269,
+            "accumulator_id": 1931
+          },
+          "numFiles": {
+            "name": "number of files read",
+            "value": 1,
+            "accumulator_id": 1932
+          },
+          "metadataTime": {
+            "name": "metadata time",
+            "value": 0,
+            "accumulator_id": 1933
+          },
+          "filesSize": {
+            "name": "size of files read",
+            "value": 324159809,
+            "accumulator_id": 1934
+          }
+        }
+      },
+      "result": [
+        {
+          "date": "2026-03-07",
+          "revenue": "47383.76"
+        },
+        {
+          "date": "2026-07-05",
+          "revenue": "46564.94"
+        },
+        {
+          "date": "2026-12-15",
+          "revenue": "46536.28"
+        },
+        {
+          "date": "2026-08-10",
+          "revenue": "46483.50"
+        },
+        {
+          "date": "2026-02-18",
+          "revenue": "46162.17"
+        }
+      ],
+      "plan_file": "/work2/evidence/part2/20261105_034133_ba4a6e/plans/csv_repeat_2_after.txt"
+    },
+    {
+      "source": "parquet",
+      "input": "/work2/data/tx.parquet",
+      "label": "repeat_2",
+      "seconds": 0.845087257999694,
+      "sql_execution_id": 10,
+      "job_ids": [
+        23,
+        24,
+        25
+      ],
+      "scan": {
+        "node_id": 538,
+        "node_name": "Scan parquet ",
+        "number_of_files_read": 4,
+        "size_of_files_read_bytes": 109504706,
+        "number_of_output_rows": 8000000,
+        "all_metrics": {
+          "numFiles": {
+            "name": "number of files read",
+            "value": 4,
+            "accumulator_id": 2190
+          },
+          "scanTime": {
+            "name": "scan time",
+            "value": 2155,
+            "accumulator_id": 2189
+          },
+          "metadataTime": {
+            "name": "metadata time",
+            "value": 0,
+            "accumulator_id": 2191
+          },
+          "filesSize": {
+            "name": "size of files read",
+            "value": 109504706,
+            "accumulator_id": 2192
+          },
+          "numOutputRows": {
+            "name": "number of output rows",
+            "value": 8000000,
+            "accumulator_id": 2188
+          }
+        }
+      },
+      "result": [
+        {
+          "date": "2026-03-07",
+          "revenue": "47383.76"
+        },
+        {
+          "date": "2026-07-05",
+          "revenue": "46564.94"
+        },
+        {
+          "date": "2026-12-15",
+          "revenue": "46536.28"
+        },
+        {
+          "date": "2026-08-10",
+          "revenue": "46483.50"
+        },
+        {
+          "date": "2026-02-18",
+          "revenue": "46162.17"
+        }
+      ],
+      "plan_file": "/work2/evidence/part2/20261105_034133_ba4a6e/plans/parquet_repeat_2_after.txt"
+    },
+    {
+      "source": "csv",
+      "input": "/work2/data/transactions.csv",
+      "label": "repeat_3",
+      "seconds": 3.9469515939999837,
+      "sql_execution_id": 11,
+      "job_ids": [
+        26,
+        27
+      ],
+      "scan": {
+        "node_id": 605,
+        "node_name": "Scan csv ",
+        "number_of_files_read": 1,
+        "size_of_files_read_bytes": 324159809,
+        "number_of_output_rows": 481269,
+        "all_metrics": {
+          "numOutputRows": {
+            "name": "number of output rows",
+            "value": 481269,
+            "accumulator_id": 2411
+          },
+          "numFiles": {
+            "name": "number of files read",
+            "value": 1,
+            "accumulator_id": 2412
+          },
+          "metadataTime": {
+            "name": "metadata time",
+            "value": 0,
+            "accumulator_id": 2413
+          },
+          "filesSize": {
+            "name": "size of files read",
+            "value": 324159809,
+            "accumulator_id": 2414
+          }
+        }
+      },
+      "result": [
+        {
+          "date": "2026-03-07",
+          "revenue": "47383.76"
+        },
+        {
+          "date": "2026-07-05",
+          "revenue": "46564.94"
+        },
+        {
+          "date": "2026-12-15",
+          "revenue": "46536.28"
+        },
+        {
+          "date": "2026-08-10",
+          "revenue": "46483.50"
+        },
+        {
+          "date": "2026-02-18",
+          "revenue": "46162.17"
+        }
+      ],
+      "plan_file": "/work2/evidence/part2/20261105_034133_ba4a6e/plans/csv_repeat_3_after.txt"
+    },
+    {
+      "source": "parquet",
+      "input": "/work2/data/tx.parquet",
+      "label": "repeat_3",
+      "seconds": 0.9180255310002394,
+      "sql_execution_id": 12,
+      "job_ids": [
+        28,
+        29,
+        30
+      ],
+      "scan": {
+        "node_id": 665,
+        "node_name": "Scan parquet ",
+        "number_of_files_read": 4,
+        "size_of_files_read_bytes": 109504706,
+        "number_of_output_rows": 8000000,
+        "all_metrics": {
+          "numFiles": {
+            "name": "number of files read",
+            "value": 4,
+            "accumulator_id": 2670
+          },
+          "scanTime": {
+            "name": "scan time",
+            "value": 1953,
+            "accumulator_id": 2669
+          },
+          "metadataTime": {
+            "name": "metadata time",
+            "value": 0,
+            "accumulator_id": 2671
+          },
+          "filesSize": {
+            "name": "size of files read",
+            "value": 109504706,
+            "accumulator_id": 2672
+          },
+          "numOutputRows": {
+            "name": "number of output rows",
+            "value": 8000000,
+            "accumulator_id": 2668
+          }
+        }
+      },
+      "result": [
+        {
+          "date": "2026-03-07",
+          "revenue": "47383.76"
+        },
+        {
+          "date": "2026-07-05",
+          "revenue": "46564.94"
+        },
+        {
+          "date": "2026-12-15",
+          "revenue": "46536.28"
+        },
+        {
+          "date": "2026-08-10",
+          "revenue": "46483.50"
+        },
+        {
+          "date": "2026-02-18",
+          "revenue": "46162.17"
+        }
+      ],
+      "plan_file": "/work2/evidence/part2/20261105_034133_ba4a6e/plans/parquet_repeat_3_after.txt"
+    },
+    {
+      "source": "parquet_by_category",
+      "input": "/work2/data/tx_by_category.parquet",
+      "label": "repeat_3",
+      "seconds": 0.27575611999964167,
+      "sql_execution_id": 13,
+      "job_ids": [
+        31,
+        32,
+        33
+      ],
+      "scan": {
+        "node_id": 731,
+        "node_name": "Scan parquet ",
+        "number_of_files_read": 4,
+        "size_of_files_read_bytes": 6801420,
+        "number_of_output_rows": 481269,
+        "all_metrics": {
+          "numFiles": {
+            "name": "number of files read",
+            "value": 4,
+            "accumulator_id": 2929
+          },
+          "scanTime": {
+            "name": "scan time",
+            "value": 488,
+            "accumulator_id": 2928
+          },
+          "pruningTime": {
+            "name": "dynamic partition pruning time",
+            "value": 0,
+            "accumulator_id": 2933
+          },
+          "metadataTime": {
+            "name": "metadata time",
+            "value": 0,
+            "accumulator_id": 2930
+          },
+          "filesSize": {
+            "name": "size of files read",
+            "value": 6801420,
+            "accumulator_id": 2931
+          },
+          "numOutputRows": {
+            "name": "number of output rows",
+            "value": 481269,
+            "accumulator_id": 2927
+          },
+          "numPartitions": {
+            "name": "number of partitions read",
+            "value": 1,
+            "accumulator_id": 2932
+          }
+        }
+      },
+      "result": [
+        {
+          "date": "2026-03-07",
+          "revenue": "47383.76"
+        },
+        {
+          "date": "2026-07-05",
+          "revenue": "46564.94"
+        },
+        {
+          "date": "2026-12-15",
+          "revenue": "46536.28"
+        },
+        {
+          "date": "2026-08-10",
+          "revenue": "46483.50"
+        },
+        {
+          "date": "2026-02-18",
+          "revenue": "46162.17"
+        }
+      ],
+      "plan_file": "/work2/evidence/part2/20261105_034133_ba4a6e/plans/parquet_by_category_repeat_3_after.txt"
+    }
+  ],
+  "timing_scope": "query.collect() only; excludes CSV-to-Parquet conversion, DataFrame creation and explain",
+  "cache_policy": "no Spark cache/persist; one warmup; OS file cache is not cleared",
+  "size_notes": "disk total_bytes includes auxiliary files; Scan filesSize is the full size of selected files, not physical disk IO or selected column bytes",
+  "settings": {
+    "spark.sql.session.timeZone": "UTC",
+    "spark.sql.shuffle.partitions": "200",
+    "spark.sql.adaptive.enabled": "true",
+    "spark.sql.sources.useV1SourceList": "avro,csv,json,kafka,orc,parquet,text",
+    "spark.sql.parquet.compression.codec": "snappy",
+    "spark.sql.parquet.filterPushdown": "true",
+    "spark.sql.parquet.enableVectorizedReader": "true",
+    "spark.sql.parquet.recordLevelFilter.enabled": "false",
+    "spark.sql.csv.filterPushdown.enabled": "true"
+  },
+  "disk": {
+    "csv": {
+      "path": "/work2/data/transactions.csv",
+      "total_bytes": 324159809,
+      "data_file_bytes": 324159809,
+      "data_files": 1,
+      "all_files": 1
+    },
+    "parquet": {
+      "path": "/work2/data/tx.parquet",
+      "total_bytes": 110360258,
+      "data_file_bytes": 109504706,
+      "data_files": 4,
+      "all_files": 10
+    },
+    "parquet_by_category": {
+      "path": "/work2/data/tx_by_category.parquet",
+      "total_bytes": 112274401,
+      "data_file_bytes": 111403637,
+      "data_files": 40,
+      "all_files": 82
+    }
+  },
+  "result": [
+    {
+      "date": "2026-03-07",
+      "revenue": "47383.76"
+    },
+    {
+      "date": "2026-07-05",
+      "revenue": "46564.94"
+    },
+    {
+      "date": "2026-12-15",
+      "revenue": "46536.28"
+    },
+    {
+      "date": "2026-08-10",
+      "revenue": "46483.50"
+    },
+    {
+      "date": "2026-02-18",
+      "revenue": "46162.17"
+    }
+  ],
+  "results_equal": true,
+  "comparison": [
+    {
+      "source": "csv",
+      "disk_bytes": 324159809,
+      "data_file_bytes": 324159809,
+      "seconds": [
+        3.9648480690002543,
+        3.8445620729999064,
+        3.9469515939999837
+      ],
+      "median_seconds": 3.9469515939999837,
+      "scan_number_of_files_read": 1,
+      "scan_size_of_files_read_bytes": 324159809,
+      "scan_number_of_output_rows": 481269,
+      "scan_reference_label": "repeat_1",
+      "sql_execution_id": 7
+    },
+    {
+      "source": "parquet",
+      "disk_bytes": 110360258,
+      "data_file_bytes": 109504706,
+      "seconds": [
+        0.8593869789992823,
+        0.845087257999694,
+        0.9180255310002394
+      ],
+      "median_seconds": 0.8593869789992823,
+      "scan_number_of_files_read": 4,
+      "scan_size_of_files_read_bytes": 109504706,
+      "scan_number_of_output_rows": 8000000,
+      "scan_reference_label": "repeat_1",
+      "sql_execution_id": 5
+    },
+    {
+      "source": "parquet_by_category",
+      "disk_bytes": 112274401,
+      "data_file_bytes": 111403637,
+      "seconds": [
+        0.3025382579999132,
+        0.2894838830006847,
+        0.27575611999964167
+      ],
+      "median_seconds": 0.2894838830006847,
+      "scan_number_of_files_read": 4,
+      "scan_size_of_files_read_bytes": 6801420,
+      "scan_number_of_output_rows": 481269,
+      "scan_reference_label": "repeat_1",
+      "sql_execution_id": 6
+    }
+  ]
+}

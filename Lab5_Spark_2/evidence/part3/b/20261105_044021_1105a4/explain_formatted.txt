@@ -1,0 +1,87 @@
+== Physical Plan ==
+* HashAggregate (14)
++- Exchange (13)
+   +- * HashAggregate (12)
+      +- * Project (11)
+         +- * SortMergeJoin Inner (10)
+            :- * Sort (5)
+            :  +- Exchange (4)
+            :     +- * Filter (3)
+            :        +- * ColumnarToRow (2)
+            :           +- Scan parquet  (1)
+            +- * Sort (9)
+               +- Exchange (8)
+                  +- * Filter (7)
+                     +- Scan csv  (6)
+
+
+(1) Scan parquet 
+Output [2]: [user_id#22L, amount#25]
+Batched: true
+Location: InMemoryFileIndex [file:/work2/data/tx.parquet]
+PushedFilters: [IsNotNull(user_id)]
+ReadSchema: struct<user_id:bigint,amount:decimal(18,2)>
+
+(2) ColumnarToRow [codegen id : 1]
+Input [2]: [user_id#22L, amount#25]
+
+(3) Filter [codegen id : 1]
+Input [2]: [user_id#22L, amount#25]
+Condition : isnotnull(user_id#22L)
+
+(4) Exchange
+Input [2]: [user_id#22L, amount#25]
+Arguments: hashpartitioning(user_id#22L, 8), ENSURE_REQUIREMENTS, [plan_id=171]
+
+(5) Sort [codegen id : 2]
+Input [2]: [user_id#22L, amount#25]
+Arguments: [user_id#22L ASC NULLS FIRST], false, 0
+
+(6) Scan csv 
+Output [2]: [user_id#26L, city#27]
+Batched: false
+Location: InMemoryFileIndex [file:/work2/data/users.csv]
+PushedFilters: [IsNotNull(user_id)]
+ReadSchema: struct<user_id:bigint,city:string>
+
+(7) Filter [codegen id : 3]
+Input [2]: [user_id#26L, city#27]
+Condition : isnotnull(user_id#26L)
+
+(8) Exchange
+Input [2]: [user_id#26L, city#27]
+Arguments: hashpartitioning(user_id#26L, 8), ENSURE_REQUIREMENTS, [plan_id=179]
+
+(9) Sort [codegen id : 4]
+Input [2]: [user_id#26L, city#27]
+Arguments: [user_id#26L ASC NULLS FIRST], false, 0
+
+(10) SortMergeJoin [codegen id : 5]
+Left keys [1]: [user_id#22L]
+Right keys [1]: [user_id#26L]
+Join type: Inner
+Join condition: None
+
+(11) Project [codegen id : 5]
+Output [2]: [amount#25, city#27]
+Input [4]: [user_id#22L, amount#25, user_id#26L, city#27]
+
+(12) HashAggregate [codegen id : 5]
+Input [2]: [amount#25, city#27]
+Keys [1]: [city#27]
+Functions [1]: [partial_sum(amount#25)]
+Aggregate Attributes [2]: [sum#36, isEmpty#37]
+Results [3]: [city#27, sum#38, isEmpty#39]
+
+(13) Exchange
+Input [3]: [city#27, sum#38, isEmpty#39]
+Arguments: hashpartitioning(city#27, 8), ENSURE_REQUIREMENTS, [plan_id=188]
+
+(14) HashAggregate [codegen id : 6]
+Input [3]: [city#27, sum#38, isEmpty#39]
+Keys [1]: [city#27]
+Functions [1]: [sum(amount#25)]
+Aggregate Attributes [1]: [sum(amount#25)#35]
+Results [2]: [city#27, sum(amount#25)#35 AS revenue#31]
+
+

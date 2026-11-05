@@ -1,0 +1,866 @@
+{
+  "application": "Lab5_Spark_2_Part1_GroupByKey_ReduceByKey",
+  "application_id": "local-1793841944606",
+  "spark_version": "4.2.0",
+  "master": "local[4]",
+  "input": "/work2/data/transactions.csv",
+  "input_bytes": 324159809,
+  "input_sha256": "97485d8b3c2354e413c3d31104c47e96c13f0daa413b583b0a7d1e26ac75a8fc",
+  "generator_metadata": {
+    "mode": "with_guests_and_users",
+    "seed": 20050406,
+    "transaction_rows": 8000000,
+    "registered_users": 9000,
+    "guest_percent": 30,
+    "guest_rows": 2400000,
+    "registered_transaction_rows": 5600000,
+    "categories": [
+      "groceries",
+      "restaurants",
+      "transport",
+      "clothing",
+      "electronics",
+      "books",
+      "entertainment",
+      "health",
+      "utilities",
+      "travel"
+    ],
+    "cities": [
+      "Kyiv",
+      "Lviv",
+      "Odesa",
+      "Dnipro",
+      "Kharkiv",
+      "Vinnytsia",
+      "Poltava",
+      "Chernihiv",
+      "Cherkasy",
+      "Sumy",
+      "Zhytomyr",
+      "Rivne",
+      "Lutsk",
+      "Ternopil",
+      "Ivano-Frankivsk"
+    ],
+    "start": "2026-01-01",
+    "days": 360,
+    "transactions": {
+      "path": "C:\\Antigravity_Projects\\BigData_DIS\\Lab5_Spark_2\\data\\transactions.csv",
+      "bytes": 324159809,
+      "sha256": "97485d8b3c2354e413c3d31104c47e96c13f0daa413b583b0a7d1e26ac75a8fc"
+    },
+    "users": {
+      "path": "C:\\Antigravity_Projects\\BigData_DIS\\Lab5_Spark_2\\data\\users.csv",
+      "bytes": 215425,
+      "sha256": "9208f206a59148acb289f7d12cacf736e1360d768dda4ac04a936225f8c0cc39"
+    },
+    "meets_lab_minimums": true
+  },
+  "runs": [
+    {
+      "variant": "A",
+      "label": "warmup",
+      "seconds": 16.27708354599963,
+      "input_partitions": 10,
+      "job_ids": [
+        0
+      ],
+      "job_count": 1,
+      "stages": [
+        {
+          "stage_id": 0,
+          "tasks": 10,
+          "attempt_id": 0,
+          "shuffle_write_bytes": 33651503,
+          "shuffle_write_records": 1000,
+          "shuffle_read_bytes": 0,
+          "shuffle_read_records": 0,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        },
+        {
+          "stage_id": 1,
+          "tasks": 10,
+          "attempt_id": 0,
+          "shuffle_write_bytes": 0,
+          "shuffle_write_records": 0,
+          "shuffle_read_bytes": 33651503,
+          "shuffle_read_records": 1000,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        }
+      ],
+      "stage_count": 2,
+      "tasks": 20,
+      "top10": [
+        {
+          "user_id": 0,
+          "count": 2400000,
+          "amount_cents": 35196137931
+        },
+        {
+          "user_id": 8569,
+          "count": 699,
+          "amount_cents": 12250203
+        },
+        {
+          "user_id": 4173,
+          "count": 697,
+          "amount_cents": 12245791
+        },
+        {
+          "user_id": 7787,
+          "count": 649,
+          "amount_cents": 11951952
+        },
+        {
+          "user_id": 9008,
+          "count": 636,
+          "amount_cents": 11887004
+        },
+        {
+          "user_id": 4536,
+          "count": 659,
+          "amount_cents": 11850684
+        },
+        {
+          "user_id": 5078,
+          "count": 645,
+          "amount_cents": 11810475
+        },
+        {
+          "user_id": 6690,
+          "count": 669,
+          "amount_cents": 11796806
+        },
+        {
+          "user_id": 3577,
+          "count": 679,
+          "amount_cents": 11746247
+        },
+        {
+          "user_id": 2147,
+          "count": 669,
+          "amount_cents": 11672377
+        }
+      ]
+    },
+    {
+      "variant": "B",
+      "label": "warmup",
+      "seconds": 13.304681309999978,
+      "input_partitions": 10,
+      "job_ids": [
+        1
+      ],
+      "job_count": 1,
+      "stages": [
+        {
+          "stage_id": 2,
+          "tasks": 10,
+          "attempt_id": 0,
+          "shuffle_write_bytes": 888252,
+          "shuffle_write_records": 1000,
+          "shuffle_read_bytes": 0,
+          "shuffle_read_records": 0,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        },
+        {
+          "stage_id": 3,
+          "tasks": 10,
+          "attempt_id": 0,
+          "shuffle_write_bytes": 0,
+          "shuffle_write_records": 0,
+          "shuffle_read_bytes": 888252,
+          "shuffle_read_records": 1000,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        }
+      ],
+      "stage_count": 2,
+      "tasks": 20,
+      "top10": [
+        {
+          "user_id": 0,
+          "count": 2400000,
+          "amount_cents": 35196137931
+        },
+        {
+          "user_id": 8569,
+          "count": 699,
+          "amount_cents": 12250203
+        },
+        {
+          "user_id": 4173,
+          "count": 697,
+          "amount_cents": 12245791
+        },
+        {
+          "user_id": 7787,
+          "count": 649,
+          "amount_cents": 11951952
+        },
+        {
+          "user_id": 9008,
+          "count": 636,
+          "amount_cents": 11887004
+        },
+        {
+          "user_id": 4536,
+          "count": 659,
+          "amount_cents": 11850684
+        },
+        {
+          "user_id": 5078,
+          "count": 645,
+          "amount_cents": 11810475
+        },
+        {
+          "user_id": 6690,
+          "count": 669,
+          "amount_cents": 11796806
+        },
+        {
+          "user_id": 3577,
+          "count": 679,
+          "amount_cents": 11746247
+        },
+        {
+          "user_id": 2147,
+          "count": 669,
+          "amount_cents": 11672377
+        }
+      ]
+    },
+    {
+      "variant": "B",
+      "label": "repeat_1",
+      "seconds": 13.220482116999847,
+      "input_partitions": 10,
+      "job_ids": [
+        2
+      ],
+      "job_count": 1,
+      "stages": [
+        {
+          "stage_id": 4,
+          "tasks": 10,
+          "attempt_id": 0,
+          "shuffle_write_bytes": 888252,
+          "shuffle_write_records": 1000,
+          "shuffle_read_bytes": 0,
+          "shuffle_read_records": 0,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        },
+        {
+          "stage_id": 5,
+          "tasks": 10,
+          "attempt_id": 0,
+          "shuffle_write_bytes": 0,
+          "shuffle_write_records": 0,
+          "shuffle_read_bytes": 888252,
+          "shuffle_read_records": 1000,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        }
+      ],
+      "stage_count": 2,
+      "tasks": 20,
+      "top10": [
+        {
+          "user_id": 0,
+          "count": 2400000,
+          "amount_cents": 35196137931
+        },
+        {
+          "user_id": 8569,
+          "count": 699,
+          "amount_cents": 12250203
+        },
+        {
+          "user_id": 4173,
+          "count": 697,
+          "amount_cents": 12245791
+        },
+        {
+          "user_id": 7787,
+          "count": 649,
+          "amount_cents": 11951952
+        },
+        {
+          "user_id": 9008,
+          "count": 636,
+          "amount_cents": 11887004
+        },
+        {
+          "user_id": 4536,
+          "count": 659,
+          "amount_cents": 11850684
+        },
+        {
+          "user_id": 5078,
+          "count": 645,
+          "amount_cents": 11810475
+        },
+        {
+          "user_id": 6690,
+          "count": 669,
+          "amount_cents": 11796806
+        },
+        {
+          "user_id": 3577,
+          "count": 679,
+          "amount_cents": 11746247
+        },
+        {
+          "user_id": 2147,
+          "count": 669,
+          "amount_cents": 11672377
+        }
+      ]
+    },
+    {
+      "variant": "A",
+      "label": "repeat_1",
+      "seconds": 15.452852223000264,
+      "input_partitions": 10,
+      "job_ids": [
+        3
+      ],
+      "job_count": 1,
+      "stages": [
+        {
+          "stage_id": 6,
+          "tasks": 10,
+          "attempt_id": 0,
+          "shuffle_write_bytes": 33651503,
+          "shuffle_write_records": 1000,
+          "shuffle_read_bytes": 0,
+          "shuffle_read_records": 0,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        },
+        {
+          "stage_id": 7,
+          "tasks": 10,
+          "attempt_id": 0,
+          "shuffle_write_bytes": 0,
+          "shuffle_write_records": 0,
+          "shuffle_read_bytes": 33651503,
+          "shuffle_read_records": 1000,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        }
+      ],
+      "stage_count": 2,
+      "tasks": 20,
+      "top10": [
+        {
+          "user_id": 0,
+          "count": 2400000,
+          "amount_cents": 35196137931
+        },
+        {
+          "user_id": 8569,
+          "count": 699,
+          "amount_cents": 12250203
+        },
+        {
+          "user_id": 4173,
+          "count": 697,
+          "amount_cents": 12245791
+        },
+        {
+          "user_id": 7787,
+          "count": 649,
+          "amount_cents": 11951952
+        },
+        {
+          "user_id": 9008,
+          "count": 636,
+          "amount_cents": 11887004
+        },
+        {
+          "user_id": 4536,
+          "count": 659,
+          "amount_cents": 11850684
+        },
+        {
+          "user_id": 5078,
+          "count": 645,
+          "amount_cents": 11810475
+        },
+        {
+          "user_id": 6690,
+          "count": 669,
+          "amount_cents": 11796806
+        },
+        {
+          "user_id": 3577,
+          "count": 679,
+          "amount_cents": 11746247
+        },
+        {
+          "user_id": 2147,
+          "count": 669,
+          "amount_cents": 11672377
+        }
+      ]
+    },
+    {
+      "variant": "A",
+      "label": "repeat_2",
+      "seconds": 14.86058653299915,
+      "input_partitions": 10,
+      "job_ids": [
+        4
+      ],
+      "job_count": 1,
+      "stages": [
+        {
+          "stage_id": 8,
+          "tasks": 10,
+          "attempt_id": 0,
+          "shuffle_write_bytes": 33651503,
+          "shuffle_write_records": 1000,
+          "shuffle_read_bytes": 0,
+          "shuffle_read_records": 0,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        },
+        {
+          "stage_id": 9,
+          "tasks": 10,
+          "attempt_id": 0,
+          "shuffle_write_bytes": 0,
+          "shuffle_write_records": 0,
+          "shuffle_read_bytes": 33651503,
+          "shuffle_read_records": 1000,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        }
+      ],
+      "stage_count": 2,
+      "tasks": 20,
+      "top10": [
+        {
+          "user_id": 0,
+          "count": 2400000,
+          "amount_cents": 35196137931
+        },
+        {
+          "user_id": 8569,
+          "count": 699,
+          "amount_cents": 12250203
+        },
+        {
+          "user_id": 4173,
+          "count": 697,
+          "amount_cents": 12245791
+        },
+        {
+          "user_id": 7787,
+          "count": 649,
+          "amount_cents": 11951952
+        },
+        {
+          "user_id": 9008,
+          "count": 636,
+          "amount_cents": 11887004
+        },
+        {
+          "user_id": 4536,
+          "count": 659,
+          "amount_cents": 11850684
+        },
+        {
+          "user_id": 5078,
+          "count": 645,
+          "amount_cents": 11810475
+        },
+        {
+          "user_id": 6690,
+          "count": 669,
+          "amount_cents": 11796806
+        },
+        {
+          "user_id": 3577,
+          "count": 679,
+          "amount_cents": 11746247
+        },
+        {
+          "user_id": 2147,
+          "count": 669,
+          "amount_cents": 11672377
+        }
+      ]
+    },
+    {
+      "variant": "B",
+      "label": "repeat_2",
+      "seconds": 13.017712847999974,
+      "input_partitions": 10,
+      "job_ids": [
+        5
+      ],
+      "job_count": 1,
+      "stages": [
+        {
+          "stage_id": 10,
+          "tasks": 10,
+          "attempt_id": 0,
+          "shuffle_write_bytes": 888252,
+          "shuffle_write_records": 1000,
+          "shuffle_read_bytes": 0,
+          "shuffle_read_records": 0,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        },
+        {
+          "stage_id": 11,
+          "tasks": 10,
+          "attempt_id": 0,
+          "shuffle_write_bytes": 0,
+          "shuffle_write_records": 0,
+          "shuffle_read_bytes": 888252,
+          "shuffle_read_records": 1000,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        }
+      ],
+      "stage_count": 2,
+      "tasks": 20,
+      "top10": [
+        {
+          "user_id": 0,
+          "count": 2400000,
+          "amount_cents": 35196137931
+        },
+        {
+          "user_id": 8569,
+          "count": 699,
+          "amount_cents": 12250203
+        },
+        {
+          "user_id": 4173,
+          "count": 697,
+          "amount_cents": 12245791
+        },
+        {
+          "user_id": 7787,
+          "count": 649,
+          "amount_cents": 11951952
+        },
+        {
+          "user_id": 9008,
+          "count": 636,
+          "amount_cents": 11887004
+        },
+        {
+          "user_id": 4536,
+          "count": 659,
+          "amount_cents": 11850684
+        },
+        {
+          "user_id": 5078,
+          "count": 645,
+          "amount_cents": 11810475
+        },
+        {
+          "user_id": 6690,
+          "count": 669,
+          "amount_cents": 11796806
+        },
+        {
+          "user_id": 3577,
+          "count": 679,
+          "amount_cents": 11746247
+        },
+        {
+          "user_id": 2147,
+          "count": 669,
+          "amount_cents": 11672377
+        }
+      ]
+    },
+    {
+      "variant": "B",
+      "label": "repeat_3",
+      "seconds": 13.211488162000023,
+      "input_partitions": 10,
+      "job_ids": [
+        6
+      ],
+      "job_count": 1,
+      "stages": [
+        {
+          "stage_id": 12,
+          "tasks": 10,
+          "attempt_id": 0,
+          "shuffle_write_bytes": 888252,
+          "shuffle_write_records": 1000,
+          "shuffle_read_bytes": 0,
+          "shuffle_read_records": 0,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        },
+        {
+          "stage_id": 13,
+          "tasks": 10,
+          "attempt_id": 0,
+          "shuffle_write_bytes": 0,
+          "shuffle_write_records": 0,
+          "shuffle_read_bytes": 888252,
+          "shuffle_read_records": 1000,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        }
+      ],
+      "stage_count": 2,
+      "tasks": 20,
+      "top10": [
+        {
+          "user_id": 0,
+          "count": 2400000,
+          "amount_cents": 35196137931
+        },
+        {
+          "user_id": 8569,
+          "count": 699,
+          "amount_cents": 12250203
+        },
+        {
+          "user_id": 4173,
+          "count": 697,
+          "amount_cents": 12245791
+        },
+        {
+          "user_id": 7787,
+          "count": 649,
+          "amount_cents": 11951952
+        },
+        {
+          "user_id": 9008,
+          "count": 636,
+          "amount_cents": 11887004
+        },
+        {
+          "user_id": 4536,
+          "count": 659,
+          "amount_cents": 11850684
+        },
+        {
+          "user_id": 5078,
+          "count": 645,
+          "amount_cents": 11810475
+        },
+        {
+          "user_id": 6690,
+          "count": 669,
+          "amount_cents": 11796806
+        },
+        {
+          "user_id": 3577,
+          "count": 679,
+          "amount_cents": 11746247
+        },
+        {
+          "user_id": 2147,
+          "count": 669,
+          "amount_cents": 11672377
+        }
+      ]
+    },
+    {
+      "variant": "A",
+      "label": "repeat_3",
+      "seconds": 14.805041336999238,
+      "input_partitions": 10,
+      "job_ids": [
+        7
+      ],
+      "job_count": 1,
+      "stages": [
+        {
+          "stage_id": 14,
+          "tasks": 10,
+          "attempt_id": 0,
+          "shuffle_write_bytes": 33651503,
+          "shuffle_write_records": 1000,
+          "shuffle_read_bytes": 0,
+          "shuffle_read_records": 0,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        },
+        {
+          "stage_id": 15,
+          "tasks": 10,
+          "attempt_id": 0,
+          "shuffle_write_bytes": 0,
+          "shuffle_write_records": 0,
+          "shuffle_read_bytes": 33651503,
+          "shuffle_read_records": 1000,
+          "memory_bytes_spilled": 0,
+          "disk_bytes_spilled": 0
+        }
+      ],
+      "stage_count": 2,
+      "tasks": 20,
+      "top10": [
+        {
+          "user_id": 0,
+          "count": 2400000,
+          "amount_cents": 35196137931
+        },
+        {
+          "user_id": 8569,
+          "count": 699,
+          "amount_cents": 12250203
+        },
+        {
+          "user_id": 4173,
+          "count": 697,
+          "amount_cents": 12245791
+        },
+        {
+          "user_id": 7787,
+          "count": 649,
+          "amount_cents": 11951952
+        },
+        {
+          "user_id": 9008,
+          "count": 636,
+          "amount_cents": 11887004
+        },
+        {
+          "user_id": 4536,
+          "count": 659,
+          "amount_cents": 11850684
+        },
+        {
+          "user_id": 5078,
+          "count": 645,
+          "amount_cents": 11810475
+        },
+        {
+          "user_id": 6690,
+          "count": 669,
+          "amount_cents": 11796806
+        },
+        {
+          "user_id": 3577,
+          "count": 679,
+          "amount_cents": 11746247
+        },
+        {
+          "user_id": 2147,
+          "count": 669,
+          "amount_cents": 11672377
+        }
+      ]
+    }
+  ],
+  "timing_scope": "collect user totals, including CSV read, parse, shuffle and aggregation",
+  "warmups_per_variant": 1,
+  "repeats_per_variant": 3,
+  "local_block_bytes": 33554432,
+  "default_parallelism": 4,
+  "sample_lines_100_104_including_header": [
+    {
+      "file_line": 100,
+      "csv": "1064,2026-02-16T15:19:14,groceries,89.61",
+      "pair": [
+        1064,
+        [
+          1,
+          8961
+        ]
+      ]
+    },
+    {
+      "file_line": 101,
+      "csv": "1065,2026-09-28T19:46:42,books,14.20",
+      "pair": [
+        1065,
+        [
+          1,
+          1420
+        ]
+      ]
+    },
+    {
+      "file_line": 102,
+      "csv": "0,2026-11-19T05:11:42,transport,56.05",
+      "pair": [
+        0,
+        [
+          1,
+          5605
+        ]
+      ]
+    },
+    {
+      "file_line": 103,
+      "csv": "0,2026-10-26T02:41:11,restaurants,81.96",
+      "pair": [
+        0,
+        [
+          1,
+          8196
+        ]
+      ]
+    },
+    {
+      "file_line": 104,
+      "csv": "1066,2026-08-08T21:22:55,groceries,117.75",
+      "pair": [
+        1066,
+        [
+          1,
+          11775
+        ]
+      ]
+    }
+  ],
+  "shuffle_code_lines": [
+    {
+      "line": 59,
+      "code": "grouped = pairs.groupByKey(numPartitions=partitions)  # SHUFFLE A"
+    },
+    {
+      "line": 62,
+      "code": "totals = pairs.reduceByKey(merge_totals, numPartitions=partitions)  # SHUFFLE B"
+    }
+  ],
+  "lineage_B": "(10) 03_reduceByKey_user_totals PythonRDD[15] at RDD at PythonRDD.scala:59 []\n |   MapPartitionsRDD[14] at mapPartitions at PythonRDD.scala:197 []\n |   ShuffledRDD[13] at partitionBy at DirectMethodHandleAccessor.java:103 []\n +-(10) PairwiseRDD[12] at reduceByKey at /work2/part1.py:62 []\n    |   PythonRDD[11] at reduceByKey at /work2/part1.py:62 []\n    |   01_transactions_csv MapPartitionsRDD[9] at textFile at DirectMethodHandleAccessor.java:103 []\n    |   /work2/data/transactions.csv HadoopRDD[8] at textFile at DirectMethodHandleAccessor.java:103 []",
+  "actual_data": {
+    "rows": 8000000,
+    "registered_users": 9000,
+    "guest_rows": 2400000,
+    "guest_percent": 30.0
+  },
+  "results_equal": true,
+  "timings": {
+    "A": {
+      "seconds": [
+        15.452852223000264,
+        14.86058653299915,
+        14.805041336999238
+      ],
+      "median_seconds": 14.86058653299915
+    },
+    "B": {
+      "seconds": [
+        13.220482116999847,
+        13.017712847999974,
+        13.211488162000023
+      ],
+      "median_seconds": 13.211488162000023
+    }
+  },
+  "shuffle_write_ratio_A_over_B_repeat1": 37.885085538788545,
+  "B_logical_partial_pairs_upper_bound": 90010
+}

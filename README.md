@@ -10,5 +10,6 @@
 | [Lab4_HDFS](Lab4_HDFS/) | Блоки HDFS, збої, відновлення та вартість дрібних файлів |
 | [Lab4_RPC_MessageBroker](Lab4_RPC_MessageBroker/) | Protocol Buffers, gRPC і RabbitMQ: кодування даних, RPC і черга повідомлень |
 | [Lab5_Spark_1](Lab5_Spark_1/) | Spark RDD, ліниві обчислення, кешування та паралелізм |
+| [Lab5_Spark_2](Lab5_Spark_2/) | Spark: stage-и, shuffle і плани запитів |
 
 Опис і команди запуску — у README відповідної лабораторної.
