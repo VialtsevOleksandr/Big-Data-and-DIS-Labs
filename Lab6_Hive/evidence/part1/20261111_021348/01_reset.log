@@ -1,0 +1,40 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.24.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.24.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Connecting to jdbc:hive2://localhost:10000/
+Connected to: Apache Hive (version 4.2.1)
+Driver: Hive JDBC (version 4.2.1)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+Beeline version 4.2.1 by Apache Hive
+0: jdbc:hive2://localhost:10000/> INFO  : Compiling command(queryId=hive_20261111001358_70ff4262-be0c-4d90-8a28-47a06c29ac08): DROP TABLE IF EXISTS tx_str
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20261111001358_70ff4262-be0c-4d90-8a28-47a06c29ac08); Time taken: 0.147 seconds
+INFO  : Executing command(queryId=hive_20261111001358_70ff4262-be0c-4d90-8a28-47a06c29ac08): DROP TABLE IF EXISTS tx_str
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20261111001358_70ff4262-be0c-4d90-8a28-47a06c29ac08); Time taken: 0.037 seconds
+No rows affected (0.278 seconds)
+0: jdbc:hive2://localhost:10000/> INFO  : Compiling command(queryId=hive_20261111001358_a82decb0-36cb-4711-ae77-23e51a2d8559): DROP TABLE IF EXISTS tx_raw
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20261111001358_a82decb0-36cb-4711-ae77-23e51a2d8559); Time taken: 0.006 seconds
+INFO  : Executing command(queryId=hive_20261111001358_a82decb0-36cb-4711-ae77-23e51a2d8559): DROP TABLE IF EXISTS tx_raw
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20261111001358_a82decb0-36cb-4711-ae77-23e51a2d8559); Time taken: 0.006 seconds
+No rows affected (0.022 seconds)
+0: jdbc:hive2://localhost:10000/> INFO  : Compiling command(queryId=hive_20261111001359_90e38f4d-6fd3-4f71-95a2-26b22d597334): DROP TABLE IF EXISTS tx_orc
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20261111001359_90e38f4d-6fd3-4f71-95a2-26b22d597334); Time taken: 0.004 seconds
+INFO  : Executing command(queryId=hive_20261111001359_90e38f4d-6fd3-4f71-95a2-26b22d597334): DROP TABLE IF EXISTS tx_orc
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20261111001359_90e38f4d-6fd3-4f71-95a2-26b22d597334); Time taken: 0.005 seconds
+No rows affected (0.018 seconds)
+0: jdbc:hive2://localhost:10000/> Closing: 0: jdbc:hive2://localhost:10000/

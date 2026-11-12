@@ -1,0 +1,382 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.24.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.24.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Connecting to jdbc:hive2://localhost:10000/
+Connected to: Apache Hive (version 4.2.1)
+Driver: Hive JDBC (version 4.2.1)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+Beeline version 4.2.1 by Apache Hive
+0: jdbc:hive2://localhost:10000/> No rows affected (0.029 seconds)
+0: jdbc:hive2://localhost:10000/> No rows affected (0.005 seconds)
+0: jdbc:hive2://localhost:10000/> No rows affected (0.005 seconds)
+0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> INFO  : Compiling command(queryId=hive_20261111022715_8204f406-c386-4169-8400-4ae304114b2b): SELECT count(*) AS rows_cnt, sum(amount) AS amount_sum FROM tx_acid WHERE category = 'books'
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:rows_cnt, type:bigint, comment:null), FieldSchema(name:amount_sum, type:decimal(20,2), comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20261111022715_8204f406-c386-4169-8400-4ae304114b2b); Time taken: 0.159 seconds
+INFO  : Operation QUERY obtained 1 locks
+INFO  : Executing command(queryId=hive_20261111022715_8204f406-c386-4169-8400-4ae304114b2b): SELECT count(*) AS rows_cnt, sum(amount) AS amount_sum FROM tx_acid WHERE category = 'books'
+INFO  : Query ID = hive_20261111022715_8204f406-c386-4169-8400-4ae304114b2b
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20261111022715_8204f406-c386-4169-8400-4ae304114b2b
+INFO  : Tez session hasn't been created yet. Opening session
+INFO  : Dag name: SELECT count(*) AS ro......ategory = 'books' (Stage-1)
+INFO  : HS2 Host: [294d0742f37a], Query ID: [hive_20261111022715_8204f406-c386-4169-8400-4ae304114b2b], Dag ID: [dag_1794364035383_0001_1], DAG App ID: [application_1794364035383_0001], DAG App address: [294d0742f37a]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1794364035383_0001)
+
+[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 .......... container     SUCCEEDED      4          4        0        0       0       0  
+Reducer 2 ...... container     SUCCEEDED      1          1        0        0       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 02/02  [==========================>>] 100%  ELAPSED TIME: 1.29 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+INFO  : Status: DAG finished successfully in 1.25 seconds
+INFO  : DAG ID: dag_1794364035383_0001_1
+INFO  : 
+INFO  : Query Execution Summary
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : OPERATION                            DURATION
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : Compile Query                           0.16s
+INFO  : Prepare Plan                            0.18s
+INFO  : Get Query Coordinator (AM)              0.00s
+INFO  : Submit Plan                             0.01s
+INFO  : Start DAG                               0.02s
+INFO  : Run DAG                                 1.25s
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : 
+INFO  : Task Execution Summary
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :   VERTICES      DURATION(ms)   CPU_TIME(ms)    GC_TIME(ms)   INPUT_RECORDS   OUTPUT_RECORDS
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :      Map 1            749.00              0              0       7,866,654                4
+INFO  :  Reducer 2              0.00              0              0               4                0
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : FileSystem Counters Summary
+INFO  : 
+INFO  : Scheme: FILE
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :   VERTICES      BYTES_READ      READ_OPS     LARGE_READ_OPS      BYTES_WRITTEN     WRITE_OPS
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :      Map 1              0B             0                  0                 0B             0
+INFO  :  Reducer 2              0B             0                  0                 0B             0
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : 
+INFO  : org.apache.tez.common.counters.DAGCounter:
+INFO  :    NUM_SUCCEEDED_TASKS: 5
+INFO  :    TOTAL_LAUNCHED_TASKS: 5
+INFO  :    DURATION_SUCCEEDED_TASKS_MILLIS: 486
+INFO  :    OTHER_LOCAL_TASKS: 4
+INFO  :    AM_CPU_MILLISECONDS: 2910
+INFO  :    WALL_CLOCK_MILLIS: 486
+INFO  :    AM_GC_TIME_MILLIS: 0
+INFO  :    INITIAL_HELD_CONTAINERS: 0
+INFO  :    TOTAL_CONTAINERS_USED: 5
+INFO  :    TOTAL_CONTAINER_LAUNCH_COUNT: 5
+INFO  :    TOTAL_CONTAINER_RELEASE_COUNT: 5
+INFO  :    NODE_USED_COUNT: 1
+INFO  :    NODE_TOTAL_COUNT: 1
+INFO  : org.apache.tez.common.counters.TaskCounter:
+INFO  :    SPILLED_RECORDS: 0
+INFO  :    NUM_SHUFFLED_INPUTS: 0
+INFO  :    NUM_FAILED_SHUFFLE_INPUTS: 0
+INFO  :    INPUT_RECORDS_PROCESSED: 7688
+INFO  :    INPUT_SPLIT_LENGTH_BYTES: 62846430
+INFO  :    OUTPUT_RECORDS: 4
+INFO  :    APPROXIMATE_INPUT_RECORDS: 4
+INFO  :    OUTPUT_LARGE_RECORDS: 0
+INFO  :    OUTPUT_BYTES: 41
+INFO  :    OUTPUT_BYTES_WITH_OVERHEAD: 73
+INFO  :    OUTPUT_BYTES_PHYSICAL: 185
+INFO  :    ADDITIONAL_SPILLS_BYTES_WRITTEN: 0
+INFO  :    ADDITIONAL_SPILLS_BYTES_READ: 0
+INFO  :    ADDITIONAL_SPILL_COUNT: 0
+INFO  :    SHUFFLE_BYTES: 0
+INFO  :    SHUFFLE_BYTES_DECOMPRESSED: 0
+INFO  :    SHUFFLE_BYTES_TO_MEM: 0
+INFO  :    SHUFFLE_BYTES_TO_DISK: 0
+INFO  :    SHUFFLE_BYTES_DISK_DIRECT: 0
+INFO  :    SHUFFLE_PHASE_TIME: 2
+INFO  :    FIRST_EVENT_RECEIVED: 1
+INFO  :    LAST_EVENT_RECEIVED: 2
+INFO  :    DATA_BYTES_VIA_EVENT: 89
+INFO  : HIVE:
+INFO  :    CREATED_FILES: 1
+INFO  :    DESERIALIZE_ERRORS: 0
+INFO  :    RECORDS_IN_Map_1: 7866654
+INFO  :    RECORDS_OUT_0: 1
+INFO  :    RECORDS_OUT_INTERMEDIATE_Map_1: 4
+INFO  :    RECORDS_OUT_INTERMEDIATE_Reducer_2: 0
+INFO  :    RECORDS_OUT_OPERATOR_FIL_9: 472755
+INFO  :    RECORDS_OUT_OPERATOR_FS_14: 1
+INFO  :    RECORDS_OUT_OPERATOR_GBY_11: 4
+INFO  :    RECORDS_OUT_OPERATOR_GBY_13: 1
+INFO  :    RECORDS_OUT_OPERATOR_MAP_0: 0
+INFO  :    RECORDS_OUT_OPERATOR_RS_12: 4
+INFO  :    RECORDS_OUT_OPERATOR_SEL_10: 472755
+INFO  :    RECORDS_OUT_OPERATOR_TS_0: 7866654
+INFO  : org.apache.hadoop.hive.ql.exec.tez.HiveInputCounters:
+INFO  :    GROUPED_INPUT_SPLITS_Map_1: 4
+INFO  :    INPUT_DIRECTORIES_Map_1: 1
+INFO  :    INPUT_FILES_Map_1: 4
+INFO  :    RAW_INPUT_SPLITS_Map_1: 4
+INFO  : Completed executing command(queryId=hive_20261111022715_8204f406-c386-4169-8400-4ae304114b2b); Time taken: 1.443 seconds
++-----------+--------------+
+| rows_cnt  |  amount_sum  |
++-----------+--------------+
+| 472755    | 14856124.17  |
++-----------+--------------+
+1 row selected (1.711 seconds)
+0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> INFO  : Compiling command(queryId=hive_20261111022716_21668767-35b4-47cc-adca-dd12d70bcba2): SELECT count(*) AS rows_cnt, sum(amount) AS amount_sum FROM tx_acid WHERE category = 'books'
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:rows_cnt, type:bigint, comment:null), FieldSchema(name:amount_sum, type:decimal(20,2), comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20261111022716_21668767-35b4-47cc-adca-dd12d70bcba2); Time taken: 0.097 seconds
+INFO  : Operation QUERY obtained 1 locks
+INFO  : Executing command(queryId=hive_20261111022716_21668767-35b4-47cc-adca-dd12d70bcba2): SELECT count(*) AS rows_cnt, sum(amount) AS amount_sum FROM tx_acid WHERE category = 'books'
+INFO  : Query ID = hive_20261111022716_21668767-35b4-47cc-adca-dd12d70bcba2
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20261111022716_21668767-35b4-47cc-adca-dd12d70bcba2
+INFO  : Session is already open
+INFO  : Dag name: SELECT count(*) AS ro......ategory = 'books' (Stage-1)
+INFO  : HS2 Host: [294d0742f37a], Query ID: [hive_20261111022716_21668767-35b4-47cc-adca-dd12d70bcba2], Dag ID: [dag_1794364035383_0001_2], DAG App ID: [application_1794364035383_0001], DAG App address: [294d0742f37a]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1794364035383_0001)
+
+[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 .......... container     SUCCEEDED      4          4        0        0       0       0  
+Reducer 2 ...... container     SUCCEEDED      1          1        0        0       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 02/02  [==========================>>] 100%  ELAPSED TIME: 1.18 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+INFO  : Status: DAG finished successfully in 1.16 seconds
+INFO  : DAG ID: dag_1794364035383_0001_2
+INFO  : 
+INFO  : Query Execution Summary
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : OPERATION                            DURATION
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : Compile Query                           0.10s
+INFO  : Prepare Plan                            0.04s
+INFO  : Get Query Coordinator (AM)              0.00s
+INFO  : Submit Plan                             0.01s
+INFO  : Start DAG                               0.01s
+INFO  : Run DAG                                 1.16s
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : 
+INFO  : Task Execution Summary
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :   VERTICES      DURATION(ms)   CPU_TIME(ms)    GC_TIME(ms)   INPUT_RECORDS   OUTPUT_RECORDS
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :      Map 1            502.00              0              0       7,866,654                4
+INFO  :  Reducer 2              0.00              0              0               4                0
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : FileSystem Counters Summary
+INFO  : 
+INFO  : Scheme: FILE
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :   VERTICES      BYTES_READ      READ_OPS     LARGE_READ_OPS      BYTES_WRITTEN     WRITE_OPS
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :      Map 1              0B             0                  0                 0B             0
+INFO  :  Reducer 2              0B             0                  0                 0B             0
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : 
+INFO  : org.apache.tez.common.counters.DAGCounter:
+INFO  :    NUM_SUCCEEDED_TASKS: 5
+INFO  :    TOTAL_LAUNCHED_TASKS: 5
+INFO  :    DURATION_SUCCEEDED_TASKS_MILLIS: 460
+INFO  :    OTHER_LOCAL_TASKS: 4
+INFO  :    AM_CPU_MILLISECONDS: 1440
+INFO  :    WALL_CLOCK_MILLIS: 460
+INFO  :    AM_GC_TIME_MILLIS: 0
+INFO  :    INITIAL_HELD_CONTAINERS: 0
+INFO  :    TOTAL_CONTAINERS_USED: 5
+INFO  :    TOTAL_CONTAINER_LAUNCH_COUNT: 5
+INFO  :    TOTAL_CONTAINER_RELEASE_COUNT: 5
+INFO  :    NODE_USED_COUNT: 1
+INFO  :    NODE_TOTAL_COUNT: 1
+INFO  : org.apache.tez.common.counters.TaskCounter:
+INFO  :    SPILLED_RECORDS: 0
+INFO  :    NUM_SHUFFLED_INPUTS: 0
+INFO  :    NUM_FAILED_SHUFFLE_INPUTS: 0
+INFO  :    INPUT_RECORDS_PROCESSED: 7688
+INFO  :    INPUT_SPLIT_LENGTH_BYTES: 62846430
+INFO  :    OUTPUT_RECORDS: 4
+INFO  :    APPROXIMATE_INPUT_RECORDS: 4
+INFO  :    OUTPUT_LARGE_RECORDS: 0
+INFO  :    OUTPUT_BYTES: 41
+INFO  :    OUTPUT_BYTES_WITH_OVERHEAD: 73
+INFO  :    OUTPUT_BYTES_PHYSICAL: 185
+INFO  :    ADDITIONAL_SPILLS_BYTES_WRITTEN: 0
+INFO  :    ADDITIONAL_SPILLS_BYTES_READ: 0
+INFO  :    ADDITIONAL_SPILL_COUNT: 0
+INFO  :    SHUFFLE_BYTES: 0
+INFO  :    SHUFFLE_BYTES_DECOMPRESSED: 0
+INFO  :    SHUFFLE_BYTES_TO_MEM: 0
+INFO  :    SHUFFLE_BYTES_TO_DISK: 0
+INFO  :    SHUFFLE_BYTES_DISK_DIRECT: 0
+INFO  :    SHUFFLE_PHASE_TIME: 1
+INFO  :    FIRST_EVENT_RECEIVED: 1
+INFO  :    LAST_EVENT_RECEIVED: 1
+INFO  :    DATA_BYTES_VIA_EVENT: 89
+INFO  : HIVE:
+INFO  :    CREATED_FILES: 1
+INFO  :    DESERIALIZE_ERRORS: 0
+INFO  :    RECORDS_IN_Map_1: 7866654
+INFO  :    RECORDS_OUT_0: 1
+INFO  :    RECORDS_OUT_INTERMEDIATE_Map_1: 4
+INFO  :    RECORDS_OUT_INTERMEDIATE_Reducer_2: 0
+INFO  :    RECORDS_OUT_OPERATOR_FIL_9: 472755
+INFO  :    RECORDS_OUT_OPERATOR_FS_14: 1
+INFO  :    RECORDS_OUT_OPERATOR_GBY_11: 4
+INFO  :    RECORDS_OUT_OPERATOR_GBY_13: 1
+INFO  :    RECORDS_OUT_OPERATOR_MAP_0: 0
+INFO  :    RECORDS_OUT_OPERATOR_RS_12: 4
+INFO  :    RECORDS_OUT_OPERATOR_SEL_10: 472755
+INFO  :    RECORDS_OUT_OPERATOR_TS_0: 7866654
+INFO  : org.apache.hadoop.hive.ql.exec.tez.HiveInputCounters:
+INFO  :    GROUPED_INPUT_SPLITS_Map_1: 4
+INFO  :    INPUT_DIRECTORIES_Map_1: 1
+INFO  :    INPUT_FILES_Map_1: 4
+INFO  :    RAW_INPUT_SPLITS_Map_1: 4
+INFO  : Completed executing command(queryId=hive_20261111022716_21668767-35b4-47cc-adca-dd12d70bcba2); Time taken: 1.199 seconds
++-----------+--------------+
+| rows_cnt  |  amount_sum  |
++-----------+--------------+
+| 472755    | 14856124.17  |
++-----------+--------------+
+1 row selected (1.37 seconds)
+0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> INFO  : Compiling command(queryId=hive_20261111022718_20f16d29-ab6f-4f04-8352-383bd92a8d88): SELECT count(*) AS rows_cnt, sum(amount) AS amount_sum FROM tx_acid WHERE category = 'books'
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:rows_cnt, type:bigint, comment:null), FieldSchema(name:amount_sum, type:decimal(20,2), comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20261111022718_20f16d29-ab6f-4f04-8352-383bd92a8d88); Time taken: 0.08 seconds
+INFO  : Operation QUERY obtained 1 locks
+INFO  : Executing command(queryId=hive_20261111022718_20f16d29-ab6f-4f04-8352-383bd92a8d88): SELECT count(*) AS rows_cnt, sum(amount) AS amount_sum FROM tx_acid WHERE category = 'books'
+INFO  : Query ID = hive_20261111022718_20f16d29-ab6f-4f04-8352-383bd92a8d88
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20261111022718_20f16d29-ab6f-4f04-8352-383bd92a8d88
+INFO  : Session is already open
+INFO  : Dag name: SELECT count(*) AS ro......ategory = 'books' (Stage-1)
+INFO  : HS2 Host: [294d0742f37a], Query ID: [hive_20261111022718_20f16d29-ab6f-4f04-8352-383bd92a8d88], Dag ID: [dag_1794364035383_0001_3], DAG App ID: [application_1794364035383_0001], DAG App address: [294d0742f37a]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1794364035383_0001)
+
+[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 .......... container     SUCCEEDED      4          4        0        0       0       0  
+Reducer 2 ...... container     SUCCEEDED      1          1        0        0       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 02/02  [==========================>>] 100%  ELAPSED TIME: 1.19 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+INFO  : Status: DAG finished successfully in 1.17 seconds
+INFO  : DAG ID: dag_1794364035383_0001_3
+INFO  : 
+INFO  : Query Execution Summary
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : OPERATION                            DURATION
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : Compile Query                           0.08s
+INFO  : Prepare Plan                            0.04s
+INFO  : Get Query Coordinator (AM)              0.00s
+INFO  : Submit Plan                             0.01s
+INFO  : Start DAG                               0.01s
+INFO  : Run DAG                                 1.17s
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : 
+INFO  : Task Execution Summary
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :   VERTICES      DURATION(ms)   CPU_TIME(ms)    GC_TIME(ms)   INPUT_RECORDS   OUTPUT_RECORDS
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :      Map 1            666.00              0              0       7,866,654                4
+INFO  :  Reducer 2              0.00              0              0               4                0
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : FileSystem Counters Summary
+INFO  : 
+INFO  : Scheme: FILE
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :   VERTICES      BYTES_READ      READ_OPS     LARGE_READ_OPS      BYTES_WRITTEN     WRITE_OPS
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :      Map 1              0B             0                  0                 0B             0
+INFO  :  Reducer 2              0B             0                  0                 0B             0
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : 
+INFO  : org.apache.tez.common.counters.DAGCounter:
+INFO  :    NUM_SUCCEEDED_TASKS: 5
+INFO  :    TOTAL_LAUNCHED_TASKS: 5
+INFO  :    DURATION_SUCCEEDED_TASKS_MILLIS: 445
+INFO  :    OTHER_LOCAL_TASKS: 4
+INFO  :    AM_CPU_MILLISECONDS: 2650
+INFO  :    WALL_CLOCK_MILLIS: 445
+INFO  :    AM_GC_TIME_MILLIS: 0
+INFO  :    INITIAL_HELD_CONTAINERS: 0
+INFO  :    TOTAL_CONTAINERS_USED: 5
+INFO  :    TOTAL_CONTAINER_LAUNCH_COUNT: 5
+INFO  :    TOTAL_CONTAINER_RELEASE_COUNT: 5
+INFO  :    NODE_USED_COUNT: 1
+INFO  :    NODE_TOTAL_COUNT: 1
+INFO  : org.apache.tez.common.counters.TaskCounter:
+INFO  :    SPILLED_RECORDS: 0
+INFO  :    NUM_SHUFFLED_INPUTS: 0
+INFO  :    NUM_FAILED_SHUFFLE_INPUTS: 0
+INFO  :    INPUT_RECORDS_PROCESSED: 7688
+INFO  :    INPUT_SPLIT_LENGTH_BYTES: 62846430
+INFO  :    OUTPUT_RECORDS: 4
+INFO  :    APPROXIMATE_INPUT_RECORDS: 4
+INFO  :    OUTPUT_LARGE_RECORDS: 0
+INFO  :    OUTPUT_BYTES: 41
+INFO  :    OUTPUT_BYTES_WITH_OVERHEAD: 73
+INFO  :    OUTPUT_BYTES_PHYSICAL: 185
+INFO  :    ADDITIONAL_SPILLS_BYTES_WRITTEN: 0
+INFO  :    ADDITIONAL_SPILLS_BYTES_READ: 0
+INFO  :    ADDITIONAL_SPILL_COUNT: 0
+INFO  :    SHUFFLE_BYTES: 0
+INFO  :    SHUFFLE_BYTES_DECOMPRESSED: 0
+INFO  :    SHUFFLE_BYTES_TO_MEM: 0
+INFO  :    SHUFFLE_BYTES_TO_DISK: 0
+INFO  :    SHUFFLE_BYTES_DISK_DIRECT: 0
+INFO  :    SHUFFLE_PHASE_TIME: 1
+INFO  :    FIRST_EVENT_RECEIVED: 1
+INFO  :    LAST_EVENT_RECEIVED: 1
+INFO  :    DATA_BYTES_VIA_EVENT: 89
+INFO  : HIVE:
+INFO  :    CREATED_FILES: 1
+INFO  :    DESERIALIZE_ERRORS: 0
+INFO  :    RECORDS_IN_Map_1: 7866654
+INFO  :    RECORDS_OUT_0: 1
+INFO  :    RECORDS_OUT_INTERMEDIATE_Map_1: 4
+INFO  :    RECORDS_OUT_INTERMEDIATE_Reducer_2: 0
+INFO  :    RECORDS_OUT_OPERATOR_FIL_9: 472755
+INFO  :    RECORDS_OUT_OPERATOR_FS_14: 1
+INFO  :    RECORDS_OUT_OPERATOR_GBY_11: 4
+INFO  :    RECORDS_OUT_OPERATOR_GBY_13: 1
+INFO  :    RECORDS_OUT_OPERATOR_MAP_0: 0
+INFO  :    RECORDS_OUT_OPERATOR_RS_12: 4
+INFO  :    RECORDS_OUT_OPERATOR_SEL_10: 472755
+INFO  :    RECORDS_OUT_OPERATOR_TS_0: 7866654
+INFO  : org.apache.hadoop.hive.ql.exec.tez.HiveInputCounters:
+INFO  :    GROUPED_INPUT_SPLITS_Map_1: 4
+INFO  :    INPUT_DIRECTORIES_Map_1: 1
+INFO  :    INPUT_FILES_Map_1: 4
+INFO  :    RAW_INPUT_SPLITS_Map_1: 4
+INFO  : Completed executing command(queryId=hive_20261111022718_20f16d29-ab6f-4f04-8352-383bd92a8d88); Time taken: 1.21 seconds
++-----------+--------------+
+| rows_cnt  |  amount_sum  |
++-----------+--------------+
+| 472755    | 14856124.17  |
++-----------+--------------+
+1 row selected (1.351 seconds)
+0: jdbc:hive2://localhost:10000/> Closing: 0: jdbc:hive2://localhost:10000/

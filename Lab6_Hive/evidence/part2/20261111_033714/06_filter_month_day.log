@@ -1,0 +1,510 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.24.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.24.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Connecting to jdbc:hive2://localhost:10000/
+Connected to: Apache Hive (version 4.2.1)
+Driver: Hive JDBC (version 4.2.1)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+Beeline version 4.2.1 by Apache Hive
+0: jdbc:hive2://localhost:10000/> No rows affected (0.026 seconds)
+0: jdbc:hive2://localhost:10000/> No rows affected (0.004 seconds)
+0: jdbc:hive2://localhost:10000/> No rows affected (0.004 seconds)
+0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > INFO  : Compiling command(queryId=hive_20261111013850_0e171fcc-41c2-45ed-9442-ed66e0b13306): EXPLAIN
+SELECT category, sum(amount) AS revenue
+FROM tx_day
+WHERE month(dt) = 2 AND day(dt) = 15
+GROUP BY category
+ORDER BY category
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:Explain, type:string, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20261111013850_0e171fcc-41c2-45ed-9442-ed66e0b13306); Time taken: 0.113 seconds
+INFO  : Executing command(queryId=hive_20261111013850_0e171fcc-41c2-45ed-9442-ed66e0b13306): EXPLAIN
+SELECT category, sum(amount) AS revenue
+FROM tx_day
+WHERE month(dt) = 2 AND day(dt) = 15
+GROUP BY category
+ORDER BY category
+INFO  : Starting task [Stage-3:EXPLAIN] in serial mode
+INFO  : Completed executing command(queryId=hive_20261111013850_0e171fcc-41c2-45ed-9442-ed66e0b13306); Time taken: 0.002 seconds
++----------------------------------------------------+
+|                      Explain                       |
++----------------------------------------------------+
+| Plan optimized by CBO.                             |
+|                                                    |
+| Vertex dependency in root stage                    |
+| Reducer 2 <- Map 1 (SIMPLE_EDGE)                   |
+| Reducer 3 <- Reducer 2 (SIMPLE_EDGE)               |
+|                                                    |
+| Stage-0                                            |
+|   Fetch Operator                                   |
+|     limit:-1                                       |
+|     Stage-1                                        |
+|       Reducer 3 vectorized                         |
+|       File Output Operator [FS_17]                 |
+|         Select Operator [SEL_16] (rows=10 width=205) |
+|           Output:["_col0","_col1"]                 |
+|         <-Reducer 2 [SIMPLE_EDGE] vectorized       |
+|           SHUFFLE [RS_15]                          |
+|             Group By Operator [GBY_14] (rows=10 width=205) |
+|               Output:["_col0","_col1"],aggregations:["sum(VALUE._col0)"],keys:KEY._col0 |
+|             <-Map 1 [SIMPLE_EDGE] vectorized       |
+|               SHUFFLE [RS_13]                      |
+|                 PartitionCols:_col0                |
+|                 Group By Operator [GBY_12] (rows=10 width=205) |
+|                   Output:["_col0","_col1"],aggregations:["sum(amount)"],keys:category |
+|                   Select Operator [SEL_11] (rows=87540 width=201) |
+|                     Output:["category","amount"]   |
+|                     TableScan [TS_0] (rows=87540 width=201) |
+|                       default@tx_day,tx_day,Tbl:COMPLETE,Col:COMPLETE,Output:["category","amount"] |
+|                                                    |
++----------------------------------------------------+
+28 rows selected (0.164 seconds)
+0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > INFO  : Compiling command(queryId=hive_20261111013850_ed07530e-3c09-402a-8638-d411d0c28ee9): SELECT category, sum(amount) AS revenue
+FROM tx_day
+WHERE month(dt) = 2 AND day(dt) = 15
+GROUP BY category
+ORDER BY category
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:category, type:string, comment:null), FieldSchema(name:revenue, type:decimal(20,2), comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20261111013850_ed07530e-3c09-402a-8638-d411d0c28ee9); Time taken: 0.079 seconds
+INFO  : Executing command(queryId=hive_20261111013850_ed07530e-3c09-402a-8638-d411d0c28ee9): SELECT category, sum(amount) AS revenue
+FROM tx_day
+WHERE month(dt) = 2 AND day(dt) = 15
+GROUP BY category
+ORDER BY category
+INFO  : Query ID = hive_20261111013850_ed07530e-3c09-402a-8638-d411d0c28ee9
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20261111013850_ed07530e-3c09-402a-8638-d411d0c28ee9
+INFO  : Tez session hasn't been created yet. Opening session
+INFO  : Dag name: SELECT category, sum(......ORDER BY category (Stage-1)
+INFO  : HS2 Host: [294d0742f37a], Query ID: [hive_20261111013850_ed07530e-3c09-402a-8638-d411d0c28ee9], Dag ID: [dag_1794361130652_0001_1], DAG App ID: [application_1794361130652_0001], DAG App address: [294d0742f37a]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1794361130652_0001)
+
+INFO  : Status: DAG finished successfully in 0.51 seconds
+INFO  : DAG ID: dag_1794361130652_0001_1
+INFO  : 
+INFO  : Query Execution Summary
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : OPERATION                            DURATION
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : Compile Query                           0.08s
+INFO  : Prepare Plan                            0.14s
+INFO  : Get Query Coordinator (AM)              0.00s
+INFO  : Submit Plan                             0.01s
+INFO  : Start DAG                               0.02s
+INFO  : Run DAG                                 0.51s
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : 
+INFO  : Task Execution Summary
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :   VERTICES      DURATION(ms)   CPU_TIME(ms)    GC_TIME(ms)   INPUT_RECORDS   OUTPUT_RECORDS
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :      Map 1              0.00              0              0          87,540               10
+INFO  :  Reducer 2              0.00              0              0              10               10
+INFO  :  Reducer 3              0.00              0              0              10                0
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : FileSystem Counters Summary
+INFO  : 
+INFO  : Scheme: FILE
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :   VERTICES      BYTES_READ      READ_OPS     LARGE_READ_OPS      BYTES_WRITTEN     WRITE_OPS
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :      Map 1              0B             0                  0                 0B             0
+INFO  :  Reducer 2              0B             0                  0                 0B             0
+INFO  :  Reducer 3              0B             0                  0                 0B             0
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : 
+INFO  : org.apache.tez.common.counters.DAGCounter:
+INFO  :    NUM_SUCCEEDED_TASKS: 3
+INFO  :    TOTAL_LAUNCHED_TASKS: 3
+INFO  :    DURATION_SUCCEEDED_TASKS_MILLIS: 104
+INFO  :    OTHER_LOCAL_TASKS: 1
+INFO  :    AM_CPU_MILLISECONDS: 680
+INFO  :    WALL_CLOCK_MILLIS: 104
+INFO  :    AM_GC_TIME_MILLIS: 0
+INFO  :    INITIAL_HELD_CONTAINERS: 0
+INFO  :    TOTAL_CONTAINERS_USED: 3
+INFO  :    TOTAL_CONTAINER_LAUNCH_COUNT: 3
+INFO  :    TOTAL_CONTAINER_RELEASE_COUNT: 3
+INFO  :    NODE_USED_COUNT: 1
+INFO  :    NODE_TOTAL_COUNT: 1
+INFO  : org.apache.tez.common.counters.TaskCounter:
+INFO  :    REDUCE_INPUT_GROUPS: 20
+INFO  :    REDUCE_INPUT_RECORDS: 20
+INFO  :    COMBINE_INPUT_RECORDS: 0
+INFO  :    SPILLED_RECORDS: 40
+INFO  :    NUM_SHUFFLED_INPUTS: 2
+INFO  :    NUM_SKIPPED_INPUTS: 0
+INFO  :    NUM_FAILED_SHUFFLE_INPUTS: 0
+INFO  :    MERGED_MAP_OUTPUTS: 2
+INFO  :    INPUT_RECORDS_PROCESSED: 86
+INFO  :    INPUT_SPLIT_LENGTH_BYTES: 634359
+INFO  :    OUTPUT_RECORDS: 20
+INFO  :    OUTPUT_LARGE_RECORDS: 0
+INFO  :    OUTPUT_BYTES: 374
+INFO  :    OUTPUT_BYTES_WITH_OVERHEAD: 426
+INFO  :    OUTPUT_BYTES_PHYSICAL: 434
+INFO  :    ADDITIONAL_SPILLS_BYTES_WRITTEN: 0
+INFO  :    ADDITIONAL_SPILLS_BYTES_READ: 434
+INFO  :    ADDITIONAL_SPILL_COUNT: 0
+INFO  :    SHUFFLE_CHUNK_COUNT: 2
+INFO  :    SHUFFLE_BYTES: 434
+INFO  :    SHUFFLE_BYTES_DECOMPRESSED: 426
+INFO  :    SHUFFLE_BYTES_TO_MEM: 0
+INFO  :    SHUFFLE_BYTES_TO_DISK: 0
+INFO  :    SHUFFLE_BYTES_DISK_DIRECT: 434
+INFO  :    NUM_MEM_TO_DISK_MERGES: 0
+INFO  :    NUM_DISK_TO_DISK_MERGES: 0
+INFO  :    SHUFFLE_PHASE_TIME: 6
+INFO  :    MERGE_PHASE_TIME: 7
+INFO  :    FIRST_EVENT_RECEIVED: 3
+INFO  :    LAST_EVENT_RECEIVED: 3
+INFO  : HIVE:
+INFO  :    CREATED_FILES: 1
+INFO  :    DESERIALIZE_ERRORS: 0
+INFO  :    RECORDS_IN_Map_1: 87540
+INFO  :    RECORDS_OUT_0: 10
+INFO  :    RECORDS_OUT_INTERMEDIATE_Map_1: 10
+INFO  :    RECORDS_OUT_INTERMEDIATE_Reducer_2: 10
+INFO  :    RECORDS_OUT_INTERMEDIATE_Reducer_3: 0
+INFO  :    RECORDS_OUT_OPERATOR_FS_17: 10
+INFO  :    RECORDS_OUT_OPERATOR_GBY_12: 10
+INFO  :    RECORDS_OUT_OPERATOR_GBY_14: 10
+INFO  :    RECORDS_OUT_OPERATOR_MAP_0: 0
+INFO  :    RECORDS_OUT_OPERATOR_RS_13: 10
+INFO  :    RECORDS_OUT_OPERATOR_RS_15: 10
+INFO  :    RECORDS_OUT_OPERATOR_SEL_11: 87540
+INFO  :    RECORDS_OUT_OPERATOR_SEL_16: 10
+INFO  :    RECORDS_OUT_OPERATOR_TS_0: 87540
+INFO  : Shuffle Errors:
+INFO  :    BAD_ID: 0
+INFO  :    CONNECTION: 0
+INFO  :    IO_ERROR: 0
+INFO  :    WRONG_LENGTH: 0
+INFO  :    WRONG_MAP: 0
+INFO  :    WRONG_REDUCE: 0
+INFO  : org.apache.hadoop.hive.ql.exec.tez.HiveInputCounters:
+INFO  :    GROUPED_INPUT_SPLITS_Map_1: 1
+INFO  :    INPUT_DIRECTORIES_Map_1: 1
+INFO  :    INPUT_FILES_Map_1: 1
+INFO  :    RAW_INPUT_SPLITS_Map_1: 1
+INFO  : Completed executing command(queryId=hive_20261111013850_ed07530e-3c09-402a-8638-d411d0c28ee9); Time taken: 0.681 seconds
++----------------+-------------+
+|    category    |   revenue   |
++----------------+-------------+
+| books          | 165414.15   |
+| clothing       | 1064709.38  |
+| electronics    | 3136749.24  |
+| entertainment  | 349797.77   |
+| groceries      | 1947635.94  |
+| health         | 640280.32   |
+| restaurants    | 803671.12   |
+| transport      | 371913.24   |
+| travel         | 3547057.16  |
+| utilities      | 376216.29   |
++----------------+-------------+
+10 rows selected (0.802 seconds)
+0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > INFO  : Compiling command(queryId=hive_20261111013851_382ef250-42ba-484c-a67e-7b29bff557d8): SELECT category, sum(amount) AS revenue
+FROM tx_day
+WHERE month(dt) = 2 AND day(dt) = 15
+GROUP BY category
+ORDER BY category
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:category, type:string, comment:null), FieldSchema(name:revenue, type:decimal(20,2), comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20261111013851_382ef250-42ba-484c-a67e-7b29bff557d8); Time taken: 0.073 seconds
+INFO  : Executing command(queryId=hive_20261111013851_382ef250-42ba-484c-a67e-7b29bff557d8): SELECT category, sum(amount) AS revenue
+FROM tx_day
+WHERE month(dt) = 2 AND day(dt) = 15
+GROUP BY category
+ORDER BY category
+INFO  : Query ID = hive_20261111013851_382ef250-42ba-484c-a67e-7b29bff557d8
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20261111013851_382ef250-42ba-484c-a67e-7b29bff557d8
+INFO  : Session is already open
+INFO  : Dag name: SELECT category, sum(......ORDER BY category (Stage-1)
+INFO  : HS2 Host: [294d0742f37a], Query ID: [hive_20261111013851_382ef250-42ba-484c-a67e-7b29bff557d8], Dag ID: [dag_1794361130652_0001_2], DAG App ID: [application_1794361130652_0001], DAG App address: [294d0742f37a]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1794361130652_0001)
+
+INFO  : Status: DAG finished successfully in 0.52 seconds
+INFO  : DAG ID: dag_1794361130652_0001_2
+INFO  : 
+INFO  : Query Execution Summary
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : OPERATION                            DURATION
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : Compile Query                           0.07s
+INFO  : Prepare Plan                            0.02s
+INFO  : Get Query Coordinator (AM)              0.00s
+INFO  : Submit Plan                             0.01s
+INFO  : Start DAG                               0.01s
+INFO  : Run DAG                                 0.52s
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : 
+INFO  : Task Execution Summary
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :   VERTICES      DURATION(ms)   CPU_TIME(ms)    GC_TIME(ms)   INPUT_RECORDS   OUTPUT_RECORDS
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :      Map 1              0.00              0              0          87,540               10
+INFO  :  Reducer 2              0.00              0              0              10               10
+INFO  :  Reducer 3              0.00              0              0              10                0
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : FileSystem Counters Summary
+INFO  : 
+INFO  : Scheme: FILE
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :   VERTICES      BYTES_READ      READ_OPS     LARGE_READ_OPS      BYTES_WRITTEN     WRITE_OPS
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :      Map 1              0B             0                  0                 0B             0
+INFO  :  Reducer 2              0B             0                  0                 0B             0
+INFO  :  Reducer 3              0B             0                  0                 0B             0
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : 
+INFO  : org.apache.tez.common.counters.DAGCounter:
+INFO  :    NUM_SUCCEEDED_TASKS: 3
+INFO  :    TOTAL_LAUNCHED_TASKS: 3
+INFO  :    DURATION_SUCCEEDED_TASKS_MILLIS: 93
+INFO  :    OTHER_LOCAL_TASKS: 1
+INFO  :    AM_CPU_MILLISECONDS: 720
+INFO  :    WALL_CLOCK_MILLIS: 93
+INFO  :    AM_GC_TIME_MILLIS: 26
+INFO  :    INITIAL_HELD_CONTAINERS: 0
+INFO  :    TOTAL_CONTAINERS_USED: 3
+INFO  :    TOTAL_CONTAINER_LAUNCH_COUNT: 3
+INFO  :    TOTAL_CONTAINER_RELEASE_COUNT: 3
+INFO  :    NODE_USED_COUNT: 1
+INFO  :    NODE_TOTAL_COUNT: 1
+INFO  : org.apache.tez.common.counters.TaskCounter:
+INFO  :    REDUCE_INPUT_GROUPS: 20
+INFO  :    REDUCE_INPUT_RECORDS: 20
+INFO  :    COMBINE_INPUT_RECORDS: 0
+INFO  :    SPILLED_RECORDS: 40
+INFO  :    NUM_SHUFFLED_INPUTS: 2
+INFO  :    NUM_SKIPPED_INPUTS: 0
+INFO  :    NUM_FAILED_SHUFFLE_INPUTS: 0
+INFO  :    MERGED_MAP_OUTPUTS: 2
+INFO  :    INPUT_RECORDS_PROCESSED: 86
+INFO  :    INPUT_SPLIT_LENGTH_BYTES: 634359
+INFO  :    OUTPUT_RECORDS: 20
+INFO  :    OUTPUT_LARGE_RECORDS: 0
+INFO  :    OUTPUT_BYTES: 374
+INFO  :    OUTPUT_BYTES_WITH_OVERHEAD: 426
+INFO  :    OUTPUT_BYTES_PHYSICAL: 434
+INFO  :    ADDITIONAL_SPILLS_BYTES_WRITTEN: 0
+INFO  :    ADDITIONAL_SPILLS_BYTES_READ: 434
+INFO  :    ADDITIONAL_SPILL_COUNT: 0
+INFO  :    SHUFFLE_CHUNK_COUNT: 2
+INFO  :    SHUFFLE_BYTES: 434
+INFO  :    SHUFFLE_BYTES_DECOMPRESSED: 426
+INFO  :    SHUFFLE_BYTES_TO_MEM: 0
+INFO  :    SHUFFLE_BYTES_TO_DISK: 0
+INFO  :    SHUFFLE_BYTES_DISK_DIRECT: 434
+INFO  :    NUM_MEM_TO_DISK_MERGES: 0
+INFO  :    NUM_DISK_TO_DISK_MERGES: 0
+INFO  :    SHUFFLE_PHASE_TIME: 8
+INFO  :    MERGE_PHASE_TIME: 8
+INFO  :    FIRST_EVENT_RECEIVED: 4
+INFO  :    LAST_EVENT_RECEIVED: 4
+INFO  : HIVE:
+INFO  :    CREATED_FILES: 1
+INFO  :    DESERIALIZE_ERRORS: 0
+INFO  :    RECORDS_IN_Map_1: 87540
+INFO  :    RECORDS_OUT_0: 10
+INFO  :    RECORDS_OUT_INTERMEDIATE_Map_1: 10
+INFO  :    RECORDS_OUT_INTERMEDIATE_Reducer_2: 10
+INFO  :    RECORDS_OUT_INTERMEDIATE_Reducer_3: 0
+INFO  :    RECORDS_OUT_OPERATOR_FS_17: 10
+INFO  :    RECORDS_OUT_OPERATOR_GBY_12: 10
+INFO  :    RECORDS_OUT_OPERATOR_GBY_14: 10
+INFO  :    RECORDS_OUT_OPERATOR_MAP_0: 0
+INFO  :    RECORDS_OUT_OPERATOR_RS_13: 10
+INFO  :    RECORDS_OUT_OPERATOR_RS_15: 10
+INFO  :    RECORDS_OUT_OPERATOR_SEL_11: 87540
+INFO  :    RECORDS_OUT_OPERATOR_SEL_16: 10
+INFO  :    RECORDS_OUT_OPERATOR_TS_0: 87540
+INFO  : Shuffle Errors:
+INFO  :    BAD_ID: 0
+INFO  :    CONNECTION: 0
+INFO  :    IO_ERROR: 0
+INFO  :    WRONG_LENGTH: 0
+INFO  :    WRONG_MAP: 0
+INFO  :    WRONG_REDUCE: 0
+INFO  : org.apache.hadoop.hive.ql.exec.tez.HiveInputCounters:
+INFO  :    GROUPED_INPUT_SPLITS_Map_1: 1
+INFO  :    INPUT_DIRECTORIES_Map_1: 1
+INFO  :    INPUT_FILES_Map_1: 1
+INFO  :    RAW_INPUT_SPLITS_Map_1: 1
+INFO  : Completed executing command(queryId=hive_20261111013851_382ef250-42ba-484c-a67e-7b29bff557d8); Time taken: 0.571 seconds
++----------------+-------------+
+|    category    |   revenue   |
++----------------+-------------+
+| books          | 165414.15   |
+| clothing       | 1064709.38  |
+| electronics    | 3136749.24  |
+| entertainment  | 349797.77   |
+| groceries      | 1947635.94  |
+| health         | 640280.32   |
+| restaurants    | 803671.12   |
+| transport      | 371913.24   |
+| travel         | 3547057.16  |
+| utilities      | 376216.29   |
++----------------+-------------+
+10 rows selected (0.679 seconds)
+0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > INFO  : Compiling command(queryId=hive_20261111013852_9de73257-1e8c-4bc9-a8ae-8c2e587066b2): SELECT category, sum(amount) AS revenue
+FROM tx_day
+WHERE month(dt) = 2 AND day(dt) = 15
+GROUP BY category
+ORDER BY category
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:category, type:string, comment:null), FieldSchema(name:revenue, type:decimal(20,2), comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20261111013852_9de73257-1e8c-4bc9-a8ae-8c2e587066b2); Time taken: 0.073 seconds
+INFO  : Executing command(queryId=hive_20261111013852_9de73257-1e8c-4bc9-a8ae-8c2e587066b2): SELECT category, sum(amount) AS revenue
+FROM tx_day
+WHERE month(dt) = 2 AND day(dt) = 15
+GROUP BY category
+ORDER BY category
+INFO  : Query ID = hive_20261111013852_9de73257-1e8c-4bc9-a8ae-8c2e587066b2
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20261111013852_9de73257-1e8c-4bc9-a8ae-8c2e587066b2
+INFO  : Session is already open
+INFO  : Dag name: SELECT category, sum(......ORDER BY category (Stage-1)
+INFO  : HS2 Host: [294d0742f37a], Query ID: [hive_20261111013852_9de73257-1e8c-4bc9-a8ae-8c2e587066b2], Dag ID: [dag_1794361130652_0001_3], DAG App ID: [application_1794361130652_0001], DAG App address: [294d0742f37a]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1794361130652_0001)
+
+INFO  : Status: DAG finished successfully in 0.47 seconds
+INFO  : DAG ID: dag_1794361130652_0001_3
+INFO  : 
+INFO  : Query Execution Summary
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : OPERATION                            DURATION
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : Compile Query                           0.07s
+INFO  : Prepare Plan                            0.02s
+INFO  : Get Query Coordinator (AM)              0.00s
+INFO  : Submit Plan                             0.01s
+INFO  : Start DAG                               0.02s
+INFO  : Run DAG                                 0.47s
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : 
+INFO  : Task Execution Summary
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :   VERTICES      DURATION(ms)   CPU_TIME(ms)    GC_TIME(ms)   INPUT_RECORDS   OUTPUT_RECORDS
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :      Map 1              0.00              0              0          87,540               10
+INFO  :  Reducer 2              0.00              0              0              10               10
+INFO  :  Reducer 3              0.00              0              0              10                0
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : FileSystem Counters Summary
+INFO  : 
+INFO  : Scheme: FILE
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :   VERTICES      BYTES_READ      READ_OPS     LARGE_READ_OPS      BYTES_WRITTEN     WRITE_OPS
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :      Map 1              0B             0                  0                 0B             0
+INFO  :  Reducer 2              0B             0                  0                 0B             0
+INFO  :  Reducer 3              0B             0                  0                 0B             0
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : 
+INFO  : org.apache.tez.common.counters.DAGCounter:
+INFO  :    NUM_SUCCEEDED_TASKS: 3
+INFO  :    TOTAL_LAUNCHED_TASKS: 3
+INFO  :    DURATION_SUCCEEDED_TASKS_MILLIS: 65
+INFO  :    OTHER_LOCAL_TASKS: 1
+INFO  :    AM_CPU_MILLISECONDS: 790
+INFO  :    WALL_CLOCK_MILLIS: 65
+INFO  :    AM_GC_TIME_MILLIS: 0
+INFO  :    INITIAL_HELD_CONTAINERS: 0
+INFO  :    TOTAL_CONTAINERS_USED: 3
+INFO  :    TOTAL_CONTAINER_LAUNCH_COUNT: 3
+INFO  :    TOTAL_CONTAINER_RELEASE_COUNT: 3
+INFO  :    NODE_USED_COUNT: 1
+INFO  :    NODE_TOTAL_COUNT: 1
+INFO  : org.apache.tez.common.counters.TaskCounter:
+INFO  :    REDUCE_INPUT_GROUPS: 20
+INFO  :    REDUCE_INPUT_RECORDS: 20
+INFO  :    COMBINE_INPUT_RECORDS: 0
+INFO  :    SPILLED_RECORDS: 40
+INFO  :    NUM_SHUFFLED_INPUTS: 2
+INFO  :    NUM_SKIPPED_INPUTS: 0
+INFO  :    NUM_FAILED_SHUFFLE_INPUTS: 0
+INFO  :    MERGED_MAP_OUTPUTS: 2
+INFO  :    INPUT_RECORDS_PROCESSED: 86
+INFO  :    INPUT_SPLIT_LENGTH_BYTES: 634359
+INFO  :    OUTPUT_RECORDS: 20
+INFO  :    OUTPUT_LARGE_RECORDS: 0
+INFO  :    OUTPUT_BYTES: 374
+INFO  :    OUTPUT_BYTES_WITH_OVERHEAD: 426
+INFO  :    OUTPUT_BYTES_PHYSICAL: 434
+INFO  :    ADDITIONAL_SPILLS_BYTES_WRITTEN: 0
+INFO  :    ADDITIONAL_SPILLS_BYTES_READ: 434
+INFO  :    ADDITIONAL_SPILL_COUNT: 0
+INFO  :    SHUFFLE_CHUNK_COUNT: 2
+INFO  :    SHUFFLE_BYTES: 434
+INFO  :    SHUFFLE_BYTES_DECOMPRESSED: 426
+INFO  :    SHUFFLE_BYTES_TO_MEM: 0
+INFO  :    SHUFFLE_BYTES_TO_DISK: 0
+INFO  :    SHUFFLE_BYTES_DISK_DIRECT: 434
+INFO  :    NUM_MEM_TO_DISK_MERGES: 0
+INFO  :    NUM_DISK_TO_DISK_MERGES: 0
+INFO  :    SHUFFLE_PHASE_TIME: 6
+INFO  :    MERGE_PHASE_TIME: 6
+INFO  :    FIRST_EVENT_RECEIVED: 4
+INFO  :    LAST_EVENT_RECEIVED: 4
+INFO  : HIVE:
+INFO  :    CREATED_FILES: 1
+INFO  :    DESERIALIZE_ERRORS: 0
+INFO  :    RECORDS_IN_Map_1: 87540
+INFO  :    RECORDS_OUT_0: 10
+INFO  :    RECORDS_OUT_INTERMEDIATE_Map_1: 10
+INFO  :    RECORDS_OUT_INTERMEDIATE_Reducer_2: 10
+INFO  :    RECORDS_OUT_INTERMEDIATE_Reducer_3: 0
+INFO  :    RECORDS_OUT_OPERATOR_FS_17: 10
+INFO  :    RECORDS_OUT_OPERATOR_GBY_12: 10
+INFO  :    RECORDS_OUT_OPERATOR_GBY_14: 10
+INFO  :    RECORDS_OUT_OPERATOR_MAP_0: 0
+INFO  :    RECORDS_OUT_OPERATOR_RS_13: 10
+INFO  :    RECORDS_OUT_OPERATOR_RS_15: 10
+INFO  :    RECORDS_OUT_OPERATOR_SEL_11: 87540
+INFO  :    RECORDS_OUT_OPERATOR_SEL_16: 10
+INFO  :    RECORDS_OUT_OPERATOR_TS_0: 87540
+INFO  : Shuffle Errors:
+INFO  :    BAD_ID: 0
+INFO  :    CONNECTION: 0
+INFO  :    IO_ERROR: 0
+INFO  :    WRONG_LENGTH: 0
+INFO  :    WRONG_MAP: 0
+INFO  :    WRONG_REDUCE: 0
+INFO  : org.apache.hadoop.hive.ql.exec.tez.HiveInputCounters:
+INFO  :    GROUPED_INPUT_SPLITS_Map_1: 1
+INFO  :    INPUT_DIRECTORIES_Map_1: 1
+INFO  :    INPUT_FILES_Map_1: 1
+INFO  :    RAW_INPUT_SPLITS_Map_1: 1
+INFO  : Completed executing command(queryId=hive_20261111013852_9de73257-1e8c-4bc9-a8ae-8c2e587066b2); Time taken: 0.529 seconds
++----------------+-------------+
+|    category    |   revenue   |
++----------------+-------------+
+| books          | 165414.15   |
+| clothing       | 1064709.38  |
+| electronics    | 3136749.24  |
+| entertainment  | 349797.77   |
+| groceries      | 1947635.94  |
+| health         | 640280.32   |
+| restaurants    | 803671.12   |
+| transport      | 371913.24   |
+| travel         | 3547057.16  |
+| utilities      | 376216.29   |
++----------------+-------------+
+10 rows selected (0.636 seconds)
+0: jdbc:hive2://localhost:10000/> Closing: 0: jdbc:hive2://localhost:10000/

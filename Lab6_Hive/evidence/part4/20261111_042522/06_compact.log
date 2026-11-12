@@ -1,0 +1,48 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.24.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.24.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Connecting to jdbc:hive2://localhost:10000/
+Connected to: Apache Hive (version 4.2.1)
+Driver: Hive JDBC (version 4.2.1)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+Beeline version 4.2.1 by Apache Hive
+0: jdbc:hive2://localhost:10000/> +------------------------------------+
+|                set                 |
++------------------------------------+
+| hive.compactor.initiator.on=false  |
++------------------------------------+
+1 row selected (0.053 seconds)
+0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> INFO  : Compiling command(queryId=hive_20261111022642_c171ee40-dc50-4200-9593-1a7ca27d146e): ALTER TABLE tx_acid COMPACT 'major' AND WAIT
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20261111022642_c171ee40-dc50-4200-9593-1a7ca27d146e); Time taken: 0.007 seconds
+INFO  : Executing command(queryId=hive_20261111022642_c171ee40-dc50-4200-9593-1a7ca27d146e): ALTER TABLE tx_acid COMPACT 'major' AND WAIT
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Compaction enqueued with id 2
+INFO  : 
+INFO  : .
+INFO  : ..
+INFO  : Compaction with id 2 finished with status: ready for cleaning
+INFO  : Completed executing command(queryId=hive_20261111022642_c171ee40-dc50-4200-9593-1a7ca27d146e); Time taken: 30.04 seconds
+No rows affected (30.059 seconds)
+0: jdbc:hive2://localhost:10000/> INFO  : Compiling command(queryId=hive_20261111022712_a2029eed-cf60-4e43-b8fa-025411e42b91): SHOW COMPACTIONS
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:compactionid, type:string, comment:from deserializer), FieldSchema(name:dbname, type:string, comment:from deserializer), FieldSchema(name:tabname, type:string, comment:from deserializer), FieldSchema(name:partname, type:string, comment:from deserializer), FieldSchema(name:type, type:string, comment:from deserializer), FieldSchema(name:state, type:string, comment:from deserializer), FieldSchema(name:workerhost, type:string, comment:from deserializer), FieldSchema(name:workerid, type:string, comment:from deserializer), FieldSchema(name:enqueuetime, type:string, comment:from deserializer), FieldSchema(name:starttime, type:string, comment:from deserializer), FieldSchema(name:duration, type:string, comment:from deserializer), FieldSchema(name:hadoopjobid, type:string, comment:from deserializer), FieldSchema(name:errormessage, type:string, comment:from deserializer), FieldSchema(name:initiatorhost, type:string, comment:from deserializer), FieldSchema(name:initiatorid, type:string, comment:from deserializer), FieldSchema(name:poolname, type:string, comment:from deserializer), FieldSchema(name:txnid, type:string, comment:from deserializer), FieldSchema(name:nexttxnid, type:string, comment:from deserializer), FieldSchema(name:committime, type:string, comment:from deserializer), FieldSchema(name:hightestwriteid, type:string, comment:from deserializer)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20261111022712_a2029eed-cf60-4e43-b8fa-025411e42b91); Time taken: 0.002 seconds
+INFO  : Executing command(queryId=hive_20261111022712_a2029eed-cf60-4e43-b8fa-025411e42b91): SHOW COMPACTIONS
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20261111022712_a2029eed-cf60-4e43-b8fa-025411e42b91); Time taken: 0.002 seconds
++---------------+----------+----------+-----------+--------+---------------------+-------------+-----------+----------------+----------------+-----------+--------------+---------------+----------------+--------------+-----------+--------+------------+----------------+------------------+
+| compactionid  |  dbname  | tabname  | partname  |  type  |        state        | workerhost  | workerid  |  enqueuetime   |   starttime    | duration  | hadoopjobid  | errormessage  | initiatorhost  | initiatorid  | poolname  | txnid  | nexttxnid  |   committime   | hightestwriteid  |
++---------------+----------+----------+-----------+--------+---------------------+-------------+-----------+----------------+----------------+-----------+--------------+---------------+----------------+--------------+-----------+--------+------------+----------------+------------------+
+| 2             | default  | tx_acid  |  ---      | MAJOR  | ready for cleaning  |  ---        |  ---      | 1794364002703  | 1794364007388  |  ---      |  ---         |  ---          | 294d0742f37a   | manual       | default   | 47     | 47         | 1794364020780  |  ---             |
++---------------+----------+----------+-----------+--------+---------------------+-------------+-----------+----------------+----------------+-----------+--------------+---------------+----------------+--------------+-----------+--------+------------+----------------+------------------+
+1 row selected (0.024 seconds)
+0: jdbc:hive2://localhost:10000/> Closing: 0: jdbc:hive2://localhost:10000/

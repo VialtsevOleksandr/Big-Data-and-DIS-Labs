@@ -1,0 +1,1057 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.24.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.24.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Connecting to jdbc:hive2://localhost:10000/
+Connected to: Apache Hive (version 4.2.1)
+Driver: Hive JDBC (version 4.2.1)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+Beeline version 4.2.1 by Apache Hive
+0: jdbc:hive2://localhost:10000/> No rows affected (0.027 seconds)
+0: jdbc:hive2://localhost:10000/> No rows affected (0.004 seconds)
+0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> No rows affected (0.005 seconds)
+0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > INFO  : Compiling command(queryId=hive_20261111001606_67f1d44c-1667-445d-be34-90d022b4a3f6): EXPLAIN
+WITH daily AS (
+SELECT to_date(ts) AS day, category, sum(amount) AS revenue
+FROM tx_orc
+GROUP BY to_date(ts), category
+),
+ranked AS (
+SELECT day, category, revenue,
+row_number() OVER (PARTITION BY day ORDER BY revenue DESC, category) AS rn
+FROM daily
+)
+SELECT day, category, revenue
+FROM ranked
+WHERE rn = 1
+ORDER BY day
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:Explain, type:string, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20261111001606_67f1d44c-1667-445d-be34-90d022b4a3f6); Time taken: 0.17 seconds
+INFO  : Executing command(queryId=hive_20261111001606_67f1d44c-1667-445d-be34-90d022b4a3f6): EXPLAIN
+WITH daily AS (
+SELECT to_date(ts) AS day, category, sum(amount) AS revenue
+FROM tx_orc
+GROUP BY to_date(ts), category
+),
+ranked AS (
+SELECT day, category, revenue,
+row_number() OVER (PARTITION BY day ORDER BY revenue DESC, category) AS rn
+FROM daily
+)
+SELECT day, category, revenue
+FROM ranked
+WHERE rn = 1
+ORDER BY day
+INFO  : Starting task [Stage-3:EXPLAIN] in serial mode
+INFO  : Completed executing command(queryId=hive_20261111001606_67f1d44c-1667-445d-be34-90d022b4a3f6); Time taken: 0.005 seconds
++----------------------------------------------------+
+|                      Explain                       |
++----------------------------------------------------+
+| Plan optimized by CBO.                             |
+|                                                    |
+| Vertex dependency in root stage                    |
+| Reducer 2 <- Map 1 (SIMPLE_EDGE)                   |
+| Reducer 3 <- Reducer 2 (SIMPLE_EDGE)               |
+| Reducer 4 <- Reducer 3 (SIMPLE_EDGE)               |
+|                                                    |
+| Stage-0                                            |
+|   Fetch Operator                                   |
+|     limit:-1                                       |
+|     Stage-1                                        |
+|       Reducer 4 vectorized                         |
+|       File Output Operator [FS_29]                 |
+|         Select Operator [SEL_28] (rows=1000000 width=261) |
+|           Output:["_col0","_col1","_col2"]         |
+|         <-Reducer 3 [SIMPLE_EDGE] vectorized       |
+|           SHUFFLE [RS_27]                          |
+|             Select Operator [SEL_26] (rows=1000000 width=261) |
+|               Output:["_col0","_col1","_col2"]     |
+|               Filter Operator [FIL_25] (rows=1000000 width=261) |
+|                 predicate:(row_number_window_0 = 1) |
+|                 PTF Operator [PTF_24] (rows=2000000 width=261) |
+|                   Function definitions:[{},{"name:":"windowingtablefunction","order by:":"_col2 DESC NULLS FIRST, _col1 ASC NULLS LAST","partition by:":"_col0"}] |
+|                   Select Operator [SEL_23] (rows=2000000 width=261) |
+|                     Output:["_col0","_col1","_col2"] |
+|                   <-Reducer 2 [SIMPLE_EDGE] vectorized |
+|                     SHUFFLE [RS_22]                |
+|                       PartitionCols:_col0          |
+|                       Group By Operator [GBY_21] (rows=2000000 width=261) |
+|                         Output:["_col0","_col1","_col2"],aggregations:["sum(VALUE._col0)"],keys:KEY._col0, KEY._col1 |
+|                       <-Map 1 [SIMPLE_EDGE] vectorized |
+|                         SHUFFLE [RS_20]            |
+|                           PartitionCols:_col0, _col1 |
+|                           Group By Operator [GBY_19] (rows=4000000 width=261) |
+|                             Output:["_col0","_col1","_col2"],aggregations:["sum(_col2)"],keys:_col0, _col1 |
+|                             Select Operator [SEL_18] (rows=8000000 width=240) |
+|                               Output:["_col0","_col1","_col2"] |
+|                               TableScan [TS_0] (rows=8000000 width=240) |
+|                                 default@tx_orc,tx_orc,Tbl:COMPLETE,Col:COMPLETE,Output:["ts","category","amount"] |
+|                                                    |
++----------------------------------------------------+
+40 rows selected (0.224 seconds)
+0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > INFO  : Compiling command(queryId=hive_20261111001607_35ce89e4-b0ab-4a1c-8273-c655b33448aa): WITH daily AS (
+SELECT to_date(ts) AS day, category, sum(amount) AS revenue
+FROM tx_orc
+GROUP BY to_date(ts), category
+),
+ranked AS (
+SELECT day, category, revenue,
+row_number() OVER (PARTITION BY day ORDER BY revenue DESC, category) AS rn
+FROM daily
+)
+SELECT day, category, revenue
+FROM ranked
+WHERE rn = 1
+ORDER BY day
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:day, type:date, comment:null), FieldSchema(name:category, type:string, comment:null), FieldSchema(name:revenue, type:decimal(20,2), comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20261111001607_35ce89e4-b0ab-4a1c-8273-c655b33448aa); Time taken: 0.103 seconds
+INFO  : Executing command(queryId=hive_20261111001607_35ce89e4-b0ab-4a1c-8273-c655b33448aa): WITH daily AS (
+SELECT to_date(ts) AS day, category, sum(amount) AS revenue
+FROM tx_orc
+GROUP BY to_date(ts), category
+),
+ranked AS (
+SELECT day, category, revenue,
+row_number() OVER (PARTITION BY day ORDER BY revenue DESC, category) AS rn
+FROM daily
+)
+SELECT day, category, revenue
+FROM ranked
+WHERE rn = 1
+ORDER BY day
+INFO  : Query ID = hive_20261111001607_35ce89e4-b0ab-4a1c-8273-c655b33448aa
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20261111001607_35ce89e4-b0ab-4a1c-8273-c655b33448aa
+INFO  : Tez session hasn't been created yet. Opening session
+INFO  : Dag name: WITH daily AS (
+SELEC...... = 1
+ORDER BY day (Stage-1)
+INFO  : HS2 Host: [294d0742f37a], Query ID: [hive_20261111001607_35ce89e4-b0ab-4a1c-8273-c655b33448aa], Dag ID: [dag_1794356167342_0001_1], DAG App ID: [application_1794356167342_0001], DAG App address: [294d0742f37a]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1794356167342_0001)
+
+[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING      3          0        1        2       0       0  
+Reducer 2        container        INITED      5          0        0        5       0       0  
+Reducer 3        container        INITED      3          0        0        3       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/04  [>>--------------------------] 0%    ELAPSED TIME: 1.32 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[10A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 ...        container       RUNNING      3          1        1        1       0       0  
+Reducer 2        container        INITED      5          0        0        5       0       0  
+Reducer 3        container        INITED      3          0        0        3       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/04  [==>>------------------------] 8%    ELAPSED TIME: 1.83 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[10A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 ...        container       RUNNING      3          1        1        1       0       0  
+Reducer 2        container        INITED      5          0        0        5       0       0  
+Reducer 3        container        INITED      3          0        0        3       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/04  [==>>------------------------] 8%    ELAPSED TIME: 2.36 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[10A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 .......... container     SUCCEEDED      3          3        0        0       0       0  
+Reducer 2        container       RUNNING      5          0        1        4       0       0  
+Reducer 3        container        INITED      3          0        0        3       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 01/04  [======>>--------------------] 25%   ELAPSED TIME: 2.86 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[10A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 .......... container     SUCCEEDED      3          3        0        0       0       0  
+Reducer 2 ...    container       RUNNING      5          3        0        2       0       0  
+Reducer 3        container        INITED      3          0        0        3       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 01/04  [=============>>-------------] 50%   ELAPSED TIME: 3.37 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[10A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 .......... container     SUCCEEDED      3          3        0        0       0       0  
+Reducer 2 ...... container     SUCCEEDED      5          5        0        0       0       0  
+Reducer 3 ..     container       RUNNING      3          1        0        2       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 02/04  [===================>>-------] 75%   ELAPSED TIME: 3.87 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[10A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 .......... container     SUCCEEDED      3          3        0        0       0       0  
+Reducer 2 ...... container     SUCCEEDED      5          5        0        0       0       0  
+Reducer 3 ...... container     SUCCEEDED      3          3        0        0       0       0  
+Reducer 4 ...... container     SUCCEEDED      1          1        0        0       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 04/04  [==========================>>] 100%  ELAPSED TIME: 4.01 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+INFO  : Status: DAG finished successfully in 3.99 seconds
+INFO  : DAG ID: dag_1794356167342_0001_1
+INFO  : 
+INFO  : Query Execution Summary
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : OPERATION                            DURATION
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : Compile Query                           0.10s
+INFO  : Prepare Plan                            0.16s
+INFO  : Get Query Coordinator (AM)              0.00s
+INFO  : Submit Plan                             0.01s
+INFO  : Start DAG                               0.02s
+INFO  : Run DAG                                 3.99s
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : 
+INFO  : Task Execution Summary
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :   VERTICES      DURATION(ms)   CPU_TIME(ms)    GC_TIME(ms)   INPUT_RECORDS   OUTPUT_RECORDS
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :      Map 1           2014.00              0              0       8,000,000            2,730
+INFO  :  Reducer 2           1008.00              0              0           2,730              910
+INFO  :  Reducer 3            456.00              0              0             910               91
+INFO  :  Reducer 4              0.00              0              0              91                0
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : FileSystem Counters Summary
+INFO  : 
+INFO  : Scheme: FILE
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :   VERTICES      BYTES_READ      READ_OPS     LARGE_READ_OPS      BYTES_WRITTEN     WRITE_OPS
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :      Map 1              0B             0                  0                 0B             0
+INFO  :  Reducer 2              0B             0                  0                 0B             0
+INFO  :  Reducer 3              0B             0                  0                 0B             0
+INFO  :  Reducer 4              0B             0                  0                 0B             0
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : 
+INFO  : org.apache.tez.common.counters.DAGCounter:
+INFO  :    NUM_SUCCEEDED_TASKS: 12
+INFO  :    TOTAL_LAUNCHED_TASKS: 12
+INFO  :    DURATION_SUCCEEDED_TASKS_MILLIS: 2293
+INFO  :    OTHER_LOCAL_TASKS: 3
+INFO  :    AM_CPU_MILLISECONDS: 6060
+INFO  :    WALL_CLOCK_MILLIS: 2293
+INFO  :    AM_GC_TIME_MILLIS: 66
+INFO  :    INITIAL_HELD_CONTAINERS: 0
+INFO  :    TOTAL_CONTAINERS_USED: 12
+INFO  :    TOTAL_CONTAINER_LAUNCH_COUNT: 12
+INFO  :    TOTAL_CONTAINER_RELEASE_COUNT: 12
+INFO  :    NODE_USED_COUNT: 1
+INFO  :    NODE_TOTAL_COUNT: 1
+INFO  : org.apache.tez.common.counters.TaskCounter:
+INFO  :    REDUCE_INPUT_GROUPS: 1911
+INFO  :    REDUCE_INPUT_RECORDS: 3731
+INFO  :    COMBINE_INPUT_RECORDS: 0
+INFO  :    SPILLED_RECORDS: 7462
+INFO  :    NUM_SHUFFLED_INPUTS: 33
+INFO  :    NUM_SKIPPED_INPUTS: 0
+INFO  :    NUM_FAILED_SHUFFLE_INPUTS: 0
+INFO  :    MERGED_MAP_OUTPUTS: 33
+INFO  :    INPUT_RECORDS_PROCESSED: 7816
+INFO  :    INPUT_SPLIT_LENGTH_BYTES: 63367703
+INFO  :    OUTPUT_RECORDS: 3731
+INFO  :    OUTPUT_LARGE_RECORDS: 0
+INFO  :    OUTPUT_BYTES: 94512
+INFO  :    OUTPUT_BYTES_WITH_OVERHEAD: 102172
+INFO  :    OUTPUT_BYTES_PHYSICAL: 102304
+INFO  :    ADDITIONAL_SPILLS_BYTES_WRITTEN: 0
+INFO  :    ADDITIONAL_SPILLS_BYTES_READ: 102304
+INFO  :    ADDITIONAL_SPILL_COUNT: 0
+INFO  :    SHUFFLE_CHUNK_COUNT: 11
+INFO  :    SHUFFLE_BYTES: 102304
+INFO  :    SHUFFLE_BYTES_DECOMPRESSED: 102172
+INFO  :    SHUFFLE_BYTES_TO_MEM: 0
+INFO  :    SHUFFLE_BYTES_TO_DISK: 0
+INFO  :    SHUFFLE_BYTES_DISK_DIRECT: 102304
+INFO  :    NUM_MEM_TO_DISK_MERGES: 0
+INFO  :    NUM_DISK_TO_DISK_MERGES: 0
+INFO  :    SHUFFLE_PHASE_TIME: 46
+INFO  :    MERGE_PHASE_TIME: 53
+INFO  :    FIRST_EVENT_RECEIVED: 18
+INFO  :    LAST_EVENT_RECEIVED: 23
+INFO  : HIVE:
+INFO  :    CREATED_FILES: 1
+INFO  :    DESERIALIZE_ERRORS: 0
+INFO  :    RECORDS_IN_Map_1: 8000000
+INFO  :    RECORDS_OUT_0: 91
+INFO  :    RECORDS_OUT_INTERMEDIATE_Map_1: 2730
+INFO  :    RECORDS_OUT_INTERMEDIATE_Reducer_2: 910
+INFO  :    RECORDS_OUT_INTERMEDIATE_Reducer_3: 91
+INFO  :    RECORDS_OUT_INTERMEDIATE_Reducer_4: 0
+INFO  :    RECORDS_OUT_OPERATOR_FIL_25: 91
+INFO  :    RECORDS_OUT_OPERATOR_FS_29: 91
+INFO  :    RECORDS_OUT_OPERATOR_GBY_19: 2730
+INFO  :    RECORDS_OUT_OPERATOR_GBY_21: 910
+INFO  :    RECORDS_OUT_OPERATOR_MAP_0: 0
+INFO  :    RECORDS_OUT_OPERATOR_PTF_24: 910
+INFO  :    RECORDS_OUT_OPERATOR_RS_20: 2730
+INFO  :    RECORDS_OUT_OPERATOR_RS_22: 910
+INFO  :    RECORDS_OUT_OPERATOR_RS_27: 91
+INFO  :    RECORDS_OUT_OPERATOR_SEL_18: 8000000
+INFO  :    RECORDS_OUT_OPERATOR_SEL_23: 910
+INFO  :    RECORDS_OUT_OPERATOR_SEL_26: 91
+INFO  :    RECORDS_OUT_OPERATOR_SEL_28: 91
+INFO  :    RECORDS_OUT_OPERATOR_TS_0: 8000000
+INFO  : Shuffle Errors:
+INFO  :    BAD_ID: 0
+INFO  :    CONNECTION: 0
+INFO  :    IO_ERROR: 0
+INFO  :    WRONG_LENGTH: 0
+INFO  :    WRONG_MAP: 0
+INFO  :    WRONG_REDUCE: 0
+INFO  : org.apache.hadoop.hive.ql.exec.tez.HiveInputCounters:
+INFO  :    GROUPED_INPUT_SPLITS_Map_1: 3
+INFO  :    INPUT_DIRECTORIES_Map_1: 1
+INFO  :    INPUT_FILES_Map_1: 7
+INFO  :    RAW_INPUT_SPLITS_Map_1: 7
+INFO  : Completed executing command(queryId=hive_20261111001607_35ce89e4-b0ab-4a1c-8273-c655b33448aa); Time taken: 4.193 seconds
++-------------+-----------+-------------+
+|     day     | category  |   revenue   |
++-------------+-----------+-------------+
+| 2026-01-01  | travel    | 3484735.46  |
+| 2026-01-02  | travel    | 3545765.99  |
+| 2026-01-03  | travel    | 3462171.24  |
+| 2026-01-04  | travel    | 3574742.77  |
+| 2026-01-05  | travel    | 3518011.54  |
+| 2026-01-06  | travel    | 3449850.41  |
+| 2026-01-07  | travel    | 3454879.99  |
+| 2026-01-08  | travel    | 3416830.16  |
+| 2026-01-09  | travel    | 3511293.39  |
+| 2026-01-10  | travel    | 3440233.85  |
+| 2026-01-11  | travel    | 3404498.33  |
+| 2026-01-12  | travel    | 3506169.61  |
+| 2026-01-13  | travel    | 3448861.80  |
+| 2026-01-14  | travel    | 3466454.90  |
+| 2026-01-15  | travel    | 3508187.76  |
+| 2026-01-16  | travel    | 3420126.91  |
+| 2026-01-17  | travel    | 3556483.12  |
+| 2026-01-18  | travel    | 3479053.99  |
+| 2026-01-19  | travel    | 3326187.09  |
+| 2026-01-20  | travel    | 3524068.77  |
+| 2026-01-21  | travel    | 3417670.04  |
+| 2026-01-22  | travel    | 3537301.27  |
+| 2026-01-23  | travel    | 3441053.73  |
+| 2026-01-24  | travel    | 3511870.79  |
+| 2026-01-25  | travel    | 3393464.71  |
+| 2026-01-26  | travel    | 3326430.72  |
+| 2026-01-27  | travel    | 3463686.72  |
+| 2026-01-28  | travel    | 3528626.06  |
+| 2026-01-29  | travel    | 3495736.18  |
+| 2026-01-30  | travel    | 3412438.05  |
+| 2026-01-31  | travel    | 3509649.94  |
+| 2026-02-01  | travel    | 3478413.39  |
+| 2026-02-02  | travel    | 3520280.97  |
+| 2026-02-03  | travel    | 3566479.91  |
+| 2026-02-04  | travel    | 3440904.03  |
+| 2026-02-05  | travel    | 3416614.61  |
+| 2026-02-06  | travel    | 3465548.41  |
+| 2026-02-07  | travel    | 3506027.29  |
+| 2026-02-08  | travel    | 3598932.08  |
+| 2026-02-09  | travel    | 3458108.24  |
+| 2026-02-10  | travel    | 3453726.84  |
+| 2026-02-11  | travel    | 3492376.66  |
+| 2026-02-12  | travel    | 3459665.26  |
+| 2026-02-13  | travel    | 3455542.15  |
+| 2026-02-14  | travel    | 3342534.56  |
+| 2026-02-15  | travel    | 3547057.16  |
+| 2026-02-16  | travel    | 3461550.98  |
+| 2026-02-17  | travel    | 3626922.42  |
+| 2026-02-18  | travel    | 3472977.48  |
+| 2026-02-19  | travel    | 3517787.78  |
+| 2026-02-20  | travel    | 3288778.68  |
+| 2026-02-21  | travel    | 3400857.43  |
+| 2026-02-22  | travel    | 3406226.87  |
+| 2026-02-23  | travel    | 3406765.33  |
+| 2026-02-24  | travel    | 3461279.70  |
+| 2026-02-25  | travel    | 3395178.06  |
+| 2026-02-26  | travel    | 3400297.89  |
+| 2026-02-27  | travel    | 3492083.97  |
+| 2026-02-28  | travel    | 3392365.99  |
+| 2026-03-01  | travel    | 3448291.66  |
+| 2026-03-02  | travel    | 3469414.74  |
+| 2026-03-03  | travel    | 3482428.56  |
+| 2026-03-04  | travel    | 3474782.00  |
+| 2026-03-05  | travel    | 3464057.82  |
+| 2026-03-06  | travel    | 3482063.82  |
+| 2026-03-07  | travel    | 3424256.77  |
+| 2026-03-08  | travel    | 3382329.20  |
+| 2026-03-09  | travel    | 3391593.14  |
+| 2026-03-10  | travel    | 3505495.38  |
+| 2026-03-11  | travel    | 3520215.04  |
+| 2026-03-12  | travel    | 3517145.29  |
+| 2026-03-13  | travel    | 3427613.93  |
+| 2026-03-14  | travel    | 3397046.84  |
+| 2026-03-15  | travel    | 3557187.86  |
+| 2026-03-16  | travel    | 3453357.94  |
+| 2026-03-17  | travel    | 3539603.49  |
+| 2026-03-18  | travel    | 3424282.24  |
+| 2026-03-19  | travel    | 3457810.17  |
+| 2026-03-20  | travel    | 3365615.38  |
+| 2026-03-21  | travel    | 3388677.54  |
+| 2026-03-22  | travel    | 3486468.79  |
+| 2026-03-23  | travel    | 3500705.19  |
+| 2026-03-24  | travel    | 3502695.70  |
+| 2026-03-25  | travel    | 3494955.28  |
+| 2026-03-26  | travel    | 3463162.60  |
+| 2026-03-27  | travel    | 3416523.15  |
+| 2026-03-28  | travel    | 3630119.18  |
+| 2026-03-29  | travel    | 3376921.37  |
+| 2026-03-30  | travel    | 3431868.95  |
+| 2026-03-31  | travel    | 3510064.57  |
+| NULL        | travel    | 5636230.83  |
++-------------+-----------+-------------+
+91 rows selected (4.361 seconds)
+0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > INFO  : Compiling command(queryId=hive_20261111001611_dfefa138-43fd-44d2-b8cb-06809029a863): WITH daily AS (
+SELECT to_date(ts) AS day, category, sum(amount) AS revenue
+FROM tx_orc
+GROUP BY to_date(ts), category
+),
+ranked AS (
+SELECT day, category, revenue,
+row_number() OVER (PARTITION BY day ORDER BY revenue DESC, category) AS rn
+FROM daily
+)
+SELECT day, category, revenue
+FROM ranked
+WHERE rn = 1
+ORDER BY day
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:day, type:date, comment:null), FieldSchema(name:category, type:string, comment:null), FieldSchema(name:revenue, type:decimal(20,2), comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20261111001611_dfefa138-43fd-44d2-b8cb-06809029a863); Time taken: 0.108 seconds
+INFO  : Executing command(queryId=hive_20261111001611_dfefa138-43fd-44d2-b8cb-06809029a863): WITH daily AS (
+SELECT to_date(ts) AS day, category, sum(amount) AS revenue
+FROM tx_orc
+GROUP BY to_date(ts), category
+),
+ranked AS (
+SELECT day, category, revenue,
+row_number() OVER (PARTITION BY day ORDER BY revenue DESC, category) AS rn
+FROM daily
+)
+SELECT day, category, revenue
+FROM ranked
+WHERE rn = 1
+ORDER BY day
+INFO  : Query ID = hive_20261111001611_dfefa138-43fd-44d2-b8cb-06809029a863
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20261111001611_dfefa138-43fd-44d2-b8cb-06809029a863
+INFO  : Session is already open
+INFO  : Dag name: WITH daily AS (
+SELEC...... = 1
+ORDER BY day (Stage-1)
+INFO  : HS2 Host: [294d0742f37a], Query ID: [hive_20261111001611_dfefa138-43fd-44d2-b8cb-06809029a863], Dag ID: [dag_1794356167342_0001_2], DAG App ID: [application_1794356167342_0001], DAG App address: [294d0742f37a]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1794356167342_0001)
+
+[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 ...        container       RUNNING      3          1        0        2       0       0  
+Reducer 2        container        INITED      5          0        0        5       0       0  
+Reducer 3        container        INITED      3          0        0        3       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/04  [==>>------------------------] 8%    ELAPSED TIME: 1.44 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[10A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 ...        container       RUNNING      3          1        1        1       0       0  
+Reducer 2        container        INITED      5          0        0        5       0       0  
+Reducer 3        container        INITED      3          0        0        3       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/04  [==>>------------------------] 8%    ELAPSED TIME: 1.94 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[10A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 ......     container       RUNNING      3          2        0        1       0       0  
+Reducer 2        container        INITED      5          0        0        5       0       0  
+Reducer 3        container        INITED      3          0        0        3       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/04  [====>>----------------------] 16%   ELAPSED TIME: 2.45 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[10A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 .......... container     SUCCEEDED      3          3        0        0       0       0  
+Reducer 2 .      container       RUNNING      5          1        1        3       0       0  
+Reducer 3        container        INITED      3          0        0        3       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 01/04  [========>>------------------] 33%   ELAPSED TIME: 2.95 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[10A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 .......... container     SUCCEEDED      3          3        0        0       0       0  
+Reducer 2 ....   container       RUNNING      5          4        1        0       0       0  
+Reducer 3        container        INITED      3          0        0        3       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 01/04  [===============>>-----------] 58%   ELAPSED TIME: 3.46 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[10A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 .......... container     SUCCEEDED      3          3        0        0       0       0  
+Reducer 2 ...... container     SUCCEEDED      5          5        0        0       0       0  
+Reducer 3 ...... container     SUCCEEDED      3          3        0        0       0       0  
+Reducer 4 ...... container     SUCCEEDED      1          1        0        0       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 04/04  [==========================>>] 100%  ELAPSED TIME: 3.72 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+INFO  : Status: DAG finished successfully in 3.70 seconds
+INFO  : DAG ID: dag_1794356167342_0001_2
+INFO  : 
+INFO  : Query Execution Summary
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : OPERATION                            DURATION
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : Compile Query                           0.11s
+INFO  : Prepare Plan                            0.04s
+INFO  : Get Query Coordinator (AM)              0.00s
+INFO  : Submit Plan                             0.01s
+INFO  : Start DAG                               0.02s
+INFO  : Run DAG                                 3.70s
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : 
+INFO  : Task Execution Summary
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :   VERTICES      DURATION(ms)   CPU_TIME(ms)    GC_TIME(ms)   INPUT_RECORDS   OUTPUT_RECORDS
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :      Map 1           2011.00              0              0       8,000,000            2,730
+INFO  :  Reducer 2           1016.00              0              0           2,730              910
+INFO  :  Reducer 3            165.00              0              0             910               91
+INFO  :  Reducer 4              0.00              0              0              91                0
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : FileSystem Counters Summary
+INFO  : 
+INFO  : Scheme: FILE
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :   VERTICES      BYTES_READ      READ_OPS     LARGE_READ_OPS      BYTES_WRITTEN     WRITE_OPS
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :      Map 1              0B             0                  0                 0B             0
+INFO  :  Reducer 2              0B             0                  0                 0B             0
+INFO  :  Reducer 3              0B             0                  0                 0B             0
+INFO  :  Reducer 4              0B             0                  0                 0B             0
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : 
+INFO  : org.apache.tez.common.counters.DAGCounter:
+INFO  :    NUM_SUCCEEDED_TASKS: 12
+INFO  :    TOTAL_LAUNCHED_TASKS: 12
+INFO  :    DURATION_SUCCEEDED_TASKS_MILLIS: 2072
+INFO  :    OTHER_LOCAL_TASKS: 3
+INFO  :    AM_CPU_MILLISECONDS: 5180
+INFO  :    WALL_CLOCK_MILLIS: 2072
+INFO  :    AM_GC_TIME_MILLIS: 37
+INFO  :    INITIAL_HELD_CONTAINERS: 0
+INFO  :    TOTAL_CONTAINERS_USED: 12
+INFO  :    TOTAL_CONTAINER_LAUNCH_COUNT: 12
+INFO  :    TOTAL_CONTAINER_RELEASE_COUNT: 12
+INFO  :    NODE_USED_COUNT: 1
+INFO  :    NODE_TOTAL_COUNT: 1
+INFO  : org.apache.tez.common.counters.TaskCounter:
+INFO  :    REDUCE_INPUT_GROUPS: 1911
+INFO  :    REDUCE_INPUT_RECORDS: 3731
+INFO  :    COMBINE_INPUT_RECORDS: 0
+INFO  :    SPILLED_RECORDS: 7462
+INFO  :    NUM_SHUFFLED_INPUTS: 33
+INFO  :    NUM_SKIPPED_INPUTS: 0
+INFO  :    NUM_FAILED_SHUFFLE_INPUTS: 0
+INFO  :    MERGED_MAP_OUTPUTS: 33
+INFO  :    INPUT_RECORDS_PROCESSED: 7816
+INFO  :    INPUT_SPLIT_LENGTH_BYTES: 63367703
+INFO  :    OUTPUT_RECORDS: 3731
+INFO  :    OUTPUT_LARGE_RECORDS: 0
+INFO  :    OUTPUT_BYTES: 94512
+INFO  :    OUTPUT_BYTES_WITH_OVERHEAD: 102172
+INFO  :    OUTPUT_BYTES_PHYSICAL: 102304
+INFO  :    ADDITIONAL_SPILLS_BYTES_WRITTEN: 0
+INFO  :    ADDITIONAL_SPILLS_BYTES_READ: 102304
+INFO  :    ADDITIONAL_SPILL_COUNT: 0
+INFO  :    SHUFFLE_CHUNK_COUNT: 11
+INFO  :    SHUFFLE_BYTES: 102304
+INFO  :    SHUFFLE_BYTES_DECOMPRESSED: 102172
+INFO  :    SHUFFLE_BYTES_TO_MEM: 0
+INFO  :    SHUFFLE_BYTES_TO_DISK: 0
+INFO  :    SHUFFLE_BYTES_DISK_DIRECT: 102304
+INFO  :    NUM_MEM_TO_DISK_MERGES: 0
+INFO  :    NUM_DISK_TO_DISK_MERGES: 0
+INFO  :    SHUFFLE_PHASE_TIME: 44
+INFO  :    MERGE_PHASE_TIME: 50
+INFO  :    FIRST_EVENT_RECEIVED: 17
+INFO  :    LAST_EVENT_RECEIVED: 20
+INFO  : HIVE:
+INFO  :    CREATED_FILES: 1
+INFO  :    DESERIALIZE_ERRORS: 0
+INFO  :    RECORDS_IN_Map_1: 8000000
+INFO  :    RECORDS_OUT_0: 91
+INFO  :    RECORDS_OUT_INTERMEDIATE_Map_1: 2730
+INFO  :    RECORDS_OUT_INTERMEDIATE_Reducer_2: 910
+INFO  :    RECORDS_OUT_INTERMEDIATE_Reducer_3: 91
+INFO  :    RECORDS_OUT_INTERMEDIATE_Reducer_4: 0
+INFO  :    RECORDS_OUT_OPERATOR_FIL_25: 91
+INFO  :    RECORDS_OUT_OPERATOR_FS_29: 91
+INFO  :    RECORDS_OUT_OPERATOR_GBY_19: 2730
+INFO  :    RECORDS_OUT_OPERATOR_GBY_21: 910
+INFO  :    RECORDS_OUT_OPERATOR_MAP_0: 0
+INFO  :    RECORDS_OUT_OPERATOR_PTF_24: 910
+INFO  :    RECORDS_OUT_OPERATOR_RS_20: 2730
+INFO  :    RECORDS_OUT_OPERATOR_RS_22: 910
+INFO  :    RECORDS_OUT_OPERATOR_RS_27: 91
+INFO  :    RECORDS_OUT_OPERATOR_SEL_18: 8000000
+INFO  :    RECORDS_OUT_OPERATOR_SEL_23: 910
+INFO  :    RECORDS_OUT_OPERATOR_SEL_26: 91
+INFO  :    RECORDS_OUT_OPERATOR_SEL_28: 91
+INFO  :    RECORDS_OUT_OPERATOR_TS_0: 8000000
+INFO  : Shuffle Errors:
+INFO  :    BAD_ID: 0
+INFO  :    CONNECTION: 0
+INFO  :    IO_ERROR: 0
+INFO  :    WRONG_LENGTH: 0
+INFO  :    WRONG_MAP: 0
+INFO  :    WRONG_REDUCE: 0
+INFO  : org.apache.hadoop.hive.ql.exec.tez.HiveInputCounters:
+INFO  :    GROUPED_INPUT_SPLITS_Map_1: 3
+INFO  :    INPUT_DIRECTORIES_Map_1: 1
+INFO  :    INPUT_FILES_Map_1: 7
+INFO  :    RAW_INPUT_SPLITS_Map_1: 7
+INFO  : Completed executing command(queryId=hive_20261111001611_dfefa138-43fd-44d2-b8cb-06809029a863); Time taken: 3.785 seconds
++-------------+-----------+-------------+
+|     day     | category  |   revenue   |
++-------------+-----------+-------------+
+| 2026-01-01  | travel    | 3484735.46  |
+| 2026-01-02  | travel    | 3545765.99  |
+| 2026-01-03  | travel    | 3462171.24  |
+| 2026-01-04  | travel    | 3574742.77  |
+| 2026-01-05  | travel    | 3518011.54  |
+| 2026-01-06  | travel    | 3449850.41  |
+| 2026-01-07  | travel    | 3454879.99  |
+| 2026-01-08  | travel    | 3416830.16  |
+| 2026-01-09  | travel    | 3511293.39  |
+| 2026-01-10  | travel    | 3440233.85  |
+| 2026-01-11  | travel    | 3404498.33  |
+| 2026-01-12  | travel    | 3506169.61  |
+| 2026-01-13  | travel    | 3448861.80  |
+| 2026-01-14  | travel    | 3466454.90  |
+| 2026-01-15  | travel    | 3508187.76  |
+| 2026-01-16  | travel    | 3420126.91  |
+| 2026-01-17  | travel    | 3556483.12  |
+| 2026-01-18  | travel    | 3479053.99  |
+| 2026-01-19  | travel    | 3326187.09  |
+| 2026-01-20  | travel    | 3524068.77  |
+| 2026-01-21  | travel    | 3417670.04  |
+| 2026-01-22  | travel    | 3537301.27  |
+| 2026-01-23  | travel    | 3441053.73  |
+| 2026-01-24  | travel    | 3511870.79  |
+| 2026-01-25  | travel    | 3393464.71  |
+| 2026-01-26  | travel    | 3326430.72  |
+| 2026-01-27  | travel    | 3463686.72  |
+| 2026-01-28  | travel    | 3528626.06  |
+| 2026-01-29  | travel    | 3495736.18  |
+| 2026-01-30  | travel    | 3412438.05  |
+| 2026-01-31  | travel    | 3509649.94  |
+| 2026-02-01  | travel    | 3478413.39  |
+| 2026-02-02  | travel    | 3520280.97  |
+| 2026-02-03  | travel    | 3566479.91  |
+| 2026-02-04  | travel    | 3440904.03  |
+| 2026-02-05  | travel    | 3416614.61  |
+| 2026-02-06  | travel    | 3465548.41  |
+| 2026-02-07  | travel    | 3506027.29  |
+| 2026-02-08  | travel    | 3598932.08  |
+| 2026-02-09  | travel    | 3458108.24  |
+| 2026-02-10  | travel    | 3453726.84  |
+| 2026-02-11  | travel    | 3492376.66  |
+| 2026-02-12  | travel    | 3459665.26  |
+| 2026-02-13  | travel    | 3455542.15  |
+| 2026-02-14  | travel    | 3342534.56  |
+| 2026-02-15  | travel    | 3547057.16  |
+| 2026-02-16  | travel    | 3461550.98  |
+| 2026-02-17  | travel    | 3626922.42  |
+| 2026-02-18  | travel    | 3472977.48  |
+| 2026-02-19  | travel    | 3517787.78  |
+| 2026-02-20  | travel    | 3288778.68  |
+| 2026-02-21  | travel    | 3400857.43  |
+| 2026-02-22  | travel    | 3406226.87  |
+| 2026-02-23  | travel    | 3406765.33  |
+| 2026-02-24  | travel    | 3461279.70  |
+| 2026-02-25  | travel    | 3395178.06  |
+| 2026-02-26  | travel    | 3400297.89  |
+| 2026-02-27  | travel    | 3492083.97  |
+| 2026-02-28  | travel    | 3392365.99  |
+| 2026-03-01  | travel    | 3448291.66  |
+| 2026-03-02  | travel    | 3469414.74  |
+| 2026-03-03  | travel    | 3482428.56  |
+| 2026-03-04  | travel    | 3474782.00  |
+| 2026-03-05  | travel    | 3464057.82  |
+| 2026-03-06  | travel    | 3482063.82  |
+| 2026-03-07  | travel    | 3424256.77  |
+| 2026-03-08  | travel    | 3382329.20  |
+| 2026-03-09  | travel    | 3391593.14  |
+| 2026-03-10  | travel    | 3505495.38  |
+| 2026-03-11  | travel    | 3520215.04  |
+| 2026-03-12  | travel    | 3517145.29  |
+| 2026-03-13  | travel    | 3427613.93  |
+| 2026-03-14  | travel    | 3397046.84  |
+| 2026-03-15  | travel    | 3557187.86  |
+| 2026-03-16  | travel    | 3453357.94  |
+| 2026-03-17  | travel    | 3539603.49  |
+| 2026-03-18  | travel    | 3424282.24  |
+| 2026-03-19  | travel    | 3457810.17  |
+| 2026-03-20  | travel    | 3365615.38  |
+| 2026-03-21  | travel    | 3388677.54  |
+| 2026-03-22  | travel    | 3486468.79  |
+| 2026-03-23  | travel    | 3500705.19  |
+| 2026-03-24  | travel    | 3502695.70  |
+| 2026-03-25  | travel    | 3494955.28  |
+| 2026-03-26  | travel    | 3463162.60  |
+| 2026-03-27  | travel    | 3416523.15  |
+| 2026-03-28  | travel    | 3630119.18  |
+| 2026-03-29  | travel    | 3376921.37  |
+| 2026-03-30  | travel    | 3431868.95  |
+| 2026-03-31  | travel    | 3510064.57  |
+| NULL        | travel    | 5636230.83  |
++-------------+-----------+-------------+
+91 rows selected (3.951 seconds)
+0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > . . . . . . . . . . . . . . . . > INFO  : Compiling command(queryId=hive_20261111001615_1cfa0390-cc37-4b67-a2a6-ef4a07b43bee): WITH daily AS (
+SELECT to_date(ts) AS day, category, sum(amount) AS revenue
+FROM tx_orc
+GROUP BY to_date(ts), category
+),
+ranked AS (
+SELECT day, category, revenue,
+row_number() OVER (PARTITION BY day ORDER BY revenue DESC, category) AS rn
+FROM daily
+)
+SELECT day, category, revenue
+FROM ranked
+WHERE rn = 1
+ORDER BY day
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:day, type:date, comment:null), FieldSchema(name:category, type:string, comment:null), FieldSchema(name:revenue, type:decimal(20,2), comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20261111001615_1cfa0390-cc37-4b67-a2a6-ef4a07b43bee); Time taken: 0.102 seconds
+INFO  : Executing command(queryId=hive_20261111001615_1cfa0390-cc37-4b67-a2a6-ef4a07b43bee): WITH daily AS (
+SELECT to_date(ts) AS day, category, sum(amount) AS revenue
+FROM tx_orc
+GROUP BY to_date(ts), category
+),
+ranked AS (
+SELECT day, category, revenue,
+row_number() OVER (PARTITION BY day ORDER BY revenue DESC, category) AS rn
+FROM daily
+)
+SELECT day, category, revenue
+FROM ranked
+WHERE rn = 1
+ORDER BY day
+INFO  : Query ID = hive_20261111001615_1cfa0390-cc37-4b67-a2a6-ef4a07b43bee
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: hive_20261111001615_1cfa0390-cc37-4b67-a2a6-ef4a07b43bee
+INFO  : Session is already open
+INFO  : Dag name: WITH daily AS (
+SELEC...... = 1
+ORDER BY day (Stage-1)
+INFO  : HS2 Host: [294d0742f37a], Query ID: [hive_20261111001615_1cfa0390-cc37-4b67-a2a6-ef4a07b43bee], Dag ID: [dag_1794356167342_0001_3], DAG App ID: [application_1794356167342_0001], DAG App address: [294d0742f37a]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1794356167342_0001)
+
+[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 ...        container       RUNNING      3          1        0        2       0       0  
+Reducer 2        container        INITED      5          0        0        5       0       0  
+Reducer 3        container        INITED      3          0        0        3       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/04  [==>>------------------------] 8%    ELAPSED TIME: 1.44 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[10A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 ...        container       RUNNING      3          1        1        1       0       0  
+Reducer 2        container        INITED      5          0        0        5       0       0  
+Reducer 3        container        INITED      3          0        0        3       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/04  [==>>------------------------] 8%    ELAPSED TIME: 1.95 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[10A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 ......     container       RUNNING      3          2        0        1       0       0  
+Reducer 2        container        INITED      5          0        0        5       0       0  
+Reducer 3        container        INITED      3          0        0        3       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/04  [====>>----------------------] 16%   ELAPSED TIME: 2.45 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[10A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 .......... container     SUCCEEDED      3          3        0        0       0       0  
+Reducer 2 .      container       RUNNING      5          1        1        3       0       0  
+Reducer 3        container        INITED      3          0        0        3       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 01/04  [========>>------------------] 33%   ELAPSED TIME: 2.95 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[10A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 .......... container     SUCCEEDED      3          3        0        0       0       0  
+Reducer 2 ....   container       RUNNING      5          4        0        1       0       0  
+Reducer 3        container        INITED      3          0        0        3       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 01/04  [===============>>-----------] 58%   ELAPSED TIME: 3.46 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[10A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 .......... container     SUCCEEDED      3          3        0        0       0       0  
+Reducer 2 ...... container     SUCCEEDED      5          5        0        0       0       0  
+Reducer 3 ...... container     SUCCEEDED      3          3        0        0       0       0  
+Reducer 4 ...... container     SUCCEEDED      1          1        0        0       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 04/04  [==========================>>] 100%  ELAPSED TIME: 3.85 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+INFO  : Status: DAG finished successfully in 3.83 seconds
+INFO  : DAG ID: dag_1794356167342_0001_3
+INFO  : 
+INFO  : Query Execution Summary
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : OPERATION                            DURATION
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : Compile Query                           0.10s
+INFO  : Prepare Plan                            0.04s
+INFO  : Get Query Coordinator (AM)              0.00s
+INFO  : Submit Plan                             0.01s
+INFO  : Start DAG                               0.02s
+INFO  : Run DAG                                 3.83s
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : 
+INFO  : Task Execution Summary
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :   VERTICES      DURATION(ms)   CPU_TIME(ms)    GC_TIME(ms)   INPUT_RECORDS   OUTPUT_RECORDS
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :      Map 1           2015.00              0              0       8,000,000            2,730
+INFO  :  Reducer 2           1006.00              0              0           2,730              910
+INFO  :  Reducer 3            304.00              0              0             910               91
+INFO  :  Reducer 4              0.00              0              0              91                0
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : FileSystem Counters Summary
+INFO  : 
+INFO  : Scheme: FILE
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :   VERTICES      BYTES_READ      READ_OPS     LARGE_READ_OPS      BYTES_WRITTEN     WRITE_OPS
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  :      Map 1              0B             0                  0                 0B             0
+INFO  :  Reducer 2              0B             0                  0                 0B             0
+INFO  :  Reducer 3              0B             0                  0                 0B             0
+INFO  :  Reducer 4              0B             0                  0                 0B             0
+INFO  : ----------------------------------------------------------------------------------------------
+INFO  : 
+INFO  : org.apache.tez.common.counters.DAGCounter:
+INFO  :    NUM_SUCCEEDED_TASKS: 12
+INFO  :    TOTAL_LAUNCHED_TASKS: 12
+INFO  :    DURATION_SUCCEEDED_TASKS_MILLIS: 2178
+INFO  :    OTHER_LOCAL_TASKS: 3
+INFO  :    AM_CPU_MILLISECONDS: 5270
+INFO  :    WALL_CLOCK_MILLIS: 2178
+INFO  :    AM_GC_TIME_MILLIS: 30
+INFO  :    INITIAL_HELD_CONTAINERS: 0
+INFO  :    TOTAL_CONTAINERS_USED: 12
+INFO  :    TOTAL_CONTAINER_LAUNCH_COUNT: 12
+INFO  :    TOTAL_CONTAINER_RELEASE_COUNT: 12
+INFO  :    NODE_USED_COUNT: 1
+INFO  :    NODE_TOTAL_COUNT: 1
+INFO  : org.apache.tez.common.counters.TaskCounter:
+INFO  :    REDUCE_INPUT_GROUPS: 1911
+INFO  :    REDUCE_INPUT_RECORDS: 3731
+INFO  :    COMBINE_INPUT_RECORDS: 0
+INFO  :    SPILLED_RECORDS: 7462
+INFO  :    NUM_SHUFFLED_INPUTS: 33
+INFO  :    NUM_SKIPPED_INPUTS: 0
+INFO  :    NUM_FAILED_SHUFFLE_INPUTS: 0
+INFO  :    MERGED_MAP_OUTPUTS: 33
+INFO  :    INPUT_RECORDS_PROCESSED: 7816
+INFO  :    INPUT_SPLIT_LENGTH_BYTES: 63367703
+INFO  :    OUTPUT_RECORDS: 3731
+INFO  :    OUTPUT_LARGE_RECORDS: 0
+INFO  :    OUTPUT_BYTES: 94512
+INFO  :    OUTPUT_BYTES_WITH_OVERHEAD: 102172
+INFO  :    OUTPUT_BYTES_PHYSICAL: 102304
+INFO  :    ADDITIONAL_SPILLS_BYTES_WRITTEN: 0
+INFO  :    ADDITIONAL_SPILLS_BYTES_READ: 102304
+INFO  :    ADDITIONAL_SPILL_COUNT: 0
+INFO  :    SHUFFLE_CHUNK_COUNT: 11
+INFO  :    SHUFFLE_BYTES: 102304
+INFO  :    SHUFFLE_BYTES_DECOMPRESSED: 102172
+INFO  :    SHUFFLE_BYTES_TO_MEM: 0
+INFO  :    SHUFFLE_BYTES_TO_DISK: 0
+INFO  :    SHUFFLE_BYTES_DISK_DIRECT: 102304
+INFO  :    NUM_MEM_TO_DISK_MERGES: 0
+INFO  :    NUM_DISK_TO_DISK_MERGES: 0
+INFO  :    SHUFFLE_PHASE_TIME: 40
+INFO  :    MERGE_PHASE_TIME: 47
+INFO  :    FIRST_EVENT_RECEIVED: 15
+INFO  :    LAST_EVENT_RECEIVED: 20
+INFO  : HIVE:
+INFO  :    CREATED_FILES: 1
+INFO  :    DESERIALIZE_ERRORS: 0
+INFO  :    RECORDS_IN_Map_1: 8000000
+INFO  :    RECORDS_OUT_0: 91
+INFO  :    RECORDS_OUT_INTERMEDIATE_Map_1: 2730
+INFO  :    RECORDS_OUT_INTERMEDIATE_Reducer_2: 910
+INFO  :    RECORDS_OUT_INTERMEDIATE_Reducer_3: 91
+INFO  :    RECORDS_OUT_INTERMEDIATE_Reducer_4: 0
+INFO  :    RECORDS_OUT_OPERATOR_FIL_25: 91
+INFO  :    RECORDS_OUT_OPERATOR_FS_29: 91
+INFO  :    RECORDS_OUT_OPERATOR_GBY_19: 2730
+INFO  :    RECORDS_OUT_OPERATOR_GBY_21: 910
+INFO  :    RECORDS_OUT_OPERATOR_MAP_0: 0
+INFO  :    RECORDS_OUT_OPERATOR_PTF_24: 910
+INFO  :    RECORDS_OUT_OPERATOR_RS_20: 2730
+INFO  :    RECORDS_OUT_OPERATOR_RS_22: 910
+INFO  :    RECORDS_OUT_OPERATOR_RS_27: 91
+INFO  :    RECORDS_OUT_OPERATOR_SEL_18: 8000000
+INFO  :    RECORDS_OUT_OPERATOR_SEL_23: 910
+INFO  :    RECORDS_OUT_OPERATOR_SEL_26: 91
+INFO  :    RECORDS_OUT_OPERATOR_SEL_28: 91
+INFO  :    RECORDS_OUT_OPERATOR_TS_0: 8000000
+INFO  : Shuffle Errors:
+INFO  :    BAD_ID: 0
+INFO  :    CONNECTION: 0
+INFO  :    IO_ERROR: 0
+INFO  :    WRONG_LENGTH: 0
+INFO  :    WRONG_MAP: 0
+INFO  :    WRONG_REDUCE: 0
+INFO  : org.apache.hadoop.hive.ql.exec.tez.HiveInputCounters:
+INFO  :    GROUPED_INPUT_SPLITS_Map_1: 3
+INFO  :    INPUT_DIRECTORIES_Map_1: 1
+INFO  :    INPUT_FILES_Map_1: 7
+INFO  :    RAW_INPUT_SPLITS_Map_1: 7
+INFO  : Completed executing command(queryId=hive_20261111001615_1cfa0390-cc37-4b67-a2a6-ef4a07b43bee); Time taken: 3.915 seconds
++-------------+-----------+-------------+
+|     day     | category  |   revenue   |
++-------------+-----------+-------------+
+| 2026-01-01  | travel    | 3484735.46  |
+| 2026-01-02  | travel    | 3545765.99  |
+| 2026-01-03  | travel    | 3462171.24  |
+| 2026-01-04  | travel    | 3574742.77  |
+| 2026-01-05  | travel    | 3518011.54  |
+| 2026-01-06  | travel    | 3449850.41  |
+| 2026-01-07  | travel    | 3454879.99  |
+| 2026-01-08  | travel    | 3416830.16  |
+| 2026-01-09  | travel    | 3511293.39  |
+| 2026-01-10  | travel    | 3440233.85  |
+| 2026-01-11  | travel    | 3404498.33  |
+| 2026-01-12  | travel    | 3506169.61  |
+| 2026-01-13  | travel    | 3448861.80  |
+| 2026-01-14  | travel    | 3466454.90  |
+| 2026-01-15  | travel    | 3508187.76  |
+| 2026-01-16  | travel    | 3420126.91  |
+| 2026-01-17  | travel    | 3556483.12  |
+| 2026-01-18  | travel    | 3479053.99  |
+| 2026-01-19  | travel    | 3326187.09  |
+| 2026-01-20  | travel    | 3524068.77  |
+| 2026-01-21  | travel    | 3417670.04  |
+| 2026-01-22  | travel    | 3537301.27  |
+| 2026-01-23  | travel    | 3441053.73  |
+| 2026-01-24  | travel    | 3511870.79  |
+| 2026-01-25  | travel    | 3393464.71  |
+| 2026-01-26  | travel    | 3326430.72  |
+| 2026-01-27  | travel    | 3463686.72  |
+| 2026-01-28  | travel    | 3528626.06  |
+| 2026-01-29  | travel    | 3495736.18  |
+| 2026-01-30  | travel    | 3412438.05  |
+| 2026-01-31  | travel    | 3509649.94  |
+| 2026-02-01  | travel    | 3478413.39  |
+| 2026-02-02  | travel    | 3520280.97  |
+| 2026-02-03  | travel    | 3566479.91  |
+| 2026-02-04  | travel    | 3440904.03  |
+| 2026-02-05  | travel    | 3416614.61  |
+| 2026-02-06  | travel    | 3465548.41  |
+| 2026-02-07  | travel    | 3506027.29  |
+| 2026-02-08  | travel    | 3598932.08  |
+| 2026-02-09  | travel    | 3458108.24  |
+| 2026-02-10  | travel    | 3453726.84  |
+| 2026-02-11  | travel    | 3492376.66  |
+| 2026-02-12  | travel    | 3459665.26  |
+| 2026-02-13  | travel    | 3455542.15  |
+| 2026-02-14  | travel    | 3342534.56  |
+| 2026-02-15  | travel    | 3547057.16  |
+| 2026-02-16  | travel    | 3461550.98  |
+| 2026-02-17  | travel    | 3626922.42  |
+| 2026-02-18  | travel    | 3472977.48  |
+| 2026-02-19  | travel    | 3517787.78  |
+| 2026-02-20  | travel    | 3288778.68  |
+| 2026-02-21  | travel    | 3400857.43  |
+| 2026-02-22  | travel    | 3406226.87  |
+| 2026-02-23  | travel    | 3406765.33  |
+| 2026-02-24  | travel    | 3461279.70  |
+| 2026-02-25  | travel    | 3395178.06  |
+| 2026-02-26  | travel    | 3400297.89  |
+| 2026-02-27  | travel    | 3492083.97  |
+| 2026-02-28  | travel    | 3392365.99  |
+| 2026-03-01  | travel    | 3448291.66  |
+| 2026-03-02  | travel    | 3469414.74  |
+| 2026-03-03  | travel    | 3482428.56  |
+| 2026-03-04  | travel    | 3474782.00  |
+| 2026-03-05  | travel    | 3464057.82  |
+| 2026-03-06  | travel    | 3482063.82  |
+| 2026-03-07  | travel    | 3424256.77  |
+| 2026-03-08  | travel    | 3382329.20  |
+| 2026-03-09  | travel    | 3391593.14  |
+| 2026-03-10  | travel    | 3505495.38  |
+| 2026-03-11  | travel    | 3520215.04  |
+| 2026-03-12  | travel    | 3517145.29  |
+| 2026-03-13  | travel    | 3427613.93  |
+| 2026-03-14  | travel    | 3397046.84  |
+| 2026-03-15  | travel    | 3557187.86  |
+| 2026-03-16  | travel    | 3453357.94  |
+| 2026-03-17  | travel    | 3539603.49  |
+| 2026-03-18  | travel    | 3424282.24  |
+| 2026-03-19  | travel    | 3457810.17  |
+| 2026-03-20  | travel    | 3365615.38  |
+| 2026-03-21  | travel    | 3388677.54  |
+| 2026-03-22  | travel    | 3486468.79  |
+| 2026-03-23  | travel    | 3500705.19  |
+| 2026-03-24  | travel    | 3502695.70  |
+| 2026-03-25  | travel    | 3494955.28  |
+| 2026-03-26  | travel    | 3463162.60  |
+| 2026-03-27  | travel    | 3416523.15  |
+| 2026-03-28  | travel    | 3630119.18  |
+| 2026-03-29  | travel    | 3376921.37  |
+| 2026-03-30  | travel    | 3431868.95  |
+| 2026-03-31  | travel    | 3510064.57  |
+| NULL        | travel    | 5636230.83  |
++-------------+-----------+-------------+
+91 rows selected (4.068 seconds)
+0: jdbc:hive2://localhost:10000/> Closing: 0: jdbc:hive2://localhost:10000/

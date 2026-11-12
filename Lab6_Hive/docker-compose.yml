@@ -1,0 +1,19 @@
+name: lab6-hive
+
+services:
+  hiveserver2:
+    image: apache/hive:4.2.1
+    container_name: lab6-hive
+    environment:
+      SERVICE_NAME: hiveserver2
+      SERVICE_OPTS: "-Xmx4g"
+    ports:
+      - "127.0.0.1:10000:10000"   # JDBC для beeline
+      - "127.0.0.1:10002:10002"   # веб-інтерфейс HiveServer2
+    volumes:
+      # Дані для LOAD DATA LOCAL INPATH і cp у каталог таблиці.
+      - ./data:/data:ro
+      # SQL-скрипти, скрипти запуску й докази.
+      - .:/lab
+    # Сховище таблиць (/opt/hive/data/warehouse) і metastore живуть у файловій
+    # системі контейнера: `docker compose stop` їх зберігає, `down` видаляє.

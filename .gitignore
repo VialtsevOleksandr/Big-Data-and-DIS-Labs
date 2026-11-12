@@ -1,26 +1,38 @@
+# Середовище та інструменти
 .env
 .venv
-__pycache__
 .vscode
-data.json
-transactions.csv
-runs/
-/Lab3_MapReduce/*.docx
+AGENTS.md
+
+# Python
+__pycache__
+*.py[cod]
+
+# Кеші та службові каталоги
 .cache
-/Lab3_StorageRetrieval/data/
-/Lab3_StorageRetrieval/.pytest_cache/
+runs/
 configs
 !/Lab3_StorageRetrieval/configs/
 !/Lab3_StorageRetrieval/configs/*.json
+
+# Згенеровані дані: відтворюються генераторами
+data.json
+transactions.csv
+
+# Lab3_MapReduce
+/Lab3_MapReduce/*.docx
+
+# Lab3_StorageRetrieval
+/Lab3_StorageRetrieval/data/
+/Lab3_StorageRetrieval/.pytest_cache/
 /Lab3_StorageRetrieval/*.docx
 /Lab3_StorageRetrieval/*.pdf
 /Lab3_StorageRetrieval/**/*.duckdb*
 /Lab3_StorageRetrieval/**/*.tmp
 /Lab3_StorageRetrieval/results/*-recovery-*
-AGENTS.md
 
-# Python bytecode
-*.py[cod]
-
-# Keep new Spark lab files local; previously committed files remain tracked.
+# Lab5_Spark_1: нові файли лишаються локальними; раніше закомічені й далі відстежуються
 /Lab5_Spark_1/
+
+# Lab6_Hive: CSV генеруються, у репозиторії лише метадані генерації
+/Lab6_Hive/data/*.csv

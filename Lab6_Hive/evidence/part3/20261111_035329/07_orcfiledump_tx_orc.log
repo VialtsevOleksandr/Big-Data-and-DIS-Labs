@@ -1,0 +1,193 @@
+$ /opt/hive/bin/hive --orcfiledump --rowindex 1 /opt/hive/data/warehouse/tx_orc/000000_0
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.24.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.24.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Processing data file /opt/hive/data/warehouse/tx_orc/000000_0 [length: 10060987]
+Structure for /opt/hive/data/warehouse/tx_orc/000000_0
+File Version: 0.12 with ORC_14 by ORC Java 2.1.2
+Rows: 1270253
+Compression: ZLIB
+Compression size: 262144
+Calendar: Julian/Gregorian
+Type: struct<user_id:int,ts:timestamp,category:string,amount:decimal(10,2)>
+
+Stripe Statistics:
+  Stripe 1:
+    Column 0: count: 1270253 hasNull: false
+    Column 1: count: 1270253 hasNull: false bytesOnDisk: 2318853 min: 1000 max: 9999 sum: 6978545995
+    Column 2: count: 1249141 hasNull: true bytesOnDisk: 4395340 min: 2026-01-01 00:00:13.0 max: 2026-03-31 23:59:58.0
+    Column 3: count: 1270253 hasNull: false bytesOnDisk: 563512 min: books max: utilities sum: 11558932
+    Column 4: count: 1227867 hasNull: true bytesOnDisk: 2772324 min: 1.5 max: 1999.98 sum: 179932158.09
+
+File Statistics:
+  Column 0: count: 1270253 hasNull: false
+  Column 1: count: 1270253 hasNull: false bytesOnDisk: 2318853 min: 1000 max: 9999 sum: 6978545995
+  Column 2: count: 1249141 hasNull: true bytesOnDisk: 4395340 min: 2026-01-01 00:00:13.0 max: 2026-03-31 23:59:58.0
+  Column 3: count: 1270253 hasNull: false bytesOnDisk: 563512 min: books max: utilities sum: 11558932
+  Column 4: count: 1227867 hasNull: true bytesOnDisk: 2772324 min: 1.5 max: 1999.98 sum: 179932158.09
+
+Stripes:
+  Stripe: offset: 3 data: 10050029 rows: 1270253 tail: 129 index: 10397
+    Stream: column 0 section ROW_INDEX start: 3 length 32
+    Stream: column 1 section ROW_INDEX start: 35 length 1701
+    Stream: column 2 section ROW_INDEX start: 1736 length 3498
+    Stream: column 3 section ROW_INDEX start: 5234 length 1272
+    Stream: column 4 section ROW_INDEX start: 6506 length 3894
+    Stream: column 1 section DATA start: 10400 length 2318853
+    Stream: column 2 section PRESENT start: 2329253 length 33025
+    Stream: column 2 section DATA start: 2362278 length 4362241
+    Stream: column 2 section SECONDARY start: 6724519 length 74
+    Stream: column 3 section DATA start: 6724593 length 563434
+    Stream: column 3 section LENGTH start: 7288027 length 10
+    Stream: column 3 section DICTIONARY_DATA start: 7288037 length 68
+    Stream: column 4 section PRESENT start: 7288105 length 55676
+    Stream: column 4 section DATA start: 7343781 length 2716571
+    Stream: column 4 section SECONDARY start: 10060352 length 77
+    Encoding column 0: DIRECT
+    Encoding column 1: DIRECT_V2
+    Encoding column 2: DIRECT_V2
+    Encoding column 3: DICTIONARY_V2[10]
+    Encoding column 4: DIRECT_V2
+    Row group indices for column 1:
+      Entry 0: count: 10000 hasNull: false min: 1001 max: 9999 sum: 55006788 positions: 0,0,0
+      Entry 1: count: 10000 hasNull: false min: 1001 max: 9999 sum: 54423961 positions: 0,19494,272
+      Entry 2: count: 10000 hasNull: false min: 1002 max: 9999 sum: 54782757 positions: 0,40014,32
+      Entry 3: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54697954 positions: 0,59508,304
+      Entry 4: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55128285 positions: 0,80028,64
+      Entry 5: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55014985 positions: 0,99522,336
+      Entry 6: count: 10000 hasNull: false min: 1000 max: 9997 sum: 54692885 positions: 0,120042,96
+      Entry 7: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54803551 positions: 0,139536,368
+      Entry 8: count: 10000 hasNull: false min: 1002 max: 9998 sum: 54660258 positions: 0,160056,128
+      Entry 9: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54948020 positions: 0,179550,400
+      Entry 10: count: 10000 hasNull: false min: 1000 max: 9998 sum: 54735928 positions: 0,200070,160
+      Entry 11: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55531514 positions: 0,219564,432
+      Entry 12: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54732462 positions: 0,240084,192
+      Entry 13: count: 10000 hasNull: false min: 1000 max: 9998 sum: 55309370 positions: 0,259578,464
+      Entry 14: count: 10000 hasNull: false min: 1000 max: 9997 sum: 54947627 positions: 238789,17954,224
+      Entry 15: count: 10000 hasNull: false min: 1002 max: 9999 sum: 54812089 positions: 238789,37448,496
+      Entry 16: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54941476 positions: 238789,57968,256
+      Entry 17: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55445256 positions: 238789,78488,16
+      Entry 18: count: 10000 hasNull: false min: 1000 max: 9997 sum: 54946753 positions: 238789,97982,288
+      Entry 19: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54421776 positions: 238789,118502,48
+      Entry 20: count: 10000 hasNull: false min: 1000 max: 9997 sum: 54965658 positions: 238789,137996,320
+      Entry 21: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54995293 positions: 238789,158516,80
+      Entry 22: count: 10000 hasNull: false min: 1001 max: 9999 sum: 55004983 positions: 238789,178010,352
+      Entry 23: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54739516 positions: 238789,198530,112
+      Entry 24: count: 10000 hasNull: false min: 1001 max: 9999 sum: 55354521 positions: 238789,218024,384
+      Entry 25: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55309111 positions: 238789,238544,144
+      Entry 26: count: 10000 hasNull: false min: 1003 max: 9999 sum: 54991565 positions: 238789,258038,416
+      Entry 27: count: 10000 hasNull: false min: 1001 max: 9998 sum: 55474624 positions: 477582,16414,176
+      Entry 28: count: 10000 hasNull: false min: 1001 max: 9998 sum: 54471148 positions: 477582,35908,448
+      Entry 29: count: 10000 hasNull: false min: 1000 max: 9998 sum: 54275845 positions: 477582,56428,208
+      Entry 30: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55250652 positions: 477582,75922,480
+      Entry 31: count: 10000 hasNull: false min: 1000 max: 9995 sum: 54926293 positions: 477582,96442,240
+      Entry 32: count: 10000 hasNull: false min: 1002 max: 9999 sum: 54617244 positions: 477582,116962,0
+      Entry 33: count: 10000 hasNull: false min: 1000 max: 9998 sum: 55015721 positions: 477582,136456,272
+      Entry 34: count: 10000 hasNull: false min: 1001 max: 9997 sum: 55196025 positions: 477582,156976,32
+      Entry 35: count: 10000 hasNull: false min: 1001 max: 9998 sum: 54988627 positions: 477582,176470,304
+      Entry 36: count: 10000 hasNull: false min: 1001 max: 9998 sum: 54436318 positions: 477582,196990,64
+      Entry 37: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55048611 positions: 477582,216484,336
+      Entry 38: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54984721 positions: 477582,237004,96
+      Entry 39: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55079301 positions: 477582,256498,368
+      Entry 40: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55281448 positions: 716418,14874,128
+      Entry 41: count: 10000 hasNull: false min: 1000 max: 9998 sum: 54606004 positions: 716418,34368,400
+      Entry 42: count: 10000 hasNull: false min: 1001 max: 9999 sum: 54971293 positions: 716418,54888,160
+      Entry 43: count: 10000 hasNull: false min: 1001 max: 9999 sum: 55068161 positions: 716418,74382,432
+      Entry 44: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54765896 positions: 716418,94902,192
+      Entry 45: count: 10000 hasNull: false min: 1000 max: 9998 sum: 54880948 positions: 716418,114396,464
+      Entry 46: count: 10000 hasNull: false min: 1001 max: 9997 sum: 54608171 positions: 716418,134916,224
+      Entry 47: count: 10000 hasNull: false min: 1000 max: 9998 sum: 54656010 positions: 716418,154410,496
+      Entry 48: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55081902 positions: 716418,174930,256
+      Entry 49: count: 10000 hasNull: false min: 1002 max: 9999 sum: 54975573 positions: 716418,195450,16
+      Entry 50: count: 10000 hasNull: false min: 1001 max: 9998 sum: 55040671 positions: 716418,214944,288
+      Entry 51: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55332994 positions: 716418,235464,48
+      Entry 52: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55025519 positions: 716418,254958,320
+      Entry 53: count: 10000 hasNull: false min: 1000 max: 9998 sum: 55137749 positions: 955195,13334,80
+      Entry 54: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54785626 positions: 955195,32828,352
+      Entry 55: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54725747 positions: 955195,53348,112
+      Entry 56: count: 10000 hasNull: false min: 1000 max: 9998 sum: 54844705 positions: 955195,72842,384
+      Entry 57: count: 10000 hasNull: false min: 1001 max: 9997 sum: 54733025 positions: 955195,93362,144
+      Entry 58: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54103138 positions: 955195,112856,416
+      Entry 59: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54856955 positions: 955195,133376,176
+      Entry 60: count: 10000 hasNull: false min: 1001 max: 9998 sum: 55072301 positions: 955195,152870,448
+      Entry 61: count: 10000 hasNull: false min: 1000 max: 9998 sum: 55286202 positions: 955195,173390,208
+      Entry 62: count: 10000 hasNull: false min: 1002 max: 9999 sum: 54561216 positions: 955195,192884,480
+      Entry 63: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54823990 positions: 955195,213404,240
+      Entry 64: count: 10000 hasNull: false min: 1002 max: 9999 sum: 55334105 positions: 955195,233924,0
+      Entry 65: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54988703 positions: 955195,253418,272
+      Entry 66: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54742171 positions: 1193975,11794,32
+      Entry 67: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55118360 positions: 1193975,31288,304
+      Entry 68: count: 10000 hasNull: false min: 1003 max: 9999 sum: 54452836 positions: 1193975,51808,64
+      Entry 69: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54759185 positions: 1193975,71302,336
+      Entry 70: count: 10000 hasNull: false min: 1005 max: 9999 sum: 54802377 positions: 1193975,91822,96
+      Entry 71: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55068302 positions: 1193975,111316,368
+      Entry 72: count: 10000 hasNull: false min: 1001 max: 9999 sum: 54868588 positions: 1193975,131836,128
+      Entry 73: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54943198 positions: 1193975,151330,400
+      Entry 74: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54732788 positions: 1193975,171850,160
+      Entry 75: count: 10000 hasNull: false min: 1003 max: 9998 sum: 54947423 positions: 1193975,191344,432
+      Entry 76: count: 10000 hasNull: false min: 1000 max: 9996 sum: 54570766 positions: 1193975,211864,192
+      Entry 77: count: 10000 hasNull: false min: 1003 max: 9999 sum: 54767265 positions: 1193975,231358,464
+      Entry 78: count: 10000 hasNull: false min: 1001 max: 9999 sum: 55441730 positions: 1193975,251878,224
+      Entry 79: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55285476 positions: 1432809,9228,496
+      Entry 80: count: 10000 hasNull: false min: 1003 max: 9999 sum: 55262858 positions: 1432809,29748,256
+      Entry 81: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54935224 positions: 1432809,50268,16
+      Entry 82: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54736196 positions: 1432809,69762,288
+      Entry 83: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54966417 positions: 1432809,90282,48
+      Entry 84: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55230776 positions: 1432809,109776,320
+      Entry 85: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54944930 positions: 1432809,130296,80
+      Entry 86: count: 10000 hasNull: false min: 1000 max: 9997 sum: 54713457 positions: 1432809,149790,352
+      Entry 87: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55102872 positions: 1432809,170310,112
+      Entry 88: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54695792 positions: 1432809,189804,384
+      Entry 89: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55150087 positions: 1432809,210324,144
+      Entry 90: count: 10000 hasNull: false min: 1000 max: 9998 sum: 55179430 positions: 1432809,229818,416
+      Entry 91: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54409331 positions: 1432809,250338,176
+      Entry 92: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55061420 positions: 1671658,7688,448
+      Entry 93: count: 10000 hasNull: false min: 1001 max: 9999 sum: 54766799 positions: 1671658,28208,208
+      Entry 94: count: 10000 hasNull: false min: 1000 max: 9998 sum: 54863775 positions: 1671658,47702,480
+      Entry 95: count: 10000 hasNull: false min: 1000 max: 9998 sum: 54949868 positions: 1671658,68222,240
+      Entry 96: count: 10000 hasNull: false min: 1001 max: 9996 sum: 54944956 positions: 1671658,88742,0
+      Entry 97: count: 10000 hasNull: false min: 1000 max: 9998 sum: 54652773 positions: 1671658,108236,272
+      Entry 98: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54641617 positions: 1671658,128756,32
+      Entry 99: count: 10000 hasNull: false min: 1000 max: 9998 sum: 54630310 positions: 1671658,148250,304
+      Entry 100: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55335820 positions: 1671658,168770,64
+      Entry 101: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54593475 positions: 1671658,188264,336
+      Entry 102: count: 10000 hasNull: false min: 1000 max: 9998 sum: 55028263 positions: 1671658,208784,96
+      Entry 103: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55208930 positions: 1671658,228278,368
+      Entry 104: count: 10000 hasNull: false min: 1001 max: 9999 sum: 54293768 positions: 1671658,248798,128
+      Entry 105: count: 10000 hasNull: false min: 1002 max: 9999 sum: 55007667 positions: 1910456,6148,400
+      Entry 106: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55221497 positions: 1910456,26668,160
+      Entry 107: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55333588 positions: 1910456,46162,432
+      Entry 108: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55095918 positions: 1910456,66682,192
+      Entry 109: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55146050 positions: 1910456,86176,464
+      Entry 110: count: 10000 hasNull: false min: 1002 max: 9999 sum: 54995809 positions: 1910456,106696,224
+      Entry 111: count: 10000 hasNull: false min: 1002 max: 9999 sum: 55212142 positions: 1910456,126190,496
+      Entry 112: count: 10000 hasNull: false min: 1002 max: 9999 sum: 55079591 positions: 1910456,146710,256
+      Entry 113: count: 10000 hasNull: false min: 1003 max: 9998 sum: 54873872 positions: 1910456,167230,16
+      Entry 114: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55340522 positions: 1910456,186724,288
+      Entry 115: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55146909 positions: 1910456,207244,48
+      Entry 116: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54969129 positions: 1910456,226738,320
+      Entry 117: count: 10000 hasNull: false min: 1001 max: 9998 sum: 54950791 positions: 1910456,247258,80
+      Entry 118: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54532224 positions: 2149263,4608,352
+      Entry 119: count: 10000 hasNull: false min: 1000 max: 9997 sum: 54936321 positions: 2149263,25128,112
+      Entry 120: count: 10000 hasNull: false min: 1000 max: 9997 sum: 55223724 positions: 2149263,44622,384
+      Entry 121: count: 10000 hasNull: false min: 1000 max: 9998 sum: 54982443 positions: 2149263,65142,144
+      Entry 122: count: 10000 hasNull: false min: 1001 max: 9999 sum: 55427606 positions: 2149263,84636,416
+      Entry 123: count: 10000 hasNull: false min: 1000 max: 9999 sum: 54789674 positions: 2149263,105156,176
+      Entry 124: count: 10000 hasNull: false min: 1002 max: 9999 sum: 55311298 positions: 2149263,124650,448
+      Entry 125: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55124367 positions: 2149263,145170,208
+      Entry 126: count: 10000 hasNull: false min: 1000 max: 9999 sum: 55042025 positions: 2149263,164664,480
+      Entry 127: count: 253 hasNull: false min: 1069 max: 9969 sum: 1345695 positions: 2149263,185184,240
+
+File length: 10060987 bytes
+File raw data size: 315782297 bytes
+Padding length: 0 bytes
+Padding ratio: 0%
+________________________________________________________________________________________________________________________
+

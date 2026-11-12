@@ -1,0 +1,6 @@
+$ ls -la /opt/hive/data/warehouse/tx_day/dt=__HIVE_DEFAULT_PARTITION__
+total 604
+drwxr-xr-x  2 hive hive   4096 Nov 11 01:38 .
+drwxr-xr-x 93 hive hive   4096 Nov 11 01:38 ..
+-rw-r--r--  1 hive hive 599357 Nov 11 01:38 000005_0
+-rw-r--r--  1 hive hive   4692 Nov 11 01:38 .000005_0.crc

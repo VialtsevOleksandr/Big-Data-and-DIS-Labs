@@ -1,0 +1,51 @@
+{
+  "mode": "simple",
+  "seed": 20050406,
+  "transaction_rows": 8000000,
+  "header": false,
+  "categories": [
+    "groceries",
+    "restaurants",
+    "transport",
+    "clothing",
+    "electronics",
+    "books",
+    "entertainment",
+    "health",
+    "utilities",
+    "travel"
+  ],
+  "start": "2026-01-01",
+  "days": 90,
+  "transactions": {
+    "path": "C:\\Antigravity_Projects\\BigData_DIS\\Lab6_Hive\\data\\transactions.csv",
+    "bytes": 330196823,
+    "sha256": "baeb656c9c9b48fb2fae82d4e81ac9436a5b1ac2770544d7913ded1cfb073461"
+  },
+  "defects": {
+    "percent": 5,
+    "rows": {
+      "clean": 7600000,
+      "na_amount": 133334,
+      "missing_amount": 133333,
+      "bad_date": 133333
+    },
+    "defect_rows": 400000,
+    "bad_date_amount_sum": "19764678.21",
+    "distinct_users": 9000,
+    "expected_hive": {
+      "count_all": 8000000,
+      "count_amount": 7733333,
+      "valid_ts": 7866667,
+      "sum_amount": "1134639231.15"
+    }
+  },
+  "late_day": {
+    "date": "2026-04-01",
+    "rows": 10000,
+    "path": "C:\\Antigravity_Projects\\BigData_DIS\\Lab6_Hive\\data\\late_day.csv",
+    "bytes": 414439,
+    "sha256": "27484ea9ceb1ae078d7446d298dd61abbefa968a784f3de5caf9d1ec0dde2664"
+  },
+  "meets_lab_minimums": true
+}

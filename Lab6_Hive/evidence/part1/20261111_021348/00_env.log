@@ -1,0 +1,118 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.24.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.24.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Connecting to jdbc:hive2://localhost:10000/
+Connected to: Apache Hive (version 4.2.1)
+Driver: Hive JDBC (version 4.2.1)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+Beeline version 4.2.1 by Apache Hive
+0: jdbc:hive2://localhost:10000/> 0: jdbc:hive2://localhost:10000/> INFO  : Compiling command(queryId=hive_20261111001353_9b9ec957-3475-4c54-b35f-36406512cce2): SELECT version()
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:_c0, type:string, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20261111001353_9b9ec957-3475-4c54-b35f-36406512cce2); Time taken: 0.104 seconds
+INFO  : Executing command(queryId=hive_20261111001353_9b9ec957-3475-4c54-b35f-36406512cce2): SELECT version()
+INFO  : Completed executing command(queryId=hive_20261111001353_9b9ec957-3475-4c54-b35f-36406512cce2); Time taken: 0.001 seconds
++--------------------------------------------------+
+|                       _c0                        |
++--------------------------------------------------+
+| 4.2.1 r0f4761a83b40a279560359fa611a65774e42324b  |
++--------------------------------------------------+
+1 row selected (0.168 seconds)
+0: jdbc:hive2://localhost:10000/> +----------------------------+
+|            set             |
++----------------------------+
+| hive.execution.engine=tez  |
++----------------------------+
+1 row selected (0.016 seconds)
+0: jdbc:hive2://localhost:10000/> +----------------------------------------+
+|                  set                   |
++----------------------------------------+
+| hive.query.results.cache.enabled=true  |
++----------------------------------------+
+1 row selected (0.01 seconds)
+0: jdbc:hive2://localhost:10000/> +--------------------------------------+
+|                 set                  |
++--------------------------------------+
+| hive.compute.query.using.stats=true  |
++--------------------------------------+
+1 row selected (0.008 seconds)
+0: jdbc:hive2://localhost:10000/> +-----------------------------+
+|             set             |
++-----------------------------+
+| hive.stats.autogather=true  |
++-----------------------------+
+1 row selected (0.008 seconds)
+0: jdbc:hive2://localhost:10000/> +----------------------------+
+|            set             |
++----------------------------+
+| hive.create.as.acid=false  |
++----------------------------+
+1 row selected (0.009 seconds)
+0: jdbc:hive2://localhost:10000/> +----------------------------------------------------+
+|                        set                         |
++----------------------------------------------------+
+| hive.txn.manager=org.apache.hadoop.hive.ql.lockmgr.DbTxnManager |
++----------------------------------------------------+
+1 row selected (0.008 seconds)
+0: jdbc:hive2://localhost:10000/> +--------------------------------+
+|              set               |
++--------------------------------+
+| hive.support.concurrency=true  |
++--------------------------------+
+1 row selected (0.009 seconds)
+0: jdbc:hive2://localhost:10000/> +------------------------------------+
+|                set                 |
++------------------------------------+
+| hive.compactor.initiator.on=false  |
++------------------------------------+
+1 row selected (0.008 seconds)
+0: jdbc:hive2://localhost:10000/> +----------------------------------+
+|               set                |
++----------------------------------+
+| hive.compactor.worker.threads=1  |
++----------------------------------+
+1 row selected (0.008 seconds)
+0: jdbc:hive2://localhost:10000/> +---------------------------------------------+
+|                     set                     |
++---------------------------------------------+
+| hive.exec.dynamic.partition.mode=nonstrict  |
++---------------------------------------------+
+1 row selected (0.01 seconds)
+0: jdbc:hive2://localhost:10000/> +----------------------------------------+
+|                  set                   |
++----------------------------------------+
+| hive.exec.max.dynamic.partitions=1000  |
++----------------------------------------+
+1 row selected (0.007 seconds)
+0: jdbc:hive2://localhost:10000/> +-----------------------------------------------+
+|                      set                      |
++-----------------------------------------------+
+| hive.exec.max.dynamic.partitions.pernode=100  |
++-----------------------------------------------+
+1 row selected (0.008 seconds)
+0: jdbc:hive2://localhost:10000/> +----------------------------------+
+|               set                |
++----------------------------------+
+| hive.optimize.index.filter=true  |
++----------------------------------+
+1 row selected (0.008 seconds)
+0: jdbc:hive2://localhost:10000/> +----------------------------------------------------+
+|                        set                         |
++----------------------------------------------------+
+| hive.metastore.warehouse.dir=/opt/hive/data/warehouse |
++----------------------------------------------------+
+1 row selected (0.008 seconds)
+0: jdbc:hive2://localhost:10000/> +----------------------------------------------------+
+|                        set                         |
++----------------------------------------------------+
+| hive.metastore.warehouse.external.dir is undefined |
++----------------------------------------------------+
+1 row selected (0.008 seconds)
+0: jdbc:hive2://localhost:10000/> Closing: 0: jdbc:hive2://localhost:10000/

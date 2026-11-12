@@ -1,0 +1,8 @@
+$ ls -l /data && wc -l /data/transactions.csv /data/late_day.csv
+total 322872
+-rwxrwxrwx 1 root root    414439 Nov  9 08:25 late_day.csv
+-rwxrwxrwx 1 root root 330196823 Nov  9 08:25 transactions.csv
+-rwxrwxrwx 1 root root      1287 Nov  9 08:25 transactions.metadata.json
+  8000000 /data/transactions.csv
+    10000 /data/late_day.csv
+  8010000 total
