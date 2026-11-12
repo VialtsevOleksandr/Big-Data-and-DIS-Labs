@@ -11,5 +11,6 @@
 | [Lab4_RPC_MessageBroker](Lab4_RPC_MessageBroker/) | Protocol Buffers, gRPC і RabbitMQ: кодування даних, RPC і черга повідомлень |
 | [Lab5_Spark_1](Lab5_Spark_1/) | Spark RDD, ліниві обчислення, кешування та паралелізм |
 | [Lab5_Spark_2](Lab5_Spark_2/) | Spark: stage-и, shuffle і плани запитів |
+| [Lab6_Hive](Lab6_Hive/) | Hive: таблиці над файлами, партиції, ORC і ACID-транзакції |
 
 Опис і команди запуску — у README відповідної лабораторної.
