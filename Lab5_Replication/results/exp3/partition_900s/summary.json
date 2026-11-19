@@ -1,0 +1,42 @@
+{
+  "run_id": "partition_900s-235808",
+  "hosts": [
+    "repa-pg1"
+  ],
+  "rate_requested": 100.0,
+  "rate_acked": 100.0,
+  "seconds": 933.178,
+  "started_at": 1795046288.726006,
+  "ended_at": 1795047221.807964,
+  "attempts": 93318,
+  "ok": 93318,
+  "error": 0,
+  "no_leader": 0,
+  "skipped_ticks": 0,
+  "ok_by_node": {
+    "pg1": 93318
+  },
+  "connections": [
+    {
+      "at": 1795046288.736132,
+      "host": "repa-pg1",
+      "node": "pg1",
+      "seq": 1
+    }
+  ],
+  "ack_timeout_fired": 0,
+  "latency_ms": {
+    "n": 93318,
+    "min": 1.804,
+    "p50": 3.814,
+    "p95": 4.843,
+    "p99": 6.23,
+    "max": 1473.099,
+    "mean": 3.941
+  },
+  "longest_ack_gap": {
+    "seconds": 1.473,
+    "from": 1795046701.929498,
+    "to": 1795046703.40266
+  }
+}

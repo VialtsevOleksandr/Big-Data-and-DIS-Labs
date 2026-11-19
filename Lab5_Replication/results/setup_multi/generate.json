@@ -1,0 +1,29 @@
+{
+  "seed": 42,
+  "authors_requested": 1000,
+  "author_skew": 1.0,
+  "title_words": [
+    2,
+    7
+  ],
+  "body_chars": [
+    120,
+    600
+  ],
+  "base_date": "2026-01-01",
+  "days": 365,
+  "notes_generated": 2000,
+  "authors_used": 784,
+  "text_mib": 1.406,
+  "avg_note_text_bytes": 737.0,
+  "dataset_sha256": "c56cd457000d37dff22d16ef24ad2f947936891642f07514f28ce1581136de8b",
+  "seconds": 0.122,
+  "dry_run": false,
+  "host": "repb-pg1",
+  "rows_before": 0,
+  "rows_after": 2000,
+  "min_id": 1,
+  "max_id": 3999,
+  "table_with_indexes_mib": 2.242,
+  "wal_generated_mib": 1.814
+}

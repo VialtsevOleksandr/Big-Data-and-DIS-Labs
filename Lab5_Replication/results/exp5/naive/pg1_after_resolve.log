@@ -1,0 +1,38 @@
+2026-11-19T00:21:35.064911327Z 2026-11-19 00:21:35.064 UTC [1970] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:21:35.077927293Z 2026-11-19 00:21:35.077 UTC [1971] replicator@notes sub_pg2_from_pg1: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:21:35.077957680Z 2026-11-19 00:21:35.077 UTC [1971] replicator@notes sub_pg2_from_pg1: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:21:35.078469904Z 2026-11-19 00:21:35.078 UTC [1970] LOG:  conflict detected on relation "public.notes": conflict=update_missing
+2026-11-19T00:21:35.078493580Z 2026-11-19 00:21:35.078 UTC [1970] DETAIL:  Could not find the row to be updated.
+2026-11-19T00:21:35.078497489Z 	Remote row (4003, 1, naive-001529/delete-vs-update target (original), body changed on pg2 while pg1 deleted the note, 2026-11-19 00:15:52.223888+00); replica identity (id)=(4003).
+2026-11-19T00:21:35.078500870Z 2026-11-19 00:21:35.078 UTC [1970] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "UPDATE" for replication target relation "public.notes" in transaction 787, finished at 0/1DFE3B0
+2026-11-19T00:21:35.078504339Z 2026-11-19 00:21:35.078 UTC [1971] replicator@notes sub_pg2_from_pg1: LOG:  received replication command: START_REPLICATION SLOT "sub_pg2_from_pg1" LOGICAL 0/1DEBBA0 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:35.078507534Z 2026-11-19 00:21:35.078 UTC [1971] replicator@notes sub_pg2_from_pg1: STATEMENT:  START_REPLICATION SLOT "sub_pg2_from_pg1" LOGICAL 0/1DEBBA0 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:35.078510641Z 2026-11-19 00:21:35.078 UTC [1971] replicator@notes sub_pg2_from_pg1: LOG:  acquired logical replication slot "sub_pg2_from_pg1"
+2026-11-19T00:21:35.078513375Z 2026-11-19 00:21:35.078 UTC [1971] replicator@notes sub_pg2_from_pg1: STATEMENT:  START_REPLICATION SLOT "sub_pg2_from_pg1" LOGICAL 0/1DEBBA0 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:35.078516378Z 2026-11-19 00:21:35.078 UTC [1971] replicator@notes sub_pg2_from_pg1: LOG:  0/1DEBBA0 has been already streamed, forwarding to 0/1DEBC08
+2026-11-19T00:21:35.078519001Z 2026-11-19 00:21:35.078 UTC [1971] replicator@notes sub_pg2_from_pg1: STATEMENT:  START_REPLICATION SLOT "sub_pg2_from_pg1" LOGICAL 0/1DEBBA0 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:35.078812167Z 2026-11-19 00:21:35.078 UTC [1970] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:21:35.078822660Z 2026-11-19 00:21:35.078 UTC [1970] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 790 at 2026-11-19 00:15:52.22837+00.
+2026-11-19T00:21:35.078825902Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00); remote row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00).
+2026-11-19T00:21:35.078828758Z 2026-11-19 00:21:35.078 UTC [1970] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 788, finished at 0/1DFE580
+2026-11-19T00:21:35.078832562Z 2026-11-19 00:21:35.078 UTC [1971] replicator@notes sub_pg2_from_pg1: LOG:  starting logical decoding for slot "sub_pg2_from_pg1"
+2026-11-19T00:21:35.078835418Z 2026-11-19 00:21:35.078 UTC [1971] replicator@notes sub_pg2_from_pg1: DETAIL:  Streaming transactions committing after 0/1DEBC08, reading WAL from 0/1DEB928.
+2026-11-19T00:21:35.078838255Z 2026-11-19 00:21:35.078 UTC [1971] replicator@notes sub_pg2_from_pg1: STATEMENT:  START_REPLICATION SLOT "sub_pg2_from_pg1" LOGICAL 0/1DEBBA0 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:35.079032090Z 2026-11-19 00:21:35.078 UTC [1971] replicator@notes sub_pg2_from_pg1: LOG:  logical decoding found consistent point at 0/1DEB928
+2026-11-19T00:21:35.079053339Z 2026-11-19 00:21:35.078 UTC [1971] replicator@notes sub_pg2_from_pg1: DETAIL:  There are no running transactions.
+2026-11-19T00:21:35.079057253Z 2026-11-19 00:21:35.078 UTC [1971] replicator@notes sub_pg2_from_pg1: STATEMENT:  START_REPLICATION SLOT "sub_pg2_from_pg1" LOGICAL 0/1DEBBA0 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:35.081678471Z 2026-11-19 00:21:35.081 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1970) exited with exit code 1
+2026-11-19T00:21:35.085846144Z 2026-11-19 00:21:35.085 UTC [1971] replicator@notes sub_pg2_from_pg1: LOG:  released logical replication slot "sub_pg2_from_pg1"
+2026-11-19T00:21:37.068062287Z 2026-11-19 00:21:37.067 UTC [1982] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:21:37.223701338Z 2026-11-19 00:21:37.223 UTC [1983] replicator@notes sub_pg2_from_pg1: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:21:37.223762452Z 2026-11-19 00:21:37.223 UTC [1983] replicator@notes sub_pg2_from_pg1: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:21:37.224509643Z 2026-11-19 00:21:37.224 UTC [1983] replicator@notes sub_pg2_from_pg1: LOG:  received replication command: START_REPLICATION SLOT "sub_pg2_from_pg1" LOGICAL 0/1E41C58 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:37.224547836Z 2026-11-19 00:21:37.224 UTC [1983] replicator@notes sub_pg2_from_pg1: STATEMENT:  START_REPLICATION SLOT "sub_pg2_from_pg1" LOGICAL 0/1E41C58 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:37.224554331Z 2026-11-19 00:21:37.224 UTC [1983] replicator@notes sub_pg2_from_pg1: LOG:  acquired logical replication slot "sub_pg2_from_pg1"
+2026-11-19T00:21:37.224558959Z 2026-11-19 00:21:37.224 UTC [1983] replicator@notes sub_pg2_from_pg1: STATEMENT:  START_REPLICATION SLOT "sub_pg2_from_pg1" LOGICAL 0/1E41C58 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:37.225755067Z 2026-11-19 00:21:37.225 UTC [1983] replicator@notes sub_pg2_from_pg1: LOG:  starting logical decoding for slot "sub_pg2_from_pg1"
+2026-11-19T00:21:37.226702481Z 2026-11-19 00:21:37.225 UTC [1983] replicator@notes sub_pg2_from_pg1: DETAIL:  Streaming transactions committing after 0/1DEBC08, reading WAL from 0/1DEB928.
+2026-11-19T00:21:37.226732363Z 2026-11-19 00:21:37.225 UTC [1983] replicator@notes sub_pg2_from_pg1: STATEMENT:  START_REPLICATION SLOT "sub_pg2_from_pg1" LOGICAL 0/1E41C58 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:37.226749478Z 2026-11-19 00:21:37.225 UTC [1983] replicator@notes sub_pg2_from_pg1: LOG:  logical decoding found consistent point at 0/1DEB928
+2026-11-19T00:21:37.226754761Z 2026-11-19 00:21:37.225 UTC [1983] replicator@notes sub_pg2_from_pg1: DETAIL:  There are no running transactions.
+2026-11-19T00:21:37.226778719Z 2026-11-19 00:21:37.225 UTC [1983] replicator@notes sub_pg2_from_pg1: STATEMENT:  START_REPLICATION SLOT "sub_pg2_from_pg1" LOGICAL 0/1E41C58 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')

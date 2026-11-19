@@ -1,0 +1,40 @@
+{
+  "journal": "/results/exp3/partition_300s/journal.csv",
+  "attempts": 33461,
+  "acked": 33461,
+  "acked_by_node": {
+    "pg1": 33461
+  },
+  "unacked": 0,
+  "no_leader": 0,
+  "nodes": [
+    {
+      "host": "repa-pg1",
+      "name": "pg1",
+      "reachable": true,
+      "rows_of_these_runs_on_node": 33461,
+      "acked_present": 33461,
+      "acked_missing": 0,
+      "missing_by_acking_node": {},
+      "missing_whose_id_is_reused_by_another_note": 0,
+      "reused_ids": [],
+      "first_missing": [],
+      "unacked_present": 0,
+      "rows_on_node_absent_from_journal": 0
+    },
+    {
+      "host": "repa-pg2",
+      "name": "pg2",
+      "reachable": true,
+      "rows_of_these_runs_on_node": 33461,
+      "acked_present": 33461,
+      "acked_missing": 0,
+      "missing_by_acking_node": {},
+      "missing_whose_id_is_reused_by_another_note": 0,
+      "reused_ids": [],
+      "first_missing": [],
+      "unacked_present": 0,
+      "rows_on_node_absent_from_journal": 0
+    }
+  ]
+}

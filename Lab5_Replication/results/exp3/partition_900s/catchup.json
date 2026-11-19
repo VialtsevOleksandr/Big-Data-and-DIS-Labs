@@ -1,0 +1,17 @@
+{
+  "leader": "repa-pg1",
+  "follower": "repa-pg2",
+  "captured_at": 1795047210.587453,
+  "target_lsn": "0/1D84F768",
+  "follower_replay_lsn_at_start": "0/18664D20",
+  "backlog_mib": 81.917,
+  "notes_behind_at_start": 90437,
+  "since": 1795047210.815015,
+  "resumed_at": 1795047211.097217,
+  "caught_up_at": 1795047211.427499,
+  "streaming_resumed_after_s": 0.282,
+  "caught_up_after_s": 0.612,
+  "replay_after_resume_s": 0.33,
+  "caught_up": true,
+  "replay_mib_per_s": 248.233
+}

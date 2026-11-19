@@ -1,0 +1,258 @@
+2026-11-19T00:23:07.466109398Z 2026-11-19 00:23:07.465 UTC [105] replicator@notes sub_pg2_from_pg1: LOG:  terminating walsender process due to replication timeout
+2026-11-19T00:23:07.466162386Z 2026-11-19 00:23:07.465 UTC [105] replicator@notes sub_pg2_from_pg1: STATEMENT:  START_REPLICATION SLOT "sub_pg2_from_pg1" LOGICAL 0/0 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:23:07.466168189Z 2026-11-19 00:23:07.465 UTC [105] replicator@notes sub_pg2_from_pg1: LOG:  released logical replication slot "sub_pg2_from_pg1"
+2026-11-19T00:23:08.100236500Z 2026-11-19 00:23:08.099 UTC [102] ERROR:  terminating logical replication worker due to timeout
+2026-11-19T00:23:08.103948020Z 2026-11-19 00:23:08.103 UTC [1] LOG:  background worker "logical replication apply worker" (PID 102) exited with exit code 1
+2026-11-19T00:23:08.106565101Z 2026-11-19 00:23:08.106 UTC [194] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:23:12.053827003Z 2026-11-19 00:23:12.053 UTC [194] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:23:12.057030532Z 2026-11-19 00:23:12.056 UTC [1] LOG:  background worker "logical replication apply worker" (PID 194) exited with exit code 1
+2026-11-19T00:23:12.059525235Z 2026-11-19 00:23:12.059 UTC [211] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:23:15.910669409Z 2026-11-19 00:23:15.910 UTC [211] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:23:15.912632816Z 2026-11-19 00:23:15.912 UTC [1] LOG:  background worker "logical replication apply worker" (PID 211) exited with exit code 1
+2026-11-19T00:23:15.914552667Z 2026-11-19 00:23:15.914 UTC [229] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:23:19.743352922Z 2026-11-19 00:23:19.743 UTC [229] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:23:19.744878654Z 2026-11-19 00:23:19.744 UTC [1] LOG:  background worker "logical replication apply worker" (PID 229) exited with exit code 1
+2026-11-19T00:23:19.746281597Z 2026-11-19 00:23:19.746 UTC [246] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:23:23.586372454Z 2026-11-19 00:23:23.586 UTC [246] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:23:23.589855616Z 2026-11-19 00:23:23.589 UTC [1] LOG:  background worker "logical replication apply worker" (PID 246) exited with exit code 1
+2026-11-19T00:23:23.591132447Z 2026-11-19 00:23:23.590 UTC [264] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:23:27.429226271Z 2026-11-19 00:23:27.428 UTC [264] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:23:27.432726089Z 2026-11-19 00:23:27.432 UTC [1] LOG:  background worker "logical replication apply worker" (PID 264) exited with exit code 1
+2026-11-19T00:23:27.434983474Z 2026-11-19 00:23:27.434 UTC [273] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:23:31.285641626Z 2026-11-19 00:23:31.285 UTC [273] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:23:31.287425609Z 2026-11-19 00:23:31.287 UTC [1] LOG:  background worker "logical replication apply worker" (PID 273) exited with exit code 1
+2026-11-19T00:23:31.288311753Z 2026-11-19 00:23:31.288 UTC [290] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:23:35.139615713Z 2026-11-19 00:23:35.139 UTC [290] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:23:35.144229795Z 2026-11-19 00:23:35.143 UTC [1] LOG:  background worker "logical replication apply worker" (PID 290) exited with exit code 1
+2026-11-19T00:23:35.145735979Z 2026-11-19 00:23:35.145 UTC [307] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:23:38.982841186Z 2026-11-19 00:23:38.982 UTC [307] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:23:38.984671350Z 2026-11-19 00:23:38.984 UTC [1] LOG:  background worker "logical replication apply worker" (PID 307) exited with exit code 1
+2026-11-19T00:23:38.985626498Z 2026-11-19 00:23:38.985 UTC [324] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:23:42.827871925Z 2026-11-19 00:23:42.827 UTC [324] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:23:42.830275173Z 2026-11-19 00:23:42.829 UTC [1] LOG:  background worker "logical replication apply worker" (PID 324) exited with exit code 1
+2026-11-19T00:23:42.832607308Z 2026-11-19 00:23:42.832 UTC [342] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:23:46.670275557Z 2026-11-19 00:23:46.669 UTC [342] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:23:46.674204006Z 2026-11-19 00:23:46.673 UTC [1] LOG:  background worker "logical replication apply worker" (PID 342) exited with exit code 1
+2026-11-19T00:23:46.676671518Z 2026-11-19 00:23:46.675 UTC [359] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:23:50.519384418Z 2026-11-19 00:23:50.518 UTC [359] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:23:50.522599826Z 2026-11-19 00:23:50.522 UTC [1] LOG:  background worker "logical replication apply worker" (PID 359) exited with exit code 1
+2026-11-19T00:23:50.524987118Z 2026-11-19 00:23:50.524 UTC [368] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:23:54.362356773Z 2026-11-19 00:23:54.361 UTC [368] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:23:54.364811075Z 2026-11-19 00:23:54.364 UTC [1] LOG:  background worker "logical replication apply worker" (PID 368) exited with exit code 1
+2026-11-19T00:23:54.367684958Z 2026-11-19 00:23:54.367 UTC [385] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:23:58.186177620Z 2026-11-19 00:23:58.185 UTC [385] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:23:58.188442506Z 2026-11-19 00:23:58.188 UTC [1] LOG:  background worker "logical replication apply worker" (PID 385) exited with exit code 1
+2026-11-19T00:23:58.189783287Z 2026-11-19 00:23:58.189 UTC [402] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:24:02.037983624Z 2026-11-19 00:24:02.037 UTC [402] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:24:02.042181829Z 2026-11-19 00:24:02.041 UTC [1] LOG:  background worker "logical replication apply worker" (PID 402) exited with exit code 1
+2026-11-19T00:24:02.044084492Z 2026-11-19 00:24:02.043 UTC [419] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:24:05.888281603Z 2026-11-19 00:24:05.887 UTC [419] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:24:05.891889829Z 2026-11-19 00:24:05.891 UTC [1] LOG:  background worker "logical replication apply worker" (PID 419) exited with exit code 1
+2026-11-19T00:24:05.893631251Z 2026-11-19 00:24:05.893 UTC [437] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:24:09.735973423Z 2026-11-19 00:24:09.735 UTC [437] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:24:09.739343821Z 2026-11-19 00:24:09.738 UTC [1] LOG:  background worker "logical replication apply worker" (PID 437) exited with exit code 1
+2026-11-19T00:24:09.741786779Z 2026-11-19 00:24:09.741 UTC [454] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:24:13.587298148Z 2026-11-19 00:24:13.586 UTC [454] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:24:13.591172667Z 2026-11-19 00:24:13.590 UTC [1] LOG:  background worker "logical replication apply worker" (PID 454) exited with exit code 1
+2026-11-19T00:24:13.593465476Z 2026-11-19 00:24:13.592 UTC [463] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:24:17.435532486Z 2026-11-19 00:24:17.435 UTC [463] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:24:17.439643483Z 2026-11-19 00:24:17.439 UTC [1] LOG:  background worker "logical replication apply worker" (PID 463) exited with exit code 1
+2026-11-19T00:24:17.441656118Z 2026-11-19 00:24:17.441 UTC [480] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:24:21.278950256Z 2026-11-19 00:24:21.278 UTC [480] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:24:21.282361655Z 2026-11-19 00:24:21.281 UTC [1] LOG:  background worker "logical replication apply worker" (PID 480) exited with exit code 1
+2026-11-19T00:24:21.284488668Z 2026-11-19 00:24:21.284 UTC [498] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:24:25.113420017Z 2026-11-19 00:24:25.112 UTC [498] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:24:25.116690253Z 2026-11-19 00:24:25.116 UTC [1] LOG:  background worker "logical replication apply worker" (PID 498) exited with exit code 1
+2026-11-19T00:24:25.119334008Z 2026-11-19 00:24:25.118 UTC [516] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:24:28.970142635Z 2026-11-19 00:24:28.969 UTC [516] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:24:28.972833526Z 2026-11-19 00:24:28.972 UTC [1] LOG:  background worker "logical replication apply worker" (PID 516) exited with exit code 1
+2026-11-19T00:24:28.974852185Z 2026-11-19 00:24:28.974 UTC [533] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:24:32.804952651Z 2026-11-19 00:24:32.804 UTC [533] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:24:32.809337777Z 2026-11-19 00:24:32.808 UTC [1] LOG:  background worker "logical replication apply worker" (PID 533) exited with exit code 1
+2026-11-19T00:24:32.812052598Z 2026-11-19 00:24:32.811 UTC [550] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:24:36.654615340Z 2026-11-19 00:24:36.654 UTC [550] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:24:36.657111685Z 2026-11-19 00:24:36.656 UTC [1] LOG:  background worker "logical replication apply worker" (PID 550) exited with exit code 1
+2026-11-19T00:24:36.658788487Z 2026-11-19 00:24:36.658 UTC [559] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:24:40.492572165Z 2026-11-19 00:24:40.492 UTC [559] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:24:40.495293720Z 2026-11-19 00:24:40.494 UTC [1] LOG:  background worker "logical replication apply worker" (PID 559) exited with exit code 1
+2026-11-19T00:24:40.497401742Z 2026-11-19 00:24:40.496 UTC [576] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:24:44.336799050Z 2026-11-19 00:24:44.336 UTC [576] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:24:44.340150775Z 2026-11-19 00:24:44.339 UTC [1] LOG:  background worker "logical replication apply worker" (PID 576) exited with exit code 1
+2026-11-19T00:24:44.343241482Z 2026-11-19 00:24:44.342 UTC [594] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:24:48.170917592Z 2026-11-19 00:24:48.170 UTC [594] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:24:48.172680412Z 2026-11-19 00:24:48.172 UTC [1] LOG:  background worker "logical replication apply worker" (PID 594) exited with exit code 1
+2026-11-19T00:24:48.174674381Z 2026-11-19 00:24:48.174 UTC [611] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:24:52.011126533Z 2026-11-19 00:24:52.010 UTC [611] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:24:52.014895811Z 2026-11-19 00:24:52.014 UTC [1] LOG:  background worker "logical replication apply worker" (PID 611) exited with exit code 1
+2026-11-19T00:24:52.017620971Z 2026-11-19 00:24:52.017 UTC [628] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:24:55.852166301Z 2026-11-19 00:24:55.851 UTC [628] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:24:55.854227330Z 2026-11-19 00:24:55.854 UTC [1] LOG:  background worker "logical replication apply worker" (PID 628) exited with exit code 1
+2026-11-19T00:24:55.855203472Z 2026-11-19 00:24:55.854 UTC [642] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:24:59.689074495Z 2026-11-19 00:24:59.688 UTC [642] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:24:59.692777770Z 2026-11-19 00:24:59.692 UTC [1] LOG:  background worker "logical replication apply worker" (PID 642) exited with exit code 1
+2026-11-19T00:24:59.694900839Z 2026-11-19 00:24:59.694 UTC [653] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:25:03.527961492Z 2026-11-19 00:25:03.527 UTC [653] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:25:03.530294298Z 2026-11-19 00:25:03.530 UTC [1] LOG:  background worker "logical replication apply worker" (PID 653) exited with exit code 1
+2026-11-19T00:25:03.531376426Z 2026-11-19 00:25:03.531 UTC [672] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:25:07.378748339Z 2026-11-19 00:25:07.378 UTC [672] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:25:07.381001075Z 2026-11-19 00:25:07.380 UTC [1] LOG:  background worker "logical replication apply worker" (PID 672) exited with exit code 1
+2026-11-19T00:25:07.382330604Z 2026-11-19 00:25:07.382 UTC [688] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:25:11.212392769Z 2026-11-19 00:25:11.212 UTC [688] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:25:11.215719105Z 2026-11-19 00:25:11.215 UTC [1] LOG:  background worker "logical replication apply worker" (PID 688) exited with exit code 1
+2026-11-19T00:25:11.217862409Z 2026-11-19 00:25:11.217 UTC [705] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:25:15.045106362Z 2026-11-19 00:25:15.044 UTC [705] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:25:15.049534295Z 2026-11-19 00:25:15.049 UTC [1] LOG:  background worker "logical replication apply worker" (PID 705) exited with exit code 1
+2026-11-19T00:25:15.051324228Z 2026-11-19 00:25:15.050 UTC [724] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:25:18.887350669Z 2026-11-19 00:25:18.886 UTC [724] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:25:18.891013909Z 2026-11-19 00:25:18.890 UTC [1] LOG:  background worker "logical replication apply worker" (PID 724) exited with exit code 1
+2026-11-19T00:25:18.893697494Z 2026-11-19 00:25:18.893 UTC [733] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:25:22.736401664Z 2026-11-19 00:25:22.735 UTC [733] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:25:22.739807917Z 2026-11-19 00:25:22.739 UTC [1] LOG:  background worker "logical replication apply worker" (PID 733) exited with exit code 1
+2026-11-19T00:25:22.742655758Z 2026-11-19 00:25:22.741 UTC [751] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:25:26.570302229Z 2026-11-19 00:25:26.569 UTC [751] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:25:26.573349736Z 2026-11-19 00:25:26.572 UTC [1] LOG:  background worker "logical replication apply worker" (PID 751) exited with exit code 1
+2026-11-19T00:25:26.575556194Z 2026-11-19 00:25:26.575 UTC [768] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:25:30.412567835Z 2026-11-19 00:25:30.412 UTC [768] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:25:30.415799165Z 2026-11-19 00:25:30.415 UTC [1] LOG:  background worker "logical replication apply worker" (PID 768) exited with exit code 1
+2026-11-19T00:25:30.418300194Z 2026-11-19 00:25:30.417 UTC [785] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:25:34.253064564Z 2026-11-19 00:25:34.252 UTC [785] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:25:34.257148073Z 2026-11-19 00:25:34.256 UTC [1] LOG:  background worker "logical replication apply worker" (PID 785) exited with exit code 1
+2026-11-19T00:25:34.258874340Z 2026-11-19 00:25:34.258 UTC [802] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:25:38.093915048Z 2026-11-19 00:25:38.093 UTC [802] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:25:38.097096470Z 2026-11-19 00:25:38.096 UTC [1] LOG:  background worker "logical replication apply worker" (PID 802) exited with exit code 1
+2026-11-19T00:25:38.099090806Z 2026-11-19 00:25:38.098 UTC [820] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:25:41.935308564Z 2026-11-19 00:25:41.934 UTC [820] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:25:41.938855020Z 2026-11-19 00:25:41.938 UTC [1] LOG:  background worker "logical replication apply worker" (PID 820) exited with exit code 1
+2026-11-19T00:25:41.940834976Z 2026-11-19 00:25:41.940 UTC [829] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:25:45.792350262Z 2026-11-19 00:25:45.791 UTC [829] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:25:45.795714575Z 2026-11-19 00:25:45.795 UTC [1] LOG:  background worker "logical replication apply worker" (PID 829) exited with exit code 1
+2026-11-19T00:25:45.798495528Z 2026-11-19 00:25:45.798 UTC [847] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:25:49.628494689Z 2026-11-19 00:25:49.628 UTC [847] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:25:49.631049077Z 2026-11-19 00:25:49.630 UTC [1] LOG:  background worker "logical replication apply worker" (PID 847) exited with exit code 1
+2026-11-19T00:25:49.632809030Z 2026-11-19 00:25:49.632 UTC [864] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:25:53.495470581Z 2026-11-19 00:25:53.495 UTC [864] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:25:53.499275605Z 2026-11-19 00:25:53.498 UTC [1] LOG:  background worker "logical replication apply worker" (PID 864) exited with exit code 1
+2026-11-19T00:25:53.501356352Z 2026-11-19 00:25:53.501 UTC [880] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:25:57.339560214Z 2026-11-19 00:25:57.339 UTC [880] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:25:57.341361156Z 2026-11-19 00:25:57.341 UTC [1] LOG:  background worker "logical replication apply worker" (PID 880) exited with exit code 1
+2026-11-19T00:25:57.342154697Z 2026-11-19 00:25:57.341 UTC [897] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:26:01.180261319Z 2026-11-19 00:26:01.179 UTC [897] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:26:01.184573243Z 2026-11-19 00:26:01.184 UTC [1] LOG:  background worker "logical replication apply worker" (PID 897) exited with exit code 1
+2026-11-19T00:26:01.187163879Z 2026-11-19 00:26:01.186 UTC [912] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:26:05.031337219Z 2026-11-19 00:26:05.030 UTC [912] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:26:05.035285382Z 2026-11-19 00:26:05.034 UTC [1] LOG:  background worker "logical replication apply worker" (PID 912) exited with exit code 1
+2026-11-19T00:26:05.038558571Z 2026-11-19 00:26:05.038 UTC [924] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:26:08.884600651Z 2026-11-19 00:26:08.884 UTC [924] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:26:08.887841585Z 2026-11-19 00:26:08.887 UTC [1] LOG:  background worker "logical replication apply worker" (PID 924) exited with exit code 1
+2026-11-19T00:26:08.890859582Z 2026-11-19 00:26:08.890 UTC [940] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:26:12.718207312Z 2026-11-19 00:26:12.717 UTC [940] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:26:12.719920091Z 2026-11-19 00:26:12.719 UTC [1] LOG:  background worker "logical replication apply worker" (PID 940) exited with exit code 1
+2026-11-19T00:26:12.720588362Z 2026-11-19 00:26:12.720 UTC [957] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:26:16.585115524Z 2026-11-19 00:26:16.584 UTC [957] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:26:16.587610309Z 2026-11-19 00:26:16.587 UTC [1] LOG:  background worker "logical replication apply worker" (PID 957) exited with exit code 1
+2026-11-19T00:26:16.589005714Z 2026-11-19 00:26:16.588 UTC [974] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:26:20.411903274Z 2026-11-19 00:26:20.411 UTC [974] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:26:20.416038014Z 2026-11-19 00:26:20.415 UTC [1] LOG:  background worker "logical replication apply worker" (PID 974) exited with exit code 1
+2026-11-19T00:26:20.418341198Z 2026-11-19 00:26:20.417 UTC [991] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:26:24.253907665Z 2026-11-19 00:26:24.253 UTC [991] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:26:24.258118647Z 2026-11-19 00:26:24.257 UTC [1] LOG:  background worker "logical replication apply worker" (PID 991) exited with exit code 1
+2026-11-19T00:26:24.259445814Z 2026-11-19 00:26:24.259 UTC [1001] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:26:28.090808262Z 2026-11-19 00:26:28.090 UTC [1001] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:26:28.094143991Z 2026-11-19 00:26:28.093 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1001) exited with exit code 1
+2026-11-19T00:26:28.097808965Z 2026-11-19 00:26:28.097 UTC [1018] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:26:31.944948662Z 2026-11-19 00:26:31.944 UTC [1018] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:26:31.946621626Z 2026-11-19 00:26:31.946 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1018) exited with exit code 1
+2026-11-19T00:26:31.948657371Z 2026-11-19 00:26:31.948 UTC [1035] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:26:35.782961606Z 2026-11-19 00:26:35.782 UTC [1035] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:26:35.788783749Z 2026-11-19 00:26:35.788 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1035) exited with exit code 1
+2026-11-19T00:26:35.788834383Z 2026-11-19 00:26:35.788 UTC [1052] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:26:39.636556178Z 2026-11-19 00:26:39.635 UTC [1052] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:26:39.640022800Z 2026-11-19 00:26:39.639 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1052) exited with exit code 1
+2026-11-19T00:26:39.642518191Z 2026-11-19 00:26:39.642 UTC [1068] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:26:43.482236513Z 2026-11-19 00:26:43.481 UTC [1068] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:26:43.484197828Z 2026-11-19 00:26:43.483 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1068) exited with exit code 1
+2026-11-19T00:26:43.485388398Z 2026-11-19 00:26:43.485 UTC [1085] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:26:47.318299080Z 2026-11-19 00:26:47.317 UTC [1085] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:26:47.321084497Z 2026-11-19 00:26:47.320 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1085) exited with exit code 1
+2026-11-19T00:26:47.323454131Z 2026-11-19 00:26:47.323 UTC [1095] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:26:51.151177757Z 2026-11-19 00:26:51.150 UTC [1095] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:26:51.154590820Z 2026-11-19 00:26:51.154 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1095) exited with exit code 1
+2026-11-19T00:26:51.156902106Z 2026-11-19 00:26:51.156 UTC [1112] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:26:54.987708632Z 2026-11-19 00:26:54.987 UTC [1112] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:26:54.990903841Z 2026-11-19 00:26:54.990 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1112) exited with exit code 1
+2026-11-19T00:26:54.993209978Z 2026-11-19 00:26:54.992 UTC [1130] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:26:58.835946508Z 2026-11-19 00:26:58.835 UTC [1130] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:26:58.838241280Z 2026-11-19 00:26:58.838 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1130) exited with exit code 1
+2026-11-19T00:26:58.839459028Z 2026-11-19 00:26:58.839 UTC [1146] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:27:02.681202283Z 2026-11-19 00:27:02.680 UTC [1146] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:27:02.684771702Z 2026-11-19 00:27:02.684 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1146) exited with exit code 1
+2026-11-19T00:27:02.687429793Z 2026-11-19 00:27:02.686 UTC [1164] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:27:06.545090250Z 2026-11-19 00:27:06.544 UTC [1164] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:27:06.546462017Z 2026-11-19 00:27:06.546 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1164) exited with exit code 1
+2026-11-19T00:27:06.547567299Z 2026-11-19 00:27:06.547 UTC [1172] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:27:10.417624457Z 2026-11-19 00:27:10.417 UTC [1172] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:27:10.421624202Z 2026-11-19 00:27:10.420 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1172) exited with exit code 1
+2026-11-19T00:27:10.424696769Z 2026-11-19 00:27:10.424 UTC [1190] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:27:14.290623114Z 2026-11-19 00:27:14.290 UTC [1190] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:27:14.293764610Z 2026-11-19 00:27:14.293 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1190) exited with exit code 1
+2026-11-19T00:27:14.295995095Z 2026-11-19 00:27:14.295 UTC [1207] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:27:18.165420577Z 2026-11-19 00:27:18.165 UTC [1207] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:27:18.169195634Z 2026-11-19 00:27:18.168 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1207) exited with exit code 1
+2026-11-19T00:27:18.170872029Z 2026-11-19 00:27:18.170 UTC [1224] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:27:22.017127758Z 2026-11-19 00:27:22.016 UTC [1224] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:27:22.020410114Z 2026-11-19 00:27:22.020 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1224) exited with exit code 1
+2026-11-19T00:27:22.022963704Z 2026-11-19 00:27:22.022 UTC [1241] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:27:25.877231914Z 2026-11-19 00:27:25.877 UTC [1241] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:27:25.878806357Z 2026-11-19 00:27:25.878 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1241) exited with exit code 1
+2026-11-19T00:27:25.879779301Z 2026-11-19 00:27:25.879 UTC [1259] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:27:29.730402263Z 2026-11-19 00:27:29.729 UTC [1259] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:27:29.734210795Z 2026-11-19 00:27:29.733 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1259) exited with exit code 1
+2026-11-19T00:27:29.736389847Z 2026-11-19 00:27:29.736 UTC [1268] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:27:33.604703742Z 2026-11-19 00:27:33.604 UTC [1268] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:27:33.608692286Z 2026-11-19 00:27:33.608 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1268) exited with exit code 1
+2026-11-19T00:27:33.610726509Z 2026-11-19 00:27:33.610 UTC [1285] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:27:37.484471328Z 2026-11-19 00:27:37.484 UTC [1285] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:27:37.488722859Z 2026-11-19 00:27:37.488 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1285) exited with exit code 1
+2026-11-19T00:27:37.490154309Z 2026-11-19 00:27:37.489 UTC [1302] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:27:41.358240789Z 2026-11-19 00:27:41.357 UTC [1302] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:27:41.361848430Z 2026-11-19 00:27:41.361 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1302) exited with exit code 1
+2026-11-19T00:27:41.363615915Z 2026-11-19 00:27:41.363 UTC [1320] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:27:42.339305439Z 2026-11-19 00:27:42.338 UTC [79] LOG:  checkpoint starting: time
+2026-11-19T00:27:45.235109591Z 2026-11-19 00:27:45.234 UTC [1320] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:27:45.238480475Z 2026-11-19 00:27:45.238 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1320) exited with exit code 1
+2026-11-19T00:27:45.241826443Z 2026-11-19 00:27:45.241 UTC [1339] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:27:49.107728802Z 2026-11-19 00:27:49.107 UTC [1339] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:27:49.111146888Z 2026-11-19 00:27:49.110 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1339) exited with exit code 1
+2026-11-19T00:27:49.113789332Z 2026-11-19 00:27:49.113 UTC [1356] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:27:52.959679005Z 2026-11-19 00:27:52.959 UTC [1356] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:27:52.961962016Z 2026-11-19 00:27:52.961 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1356) exited with exit code 1
+2026-11-19T00:27:52.964542217Z 2026-11-19 00:27:52.964 UTC [1365] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:27:56.807970971Z 2026-11-19 00:27:56.807 UTC [1365] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:27:56.811071126Z 2026-11-19 00:27:56.810 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1365) exited with exit code 1
+2026-11-19T00:27:56.812961134Z 2026-11-19 00:27:56.812 UTC [1382] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:28:00.400960281Z 2026-11-19 00:28:00.400 UTC [1399] replicator@notes sub_pg2_from_pg1: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:28:00.400989198Z 2026-11-19 00:28:00.400 UTC [1399] replicator@notes sub_pg2_from_pg1: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:28:00.400991738Z 2026-11-19 00:28:00.400 UTC [1399] replicator@notes sub_pg2_from_pg1: LOG:  received replication command: START_REPLICATION SLOT "sub_pg2_from_pg1" LOGICAL 0/1D81B98 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:28:00.400994174Z 2026-11-19 00:28:00.400 UTC [1399] replicator@notes sub_pg2_from_pg1: STATEMENT:  START_REPLICATION SLOT "sub_pg2_from_pg1" LOGICAL 0/1D81B98 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:28:00.401006424Z 2026-11-19 00:28:00.400 UTC [1399] replicator@notes sub_pg2_from_pg1: LOG:  acquired logical replication slot "sub_pg2_from_pg1"
+2026-11-19T00:28:00.401008613Z 2026-11-19 00:28:00.400 UTC [1399] replicator@notes sub_pg2_from_pg1: STATEMENT:  START_REPLICATION SLOT "sub_pg2_from_pg1" LOGICAL 0/1D81B98 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:28:00.401010940Z 2026-11-19 00:28:00.400 UTC [1399] replicator@notes sub_pg2_from_pg1: LOG:  0/1D81B98 has been already streamed, forwarding to 0/1D81BD0
+2026-11-19T00:28:00.401012914Z 2026-11-19 00:28:00.400 UTC [1399] replicator@notes sub_pg2_from_pg1: STATEMENT:  START_REPLICATION SLOT "sub_pg2_from_pg1" LOGICAL 0/1D81B98 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:28:00.401600204Z 2026-11-19 00:28:00.401 UTC [1399] replicator@notes sub_pg2_from_pg1: LOG:  starting logical decoding for slot "sub_pg2_from_pg1"
+2026-11-19T00:28:00.401623466Z 2026-11-19 00:28:00.401 UTC [1399] replicator@notes sub_pg2_from_pg1: DETAIL:  Streaming transactions committing after 0/1D81BD0, reading WAL from 0/1D81B98.
+2026-11-19T00:28:00.401629191Z 2026-11-19 00:28:00.401 UTC [1399] replicator@notes sub_pg2_from_pg1: STATEMENT:  START_REPLICATION SLOT "sub_pg2_from_pg1" LOGICAL 0/1D81B98 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:28:00.401633322Z 2026-11-19 00:28:00.401 UTC [1399] replicator@notes sub_pg2_from_pg1: LOG:  logical decoding found consistent point at 0/1D81B98
+2026-11-19T00:28:00.401636733Z 2026-11-19 00:28:00.401 UTC [1399] replicator@notes sub_pg2_from_pg1: DETAIL:  There are no running transactions.
+2026-11-19T00:28:00.401640046Z 2026-11-19 00:28:00.401 UTC [1399] replicator@notes sub_pg2_from_pg1: STATEMENT:  START_REPLICATION SLOT "sub_pg2_from_pg1" LOGICAL 0/1D81B98 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:28:00.652886481Z 2026-11-19 00:28:00.652 UTC [1382] ERROR:  apply worker for subscription "sub_pg1_from_pg2" could not connect to the publisher: could not translate host name "repb-pg2" to address: Name or service not known
+2026-11-19T00:28:00.656140552Z 2026-11-19 00:28:00.655 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1382) exited with exit code 1
+2026-11-19T00:28:00.659607750Z 2026-11-19 00:28:00.659 UTC [1400] LOG:  logical replication apply worker for subscription "sub_pg1_from_pg2" has started
+2026-11-19T00:28:00.672018683Z 2026-11-19 00:28:00.671 UTC [1400] LOG:  conflict detected on relation "public.notes": conflict=update_origin_differs
+2026-11-19T00:28:00.672040920Z 2026-11-19 00:28:00.671 UTC [1400] DETAIL:  Updating the row that was modified locally in transaction 772 at 2026-11-19 00:23:18.267232+00.
+2026-11-19T00:28:00.672045966Z 	Existing local row (4003, 1, oddeven-002256/title set on pg1, both leaders will change the title, 2026-11-19 00:23:18.26713+00); remote row (4003, 1, oddeven-002256/title set on pg2, both leaders will change the title, 2026-11-19 00:23:19.273986+00); replica identity (id)=(4003).
+2026-11-19T00:28:00.672050333Z 2026-11-19 00:28:00.671 UTC [1400] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "UPDATE" for replication target relation "public.notes" in transaction 771, finished at 0/1D94798
+2026-11-19T00:28:00.672221784Z 2026-11-19 00:28:00.672 UTC [1400] LOG:  conflict detected on relation "public.notes": conflict=update_missing
+2026-11-19T00:28:00.672247112Z 2026-11-19 00:28:00.672 UTC [1400] DETAIL:  Could not find the row to be updated.
+2026-11-19T00:28:00.672249880Z 	Remote row (4005, 1, oddeven-002256/delete-vs-update target (original), body changed on pg2 while pg1 deleted the note, 2026-11-19 00:23:19.285651+00); replica identity (id)=(4005).
+2026-11-19T00:28:00.672252153Z 2026-11-19 00:28:00.672 UTC [1400] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "UPDATE" for replication target relation "public.notes" in transaction 772, finished at 0/1D94910
+2026-11-19T00:28:12.854007629Z 2026-11-19 00:28:12.853 UTC [79] LOG:  checkpoint complete: wrote 302 buffers (0.9%), wrote 4 SLRU buffers; 1 WAL file(s) added, 0 removed, 0 recycled; write=30.350 s, sync=0.064 s, total=30.515 s; sync files=42, longest=0.008 s, average=0.002 s; distance=2309 kB, estimate=2309 kB; lsn=0/1DFE680, redo lsn=0/1DEC950

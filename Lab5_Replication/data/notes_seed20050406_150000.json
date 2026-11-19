@@ -1,0 +1,24 @@
+{
+  "seed": 20050406,
+  "authors_requested": 1000,
+  "author_skew": 1.0,
+  "title_words": [
+    2,
+    7
+  ],
+  "body_chars": [
+    120,
+    600
+  ],
+  "base_date": "2026-01-01",
+  "days": 365,
+  "notes_generated": 150000,
+  "authors_used": 1000,
+  "text_mib": 105.09,
+  "avg_note_text_bytes": 734.6,
+  "dataset_sha256": "78e828383af705118f42932c14c2342440255e119470a42ae638c95369d3a83f",
+  "seconds": 7.008,
+  "dry_run": false,
+  "file": "data/notes_seed20050406_150000.csv",
+  "file_mib": 110.752
+}

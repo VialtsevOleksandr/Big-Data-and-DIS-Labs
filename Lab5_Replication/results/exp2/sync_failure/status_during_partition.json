@@ -1,0 +1,27 @@
+[
+  {
+    "host": "repa-pg1",
+    "reachable": true,
+    "name": "pg1",
+    "role": "leader",
+    "notes": 256931,
+    "current_lsn": "0/18BC3630",
+    "synchronous_standby_names": "FIRST 1 (pg2)",
+    "replicas": [
+      {
+        "application_name": "pg3",
+        "client_addr": "172.25.0.4/32",
+        "state": "streaming",
+        "sync_state": "async",
+        "sent_lsn": "0/18BC3630",
+        "write_lsn": "0/18BC3630",
+        "flush_lsn": "0/18BC3630",
+        "replay_lsn": "0/18BC3630",
+        "replay_lag_bytes": 0,
+        "write_lag": null,
+        "flush_lag": null,
+        "replay_lag": null
+      }
+    ]
+  }
+]

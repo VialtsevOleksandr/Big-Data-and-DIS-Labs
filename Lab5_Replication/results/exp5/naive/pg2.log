@@ -1,0 +1,886 @@
+2026-11-19T00:15:40.010784496Z 2026-11-19 00:15:40.010 UTC [102] replicator@notes sub_pg1_from_pg2: LOG:  terminating walsender process due to replication timeout
+2026-11-19T00:15:40.010840378Z 2026-11-19 00:15:40.010 UTC [102] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/0 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:15:40.010847612Z 2026-11-19 00:15:40.010 UTC [102] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:15:40.709697514Z 2026-11-19 00:15:40.709 UTC [103] ERROR:  terminating logical replication worker due to timeout
+2026-11-19T00:15:40.713533447Z 2026-11-19 00:15:40.713 UTC [1] LOG:  background worker "logical replication apply worker" (PID 103) exited with exit code 1
+2026-11-19T00:15:40.715022841Z 2026-11-19 00:15:40.714 UTC [407] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:15:44.673596805Z 2026-11-19 00:15:44.672 UTC [407] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:15:44.676790127Z 2026-11-19 00:15:44.676 UTC [1] LOG:  background worker "logical replication apply worker" (PID 407) exited with exit code 1
+2026-11-19T00:15:44.679279588Z 2026-11-19 00:15:44.678 UTC [424] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:15:48.535638074Z 2026-11-19 00:15:48.535 UTC [424] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:15:48.538907964Z 2026-11-19 00:15:48.538 UTC [1] LOG:  background worker "logical replication apply worker" (PID 424) exited with exit code 1
+2026-11-19T00:15:48.543014863Z 2026-11-19 00:15:48.542 UTC [442] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:15:52.371469583Z 2026-11-19 00:15:52.370 UTC [442] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:15:52.375357792Z 2026-11-19 00:15:52.374 UTC [1] LOG:  background worker "logical replication apply worker" (PID 442) exited with exit code 1
+2026-11-19T00:15:52.377560177Z 2026-11-19 00:15:52.377 UTC [459] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:15:56.230394818Z 2026-11-19 00:15:56.230 UTC [459] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:15:56.233093057Z 2026-11-19 00:15:56.232 UTC [1] LOG:  background worker "logical replication apply worker" (PID 459) exited with exit code 1
+2026-11-19T00:15:56.234187894Z 2026-11-19 00:15:56.233 UTC [476] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:16:00.064966082Z 2026-11-19 00:16:00.064 UTC [476] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:16:00.068527766Z 2026-11-19 00:16:00.067 UTC [1] LOG:  background worker "logical replication apply worker" (PID 476) exited with exit code 1
+2026-11-19T00:16:00.070358460Z 2026-11-19 00:16:00.070 UTC [494] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:16:03.921792061Z 2026-11-19 00:16:03.921 UTC [494] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:16:03.924807940Z 2026-11-19 00:16:03.924 UTC [1] LOG:  background worker "logical replication apply worker" (PID 494) exited with exit code 1
+2026-11-19T00:16:03.926918632Z 2026-11-19 00:16:03.926 UTC [511] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:16:07.755011516Z 2026-11-19 00:16:07.754 UTC [511] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:16:07.759082771Z 2026-11-19 00:16:07.758 UTC [1] LOG:  background worker "logical replication apply worker" (PID 511) exited with exit code 1
+2026-11-19T00:16:07.761391046Z 2026-11-19 00:16:07.760 UTC [520] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:16:11.602937326Z 2026-11-19 00:16:11.602 UTC [520] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:16:11.606846231Z 2026-11-19 00:16:11.606 UTC [1] LOG:  background worker "logical replication apply worker" (PID 520) exited with exit code 1
+2026-11-19T00:16:11.610699058Z 2026-11-19 00:16:11.610 UTC [537] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:16:15.437816204Z 2026-11-19 00:16:15.437 UTC [537] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:16:15.440830273Z 2026-11-19 00:16:15.440 UTC [1] LOG:  background worker "logical replication apply worker" (PID 537) exited with exit code 1
+2026-11-19T00:16:15.442228225Z 2026-11-19 00:16:15.441 UTC [554] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:16:19.281403344Z 2026-11-19 00:16:19.280 UTC [554] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:16:19.285551527Z 2026-11-19 00:16:19.284 UTC [1] LOG:  background worker "logical replication apply worker" (PID 554) exited with exit code 1
+2026-11-19T00:16:19.288120062Z 2026-11-19 00:16:19.287 UTC [571] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:16:23.120765010Z 2026-11-19 00:16:23.120 UTC [571] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:16:23.122357567Z 2026-11-19 00:16:23.122 UTC [1] LOG:  background worker "logical replication apply worker" (PID 571) exited with exit code 1
+2026-11-19T00:16:23.123519467Z 2026-11-19 00:16:23.123 UTC [589] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:16:26.970953035Z 2026-11-19 00:16:26.970 UTC [589] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:16:26.973676786Z 2026-11-19 00:16:26.973 UTC [1] LOG:  background worker "logical replication apply worker" (PID 589) exited with exit code 1
+2026-11-19T00:16:26.975092926Z 2026-11-19 00:16:26.974 UTC [606] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:16:30.814017711Z 2026-11-19 00:16:30.813 UTC [606] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:16:30.815487233Z 2026-11-19 00:16:30.815 UTC [1] LOG:  background worker "logical replication apply worker" (PID 606) exited with exit code 1
+2026-11-19T00:16:30.817529472Z 2026-11-19 00:16:30.817 UTC [615] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:16:34.656181749Z 2026-11-19 00:16:34.655 UTC [615] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:16:34.657781984Z 2026-11-19 00:16:34.657 UTC [1] LOG:  background worker "logical replication apply worker" (PID 615) exited with exit code 1
+2026-11-19T00:16:34.658863813Z 2026-11-19 00:16:34.658 UTC [632] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:16:38.486844366Z 2026-11-19 00:16:38.486 UTC [632] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:16:38.488505264Z 2026-11-19 00:16:38.488 UTC [1] LOG:  background worker "logical replication apply worker" (PID 632) exited with exit code 1
+2026-11-19T00:16:38.489607325Z 2026-11-19 00:16:38.489 UTC [649] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:16:42.336595575Z 2026-11-19 00:16:42.335 UTC [649] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:16:42.339664139Z 2026-11-19 00:16:42.339 UTC [1] LOG:  background worker "logical replication apply worker" (PID 649) exited with exit code 1
+2026-11-19T00:16:42.342353894Z 2026-11-19 00:16:42.341 UTC [667] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:16:46.171824889Z 2026-11-19 00:16:46.171 UTC [667] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:16:46.175101242Z 2026-11-19 00:16:46.174 UTC [1] LOG:  background worker "logical replication apply worker" (PID 667) exited with exit code 1
+2026-11-19T00:16:46.177198247Z 2026-11-19 00:16:46.176 UTC [683] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:16:50.013451504Z 2026-11-19 00:16:50.013 UTC [683] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:16:50.016744299Z 2026-11-19 00:16:50.016 UTC [1] LOG:  background worker "logical replication apply worker" (PID 683) exited with exit code 1
+2026-11-19T00:16:50.018696469Z 2026-11-19 00:16:50.018 UTC [700] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:16:53.865574290Z 2026-11-19 00:16:53.865 UTC [700] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:16:53.869234789Z 2026-11-19 00:16:53.868 UTC [1] LOG:  background worker "logical replication apply worker" (PID 700) exited with exit code 1
+2026-11-19T00:16:53.873261426Z 2026-11-19 00:16:53.872 UTC [709] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:16:57.706390523Z 2026-11-19 00:16:57.705 UTC [709] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:16:57.710065074Z 2026-11-19 00:16:57.709 UTC [1] LOG:  background worker "logical replication apply worker" (PID 709) exited with exit code 1
+2026-11-19T00:16:57.712361229Z 2026-11-19 00:16:57.712 UTC [726] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:17:01.554909400Z 2026-11-19 00:17:01.554 UTC [726] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:17:01.557330426Z 2026-11-19 00:17:01.557 UTC [1] LOG:  background worker "logical replication apply worker" (PID 726) exited with exit code 1
+2026-11-19T00:17:01.558897764Z 2026-11-19 00:17:01.558 UTC [744] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:17:05.390467728Z 2026-11-19 00:17:05.390 UTC [744] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:17:05.394251415Z 2026-11-19 00:17:05.393 UTC [1] LOG:  background worker "logical replication apply worker" (PID 744) exited with exit code 1
+2026-11-19T00:17:05.397178481Z 2026-11-19 00:17:05.396 UTC [761] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:17:09.238326425Z 2026-11-19 00:17:09.237 UTC [761] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:17:09.241891735Z 2026-11-19 00:17:09.241 UTC [1] LOG:  background worker "logical replication apply worker" (PID 761) exited with exit code 1
+2026-11-19T00:17:09.244137067Z 2026-11-19 00:17:09.243 UTC [778] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:17:13.086982131Z 2026-11-19 00:17:13.086 UTC [778] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:17:13.090165900Z 2026-11-19 00:17:13.089 UTC [1] LOG:  background worker "logical replication apply worker" (PID 778) exited with exit code 1
+2026-11-19T00:17:13.092546167Z 2026-11-19 00:17:13.092 UTC [795] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:17:16.929098383Z 2026-11-19 00:17:16.928 UTC [795] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:17:16.932705301Z 2026-11-19 00:17:16.932 UTC [1] LOG:  background worker "logical replication apply worker" (PID 795) exited with exit code 1
+2026-11-19T00:17:16.934887858Z 2026-11-19 00:17:16.934 UTC [804] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:17:20.772715197Z 2026-11-19 00:17:20.772 UTC [804] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:17:20.776094479Z 2026-11-19 00:17:20.775 UTC [1] LOG:  background worker "logical replication apply worker" (PID 804) exited with exit code 1
+2026-11-19T00:17:20.779081434Z 2026-11-19 00:17:20.778 UTC [822] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:17:24.627928870Z 2026-11-19 00:17:24.627 UTC [822] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:17:24.630778372Z 2026-11-19 00:17:24.630 UTC [1] LOG:  background worker "logical replication apply worker" (PID 822) exited with exit code 1
+2026-11-19T00:17:24.632568153Z 2026-11-19 00:17:24.632 UTC [839] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:17:28.472634668Z 2026-11-19 00:17:28.472 UTC [839] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:17:28.475738067Z 2026-11-19 00:17:28.475 UTC [1] LOG:  background worker "logical replication apply worker" (PID 839) exited with exit code 1
+2026-11-19T00:17:28.478379324Z 2026-11-19 00:17:28.477 UTC [856] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:17:32.306813515Z 2026-11-19 00:17:32.306 UTC [856] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:17:32.309796087Z 2026-11-19 00:17:32.309 UTC [1] LOG:  background worker "logical replication apply worker" (PID 856) exited with exit code 1
+2026-11-19T00:17:32.311409482Z 2026-11-19 00:17:32.311 UTC [874] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:17:36.148027043Z 2026-11-19 00:17:36.147 UTC [874] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:17:36.150588949Z 2026-11-19 00:17:36.150 UTC [1] LOG:  background worker "logical replication apply worker" (PID 874) exited with exit code 1
+2026-11-19T00:17:36.151640957Z 2026-11-19 00:17:36.151 UTC [891] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:17:39.971150426Z 2026-11-19 00:17:39.970 UTC [891] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:17:39.974319369Z 2026-11-19 00:17:39.973 UTC [1] LOG:  background worker "logical replication apply worker" (PID 891) exited with exit code 1
+2026-11-19T00:17:39.976742868Z 2026-11-19 00:17:39.976 UTC [900] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:17:43.811404425Z 2026-11-19 00:17:43.811 UTC [900] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:17:43.813291247Z 2026-11-19 00:17:43.813 UTC [1] LOG:  background worker "logical replication apply worker" (PID 900) exited with exit code 1
+2026-11-19T00:17:43.814814862Z 2026-11-19 00:17:43.814 UTC [918] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:17:47.670221444Z 2026-11-19 00:17:47.669 UTC [918] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:17:47.673578081Z 2026-11-19 00:17:47.673 UTC [1] LOG:  background worker "logical replication apply worker" (PID 918) exited with exit code 1
+2026-11-19T00:17:47.675607820Z 2026-11-19 00:17:47.675 UTC [935] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:17:51.512640610Z 2026-11-19 00:17:51.512 UTC [935] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:17:51.516567292Z 2026-11-19 00:17:51.516 UTC [1] LOG:  background worker "logical replication apply worker" (PID 935) exited with exit code 1
+2026-11-19T00:17:51.518477294Z 2026-11-19 00:17:51.518 UTC [952] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:17:55.356749294Z 2026-11-19 00:17:55.356 UTC [952] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:17:55.360756975Z 2026-11-19 00:17:55.360 UTC [1] LOG:  background worker "logical replication apply worker" (PID 952) exited with exit code 1
+2026-11-19T00:17:55.363638283Z 2026-11-19 00:17:55.363 UTC [969] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:17:59.206589677Z 2026-11-19 00:17:59.206 UTC [969] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:17:59.210447090Z 2026-11-19 00:17:59.210 UTC [1] LOG:  background worker "logical replication apply worker" (PID 969) exited with exit code 1
+2026-11-19T00:17:59.212216243Z 2026-11-19 00:17:59.211 UTC [986] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:18:03.048044347Z 2026-11-19 00:18:03.047 UTC [986] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:18:03.051291012Z 2026-11-19 00:18:03.050 UTC [1] LOG:  background worker "logical replication apply worker" (PID 986) exited with exit code 1
+2026-11-19T00:18:03.054508703Z 2026-11-19 00:18:03.054 UTC [996] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:18:06.896230039Z 2026-11-19 00:18:06.896 UTC [996] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:18:06.897799852Z 2026-11-19 00:18:06.897 UTC [1] LOG:  background worker "logical replication apply worker" (PID 996) exited with exit code 1
+2026-11-19T00:18:06.898791316Z 2026-11-19 00:18:06.898 UTC [1013] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:18:10.738450038Z 2026-11-19 00:18:10.737 UTC [1013] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:18:10.741983414Z 2026-11-19 00:18:10.741 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1013) exited with exit code 1
+2026-11-19T00:18:10.743938712Z 2026-11-19 00:18:10.743 UTC [1030] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:18:14.595992281Z 2026-11-19 00:18:14.595 UTC [1030] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:18:14.599431461Z 2026-11-19 00:18:14.599 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1030) exited with exit code 1
+2026-11-19T00:18:14.601618753Z 2026-11-19 00:18:14.601 UTC [1047] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:18:18.446739276Z 2026-11-19 00:18:18.446 UTC [1047] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:18:18.449875939Z 2026-11-19 00:18:18.449 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1047) exited with exit code 1
+2026-11-19T00:18:18.451677606Z 2026-11-19 00:18:18.451 UTC [1064] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:18:22.289210389Z 2026-11-19 00:18:22.288 UTC [1064] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:18:22.293469967Z 2026-11-19 00:18:22.292 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1064) exited with exit code 1
+2026-11-19T00:18:22.295609822Z 2026-11-19 00:18:22.295 UTC [1082] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:18:26.130059204Z 2026-11-19 00:18:26.129 UTC [1082] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:18:26.133131983Z 2026-11-19 00:18:26.132 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1082) exited with exit code 1
+2026-11-19T00:18:26.134962588Z 2026-11-19 00:18:26.134 UTC [1091] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:18:29.968025918Z 2026-11-19 00:18:29.967 UTC [1091] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:18:29.971553403Z 2026-11-19 00:18:29.971 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1091) exited with exit code 1
+2026-11-19T00:18:29.979240102Z 2026-11-19 00:18:29.978 UTC [1108] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:18:33.821990283Z 2026-11-19 00:18:33.821 UTC [1108] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:18:33.823526575Z 2026-11-19 00:18:33.823 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1108) exited with exit code 1
+2026-11-19T00:18:33.824644976Z 2026-11-19 00:18:33.824 UTC [1125] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:18:37.669806514Z 2026-11-19 00:18:37.669 UTC [1125] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:18:37.673054899Z 2026-11-19 00:18:37.672 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1125) exited with exit code 1
+2026-11-19T00:18:37.675331906Z 2026-11-19 00:18:37.674 UTC [1142] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:18:41.495057609Z 2026-11-19 00:18:41.494 UTC [1142] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:18:41.497901951Z 2026-11-19 00:18:41.497 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1142) exited with exit code 1
+2026-11-19T00:18:41.500776972Z 2026-11-19 00:18:41.500 UTC [1160] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:18:45.347931996Z 2026-11-19 00:18:45.347 UTC [1160] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:18:45.349874794Z 2026-11-19 00:18:45.349 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1160) exited with exit code 1
+2026-11-19T00:18:45.351013956Z 2026-11-19 00:18:45.350 UTC [1177] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:18:49.190281527Z 2026-11-19 00:18:49.189 UTC [1177] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:18:49.193853571Z 2026-11-19 00:18:49.193 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1177) exited with exit code 1
+2026-11-19T00:18:49.197378122Z 2026-11-19 00:18:49.197 UTC [1186] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:18:53.038451048Z 2026-11-19 00:18:53.037 UTC [1186] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:18:53.041945824Z 2026-11-19 00:18:53.041 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1186) exited with exit code 1
+2026-11-19T00:18:53.044707540Z 2026-11-19 00:18:53.044 UTC [1203] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:18:56.880102345Z 2026-11-19 00:18:56.879 UTC [1203] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:18:56.883283256Z 2026-11-19 00:18:56.882 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1203) exited with exit code 1
+2026-11-19T00:18:56.885532269Z 2026-11-19 00:18:56.885 UTC [1220] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:19:00.738910018Z 2026-11-19 00:19:00.738 UTC [1220] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:19:00.742302571Z 2026-11-19 00:19:00.742 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1220) exited with exit code 1
+2026-11-19T00:19:00.743872012Z 2026-11-19 00:19:00.743 UTC [1238] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:19:04.590449976Z 2026-11-19 00:19:04.589 UTC [1238] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:19:04.594032752Z 2026-11-19 00:19:04.593 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1238) exited with exit code 1
+2026-11-19T00:19:04.595923606Z 2026-11-19 00:19:04.595 UTC [1255] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:19:08.436144997Z 2026-11-19 00:19:08.435 UTC [1255] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:19:08.439656902Z 2026-11-19 00:19:08.439 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1255) exited with exit code 1
+2026-11-19T00:19:08.441003532Z 2026-11-19 00:19:08.440 UTC [1272] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:19:12.269954431Z 2026-11-19 00:19:12.269 UTC [1272] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:19:12.272044159Z 2026-11-19 00:19:12.271 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1272) exited with exit code 1
+2026-11-19T00:19:12.273325717Z 2026-11-19 00:19:12.273 UTC [1281] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:19:16.111445806Z 2026-11-19 00:19:16.111 UTC [1281] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:19:16.113411894Z 2026-11-19 00:19:16.113 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1281) exited with exit code 1
+2026-11-19T00:19:16.114205924Z 2026-11-19 00:19:16.113 UTC [1298] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:19:19.962770888Z 2026-11-19 00:19:19.962 UTC [1298] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:19:19.966222421Z 2026-11-19 00:19:19.965 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1298) exited with exit code 1
+2026-11-19T00:19:19.968816198Z 2026-11-19 00:19:19.968 UTC [1315] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:19:20.058123586Z 2026-11-19 00:19:20.057 UTC [78] LOG:  checkpoint starting: time
+2026-11-19T00:19:23.820339363Z 2026-11-19 00:19:23.819 UTC [1315] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:19:23.823658111Z 2026-11-19 00:19:23.823 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1315) exited with exit code 1
+2026-11-19T00:19:23.826470908Z 2026-11-19 00:19:23.825 UTC [1333] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:19:27.671748011Z 2026-11-19 00:19:27.671 UTC [1333] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:19:27.675306969Z 2026-11-19 00:19:27.674 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1333) exited with exit code 1
+2026-11-19T00:19:27.677119767Z 2026-11-19 00:19:27.676 UTC [1350] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:19:31.506086799Z 2026-11-19 00:19:31.505 UTC [1350] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:19:31.509436788Z 2026-11-19 00:19:31.509 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1350) exited with exit code 1
+2026-11-19T00:19:31.511224373Z 2026-11-19 00:19:31.510 UTC [1368] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:19:35.339113019Z 2026-11-19 00:19:35.338 UTC [1368] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:19:35.343193347Z 2026-11-19 00:19:35.342 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1368) exited with exit code 1
+2026-11-19T00:19:35.345693920Z 2026-11-19 00:19:35.344 UTC [1377] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:19:39.195416487Z 2026-11-19 00:19:39.195 UTC [1377] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:19:39.199447166Z 2026-11-19 00:19:39.198 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1377) exited with exit code 1
+2026-11-19T00:19:39.201202942Z 2026-11-19 00:19:39.200 UTC [1393] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:19:43.035476209Z 2026-11-19 00:19:43.035 UTC [1393] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:19:43.037044125Z 2026-11-19 00:19:43.036 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1393) exited with exit code 1
+2026-11-19T00:19:43.038336219Z 2026-11-19 00:19:43.038 UTC [1411] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:19:46.863130480Z 2026-11-19 00:19:46.862 UTC [1411] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:19:46.865949888Z 2026-11-19 00:19:46.865 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1411) exited with exit code 1
+2026-11-19T00:19:46.867334049Z 2026-11-19 00:19:46.867 UTC [1428] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:19:50.187774338Z 2026-11-19 00:19:50.187 UTC [78] LOG:  checkpoint complete: wrote 298 buffers (0.9%), wrote 4 SLRU buffers; 1 WAL file(s) added, 0 removed, 0 recycled; write=29.953 s, sync=0.099 s, total=30.131 s; sync files=45, longest=0.024 s, average=0.003 s; distance=2408 kB, estimate=2408 kB; lsn=0/1E05648, redo lsn=0/1E055B8
+2026-11-19T00:19:50.714880493Z 2026-11-19 00:19:50.714 UTC [1428] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:19:50.718520125Z 2026-11-19 00:19:50.717 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1428) exited with exit code 1
+2026-11-19T00:19:50.721287403Z 2026-11-19 00:19:50.720 UTC [1445] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:19:54.561171432Z 2026-11-19 00:19:54.560 UTC [1445] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:19:54.563691506Z 2026-11-19 00:19:54.563 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1445) exited with exit code 1
+2026-11-19T00:19:54.565290385Z 2026-11-19 00:19:54.564 UTC [1462] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:19:58.405899357Z 2026-11-19 00:19:58.405 UTC [1462] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:19:58.408913486Z 2026-11-19 00:19:58.408 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1462) exited with exit code 1
+2026-11-19T00:19:58.410583265Z 2026-11-19 00:19:58.410 UTC [1471] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:02.247921164Z 2026-11-19 00:20:02.247 UTC [1471] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:20:02.251441191Z 2026-11-19 00:20:02.250 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1471) exited with exit code 1
+2026-11-19T00:20:02.253739473Z 2026-11-19 00:20:02.253 UTC [1488] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:06.080307967Z 2026-11-19 00:20:06.080 UTC [1488] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:20:06.083150117Z 2026-11-19 00:20:06.082 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1488) exited with exit code 1
+2026-11-19T00:20:06.084940601Z 2026-11-19 00:20:06.084 UTC [1505] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:09.916300432Z 2026-11-19 00:20:09.915 UTC [1505] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:20:09.919410334Z 2026-11-19 00:20:09.919 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1505) exited with exit code 1
+2026-11-19T00:20:09.922181195Z 2026-11-19 00:20:09.921 UTC [1522] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:13.752791620Z 2026-11-19 00:20:13.752 UTC [1522] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:20:13.756902102Z 2026-11-19 00:20:13.756 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1522) exited with exit code 1
+2026-11-19T00:20:13.759202489Z 2026-11-19 00:20:13.758 UTC [1538] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:17.601639808Z 2026-11-19 00:20:17.601 UTC [1538] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:20:17.604035916Z 2026-11-19 00:20:17.603 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1538) exited with exit code 1
+2026-11-19T00:20:17.606103926Z 2026-11-19 00:20:17.605 UTC [1553] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:21.454176123Z 2026-11-19 00:20:21.453 UTC [1553] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:20:21.458030175Z 2026-11-19 00:20:21.457 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1553) exited with exit code 1
+2026-11-19T00:20:21.460196900Z 2026-11-19 00:20:21.459 UTC [1565] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:25.304113234Z 2026-11-19 00:20:25.303 UTC [1565] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:20:25.307122395Z 2026-11-19 00:20:25.306 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1565) exited with exit code 1
+2026-11-19T00:20:25.309782607Z 2026-11-19 00:20:25.309 UTC [1583] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:29.162586198Z 2026-11-19 00:20:29.162 UTC [1583] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:20:29.164032150Z 2026-11-19 00:20:29.163 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1583) exited with exit code 1
+2026-11-19T00:20:29.165091821Z 2026-11-19 00:20:29.164 UTC [1601] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:33.020760863Z 2026-11-19 00:20:33.020 UTC [1601] ERROR:  apply worker for subscription "sub_pg2_from_pg1" could not connect to the publisher: could not translate host name "repb-pg1" to address: Name or service not known
+2026-11-19T00:20:33.024140349Z 2026-11-19 00:20:33.023 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1601) exited with exit code 1
+2026-11-19T00:20:33.027420145Z 2026-11-19 00:20:33.027 UTC [1618] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:33.039957085Z 2026-11-19 00:20:33.039 UTC [1619] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:20:33.039998326Z 2026-11-19 00:20:33.039 UTC [1619] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:20:33.040364182Z 2026-11-19 00:20:33.040 UTC [1619] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFD378 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:33.040388013Z 2026-11-19 00:20:33.040 UTC [1619] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFD378 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:33.040393433Z 2026-11-19 00:20:33.040 UTC [1619] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:33.040397139Z 2026-11-19 00:20:33.040 UTC [1619] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFD378 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:33.040576505Z 2026-11-19 00:20:33.040 UTC [1619] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFD378 has been already streamed, forwarding to 0/1DFE028
+2026-11-19T00:20:33.040583683Z 2026-11-19 00:20:33.040 UTC [1619] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFD378 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:33.041617749Z 2026-11-19 00:20:33.041 UTC [1619] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:20:33.041657570Z 2026-11-19 00:20:33.041 UTC [1619] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE028, reading WAL from 0/1DFE028.
+2026-11-19T00:20:33.041662877Z 2026-11-19 00:20:33.041 UTC [1619] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFD378 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:33.041886155Z 2026-11-19 00:20:33.041 UTC [1619] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE028
+2026-11-19T00:20:33.041908075Z 2026-11-19 00:20:33.041 UTC [1619] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:20:33.041914087Z 2026-11-19 00:20:33.041 UTC [1619] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFD378 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:33.064242952Z 2026-11-19 00:20:33.063 UTC [1618] LOG:  conflict detected on relation "public.notes": conflict=update_origin_differs
+2026-11-19T00:20:33.064291976Z 2026-11-19 00:20:33.063 UTC [1618] DETAIL:  Updating the row that was modified locally in transaction 786 at 2026-11-19 00:15:52.210163+00.
+2026-11-19T00:20:33.064325900Z 	Existing local row (4002, 1, naive-001529/title set on pg2, both leaders will change the title, 2026-11-19 00:15:52.20998+00); remote row (4002, 1, naive-001529/title set on pg1, both leaders will change the title, 2026-11-19 00:15:51.200303+00); replica identity (id)=(4002).
+2026-11-19T00:20:33.064337764Z 2026-11-19 00:20:33.063 UTC [1618] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "UPDATE" for replication target relation "public.notes" in transaction 788, finished at 0/1DEBAC0
+2026-11-19T00:20:33.064758242Z 2026-11-19 00:20:33.064 UTC [1618] LOG:  conflict detected on relation "public.notes": conflict=delete_origin_differs
+2026-11-19T00:20:33.066084844Z 2026-11-19 00:20:33.064 UTC [1618] DETAIL:  Deleting the row that was modified locally in transaction 787 at 2026-11-19 00:15:52.223944+00.
+2026-11-19T00:20:33.066097561Z 	Existing local row (4003, 1, naive-001529/delete-vs-update target (original), body changed on pg2 while pg1 deleted the note, 2026-11-19 00:15:52.223888+00); replica identity (id)=(4003).
+2026-11-19T00:20:33.066102104Z 2026-11-19 00:20:33.064 UTC [1618] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "DELETE" for replication target relation "public.notes" in transaction 789, finished at 0/1DEBB70
+2026-11-19T00:20:33.066106106Z 2026-11-19 00:20:33.064 UTC [1618] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:20:33.066109379Z 2026-11-19 00:20:33.064 UTC [1618] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:20:33.066112755Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:20:33.066115958Z 2026-11-19 00:20:33.064 UTC [1618] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:20:33.066898782Z 2026-11-19 00:20:33.066 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1618) exited with exit code 1
+2026-11-19T00:20:33.080217378Z 2026-11-19 00:20:33.079 UTC [1619] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:35.024888329Z 2026-11-19 00:20:35.024 UTC [1629] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:35.032839324Z 2026-11-19 00:20:35.032 UTC [1630] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:20:35.032859650Z 2026-11-19 00:20:35.032 UTC [1630] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:20:35.032947075Z 2026-11-19 00:20:35.032 UTC [1630] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:35.035706635Z 2026-11-19 00:20:35.032 UTC [1630] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:35.035728608Z 2026-11-19 00:20:35.032 UTC [1630] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:35.035731006Z 2026-11-19 00:20:35.032 UTC [1630] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:35.035737392Z 2026-11-19 00:20:35.033 UTC [1630] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:20:35.035739241Z 2026-11-19 00:20:35.033 UTC [1630] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE098, reading WAL from 0/1DFE028.
+2026-11-19T00:20:35.035740918Z 2026-11-19 00:20:35.033 UTC [1630] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:35.035743223Z 2026-11-19 00:20:35.033 UTC [1630] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE028
+2026-11-19T00:20:35.035744972Z 2026-11-19 00:20:35.033 UTC [1630] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:20:35.035746634Z 2026-11-19 00:20:35.033 UTC [1630] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:35.067340723Z 2026-11-19 00:20:35.067 UTC [1629] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:20:35.067362484Z 2026-11-19 00:20:35.067 UTC [1629] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:20:35.067364895Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:20:35.067367096Z 2026-11-19 00:20:35.067 UTC [1629] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:20:35.070390870Z 2026-11-19 00:20:35.070 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1629) exited with exit code 1
+2026-11-19T00:20:35.076455730Z 2026-11-19 00:20:35.076 UTC [1630] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:37.026784909Z 2026-11-19 00:20:37.026 UTC [1640] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:37.034225821Z 2026-11-19 00:20:37.033 UTC [1641] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:20:37.034260057Z 2026-11-19 00:20:37.033 UTC [1641] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:20:37.034264961Z 2026-11-19 00:20:37.034 UTC [1641] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:37.034282887Z 2026-11-19 00:20:37.034 UTC [1641] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:37.034287024Z 2026-11-19 00:20:37.034 UTC [1641] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:37.034290164Z 2026-11-19 00:20:37.034 UTC [1641] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:37.034869636Z 2026-11-19 00:20:37.034 UTC [1641] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:20:37.034892138Z 2026-11-19 00:20:37.034 UTC [1641] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE1F8, reading WAL from 0/1DFE1F8.
+2026-11-19T00:20:37.034896678Z 2026-11-19 00:20:37.034 UTC [1641] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:37.034901796Z 2026-11-19 00:20:37.034 UTC [1641] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:20:37.034904901Z 2026-11-19 00:20:37.034 UTC [1641] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:20:37.034907912Z 2026-11-19 00:20:37.034 UTC [1641] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:37.038226036Z 2026-11-19 00:20:37.037 UTC [1640] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:20:37.038885927Z 2026-11-19 00:20:37.037 UTC [1640] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:20:37.038904351Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:20:37.038909072Z 2026-11-19 00:20:37.037 UTC [1640] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:20:37.039900862Z 2026-11-19 00:20:37.039 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1640) exited with exit code 1
+2026-11-19T00:20:37.043157925Z 2026-11-19 00:20:37.042 UTC [1641] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:39.028391524Z 2026-11-19 00:20:39.027 UTC [1652] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:39.042237894Z 2026-11-19 00:20:39.041 UTC [1653] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:20:39.042262970Z 2026-11-19 00:20:39.041 UTC [1653] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:20:39.042417663Z 2026-11-19 00:20:39.042 UTC [1653] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:39.042433153Z 2026-11-19 00:20:39.042 UTC [1653] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:39.042435677Z 2026-11-19 00:20:39.042 UTC [1653] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:39.042437498Z 2026-11-19 00:20:39.042 UTC [1653] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:39.043293973Z 2026-11-19 00:20:39.042 UTC [1653] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:20:39.043353902Z 2026-11-19 00:20:39.042 UTC [1653] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE1F8, reading WAL from 0/1DFE1F8.
+2026-11-19T00:20:39.043357094Z 2026-11-19 00:20:39.042 UTC [1653] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:39.043359078Z 2026-11-19 00:20:39.042 UTC [1653] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:20:39.043360766Z 2026-11-19 00:20:39.042 UTC [1653] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:20:39.043362394Z 2026-11-19 00:20:39.042 UTC [1653] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:39.044791230Z 2026-11-19 00:20:39.044 UTC [1652] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:20:39.044794427Z 2026-11-19 00:20:39.044 UTC [1652] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:20:39.044796289Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:20:39.044798091Z 2026-11-19 00:20:39.044 UTC [1652] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:20:39.046611114Z 2026-11-19 00:20:39.046 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1652) exited with exit code 1
+2026-11-19T00:20:39.056501616Z 2026-11-19 00:20:39.056 UTC [1653] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:41.031008643Z 2026-11-19 00:20:41.030 UTC [1665] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:41.046713699Z 2026-11-19 00:20:41.046 UTC [1666] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:20:41.046746976Z 2026-11-19 00:20:41.046 UTC [1666] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:20:41.046751647Z 2026-11-19 00:20:41.046 UTC [1666] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:41.046756952Z 2026-11-19 00:20:41.046 UTC [1666] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:41.046760779Z 2026-11-19 00:20:41.046 UTC [1666] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:41.046764112Z 2026-11-19 00:20:41.046 UTC [1666] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:41.047502894Z 2026-11-19 00:20:41.047 UTC [1666] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:20:41.047515939Z 2026-11-19 00:20:41.047 UTC [1666] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE1F8, reading WAL from 0/1DFE1F8.
+2026-11-19T00:20:41.047518386Z 2026-11-19 00:20:41.047 UTC [1666] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:41.047520539Z 2026-11-19 00:20:41.047 UTC [1666] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:20:41.047522282Z 2026-11-19 00:20:41.047 UTC [1666] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:20:41.047523959Z 2026-11-19 00:20:41.047 UTC [1666] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:41.049664634Z 2026-11-19 00:20:41.049 UTC [1665] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:20:41.049697605Z 2026-11-19 00:20:41.049 UTC [1665] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:20:41.049704361Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:20:41.049709797Z 2026-11-19 00:20:41.049 UTC [1665] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:20:41.051970903Z 2026-11-19 00:20:41.051 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1665) exited with exit code 1
+2026-11-19T00:20:41.057915809Z 2026-11-19 00:20:41.057 UTC [1666] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:43.032399075Z 2026-11-19 00:20:43.032 UTC [1677] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:43.050498537Z 2026-11-19 00:20:43.050 UTC [1678] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:20:43.050567897Z 2026-11-19 00:20:43.050 UTC [1678] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:20:43.051390806Z 2026-11-19 00:20:43.050 UTC [1678] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:43.051425032Z 2026-11-19 00:20:43.050 UTC [1678] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:43.051431225Z 2026-11-19 00:20:43.050 UTC [1678] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:43.051435612Z 2026-11-19 00:20:43.050 UTC [1678] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:43.051440261Z 2026-11-19 00:20:43.050 UTC [1678] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:20:43.051444276Z 2026-11-19 00:20:43.050 UTC [1678] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:43.051449553Z 2026-11-19 00:20:43.051 UTC [1678] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:20:43.051453607Z 2026-11-19 00:20:43.051 UTC [1678] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:20:43.051457550Z 2026-11-19 00:20:43.051 UTC [1678] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:43.052030947Z 2026-11-19 00:20:43.051 UTC [1678] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:20:43.052049051Z 2026-11-19 00:20:43.051 UTC [1678] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:20:43.052053854Z 2026-11-19 00:20:43.051 UTC [1678] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:43.055100400Z 2026-11-19 00:20:43.054 UTC [1677] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:20:43.055119993Z 2026-11-19 00:20:43.054 UTC [1677] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:20:43.055125723Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:20:43.055131130Z 2026-11-19 00:20:43.054 UTC [1677] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:20:43.059059390Z 2026-11-19 00:20:43.058 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1677) exited with exit code 1
+2026-11-19T00:20:43.066255655Z 2026-11-19 00:20:43.065 UTC [1678] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:45.029315553Z 2026-11-19 00:20:45.029 UTC [1689] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:45.036202350Z 2026-11-19 00:20:45.036 UTC [1690] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:20:45.036219549Z 2026-11-19 00:20:45.036 UTC [1690] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:20:45.036386888Z 2026-11-19 00:20:45.036 UTC [1690] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:45.036394247Z 2026-11-19 00:20:45.036 UTC [1690] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:45.036396387Z 2026-11-19 00:20:45.036 UTC [1690] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:45.036398427Z 2026-11-19 00:20:45.036 UTC [1690] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:45.036400536Z 2026-11-19 00:20:45.036 UTC [1690] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:20:45.036402418Z 2026-11-19 00:20:45.036 UTC [1690] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:45.036758078Z 2026-11-19 00:20:45.036 UTC [1690] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:20:45.036773347Z 2026-11-19 00:20:45.036 UTC [1690] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:20:45.036795230Z 2026-11-19 00:20:45.036 UTC [1690] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:45.036825415Z 2026-11-19 00:20:45.036 UTC [1690] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:20:45.036831499Z 2026-11-19 00:20:45.036 UTC [1690] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:20:45.036836366Z 2026-11-19 00:20:45.036 UTC [1690] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:45.038787351Z 2026-11-19 00:20:45.038 UTC [1689] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:20:45.038801667Z 2026-11-19 00:20:45.038 UTC [1689] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:20:45.038803981Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:20:45.038806002Z 2026-11-19 00:20:45.038 UTC [1689] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:20:45.040492263Z 2026-11-19 00:20:45.040 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1689) exited with exit code 1
+2026-11-19T00:20:45.047595544Z 2026-11-19 00:20:45.047 UTC [1690] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:47.038914801Z 2026-11-19 00:20:47.038 UTC [1693] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:47.072639734Z 2026-11-19 00:20:47.071 UTC [1694] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:20:47.072688475Z 2026-11-19 00:20:47.071 UTC [1694] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:20:47.073243196Z 2026-11-19 00:20:47.072 UTC [1694] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:47.073277278Z 2026-11-19 00:20:47.072 UTC [1694] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:47.073289370Z 2026-11-19 00:20:47.072 UTC [1694] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:47.073297142Z 2026-11-19 00:20:47.072 UTC [1694] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:47.073325121Z 2026-11-19 00:20:47.073 UTC [1694] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:20:47.073333526Z 2026-11-19 00:20:47.073 UTC [1694] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:47.074962963Z 2026-11-19 00:20:47.074 UTC [1694] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:20:47.075004537Z 2026-11-19 00:20:47.074 UTC [1694] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:20:47.075012061Z 2026-11-19 00:20:47.074 UTC [1694] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:47.075018227Z 2026-11-19 00:20:47.074 UTC [1694] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:20:47.075023880Z 2026-11-19 00:20:47.074 UTC [1694] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:20:47.075030196Z 2026-11-19 00:20:47.074 UTC [1694] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:47.075346375Z 2026-11-19 00:20:47.074 UTC [1693] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:20:47.075537442Z 2026-11-19 00:20:47.074 UTC [1693] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:20:47.075655418Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:20:47.075671553Z 2026-11-19 00:20:47.074 UTC [1693] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:20:47.083068040Z 2026-11-19 00:20:47.082 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1693) exited with exit code 1
+2026-11-19T00:20:47.091256773Z 2026-11-19 00:20:47.091 UTC [1694] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:49.032078065Z 2026-11-19 00:20:49.031 UTC [1705] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:49.040647437Z 2026-11-19 00:20:49.040 UTC [1706] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:20:49.040672104Z 2026-11-19 00:20:49.040 UTC [1706] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:20:49.040674721Z 2026-11-19 00:20:49.040 UTC [1706] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:49.040685902Z 2026-11-19 00:20:49.040 UTC [1706] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:49.040800282Z 2026-11-19 00:20:49.040 UTC [1706] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:49.040816012Z 2026-11-19 00:20:49.040 UTC [1706] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:49.040818710Z 2026-11-19 00:20:49.040 UTC [1706] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:20:49.040821040Z 2026-11-19 00:20:49.040 UTC [1706] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:49.041125171Z 2026-11-19 00:20:49.040 UTC [1706] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:20:49.041128171Z 2026-11-19 00:20:49.040 UTC [1706] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:20:49.041129904Z 2026-11-19 00:20:49.040 UTC [1706] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:49.041131776Z 2026-11-19 00:20:49.041 UTC [1706] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:20:49.041133460Z 2026-11-19 00:20:49.041 UTC [1706] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:20:49.041135161Z 2026-11-19 00:20:49.041 UTC [1706] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:49.042391603Z 2026-11-19 00:20:49.042 UTC [1705] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:20:49.042397324Z 2026-11-19 00:20:49.042 UTC [1705] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:20:49.042399314Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:20:49.042401130Z 2026-11-19 00:20:49.042 UTC [1705] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:20:49.044098296Z 2026-11-19 00:20:49.043 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1705) exited with exit code 1
+2026-11-19T00:20:49.052107652Z 2026-11-19 00:20:49.051 UTC [1706] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:51.035890726Z 2026-11-19 00:20:51.035 UTC [1717] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:51.053582156Z 2026-11-19 00:20:51.053 UTC [1718] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:20:51.053609211Z 2026-11-19 00:20:51.053 UTC [1718] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:20:51.054044538Z 2026-11-19 00:20:51.053 UTC [1718] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:51.054065358Z 2026-11-19 00:20:51.053 UTC [1718] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:51.054071649Z 2026-11-19 00:20:51.053 UTC [1718] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:51.054076559Z 2026-11-19 00:20:51.053 UTC [1718] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:51.054082031Z 2026-11-19 00:20:51.053 UTC [1718] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:20:51.054086610Z 2026-11-19 00:20:51.053 UTC [1718] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:51.055344297Z 2026-11-19 00:20:51.054 UTC [1718] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:20:51.055362423Z 2026-11-19 00:20:51.054 UTC [1718] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:20:51.055366064Z 2026-11-19 00:20:51.054 UTC [1718] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:51.055369347Z 2026-11-19 00:20:51.055 UTC [1718] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:20:51.055372564Z 2026-11-19 00:20:51.055 UTC [1718] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:20:51.055375167Z 2026-11-19 00:20:51.055 UTC [1718] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:51.056405134Z 2026-11-19 00:20:51.055 UTC [1717] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:20:51.056435889Z 2026-11-19 00:20:51.055 UTC [1717] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:20:51.056439566Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:20:51.056442863Z 2026-11-19 00:20:51.055 UTC [1717] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:20:51.058292250Z 2026-11-19 00:20:51.058 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1717) exited with exit code 1
+2026-11-19T00:20:51.989677766Z 2026-11-19 00:20:51.989 UTC [1718] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:53.038756556Z 2026-11-19 00:20:53.037 UTC [1730] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:53.051045077Z 2026-11-19 00:20:53.050 UTC [1731] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:20:53.051075722Z 2026-11-19 00:20:53.050 UTC [1731] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:20:53.051078871Z 2026-11-19 00:20:53.050 UTC [1731] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:53.051082092Z 2026-11-19 00:20:53.050 UTC [1731] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:53.051084753Z 2026-11-19 00:20:53.050 UTC [1731] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:53.051087054Z 2026-11-19 00:20:53.050 UTC [1731] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:53.051089707Z 2026-11-19 00:20:53.050 UTC [1731] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:20:53.051091992Z 2026-11-19 00:20:53.050 UTC [1731] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:53.051700900Z 2026-11-19 00:20:53.051 UTC [1731] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:20:53.051720306Z 2026-11-19 00:20:53.051 UTC [1731] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:20:53.051723458Z 2026-11-19 00:20:53.051 UTC [1731] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:53.051737480Z 2026-11-19 00:20:53.051 UTC [1731] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:20:53.051739940Z 2026-11-19 00:20:53.051 UTC [1731] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:20:53.051742248Z 2026-11-19 00:20:53.051 UTC [1731] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:53.054905017Z 2026-11-19 00:20:53.054 UTC [1730] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:20:53.054909598Z 2026-11-19 00:20:53.054 UTC [1730] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:20:53.054911632Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:20:53.054913616Z 2026-11-19 00:20:53.054 UTC [1730] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:20:53.056905120Z 2026-11-19 00:20:53.056 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1730) exited with exit code 1
+2026-11-19T00:20:53.061869781Z 2026-11-19 00:20:53.061 UTC [1731] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:55.041033730Z 2026-11-19 00:20:55.040 UTC [1742] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:55.056115577Z 2026-11-19 00:20:55.055 UTC [1743] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:20:55.056149410Z 2026-11-19 00:20:55.055 UTC [1743] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:20:55.056168645Z 2026-11-19 00:20:55.056 UTC [1743] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:55.056172437Z 2026-11-19 00:20:55.056 UTC [1743] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:55.056175716Z 2026-11-19 00:20:55.056 UTC [1743] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:55.056178556Z 2026-11-19 00:20:55.056 UTC [1743] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:55.056181861Z 2026-11-19 00:20:55.056 UTC [1743] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:20:55.056198242Z 2026-11-19 00:20:55.056 UTC [1743] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:55.056820495Z 2026-11-19 00:20:55.056 UTC [1743] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:20:55.056826104Z 2026-11-19 00:20:55.056 UTC [1743] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:20:55.056828999Z 2026-11-19 00:20:55.056 UTC [1743] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:55.057022593Z 2026-11-19 00:20:55.056 UTC [1743] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:20:55.057029800Z 2026-11-19 00:20:55.056 UTC [1743] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:20:55.057032678Z 2026-11-19 00:20:55.056 UTC [1743] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:55.060172941Z 2026-11-19 00:20:55.059 UTC [1742] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:20:55.060200173Z 2026-11-19 00:20:55.059 UTC [1742] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:20:55.060207806Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:20:55.060213637Z 2026-11-19 00:20:55.059 UTC [1742] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:20:55.062758611Z 2026-11-19 00:20:55.062 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1742) exited with exit code 1
+2026-11-19T00:20:55.068879763Z 2026-11-19 00:20:55.067 UTC [1743] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:57.043387934Z 2026-11-19 00:20:57.042 UTC [1753] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:57.063340206Z 2026-11-19 00:20:57.062 UTC [1754] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:20:57.063425745Z 2026-11-19 00:20:57.062 UTC [1754] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:20:57.063637153Z 2026-11-19 00:20:57.063 UTC [1753] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:20:57.063679069Z 2026-11-19 00:20:57.063 UTC [1753] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:20:57.063711299Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:20:57.063927267Z 2026-11-19 00:20:57.063 UTC [1753] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:20:57.063940936Z 2026-11-19 00:20:57.063 UTC [1754] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:57.063949141Z 2026-11-19 00:20:57.063 UTC [1754] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:57.063956208Z 2026-11-19 00:20:57.063 UTC [1754] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:57.063962684Z 2026-11-19 00:20:57.063 UTC [1754] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:57.063969146Z 2026-11-19 00:20:57.063 UTC [1754] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:20:57.063975032Z 2026-11-19 00:20:57.063 UTC [1754] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:57.065198401Z 2026-11-19 00:20:57.064 UTC [1754] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:20:57.065226052Z 2026-11-19 00:20:57.064 UTC [1754] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:20:57.065230131Z 2026-11-19 00:20:57.064 UTC [1754] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:57.065234026Z 2026-11-19 00:20:57.064 UTC [1754] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:20:57.065237208Z 2026-11-19 00:20:57.064 UTC [1754] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:20:57.065240271Z 2026-11-19 00:20:57.064 UTC [1754] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:57.067646217Z 2026-11-19 00:20:57.067 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1753) exited with exit code 1
+2026-11-19T00:20:57.078354067Z 2026-11-19 00:20:57.078 UTC [1754] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:59.039228412Z 2026-11-19 00:20:59.039 UTC [1765] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:20:59.046741173Z 2026-11-19 00:20:59.046 UTC [1766] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:20:59.046768644Z 2026-11-19 00:20:59.046 UTC [1766] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:20:59.046992760Z 2026-11-19 00:20:59.046 UTC [1766] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:59.047004637Z 2026-11-19 00:20:59.046 UTC [1766] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:59.047007111Z 2026-11-19 00:20:59.046 UTC [1766] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:20:59.047008957Z 2026-11-19 00:20:59.046 UTC [1766] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:59.047010918Z 2026-11-19 00:20:59.046 UTC [1766] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:20:59.047012630Z 2026-11-19 00:20:59.046 UTC [1766] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:59.047281214Z 2026-11-19 00:20:59.047 UTC [1766] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:20:59.047283739Z 2026-11-19 00:20:59.047 UTC [1766] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:20:59.047285512Z 2026-11-19 00:20:59.047 UTC [1766] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:59.047440251Z 2026-11-19 00:20:59.047 UTC [1766] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:20:59.047442982Z 2026-11-19 00:20:59.047 UTC [1766] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:20:59.047444630Z 2026-11-19 00:20:59.047 UTC [1766] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:20:59.048412259Z 2026-11-19 00:20:59.048 UTC [1765] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:20:59.048415429Z 2026-11-19 00:20:59.048 UTC [1765] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:20:59.048425514Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:20:59.048427495Z 2026-11-19 00:20:59.048 UTC [1765] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:20:59.049959956Z 2026-11-19 00:20:59.049 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1765) exited with exit code 1
+2026-11-19T00:20:59.058581976Z 2026-11-19 00:20:59.058 UTC [1766] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:01.043297454Z 2026-11-19 00:21:01.042 UTC [1778] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:21:01.061428546Z 2026-11-19 00:21:01.060 UTC [1779] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:21:01.061477373Z 2026-11-19 00:21:01.060 UTC [1779] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:21:01.062225500Z 2026-11-19 00:21:01.061 UTC [1779] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:01.062263993Z 2026-11-19 00:21:01.061 UTC [1779] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:01.062270828Z 2026-11-19 00:21:01.061 UTC [1779] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:01.062276013Z 2026-11-19 00:21:01.061 UTC [1779] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:01.062281191Z 2026-11-19 00:21:01.061 UTC [1779] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:21:01.062285822Z 2026-11-19 00:21:01.061 UTC [1779] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:01.062961366Z 2026-11-19 00:21:01.062 UTC [1779] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:21:01.062994636Z 2026-11-19 00:21:01.062 UTC [1779] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:21:01.063000224Z 2026-11-19 00:21:01.062 UTC [1779] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:01.063015810Z 2026-11-19 00:21:01.062 UTC [1779] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:21:01.063039342Z 2026-11-19 00:21:01.062 UTC [1779] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:21:01.063043722Z 2026-11-19 00:21:01.062 UTC [1779] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:01.067267997Z 2026-11-19 00:21:01.066 UTC [1778] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:21:01.067298559Z 2026-11-19 00:21:01.066 UTC [1778] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:21:01.067303513Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:21:01.067307994Z 2026-11-19 00:21:01.066 UTC [1778] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:21:01.070687624Z 2026-11-19 00:21:01.070 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1778) exited with exit code 1
+2026-11-19T00:21:01.076299749Z 2026-11-19 00:21:01.075 UTC [1779] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:03.044694200Z 2026-11-19 00:21:03.044 UTC [1790] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:21:03.063047940Z 2026-11-19 00:21:03.062 UTC [1791] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:21:03.063088608Z 2026-11-19 00:21:03.062 UTC [1791] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:21:03.063098023Z 2026-11-19 00:21:03.062 UTC [1791] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:03.063105431Z 2026-11-19 00:21:03.062 UTC [1791] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:03.063112115Z 2026-11-19 00:21:03.062 UTC [1791] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:03.063117988Z 2026-11-19 00:21:03.062 UTC [1791] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:03.063124352Z 2026-11-19 00:21:03.062 UTC [1791] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:21:03.063130208Z 2026-11-19 00:21:03.062 UTC [1791] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:03.063994535Z 2026-11-19 00:21:03.063 UTC [1791] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:21:03.064022983Z 2026-11-19 00:21:03.063 UTC [1791] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:21:03.064028282Z 2026-11-19 00:21:03.063 UTC [1791] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:03.064033216Z 2026-11-19 00:21:03.063 UTC [1791] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:21:03.064037227Z 2026-11-19 00:21:03.063 UTC [1791] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:21:03.064041178Z 2026-11-19 00:21:03.063 UTC [1791] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:03.065415611Z 2026-11-19 00:21:03.064 UTC [1790] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:21:03.065455959Z 2026-11-19 00:21:03.064 UTC [1790] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:21:03.065464975Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:21:03.065472426Z 2026-11-19 00:21:03.064 UTC [1790] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:21:03.069638885Z 2026-11-19 00:21:03.069 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1790) exited with exit code 1
+2026-11-19T00:21:03.077993040Z 2026-11-19 00:21:03.077 UTC [1791] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:05.047176534Z 2026-11-19 00:21:05.046 UTC [1802] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:21:05.063770613Z 2026-11-19 00:21:05.063 UTC [1803] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:21:05.063791536Z 2026-11-19 00:21:05.063 UTC [1803] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:21:05.063962786Z 2026-11-19 00:21:05.063 UTC [1803] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:05.063981890Z 2026-11-19 00:21:05.063 UTC [1803] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:05.063985846Z 2026-11-19 00:21:05.063 UTC [1803] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:05.064001556Z 2026-11-19 00:21:05.063 UTC [1803] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:05.064004935Z 2026-11-19 00:21:05.063 UTC [1803] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:21:05.064007814Z 2026-11-19 00:21:05.063 UTC [1803] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:05.064934835Z 2026-11-19 00:21:05.064 UTC [1803] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:21:05.064950636Z 2026-11-19 00:21:05.064 UTC [1803] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:21:05.064954110Z 2026-11-19 00:21:05.064 UTC [1803] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:05.064957381Z 2026-11-19 00:21:05.064 UTC [1803] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:21:05.064960076Z 2026-11-19 00:21:05.064 UTC [1803] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:21:05.064962628Z 2026-11-19 00:21:05.064 UTC [1803] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:05.065507461Z 2026-11-19 00:21:05.065 UTC [1802] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:21:05.065537649Z 2026-11-19 00:21:05.065 UTC [1802] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:21:05.065541005Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:21:05.065544770Z 2026-11-19 00:21:05.065 UTC [1802] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:21:05.067454961Z 2026-11-19 00:21:05.067 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1802) exited with exit code 1
+2026-11-19T00:21:05.072310440Z 2026-11-19 00:21:05.071 UTC [1803] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:07.047782445Z 2026-11-19 00:21:07.047 UTC [1814] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:21:07.062874007Z 2026-11-19 00:21:07.062 UTC [1815] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:21:07.062934563Z 2026-11-19 00:21:07.062 UTC [1815] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:21:07.063281368Z 2026-11-19 00:21:07.062 UTC [1815] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:07.063319237Z 2026-11-19 00:21:07.062 UTC [1815] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:07.063325571Z 2026-11-19 00:21:07.063 UTC [1815] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:07.063330352Z 2026-11-19 00:21:07.063 UTC [1815] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:07.063335355Z 2026-11-19 00:21:07.063 UTC [1815] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:21:07.063339584Z 2026-11-19 00:21:07.063 UTC [1815] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:07.064145472Z 2026-11-19 00:21:07.063 UTC [1815] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:21:07.064168147Z 2026-11-19 00:21:07.063 UTC [1815] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:21:07.064173082Z 2026-11-19 00:21:07.063 UTC [1815] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:07.064309673Z 2026-11-19 00:21:07.064 UTC [1815] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:21:07.064323426Z 2026-11-19 00:21:07.064 UTC [1815] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:21:07.064328226Z 2026-11-19 00:21:07.064 UTC [1815] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:07.067901423Z 2026-11-19 00:21:07.067 UTC [1814] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:21:07.067922992Z 2026-11-19 00:21:07.067 UTC [1814] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:21:07.067927100Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:21:07.067930568Z 2026-11-19 00:21:07.067 UTC [1814] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:21:07.070253234Z 2026-11-19 00:21:07.070 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1814) exited with exit code 1
+2026-11-19T00:21:07.077337850Z 2026-11-19 00:21:07.076 UTC [1815] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:09.045249816Z 2026-11-19 00:21:09.044 UTC [1826] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:21:09.055116417Z 2026-11-19 00:21:09.054 UTC [1827] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:21:09.055134339Z 2026-11-19 00:21:09.054 UTC [1827] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:21:09.055161313Z 2026-11-19 00:21:09.054 UTC [1827] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:09.055164330Z 2026-11-19 00:21:09.054 UTC [1827] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:09.055166449Z 2026-11-19 00:21:09.055 UTC [1827] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:09.055168280Z 2026-11-19 00:21:09.055 UTC [1827] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:09.055170265Z 2026-11-19 00:21:09.055 UTC [1827] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:21:09.055171979Z 2026-11-19 00:21:09.055 UTC [1827] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:09.055715619Z 2026-11-19 00:21:09.055 UTC [1827] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:21:09.055739915Z 2026-11-19 00:21:09.055 UTC [1827] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:21:09.055742450Z 2026-11-19 00:21:09.055 UTC [1827] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:09.055744624Z 2026-11-19 00:21:09.055 UTC [1827] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:21:09.055746350Z 2026-11-19 00:21:09.055 UTC [1827] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:21:09.055748035Z 2026-11-19 00:21:09.055 UTC [1827] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:09.056688432Z 2026-11-19 00:21:09.056 UTC [1826] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:21:09.056702285Z 2026-11-19 00:21:09.056 UTC [1826] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:21:09.056704544Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:21:09.056706619Z 2026-11-19 00:21:09.056 UTC [1826] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:21:09.058195636Z 2026-11-19 00:21:09.058 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1826) exited with exit code 1
+2026-11-19T00:21:09.065891254Z 2026-11-19 00:21:09.065 UTC [1827] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:11.050255516Z 2026-11-19 00:21:11.049 UTC [1838] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:21:11.066648019Z 2026-11-19 00:21:11.066 UTC [1839] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:21:11.066693558Z 2026-11-19 00:21:11.066 UTC [1839] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:21:11.067124703Z 2026-11-19 00:21:11.066 UTC [1839] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:11.067152997Z 2026-11-19 00:21:11.066 UTC [1839] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:11.067162783Z 2026-11-19 00:21:11.066 UTC [1839] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:11.067169272Z 2026-11-19 00:21:11.066 UTC [1839] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:11.067176017Z 2026-11-19 00:21:11.066 UTC [1839] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:21:11.067182106Z 2026-11-19 00:21:11.066 UTC [1839] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:11.067663481Z 2026-11-19 00:21:11.067 UTC [1839] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:21:11.067681215Z 2026-11-19 00:21:11.067 UTC [1839] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:21:11.067699561Z 2026-11-19 00:21:11.067 UTC [1839] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:11.068017500Z 2026-11-19 00:21:11.067 UTC [1839] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:21:11.068044380Z 2026-11-19 00:21:11.067 UTC [1839] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:21:11.068049741Z 2026-11-19 00:21:11.067 UTC [1839] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:11.071103738Z 2026-11-19 00:21:11.070 UTC [1838] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:21:11.071199551Z 2026-11-19 00:21:11.070 UTC [1838] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:21:11.071275286Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:21:11.071288832Z 2026-11-19 00:21:11.070 UTC [1838] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:21:11.073697549Z 2026-11-19 00:21:11.073 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1838) exited with exit code 1
+2026-11-19T00:21:11.078932291Z 2026-11-19 00:21:11.078 UTC [1839] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:13.051626243Z 2026-11-19 00:21:13.051 UTC [1850] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:21:13.069854075Z 2026-11-19 00:21:13.069 UTC [1851] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:21:13.069890449Z 2026-11-19 00:21:13.069 UTC [1851] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:21:13.070144387Z 2026-11-19 00:21:13.069 UTC [1851] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:13.070158368Z 2026-11-19 00:21:13.069 UTC [1851] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:13.070162920Z 2026-11-19 00:21:13.069 UTC [1851] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:13.070166921Z 2026-11-19 00:21:13.069 UTC [1851] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:13.070190627Z 2026-11-19 00:21:13.070 UTC [1851] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:21:13.070194501Z 2026-11-19 00:21:13.070 UTC [1851] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:13.070790794Z 2026-11-19 00:21:13.070 UTC [1851] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:21:13.070797168Z 2026-11-19 00:21:13.070 UTC [1851] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:21:13.070801005Z 2026-11-19 00:21:13.070 UTC [1851] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:13.071254405Z 2026-11-19 00:21:13.070 UTC [1851] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:21:13.071289825Z 2026-11-19 00:21:13.070 UTC [1851] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:21:13.071299027Z 2026-11-19 00:21:13.070 UTC [1851] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:13.072911279Z 2026-11-19 00:21:13.072 UTC [1850] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:21:13.072949764Z 2026-11-19 00:21:13.072 UTC [1850] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:21:13.072959290Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:21:13.072967166Z 2026-11-19 00:21:13.072 UTC [1850] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:21:13.075722822Z 2026-11-19 00:21:13.075 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1850) exited with exit code 1
+2026-11-19T00:21:13.085024843Z 2026-11-19 00:21:13.084 UTC [1851] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:15.051719997Z 2026-11-19 00:21:15.051 UTC [1862] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:21:15.065506928Z 2026-11-19 00:21:15.065 UTC [1863] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:21:15.065535309Z 2026-11-19 00:21:15.065 UTC [1863] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:21:15.065825724Z 2026-11-19 00:21:15.065 UTC [1863] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:15.065887163Z 2026-11-19 00:21:15.065 UTC [1863] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:15.065897527Z 2026-11-19 00:21:15.065 UTC [1863] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:15.065904090Z 2026-11-19 00:21:15.065 UTC [1863] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:15.066041986Z 2026-11-19 00:21:15.065 UTC [1863] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:21:15.066053956Z 2026-11-19 00:21:15.065 UTC [1863] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:15.066672986Z 2026-11-19 00:21:15.066 UTC [1863] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:21:15.066710167Z 2026-11-19 00:21:15.066 UTC [1863] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:21:15.066720173Z 2026-11-19 00:21:15.066 UTC [1863] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:15.066727738Z 2026-11-19 00:21:15.066 UTC [1863] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:21:15.066733723Z 2026-11-19 00:21:15.066 UTC [1863] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:21:15.066739639Z 2026-11-19 00:21:15.066 UTC [1863] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:15.070839323Z 2026-11-19 00:21:15.070 UTC [1862] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:21:15.070863558Z 2026-11-19 00:21:15.070 UTC [1862] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:21:15.070867433Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:21:15.070870793Z 2026-11-19 00:21:15.070 UTC [1862] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:21:15.073337617Z 2026-11-19 00:21:15.073 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1862) exited with exit code 1
+2026-11-19T00:21:15.080066219Z 2026-11-19 00:21:15.079 UTC [1863] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:17.055879047Z 2026-11-19 00:21:17.055 UTC [1873] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:21:17.071185991Z 2026-11-19 00:21:17.070 UTC [1874] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:21:17.071220400Z 2026-11-19 00:21:17.070 UTC [1874] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:21:17.071815285Z 2026-11-19 00:21:17.071 UTC [1874] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:17.071840704Z 2026-11-19 00:21:17.071 UTC [1874] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:17.071846495Z 2026-11-19 00:21:17.071 UTC [1874] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:17.071850961Z 2026-11-19 00:21:17.071 UTC [1874] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:17.071855802Z 2026-11-19 00:21:17.071 UTC [1874] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:21:17.071859876Z 2026-11-19 00:21:17.071 UTC [1874] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:17.073398790Z 2026-11-19 00:21:17.072 UTC [1874] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:21:17.073420383Z 2026-11-19 00:21:17.072 UTC [1874] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:21:17.073424916Z 2026-11-19 00:21:17.072 UTC [1874] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:17.073429621Z 2026-11-19 00:21:17.072 UTC [1874] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:21:17.073433662Z 2026-11-19 00:21:17.072 UTC [1874] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:21:17.073437495Z 2026-11-19 00:21:17.072 UTC [1874] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:17.075225223Z 2026-11-19 00:21:17.074 UTC [1873] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:21:17.075269637Z 2026-11-19 00:21:17.074 UTC [1873] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:21:17.075276671Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:21:17.075282178Z 2026-11-19 00:21:17.074 UTC [1873] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:21:17.077950480Z 2026-11-19 00:21:17.077 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1873) exited with exit code 1
+2026-11-19T00:21:17.089534149Z 2026-11-19 00:21:17.089 UTC [1874] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:19.053908574Z 2026-11-19 00:21:19.053 UTC [1885] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:21:19.064277421Z 2026-11-19 00:21:19.064 UTC [1886] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:21:19.064303400Z 2026-11-19 00:21:19.064 UTC [1886] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:21:19.064305663Z 2026-11-19 00:21:19.064 UTC [1886] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:19.064307803Z 2026-11-19 00:21:19.064 UTC [1886] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:19.064309757Z 2026-11-19 00:21:19.064 UTC [1886] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:19.064311430Z 2026-11-19 00:21:19.064 UTC [1886] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:19.064313363Z 2026-11-19 00:21:19.064 UTC [1886] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:21:19.064314986Z 2026-11-19 00:21:19.064 UTC [1886] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:19.064861980Z 2026-11-19 00:21:19.064 UTC [1886] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:21:19.064872174Z 2026-11-19 00:21:19.064 UTC [1886] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:21:19.064878250Z 2026-11-19 00:21:19.064 UTC [1886] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:19.064907771Z 2026-11-19 00:21:19.064 UTC [1886] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:21:19.064914653Z 2026-11-19 00:21:19.064 UTC [1886] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:21:19.064920481Z 2026-11-19 00:21:19.064 UTC [1886] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:19.067283420Z 2026-11-19 00:21:19.066 UTC [1885] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:21:19.067314636Z 2026-11-19 00:21:19.066 UTC [1885] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:21:19.067324082Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:21:19.067331159Z 2026-11-19 00:21:19.066 UTC [1885] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:21:19.071166798Z 2026-11-19 00:21:19.071 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1885) exited with exit code 1
+2026-11-19T00:21:19.074330831Z 2026-11-19 00:21:19.074 UTC [1886] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:21.059296647Z 2026-11-19 00:21:21.058 UTC [1898] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:21:21.077165163Z 2026-11-19 00:21:21.076 UTC [1899] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:21:21.077219517Z 2026-11-19 00:21:21.076 UTC [1899] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:21:21.077585389Z 2026-11-19 00:21:21.077 UTC [1899] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:21.077624571Z 2026-11-19 00:21:21.077 UTC [1899] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:21.077636280Z 2026-11-19 00:21:21.077 UTC [1899] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:21.077642998Z 2026-11-19 00:21:21.077 UTC [1899] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:21.077649593Z 2026-11-19 00:21:21.077 UTC [1899] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:21:21.077933124Z 2026-11-19 00:21:21.077 UTC [1899] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:21.078452129Z 2026-11-19 00:21:21.078 UTC [1899] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:21:21.078491376Z 2026-11-19 00:21:21.078 UTC [1899] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:21:21.078500441Z 2026-11-19 00:21:21.078 UTC [1899] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:21.079133114Z 2026-11-19 00:21:21.078 UTC [1899] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:21:21.079168527Z 2026-11-19 00:21:21.078 UTC [1899] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:21:21.079175256Z 2026-11-19 00:21:21.078 UTC [1899] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:21.080904669Z 2026-11-19 00:21:21.080 UTC [1898] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:21:21.080911478Z 2026-11-19 00:21:21.080 UTC [1898] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:21:21.080915916Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:21:21.080920212Z 2026-11-19 00:21:21.080 UTC [1898] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:21:21.084993082Z 2026-11-19 00:21:21.084 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1898) exited with exit code 1
+2026-11-19T00:21:21.090311906Z 2026-11-19 00:21:21.089 UTC [1899] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:23.060129838Z 2026-11-19 00:21:23.058 UTC [1910] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:21:23.076232153Z 2026-11-19 00:21:23.075 UTC [1911] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:21:23.076274161Z 2026-11-19 00:21:23.075 UTC [1911] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:21:23.076551898Z 2026-11-19 00:21:23.076 UTC [1911] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:23.076562815Z 2026-11-19 00:21:23.076 UTC [1911] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:23.076584733Z 2026-11-19 00:21:23.076 UTC [1911] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:23.076589032Z 2026-11-19 00:21:23.076 UTC [1911] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:23.076593245Z 2026-11-19 00:21:23.076 UTC [1911] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:21:23.076596977Z 2026-11-19 00:21:23.076 UTC [1911] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:23.077374627Z 2026-11-19 00:21:23.077 UTC [1911] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:21:23.077383077Z 2026-11-19 00:21:23.077 UTC [1911] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:21:23.077389082Z 2026-11-19 00:21:23.077 UTC [1911] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:23.077406147Z 2026-11-19 00:21:23.077 UTC [1911] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:21:23.077412681Z 2026-11-19 00:21:23.077 UTC [1911] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:21:23.077418526Z 2026-11-19 00:21:23.077 UTC [1911] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:23.080411502Z 2026-11-19 00:21:23.080 UTC [1910] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:21:23.080428637Z 2026-11-19 00:21:23.080 UTC [1910] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:21:23.080432104Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:21:23.080434934Z 2026-11-19 00:21:23.080 UTC [1910] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:21:23.082539186Z 2026-11-19 00:21:23.082 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1910) exited with exit code 1
+2026-11-19T00:21:23.092418973Z 2026-11-19 00:21:23.092 UTC [1911] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:25.060131508Z 2026-11-19 00:21:25.059 UTC [1920] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:21:25.072405813Z 2026-11-19 00:21:25.072 UTC [1921] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:21:25.072440616Z 2026-11-19 00:21:25.072 UTC [1921] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:21:25.072791249Z 2026-11-19 00:21:25.072 UTC [1921] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:25.072803770Z 2026-11-19 00:21:25.072 UTC [1921] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:25.072806362Z 2026-11-19 00:21:25.072 UTC [1921] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:25.072808131Z 2026-11-19 00:21:25.072 UTC [1921] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:25.072810072Z 2026-11-19 00:21:25.072 UTC [1921] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:21:25.072811727Z 2026-11-19 00:21:25.072 UTC [1921] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:25.073238203Z 2026-11-19 00:21:25.073 UTC [1921] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:21:25.073255666Z 2026-11-19 00:21:25.073 UTC [1921] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:21:25.073260312Z 2026-11-19 00:21:25.073 UTC [1921] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:25.073635616Z 2026-11-19 00:21:25.073 UTC [1921] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:21:25.073649090Z 2026-11-19 00:21:25.073 UTC [1921] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:21:25.073654360Z 2026-11-19 00:21:25.073 UTC [1921] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:25.074971163Z 2026-11-19 00:21:25.074 UTC [1920] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:21:25.074990399Z 2026-11-19 00:21:25.074 UTC [1920] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:21:25.074993609Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:21:25.075004656Z 2026-11-19 00:21:25.074 UTC [1920] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:21:25.077617892Z 2026-11-19 00:21:25.077 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1920) exited with exit code 1
+2026-11-19T00:21:25.087454776Z 2026-11-19 00:21:25.087 UTC [1921] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:27.063755638Z 2026-11-19 00:21:27.063 UTC [1926] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:21:27.078487403Z 2026-11-19 00:21:27.078 UTC [1927] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:21:27.078529267Z 2026-11-19 00:21:27.078 UTC [1927] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:21:27.078715316Z 2026-11-19 00:21:27.078 UTC [1927] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:27.078748471Z 2026-11-19 00:21:27.078 UTC [1927] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:27.078753560Z 2026-11-19 00:21:27.078 UTC [1927] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:27.078757967Z 2026-11-19 00:21:27.078 UTC [1927] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:27.078761846Z 2026-11-19 00:21:27.078 UTC [1927] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:21:27.078765182Z 2026-11-19 00:21:27.078 UTC [1927] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:27.079674381Z 2026-11-19 00:21:27.079 UTC [1927] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:21:27.079696600Z 2026-11-19 00:21:27.079 UTC [1927] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:21:27.079701152Z 2026-11-19 00:21:27.079 UTC [1927] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:27.079705091Z 2026-11-19 00:21:27.079 UTC [1927] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:21:27.079721739Z 2026-11-19 00:21:27.079 UTC [1927] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:21:27.079724975Z 2026-11-19 00:21:27.079 UTC [1927] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:27.083480142Z 2026-11-19 00:21:27.083 UTC [1926] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:21:27.083501625Z 2026-11-19 00:21:27.083 UTC [1926] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:21:27.083505140Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:21:27.083508107Z 2026-11-19 00:21:27.083 UTC [1926] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:21:27.085309056Z 2026-11-19 00:21:27.085 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1926) exited with exit code 1
+2026-11-19T00:21:27.092243660Z 2026-11-19 00:21:27.091 UTC [1927] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:29.063050587Z 2026-11-19 00:21:29.062 UTC [1938] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:21:29.070003214Z 2026-11-19 00:21:29.069 UTC [1939] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:21:29.070030039Z 2026-11-19 00:21:29.069 UTC [1939] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:21:29.070036604Z 2026-11-19 00:21:29.069 UTC [1939] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:29.070039488Z 2026-11-19 00:21:29.069 UTC [1939] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:29.070041577Z 2026-11-19 00:21:29.069 UTC [1939] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:29.070043417Z 2026-11-19 00:21:29.069 UTC [1939] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:29.070123831Z 2026-11-19 00:21:29.069 UTC [1939] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:21:29.070139119Z 2026-11-19 00:21:29.069 UTC [1939] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:29.070516033Z 2026-11-19 00:21:29.070 UTC [1939] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:21:29.070527448Z 2026-11-19 00:21:29.070 UTC [1939] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:21:29.070529653Z 2026-11-19 00:21:29.070 UTC [1939] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:29.070531676Z 2026-11-19 00:21:29.070 UTC [1939] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:21:29.070533707Z 2026-11-19 00:21:29.070 UTC [1939] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:21:29.070535357Z 2026-11-19 00:21:29.070 UTC [1939] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:29.074989384Z 2026-11-19 00:21:29.074 UTC [1938] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:21:29.075874772Z 2026-11-19 00:21:29.074 UTC [1938] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:21:29.075885297Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:21:29.075890973Z 2026-11-19 00:21:29.074 UTC [1938] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:21:29.076978986Z 2026-11-19 00:21:29.076 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1938) exited with exit code 1
+2026-11-19T00:21:29.079895114Z 2026-11-19 00:21:29.079 UTC [1939] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:31.066645293Z 2026-11-19 00:21:31.066 UTC [1950] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:21:31.082657794Z 2026-11-19 00:21:31.082 UTC [1951] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:21:31.082699067Z 2026-11-19 00:21:31.082 UTC [1951] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:21:31.082959415Z 2026-11-19 00:21:31.082 UTC [1951] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:31.082970317Z 2026-11-19 00:21:31.082 UTC [1951] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:31.082974818Z 2026-11-19 00:21:31.082 UTC [1951] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:31.082994444Z 2026-11-19 00:21:31.082 UTC [1951] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:31.082998725Z 2026-11-19 00:21:31.082 UTC [1951] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:21:31.083002306Z 2026-11-19 00:21:31.082 UTC [1951] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:31.083740653Z 2026-11-19 00:21:31.083 UTC [1951] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:21:31.083764589Z 2026-11-19 00:21:31.083 UTC [1951] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:21:31.083769306Z 2026-11-19 00:21:31.083 UTC [1951] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:31.084311528Z 2026-11-19 00:21:31.083 UTC [1951] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:21:31.084345655Z 2026-11-19 00:21:31.083 UTC [1951] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:21:31.084354251Z 2026-11-19 00:21:31.083 UTC [1951] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:31.086545636Z 2026-11-19 00:21:31.086 UTC [1950] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:21:31.086569044Z 2026-11-19 00:21:31.086 UTC [1950] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:21:31.086573387Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:21:31.086576988Z 2026-11-19 00:21:31.086 UTC [1950] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:21:31.089177244Z 2026-11-19 00:21:31.088 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1950) exited with exit code 1
+2026-11-19T00:21:31.094795316Z 2026-11-19 00:21:31.094 UTC [1951] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:33.068618384Z 2026-11-19 00:21:33.068 UTC [1962] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started
+2026-11-19T00:21:33.083914049Z 2026-11-19 00:21:33.083 UTC [1963] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:21:33.083958901Z 2026-11-19 00:21:33.083 UTC [1963] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:21:33.084322258Z 2026-11-19 00:21:33.083 UTC [1963] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:33.084368479Z 2026-11-19 00:21:33.083 UTC [1963] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:33.084375568Z 2026-11-19 00:21:33.084 UTC [1963] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:21:33.084380503Z 2026-11-19 00:21:33.084 UTC [1963] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:33.084385707Z 2026-11-19 00:21:33.084 UTC [1963] replicator@notes sub_pg1_from_pg2: LOG:  0/1DFE1F8 has been already streamed, forwarding to 0/1DFE268
+2026-11-19T00:21:33.084390140Z 2026-11-19 00:21:33.084 UTC [1963] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:33.085084700Z 2026-11-19 00:21:33.084 UTC [1963] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:21:33.085104341Z 2026-11-19 00:21:33.084 UTC [1963] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1DFE268, reading WAL from 0/1DFE1F8.
+2026-11-19T00:21:33.085107796Z 2026-11-19 00:21:33.084 UTC [1963] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:33.085110867Z 2026-11-19 00:21:33.084 UTC [1963] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1DFE1F8
+2026-11-19T00:21:33.085113364Z 2026-11-19 00:21:33.084 UTC [1963] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:21:33.085115784Z 2026-11-19 00:21:33.084 UTC [1963] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/1DFE1F8 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:21:33.091914979Z 2026-11-19 00:21:33.091 UTC [1962] ERROR:  conflict detected on relation "public.notes": conflict=insert_exists
+2026-11-19T00:21:33.091934016Z 2026-11-19 00:21:33.091 UTC [1962] DETAIL:  Key already exists in unique index "notes_pkey", modified locally in transaction 788 at 2026-11-19 00:15:52.232768+00.
+2026-11-19T00:21:33.091936709Z 	Key (id)=(4005); existing local row (4005, 1, naive-001529/new on pg2 #1, created on pg2, 2026-11-19 00:15:52.232721+00); remote row (4005, 1, naive-001529/new on pg1 #1, created on pg1, 2026-11-19 00:15:52.22824+00).
+2026-11-19T00:21:33.091938913Z 2026-11-19 00:21:33.091 UTC [1962] CONTEXT:  processing remote data for replication origin "pg_16405" during message type "INSERT" for replication target relation "public.notes" in transaction 790, finished at 0/1DEBD08
+2026-11-19T00:21:33.093646592Z 2026-11-19 00:21:33.093 UTC [1] LOG:  background worker "logical replication apply worker" (PID 1962) exited with exit code 1
+2026-11-19T00:21:33.097290310Z 2026-11-19 00:21:33.097 UTC [1963] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"

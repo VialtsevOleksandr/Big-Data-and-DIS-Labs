@@ -1,0 +1,220 @@
+{
+  "run": "naive-001529",
+  "id_mode": "naive",
+  "hosts": [
+    "repb-pg1",
+    "repb-pg2"
+  ],
+  "names": [
+    "pg1",
+    "pg2"
+  ],
+  "title_note": 4002,
+  "delete_note": 4003,
+  "marker_note": 4004,
+  "title_1": "naive-001529/title set on pg1",
+  "title_2": "naive-001529/title set on pg2",
+  "body_2": "body changed on pg2 while pg1 deleted the note",
+  "created": [
+    {
+      "node": "pg1",
+      "note_id": 4005,
+      "title": "naive-001529/new on pg1 #1"
+    },
+    {
+      "node": "pg2",
+      "note_id": 4005,
+      "title": "naive-001529/new on pg2 #1"
+    },
+    {
+      "node": "pg1",
+      "note_id": 4006,
+      "title": "naive-001529/new on pg1 #2"
+    },
+    {
+      "node": "pg2",
+      "note_id": 4006,
+      "title": "naive-001529/new on pg2 #2"
+    },
+    {
+      "node": "pg1",
+      "note_id": 4007,
+      "title": "naive-001529/new on pg1 #3"
+    },
+    {
+      "node": "pg2",
+      "note_id": 4007,
+      "title": "naive-001529/new on pg2 #3"
+    },
+    {
+      "node": "pg1",
+      "note_id": 4008,
+      "title": "naive-001529/new on pg1 #4"
+    },
+    {
+      "node": "pg2",
+      "note_id": 4008,
+      "title": "naive-001529/new on pg2 #4"
+    },
+    {
+      "node": "pg1",
+      "note_id": 4009,
+      "title": "naive-001529/new on pg1 #5"
+    },
+    {
+      "node": "pg2",
+      "note_id": 4009,
+      "title": "naive-001529/new on pg2 #5"
+    },
+    {
+      "node": "pg1",
+      "note_id": 4010,
+      "title": "naive-001529/new on pg1 #6"
+    },
+    {
+      "node": "pg2",
+      "note_id": 4010,
+      "title": "naive-001529/new on pg2 #6"
+    },
+    {
+      "node": "pg1",
+      "note_id": 4011,
+      "title": "naive-001529/new on pg1 #7"
+    },
+    {
+      "node": "pg2",
+      "note_id": 4011,
+      "title": "naive-001529/new on pg2 #7"
+    },
+    {
+      "node": "pg1",
+      "note_id": 4012,
+      "title": "naive-001529/new on pg1 #8"
+    },
+    {
+      "node": "pg2",
+      "note_id": 4012,
+      "title": "naive-001529/new on pg2 #8"
+    },
+    {
+      "node": "pg1",
+      "note_id": 4013,
+      "title": "naive-001529/new on pg1 #9"
+    },
+    {
+      "node": "pg2",
+      "note_id": 4013,
+      "title": "naive-001529/new on pg2 #9"
+    },
+    {
+      "node": "pg1",
+      "note_id": 4014,
+      "title": "naive-001529/new on pg1 #10"
+    },
+    {
+      "node": "pg2",
+      "note_id": 4014,
+      "title": "naive-001529/new on pg2 #10"
+    },
+    {
+      "node": "pg1",
+      "note_id": 4015,
+      "title": "naive-001529/new on pg1 #11"
+    },
+    {
+      "node": "pg2",
+      "note_id": 4015,
+      "title": "naive-001529/new on pg2 #11"
+    },
+    {
+      "node": "pg1",
+      "note_id": 4016,
+      "title": "naive-001529/new on pg1 #12"
+    },
+    {
+      "node": "pg2",
+      "note_id": 4016,
+      "title": "naive-001529/new on pg2 #12"
+    },
+    {
+      "node": "pg1",
+      "note_id": 4017,
+      "title": "naive-001529/new on pg1 #13"
+    },
+    {
+      "node": "pg2",
+      "note_id": 4017,
+      "title": "naive-001529/new on pg2 #13"
+    },
+    {
+      "node": "pg1",
+      "note_id": 4018,
+      "title": "naive-001529/new on pg1 #14"
+    },
+    {
+      "node": "pg2",
+      "note_id": 4018,
+      "title": "naive-001529/new on pg2 #14"
+    },
+    {
+      "node": "pg1",
+      "note_id": 4019,
+      "title": "naive-001529/new on pg1 #15"
+    },
+    {
+      "node": "pg2",
+      "note_id": 4019,
+      "title": "naive-001529/new on pg2 #15"
+    },
+    {
+      "node": "pg1",
+      "note_id": 4020,
+      "title": "naive-001529/new on pg1 #16"
+    },
+    {
+      "node": "pg2",
+      "note_id": 4020,
+      "title": "naive-001529/new on pg2 #16"
+    },
+    {
+      "node": "pg1",
+      "note_id": 4021,
+      "title": "naive-001529/new on pg1 #17"
+    },
+    {
+      "node": "pg2",
+      "note_id": 4021,
+      "title": "naive-001529/new on pg2 #17"
+    },
+    {
+      "node": "pg1",
+      "note_id": 4022,
+      "title": "naive-001529/new on pg1 #18"
+    },
+    {
+      "node": "pg2",
+      "note_id": 4022,
+      "title": "naive-001529/new on pg2 #18"
+    },
+    {
+      "node": "pg1",
+      "note_id": 4023,
+      "title": "naive-001529/new on pg1 #19"
+    },
+    {
+      "node": "pg2",
+      "note_id": 4023,
+      "title": "naive-001529/new on pg2 #19"
+    },
+    {
+      "node": "pg1",
+      "note_id": 4024,
+      "title": "naive-001529/new on pg1 #20"
+    },
+    {
+      "node": "pg2",
+      "note_id": 4024,
+      "title": "naive-001529/new on pg2 #20"
+    }
+  ]
+}

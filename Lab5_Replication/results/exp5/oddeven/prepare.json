@@ -1,0 +1,37 @@
+{
+  "run": "oddeven-002256",
+  "id_mode": "oddeven",
+  "ids_setup": {
+    "mode": "oddeven",
+    "highest_id_so_far": 3999,
+    "nodes": [
+      {
+        "host": "repb-pg1",
+        "increment_by": 2,
+        "next_id": 4001
+      },
+      {
+        "host": "repb-pg2",
+        "increment_by": 2,
+        "next_id": 4000
+      }
+    ]
+  },
+  "replication_check": {
+    "written_on_pg1": {
+      "note_id": 4001,
+      "visible_on_pg2_after_s": 0.003
+    },
+    "written_on_pg2": {
+      "note_id": 4000,
+      "visible_on_pg1_after_s": 0.023
+    },
+    "works_both_ways": true
+  },
+  "targets": {
+    "title_note": 4003,
+    "delete_note": 4005,
+    "marker_note": 4007,
+    "replicated_to_both": true
+  }
+}

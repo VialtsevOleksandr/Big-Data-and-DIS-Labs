@@ -1,0 +1,19 @@
+{
+  "equal": true,
+  "nodes": [
+    {
+      "host": "repb-pg1",
+      "name": "pg1",
+      "notes": 2000,
+      "max_id": 3999,
+      "checksum": "684fa059c33fd4be6d5f7978ed7a267d"
+    },
+    {
+      "host": "repb-pg2",
+      "name": "pg2",
+      "notes": 2000,
+      "max_id": 3999,
+      "checksum": "684fa059c33fd4be6d5f7978ed7a267d"
+    }
+  ]
+}

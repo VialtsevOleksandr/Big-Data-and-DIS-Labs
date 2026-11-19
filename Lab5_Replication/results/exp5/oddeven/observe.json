@@ -1,0 +1,134 @@
+{
+  "run": "oddeven-002256",
+  "id_mode": "oddeven",
+  "waited_s": 60.2,
+  "nodes_have_identical_data": false,
+  "checksums": [
+    {
+      "host": "repb-pg1",
+      "name": "pg1",
+      "notes": 2044,
+      "max_id": 4047,
+      "checksum": "2ddc373c7d3cef9ff34085d161f8deb2"
+    },
+    {
+      "host": "repb-pg2",
+      "name": "pg2",
+      "notes": 2044,
+      "max_id": 4047,
+      "checksum": "8ff1b8ed9523ee9ab24d3c3047f62e99"
+    }
+  ],
+  "case1_title_vs_title": {
+    "note_id": 4003,
+    "title_on_pg1": "oddeven-002256/title set on pg2",
+    "title_on_pg2": "oddeven-002256/title set on pg1",
+    "verdict": "diverged: each node now holds the title written on the OTHER node (values swapped)"
+  },
+  "case3_delete_vs_update": {
+    "note_id": 4005,
+    "on_pg1": null,
+    "on_pg2": null,
+    "verdict": "converged: the note is deleted on both nodes; the text change made on pg2 is lost"
+  },
+  "case2_inserts": {
+    "created": 40,
+    "replicated": 40,
+    "not_replicated": 0,
+    "same_id_different_note": 0,
+    "examples": [],
+    "verdict": "all new notes reached the other node"
+  },
+  "differing_note_ids": {
+    "count": 1,
+    "first": [
+      4003
+    ]
+  },
+  "replication_state_pg1": {
+    "name": "pg1",
+    "notes": 2044,
+    "sequence": {
+      "increment_by": 2,
+      "last_value": 4047
+    },
+    "subscriptions": [
+      {
+        "subname": "sub_pg1_from_pg2",
+        "subenabled": true,
+        "worker_running": true,
+        "received_lsn": "0/1E47528",
+        "latest_end_lsn": "0/1E47528",
+        "last_msg_receipt_time": "2026-11-19 00:28:58.974853+00:00"
+      }
+    ],
+    "subscription_stats": [
+      {
+        "subid": 16405,
+        "subname": "sub_pg1_from_pg2",
+        "apply_error_count": 1,
+        "sync_error_count": 0,
+        "confl_insert_exists": 0,
+        "confl_update_origin_differs": 1,
+        "confl_update_exists": 0,
+        "confl_update_missing": 1,
+        "confl_delete_origin_differs": 0,
+        "confl_delete_missing": 0,
+        "confl_multiple_unique_conflicts": 0,
+        "stats_reset": null
+      }
+    ],
+    "slots_for_other_node": [
+      {
+        "slot_name": "sub_pg2_from_pg1",
+        "active": true,
+        "wal_status": "reserved",
+        "confirmed_flush_lsn": "0/1E26828",
+        "not_confirmed_bytes": 0
+      }
+    ]
+  },
+  "replication_state_pg2": {
+    "name": "pg2",
+    "notes": 2044,
+    "sequence": {
+      "increment_by": 2,
+      "last_value": 4040
+    },
+    "subscriptions": [
+      {
+        "subname": "sub_pg2_from_pg1",
+        "subenabled": true,
+        "worker_running": true,
+        "received_lsn": "0/1E27F48",
+        "latest_end_lsn": "0/1E27F48",
+        "last_msg_receipt_time": "2026-11-19 00:29:01.152509+00:00"
+      }
+    ],
+    "subscription_stats": [
+      {
+        "subid": 16405,
+        "subname": "sub_pg2_from_pg1",
+        "apply_error_count": 1,
+        "sync_error_count": 0,
+        "confl_insert_exists": 0,
+        "confl_update_origin_differs": 1,
+        "confl_update_exists": 0,
+        "confl_update_missing": 0,
+        "confl_delete_origin_differs": 1,
+        "confl_delete_missing": 0,
+        "confl_multiple_unique_conflicts": 0,
+        "stats_reset": null
+      }
+    ],
+    "slots_for_other_node": [
+      {
+        "slot_name": "sub_pg1_from_pg2",
+        "active": true,
+        "wal_status": "reserved",
+        "confirmed_flush_lsn": "0/1E47528",
+        "not_confirmed_bytes": 2776
+      }
+    ]
+  }
+}

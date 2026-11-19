@@ -1,0 +1,60 @@
+{
+  "dir": "/results/exp3/partition_600s",
+  "attempts": 63523,
+  "by_status": {
+    "ok": 63523
+  },
+  "ok_by_node": {
+    "pg1": 63523
+  },
+  "first_sent": "2026-11-18 23:47:18.918Z",
+  "last_acked": "2026-11-18 23:57:54.065Z",
+  "latency_ms_all": {
+    "n": 63523,
+    "min": 1.867,
+    "p50": 3.8,
+    "p95": 4.829,
+    "p99": 5.983,
+    "max": 1450.356,
+    "mean": 3.957
+  },
+  "acks_slower_than_1s": 5,
+  "acks_with_server_warning": 0,
+  "first_server_warnings": [],
+  "longest_ack_gap": {
+    "seconds": 1.45,
+    "from": "2026-11-18 23:56:14.308Z",
+    "to": "2026-11-18 23:56:15.759Z",
+    "from_unix": 1795046174.30876,
+    "to_unix": 1795046175.759176,
+    "node_before": "pg1",
+    "node_after": "pg1",
+    "attempts_without_ack": 0
+  },
+  "window": {
+    "t0": "2026-11-18 23:47:36.296Z",
+    "t1": "2026-11-18 23:57:40.673Z",
+    "seconds": 604.377,
+    "attempts_sent": 60445,
+    "acked": 60444,
+    "not_acked": 0,
+    "latency_ms": {
+      "n": 60444,
+      "min": 1.867,
+      "p50": 3.801,
+      "p95": 4.81,
+      "p99": 5.89,
+      "max": 1450.356,
+      "mean": 3.931
+    }
+  },
+  "failover": {
+    "node_before": "pg1",
+    "last_ack_before_fault": "2026-11-18 23:47:36.292Z",
+    "first_failed_attempt": null,
+    "node_after": null,
+    "first_ack_on_new_node": null,
+    "fault_to_first_ack_on_new_node_s": null,
+    "no_acks_for_s": null
+  }
+}

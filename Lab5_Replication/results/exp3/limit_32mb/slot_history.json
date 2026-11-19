@@ -1,0 +1,42 @@
+{
+  "slot": "pg2_slot",
+  "lost": true,
+  "history": [
+    {
+      "at": 1795044445.832,
+      "wal_status": "reserved",
+      "active": true,
+      "retained_mib": 2.776,
+      "safe_wal_mib": 33.511,
+      "pg_wal_mib": 176.0,
+      "checkpoint_issued": false
+    },
+    {
+      "at": 1795044455.835,
+      "wal_status": "reserved",
+      "active": false,
+      "retained_mib": 20.961,
+      "safe_wal_mib": 15.326,
+      "pg_wal_mib": 176.0,
+      "checkpoint_issued": false
+    },
+    {
+      "at": 1795044465.833,
+      "wal_status": "unreserved",
+      "active": false,
+      "retained_mib": 37.918,
+      "safe_wal_mib": -1.63,
+      "pg_wal_mib": 192.0,
+      "checkpoint_issued": true
+    },
+    {
+      "at": 1795044467.781,
+      "wal_status": "lost",
+      "active": false,
+      "retained_mib": null,
+      "safe_wal_mib": null,
+      "pg_wal_mib": 176.0,
+      "checkpoint_issued": false
+    }
+  ]
+}

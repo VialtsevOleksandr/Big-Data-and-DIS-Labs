@@ -1,0 +1,26 @@
+{
+  "equal": true,
+  "nodes": [
+    {
+      "host": "repa-pg1",
+      "name": "pg1",
+      "notes": 163361,
+      "max_id": 163364,
+      "checksum": "3ff0810807d6ef82df80e449904d70dd"
+    },
+    {
+      "host": "repa-pg2",
+      "name": "pg2",
+      "notes": 163361,
+      "max_id": 163364,
+      "checksum": "3ff0810807d6ef82df80e449904d70dd"
+    },
+    {
+      "host": "repa-pg3",
+      "name": "pg3",
+      "notes": 163361,
+      "max_id": 163364,
+      "checksum": "3ff0810807d6ef82df80e449904d70dd"
+    }
+  ]
+}

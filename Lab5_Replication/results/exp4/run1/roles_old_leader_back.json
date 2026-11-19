@@ -1,0 +1,48 @@
+{
+  "at": 1795048648.279,
+  "nodes_accepting_writes": [
+    "pg1",
+    "pg2"
+  ],
+  "two_leaders_at_once": true,
+  "nodes": [
+    {
+      "host": "repa-pg1",
+      "reachable": true,
+      "name": "pg1",
+      "role": "leader",
+      "accepts_writes": true,
+      "system_identifier": 7709674644654743593,
+      "notes": 156369,
+      "timeline": 1,
+      "lsn": "0/15A0A000",
+      "followers": []
+    },
+    {
+      "host": "repa-pg2",
+      "reachable": true,
+      "name": "pg2",
+      "role": "leader",
+      "accepts_writes": true,
+      "system_identifier": 7709674644654743593,
+      "notes": 162383,
+      "timeline": 2,
+      "lsn": "0/1841A558",
+      "followers": [
+        "pg3"
+      ]
+    },
+    {
+      "host": "repa-pg3",
+      "reachable": true,
+      "name": "pg3",
+      "role": "follower",
+      "accepts_writes": false,
+      "system_identifier": 7709674644654743593,
+      "notes": 162388,
+      "timeline": 2,
+      "follows": "repa-pg2",
+      "lsn": "0/1841ACD8"
+    }
+  ]
+}

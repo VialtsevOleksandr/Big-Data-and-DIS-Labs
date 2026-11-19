@@ -1,0 +1,54 @@
+[
+  {
+    "host": "repa-pg1",
+    "reachable": true,
+    "name": "pg1",
+    "role": "leader",
+    "notes": 460035,
+    "current_lsn": "0/2F368360",
+    "synchronous_standby_names": "",
+    "replicas": [
+      {
+        "application_name": "pg3",
+        "client_addr": "172.25.0.4/32",
+        "state": "streaming",
+        "sync_state": "async",
+        "sent_lsn": "0/2F368360",
+        "write_lsn": "0/2F368360",
+        "flush_lsn": "0/2F368360",
+        "replay_lsn": "0/2F368360",
+        "replay_lag_bytes": 0,
+        "write_lag": null,
+        "flush_lag": null,
+        "replay_lag": null
+      }
+    ]
+  },
+  {
+    "host": "repa-pg2",
+    "reachable": true,
+    "name": "pg2",
+    "role": "follower",
+    "notes": 449045,
+    "receive_lsn": "0/25BB67C0",
+    "replay_lsn": "0/25BB67C0",
+    "wal_receiver": null,
+    "recovery_min_apply_delay": "0"
+  },
+  {
+    "host": "repa-pg3",
+    "reachable": true,
+    "name": "pg3",
+    "role": "follower",
+    "notes": 460035,
+    "receive_lsn": "0/2F368360",
+    "replay_lsn": "0/2F368360",
+    "wal_receiver": {
+      "status": "streaming",
+      "sender_host": "repa-pg1",
+      "slot_name": "pg3_slot",
+      "received_tli": 1
+    },
+    "recovery_min_apply_delay": "0"
+  }
+]

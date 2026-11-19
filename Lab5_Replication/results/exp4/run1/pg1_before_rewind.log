@@ -1,0 +1,22 @@
+2026-11-19T00:37:21.523799855Z 
+2026-11-19T00:37:21.523863087Z PostgreSQL Database directory appears to contain a database; Skipping initialization
+2026-11-19T00:37:21.523874021Z 
+2026-11-19T00:37:21.559195562Z 2026-11-19 00:37:21.558 GMT [1] LOG:  skipping missing configuration file "/var/lib/postgresql/node.conf"
+2026-11-19T00:37:21.567805554Z 2026-11-19 00:37:21.567 GMT [1] LOG:  skipping missing configuration file "/var/lib/postgresql/node.conf"
+2026-11-19T00:37:21.598716938Z 2026-11-19 00:37:21.598 UTC [1] LOG:  starting PostgreSQL 18.1 (Debian 18.1-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+2026-11-19T00:37:21.598747672Z 2026-11-19 00:37:21.598 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2026-11-19T00:37:21.598752969Z 2026-11-19 00:37:21.598 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2026-11-19T00:37:21.616149257Z 2026-11-19 00:37:21.615 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-11-19T00:37:21.635899389Z 2026-11-19 00:37:21.635 UTC [32] LOG:  database system was interrupted; last known up at 2026-11-19 00:35:52 UTC
+2026-11-19T00:37:21.872238453Z 2026-11-19 00:37:21.871 UTC [39] postgres@notes [unknown]: FATAL:  the database system is starting up
+2026-11-19T00:37:23.171602957Z 2026-11-19 00:37:23.171 UTC [46] postgres@notes [unknown]: FATAL:  the database system is starting up
+2026-11-19T00:37:24.442254027Z 2026-11-19 00:37:24.442 UTC [53] postgres@notes [unknown]: FATAL:  the database system is starting up
+2026-11-19T00:37:25.150919505Z 2026-11-19 00:37:25.150 UTC [32] LOG:  database system was not properly shut down; automatic recovery in progress
+2026-11-19T00:37:25.191737301Z 2026-11-19 00:37:25.191 UTC [32] LOG:  redo starts at 0/C000210
+2026-11-19T00:37:25.476971183Z 2026-11-19 00:37:25.476 UTC [32] LOG:  invalid record length at 0/14882490: expected at least 24, got 0
+2026-11-19T00:37:25.477004708Z 2026-11-19 00:37:25.476 UTC [32] LOG:  redo done at 0/14882468 system usage: CPU: user: 0.12 s, system: 0.15 s, elapsed: 0.28 s
+2026-11-19T00:37:25.520235939Z 2026-11-19 00:37:25.519 UTC [30] LOG:  checkpoint starting: end-of-recovery immediate wait
+2026-11-19T00:37:25.786742054Z 2026-11-19 00:37:25.786 UTC [60] postgres@notes [unknown]: FATAL:  the database system is not yet accepting connections
+2026-11-19T00:37:25.786774752Z 2026-11-19 00:37:25.786 UTC [60] postgres@notes [unknown]: DETAIL:  Consistent recovery state has not been yet reached.
+2026-11-19T00:37:25.854620301Z 2026-11-19 00:37:25.854 UTC [30] LOG:  checkpoint complete: wrote 15897 buffers (48.5%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.206 s, sync=0.067 s, total=0.343 s; sync files=26, longest=0.011 s, average=0.003 s; distance=139784 kB, estimate=139784 kB; lsn=0/14882490, redo lsn=0/14882490
+2026-11-19T00:37:25.870327334Z 2026-11-19 00:37:25.869 UTC [1] LOG:  database system is ready to accept connections

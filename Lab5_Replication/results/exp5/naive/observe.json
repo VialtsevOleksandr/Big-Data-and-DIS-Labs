@@ -1,0 +1,172 @@
+{
+  "run": "naive-001529",
+  "id_mode": "naive",
+  "waited_s": 60.1,
+  "nodes_have_identical_data": false,
+  "checksums": [
+    {
+      "host": "repb-pg1",
+      "name": "pg1",
+      "notes": 2024,
+      "max_id": 4024,
+      "checksum": "a7ab4c410c0ef798d3dcd6ca7546f498"
+    },
+    {
+      "host": "repb-pg2",
+      "name": "pg2",
+      "notes": 2024,
+      "max_id": 4024,
+      "checksum": "d7b44264636c9502530a9c65deedfbca"
+    }
+  ],
+  "case1_title_vs_title": {
+    "note_id": 4002,
+    "title_on_pg1": "naive-001529/title set on pg2",
+    "title_on_pg2": "naive-001529/title set on pg1",
+    "verdict": "diverged: each node now holds the title written on the OTHER node (values swapped)"
+  },
+  "case3_delete_vs_update": {
+    "note_id": 4003,
+    "on_pg1": null,
+    "on_pg2": null,
+    "verdict": "converged: the note is deleted on both nodes; the text change made on pg2 is lost"
+  },
+  "case2_inserts": {
+    "created": 40,
+    "replicated": 0,
+    "not_replicated": 0,
+    "same_id_different_note": 40,
+    "examples": [
+      {
+        "note_id": 4005,
+        "created_on": "pg1",
+        "title_here": "naive-001529/new on pg1 #1",
+        "title_on_other_node": "naive-001529/new on pg2 #1"
+      },
+      {
+        "note_id": 4005,
+        "created_on": "pg2",
+        "title_here": "naive-001529/new on pg2 #1",
+        "title_on_other_node": "naive-001529/new on pg1 #1"
+      },
+      {
+        "note_id": 4006,
+        "created_on": "pg1",
+        "title_here": "naive-001529/new on pg1 #2",
+        "title_on_other_node": "naive-001529/new on pg2 #2"
+      }
+    ],
+    "verdict": "both leaders issued the same ids: the incoming rows hit the primary key, replication stopped with an error and the nodes keep different notes under one id"
+  },
+  "differing_note_ids": {
+    "count": 21,
+    "first": [
+      4002,
+      4005,
+      4006,
+      4007,
+      4008,
+      4009,
+      4010,
+      4011,
+      4012,
+      4013,
+      4014,
+      4015,
+      4016,
+      4017,
+      4018,
+      4019,
+      4020,
+      4021,
+      4022,
+      4023
+    ]
+  },
+  "replication_state_pg1": {
+    "name": "pg1",
+    "notes": 2024,
+    "sequence": {
+      "increment_by": 1,
+      "last_value": 4024
+    },
+    "subscriptions": [
+      {
+        "subname": "sub_pg1_from_pg2",
+        "subenabled": true,
+        "worker_running": false,
+        "received_lsn": null,
+        "latest_end_lsn": null,
+        "last_msg_receipt_time": null
+      }
+    ],
+    "subscription_stats": [
+      {
+        "subid": 16405,
+        "subname": "sub_pg1_from_pg2",
+        "apply_error_count": 32,
+        "sync_error_count": 0,
+        "confl_insert_exists": 31,
+        "confl_update_origin_differs": 1,
+        "confl_update_exists": 0,
+        "confl_update_missing": 31,
+        "confl_delete_origin_differs": 0,
+        "confl_delete_missing": 0,
+        "confl_multiple_unique_conflicts": 0,
+        "stats_reset": null
+      }
+    ],
+    "slots_for_other_node": [
+      {
+        "slot_name": "sub_pg2_from_pg1",
+        "active": false,
+        "wal_status": "reserved",
+        "confirmed_flush_lsn": "0/1DEBC08",
+        "not_confirmed_bytes": 336416
+      }
+    ]
+  },
+  "replication_state_pg2": {
+    "name": "pg2",
+    "notes": 2024,
+    "sequence": {
+      "increment_by": 1,
+      "last_value": 4024
+    },
+    "subscriptions": [
+      {
+        "subname": "sub_pg2_from_pg1",
+        "subenabled": true,
+        "worker_running": false,
+        "received_lsn": null,
+        "latest_end_lsn": null,
+        "last_msg_receipt_time": null
+      }
+    ],
+    "subscription_stats": [
+      {
+        "subid": 16405,
+        "subname": "sub_pg2_from_pg1",
+        "apply_error_count": 32,
+        "sync_error_count": 0,
+        "confl_insert_exists": 31,
+        "confl_update_origin_differs": 1,
+        "confl_update_exists": 0,
+        "confl_update_missing": 0,
+        "confl_delete_origin_differs": 1,
+        "confl_delete_missing": 0,
+        "confl_multiple_unique_conflicts": 0,
+        "stats_reset": null
+      }
+    ],
+    "slots_for_other_node": [
+      {
+        "slot_name": "sub_pg1_from_pg2",
+        "active": false,
+        "wal_status": "reserved",
+        "confirmed_flush_lsn": "0/1DFE268",
+        "not_confirmed_bytes": 425432
+      }
+    ]
+  }
+}

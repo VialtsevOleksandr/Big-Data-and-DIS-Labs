@@ -1,0 +1,40 @@
+{
+  "at": 1795048640.669,
+  "nodes_accepting_writes": [
+    "pg2"
+  ],
+  "two_leaders_at_once": false,
+  "nodes": [
+    {
+      "host": "repa-pg1",
+      "reachable": false,
+      "error": "[Errno -2] Name or service not known"
+    },
+    {
+      "host": "repa-pg2",
+      "reachable": true,
+      "name": "pg2",
+      "role": "leader",
+      "accepts_writes": true,
+      "system_identifier": 7709674644654743593,
+      "notes": 160868,
+      "timeline": 2,
+      "lsn": "0/177FC000",
+      "followers": [
+        "pg3"
+      ]
+    },
+    {
+      "host": "repa-pg3",
+      "reachable": true,
+      "name": "pg3",
+      "role": "follower",
+      "accepts_writes": false,
+      "system_identifier": 7709674644654743593,
+      "notes": 160869,
+      "timeline": 2,
+      "follows": "repa-pg2",
+      "lsn": "0/164D9C40"
+    }
+  ]
+}

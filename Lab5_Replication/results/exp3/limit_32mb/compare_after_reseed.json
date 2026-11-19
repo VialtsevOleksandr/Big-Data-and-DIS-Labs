@@ -1,0 +1,19 @@
+{
+  "equal": true,
+  "nodes": [
+    {
+      "host": "repa-pg1",
+      "name": "pg1",
+      "notes": 460035,
+      "max_id": 460035,
+      "checksum": "fb4f012ece84101d30b01cede1f18eae"
+    },
+    {
+      "host": "repa-pg2",
+      "name": "pg2",
+      "notes": 460035,
+      "max_id": 460035,
+      "checksum": "fb4f012ece84101d30b01cede1f18eae"
+    }
+  ]
+}

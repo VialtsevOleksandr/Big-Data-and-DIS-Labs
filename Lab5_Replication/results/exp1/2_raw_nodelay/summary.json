@@ -1,0 +1,95 @@
+{
+  "label": "2_raw_nodelay",
+  "mode": "raw",
+  "leader": "repa-pg1",
+  "follower": "repa-pg2",
+  "iterations": 10000,
+  "stale_reads": 0,
+  "stale_share_percent": 0.0,
+  "first_stale_note_ids": [],
+  "seconds": 75.15,
+  "write_ms": {
+    "n": 10000,
+    "min": 1.836,
+    "p50": 3.469,
+    "p95": 4.897,
+    "p99": 6.124,
+    "max": 1067.931,
+    "mean": 3.697
+  },
+  "read_ms": {
+    "n": 10000,
+    "min": 1.554,
+    "p50": 3.656,
+    "p95": 5.468,
+    "p99": 6.76,
+    "max": 14.616,
+    "mean": 3.733
+  },
+  "replication_lag": {
+    "samples": 373,
+    "recovery_min_apply_delay": "0",
+    "leader_replay_lag_bytes": {
+      "n": 373,
+      "min": 0.0,
+      "p50": 0.0,
+      "p95": 488.0,
+      "p99": 592.0,
+      "max": 4136.0,
+      "mean": 246.0
+    },
+    "leader_write_lag_ms": {
+      "n": 371,
+      "min": 0.102,
+      "p50": 0.309,
+      "p95": 0.546,
+      "p99": 0.885,
+      "max": 1.525,
+      "mean": 0.328
+    },
+    "leader_flush_lag_ms": {
+      "n": 371,
+      "min": 0.124,
+      "p50": 2.561,
+      "p95": 4.486,
+      "p99": 14.436,
+      "max": 41.678,
+      "mean": 2.336
+    },
+    "leader_replay_lag_ms": {
+      "n": 371,
+      "min": 0.124,
+      "p50": 2.665,
+      "p95": 4.525,
+      "p99": 14.728,
+      "max": 41.805,
+      "mean": 2.406
+    },
+    "follower_replay_delay_ms": {
+      "n": 373,
+      "min": 0.0,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 12.797,
+      "max": 17.084,
+      "mean": 0.276
+    }
+  },
+  "raw_wait_ms_limit": 10.0,
+  "read_sources": {
+    "follower_waited": 9963,
+    "leader": 35,
+    "follower": 2
+  },
+  "reads_from_leader_percent": 0.35,
+  "reads_that_waited_percent": 99.63,
+  "wait_before_read_ms": {
+    "n": 9998,
+    "min": 1.198,
+    "p50": 2.872,
+    "p95": 4.182,
+    "p99": 5.454,
+    "max": 12.286,
+    "mean": 2.715
+  }
+}

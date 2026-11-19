@@ -1,0 +1,22 @@
+ Container rep-single-pg1-run-3b9d6d9e77a8 Creating 
+ Container rep-single-pg1-run-3b9d6d9e77a8 Created 
+[rewind] pg1: control data before rewind
+Database cluster state:               shut down
+Latest checkpoint location:           0/162A0178
+Latest checkpoint's TimeLineID:       1
+Latest checkpoint's PrevTimeLineID:   1
+pg_rewind: connected to server
+pg_rewind: servers diverged at WAL location 0/14882490 on timeline 1
+pg_rewind: rewinding from last common checkpoint at 0/C080B10 on timeline 1
+pg_rewind: reading source file list
+pg_rewind: reading target file list
+pg_rewind: reading WAL in target
+pg_rewind: need to copy 449 MB (total source directory size is 479 MB)
+     0/460594 kB (0%) copied
+236403/460594 kB (51%) copied
+460594/460594 kB (100%) copied
+pg_rewind: creating backup label and updating control file
+pg_rewind: syncing target data directory
+pg_rewind: Done!
+[set-upstream] pg1 -> repa-pg2 (slot pg1_slot)
+[rewind] pg1: done, next start will be a follower of repa-pg2

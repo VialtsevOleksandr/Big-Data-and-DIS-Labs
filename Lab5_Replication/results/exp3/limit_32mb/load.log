@@ -1,0 +1,17 @@
+23:27:13 run_id=limit_32mb-232713 rate=200.0/s hosts=repa-pg1 body=2500B ack_timeout=0.0s catch_up=1.0s
+23:27:13 connected to leader pg1 (repa-pg1) at seq 1
+23:27:18 ok=933 error=0 no_leader=0 skipped=0 node=pg1
+23:27:23 ok=1897 error=0 no_leader=0 skipped=0 node=pg1
+23:27:28 ok=2986 error=0 no_leader=0 skipped=0 node=pg1
+23:27:33 ok=4001 error=0 no_leader=0 skipped=0 node=pg1
+23:27:38 ok=5002 error=0 no_leader=0 skipped=0 node=pg1
+23:27:43 ok=6003 error=0 no_leader=0 skipped=0 node=pg1
+23:27:48 ok=7004 error=0 no_leader=0 skipped=0 node=pg1
+23:27:53 ok=8004 error=0 no_leader=0 skipped=0 node=pg1
+23:27:58 ok=9004 error=0 no_leader=0 skipped=0 node=pg1
+23:28:03 ok=10004 error=0 no_leader=0 skipped=0 node=pg1
+23:28:08 ok=10692 error=0 no_leader=0 skipped=214 node=pg1
+23:28:13 ok=11791 error=0 no_leader=0 skipped=214 node=pg1
+23:28:18 ok=12792 error=0 no_leader=0 skipped=214 node=pg1
+23:28:19 STOP file found
+23:28:19 finished: ok=13101 error=0 no_leader=0 skipped=214

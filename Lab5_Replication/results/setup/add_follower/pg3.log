@@ -1,0 +1,42 @@
+2026-11-18T22:31:13.387986402Z [bootstrap] pg3: empty data directory, cloning from repa-pg1
+2026-11-18T22:31:13.586223478Z pg_basebackup: initiating base backup, waiting for checkpoint to complete
+2026-11-18T22:31:15.567676020Z pg_basebackup: checkpoint completed
+2026-11-18T22:31:15.567709745Z pg_basebackup: write-ahead log start point: 0/C000210 on timeline 1
+2026-11-18T22:31:15.567712654Z pg_basebackup: starting background WAL receiver
+2026-11-18T22:31:15.716366564Z pg_basebackup: created replication slot "pg3_slot"
+2026-11-18T22:31:15.719655621Z     67/162340 kB (0%), 0/1 tablespace (...postgresql/18/docker/global/2695)
+2026-11-18T22:31:16.110544323Z 162366/162366 kB (100%), 0/1 tablespace (...esql/18/docker/global/pg_control)
+2026-11-18T22:31:16.111639239Z 162366/162366 kB (100%), 1/1 tablespace                                         
+2026-11-18T22:31:16.111658763Z pg_basebackup: write-ahead log end point: 0/C26E850
+2026-11-18T22:31:16.111663694Z pg_basebackup: waiting for background process to finish streaming ...
+2026-11-18T22:31:16.140136499Z pg_basebackup: syncing data to disk ...
+2026-11-18T22:31:25.232259292Z pg_basebackup: renaming backup_manifest.tmp to backup_manifest
+2026-11-18T22:31:25.259699102Z pg_basebackup: base backup completed
+2026-11-18T22:31:25.261437137Z [bootstrap] pg3: backup_label of the copy:
+2026-11-18T22:31:25.262867080Z START WAL LOCATION: 0/C000210 (file 00000001000000000000000C)
+2026-11-18T22:31:25.262903037Z CHECKPOINT LOCATION: 0/C124110
+2026-11-18T22:31:25.262907804Z BACKUP METHOD: streamed
+2026-11-18T22:31:25.262911877Z BACKUP FROM: primary
+2026-11-18T22:31:25.262914864Z START TIME: 2026-11-18 22:31:15 UTC
+2026-11-18T22:31:25.262917711Z LABEL: pg_basebackup base backup
+2026-11-18T22:31:25.262920633Z START TIMELINE: 1
+2026-11-18T22:31:25.276877730Z [set-upstream] pg3 -> repa-pg1 (slot pg3_slot)
+2026-11-18T22:31:25.282858165Z [bootstrap] pg3: clone finished, starting as a follower of repa-pg1
+2026-11-18T22:31:25.318046845Z 
+2026-11-18T22:31:25.318074578Z PostgreSQL Database directory appears to contain a database; Skipping initialization
+2026-11-18T22:31:25.318077272Z 
+2026-11-18T22:31:25.396774113Z 2026-11-18 22:31:25.396 UTC [1] LOG:  starting PostgreSQL 18.1 (Debian 18.1-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+2026-11-18T22:31:25.397274204Z 2026-11-18 22:31:25.396 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2026-11-18T22:31:25.397299126Z 2026-11-18 22:31:25.397 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2026-11-18T22:31:25.422238338Z 2026-11-18 22:31:25.421 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-11-18T22:31:25.458044409Z 2026-11-18 22:31:25.457 UTC [87] LOG:  database system was interrupted; last known up at 2026-11-18 22:31:15 UTC
+2026-11-18T22:31:26.484076181Z 2026-11-18 22:31:26.483 UTC [96] postgres@notes [unknown]: FATAL:  the database system is starting up
+2026-11-18T22:31:28.570426375Z 2026-11-18 22:31:28.570 UTC [104] postgres@notes [unknown]: FATAL:  the database system is starting up
+2026-11-18T22:31:29.564184228Z 2026-11-18 22:31:29.563 UTC [87] LOG:  starting backup recovery with redo LSN 0/C000210, checkpoint LSN 0/C124110, on timeline ID 1
+2026-11-18T22:31:29.564226945Z 2026-11-18 22:31:29.563 UTC [87] LOG:  entering standby mode
+2026-11-18T22:31:29.607995571Z 2026-11-18 22:31:29.607 UTC [87] LOG:  redo starts at 0/C000210
+2026-11-18T22:31:29.624129305Z 2026-11-18 22:31:29.623 UTC [87] LOG:  completed backup recovery with redo LSN 0/C000210 and end LSN 0/C26E850
+2026-11-18T22:31:29.624147855Z 2026-11-18 22:31:29.623 UTC [87] LOG:  consistent recovery state reached at 0/C26E850
+2026-11-18T22:31:29.624150180Z 2026-11-18 22:31:29.623 UTC [87] LOG:  invalid record length at 0/D0037B8: expected at least 24, got 0
+2026-11-18T22:31:29.624152125Z 2026-11-18 22:31:29.623 UTC [1] LOG:  database system is ready to accept read-only connections
+2026-11-18T22:31:29.647995820Z 2026-11-18 22:31:29.647 UTC [105] LOG:  started streaming WAL from primary at 0/D000000 on timeline 1

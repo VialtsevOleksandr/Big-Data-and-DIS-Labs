@@ -1,0 +1,63 @@
+2026-11-18T23:27:34.366939859Z 2026-11-18 23:27:34.366 UTC [13298] FATAL:  terminating walreceiver due to timeout
+2026-11-18T23:27:34.367473742Z 2026-11-18 23:27:34.367 UTC [75] LOG:  record with incorrect prev-link D0BFD083/D1BAD020 at 0/25BB67C0
+2026-11-18T23:27:38.347772837Z 2026-11-18 23:27:38.347 UTC [13690] FATAL:  streaming replication receiver "pg2" could not connect to the primary server: could not translate host name "repa-pg1" to address: Name or service not known
+2026-11-18T23:27:42.190862954Z 2026-11-18 23:27:42.190 UTC [13707] FATAL:  streaming replication receiver "pg2" could not connect to the primary server: could not translate host name "repa-pg1" to address: Name or service not known
+2026-11-18T23:27:46.032383390Z 2026-11-18 23:27:46.031 UTC [13724] FATAL:  streaming replication receiver "pg2" could not connect to the primary server: could not translate host name "repa-pg1" to address: Name or service not known
+2026-11-18T23:27:49.865906166Z 2026-11-18 23:27:49.865 UTC [13741] FATAL:  streaming replication receiver "pg2" could not connect to the primary server: could not translate host name "repa-pg1" to address: Name or service not known
+2026-11-18T23:27:49.886672640Z 2026-11-18 23:27:49.886 UTC [13761] FATAL:  could not start WAL streaming: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:27:49.886763482Z 	DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:27:49.887206816Z 2026-11-18 23:27:49.886 UTC [75] LOG:  waiting for WAL to become available at 0/25BB67D8
+2026-11-18T23:27:51.888639579Z 2026-11-18 23:27:51.888 UTC [13770] FATAL:  could not start WAL streaming: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:27:51.888659440Z 	DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:27:51.888967395Z 2026-11-18 23:27:51.888 UTC [75] LOG:  waiting for WAL to become available at 0/25BB67D8
+2026-11-18T23:27:53.889704352Z 2026-11-18 23:27:53.889 UTC [13780] FATAL:  could not start WAL streaming: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:27:53.889792346Z 	DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:27:53.889946784Z 2026-11-18 23:27:53.889 UTC [75] LOG:  waiting for WAL to become available at 0/25BB67D8
+2026-11-18T23:27:55.883613366Z 2026-11-18 23:27:55.883 UTC [13789] FATAL:  could not start WAL streaming: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:27:55.883630147Z 	DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:27:55.883968086Z 2026-11-18 23:27:55.883 UTC [75] LOG:  waiting for WAL to become available at 0/25BB67D8
+2026-11-18T23:27:57.883400849Z 2026-11-18 23:27:57.882 UTC [13797] FATAL:  could not start WAL streaming: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:27:57.883427759Z 	DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:27:57.883433804Z 2026-11-18 23:27:57.883 UTC [75] LOG:  waiting for WAL to become available at 0/25BB67D8
+2026-11-18T23:27:59.909259673Z 2026-11-18 23:27:59.908 UTC [13799] FATAL:  could not start WAL streaming: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:27:59.909317048Z 	DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:27:59.910013807Z 2026-11-18 23:27:59.909 UTC [75] LOG:  waiting for WAL to become available at 0/25BB67D8
+2026-11-18T23:28:01.894856115Z 2026-11-18 23:28:01.894 UTC [13808] FATAL:  could not start WAL streaming: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:01.894879708Z 	DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:01.894886093Z 2026-11-18 23:28:01.894 UTC [75] LOG:  waiting for WAL to become available at 0/25BB67D8
+2026-11-18T23:28:03.895968753Z 2026-11-18 23:28:03.895 UTC [13817] FATAL:  could not start WAL streaming: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:03.896003411Z 	DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:03.896499369Z 2026-11-18 23:28:03.896 UTC [75] LOG:  waiting for WAL to become available at 0/25BB67D8
+2026-11-18T23:28:05.886457588Z 2026-11-18 23:28:05.886 UTC [13825] FATAL:  could not start WAL streaming: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:05.886471115Z 	DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:05.886626475Z 2026-11-18 23:28:05.886 UTC [75] LOG:  waiting for WAL to become available at 0/25BB67D8
+2026-11-18T23:28:07.894374908Z 2026-11-18 23:28:07.894 UTC [13834] FATAL:  could not start WAL streaming: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:07.894394083Z 	DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:07.894797585Z 2026-11-18 23:28:07.894 UTC [75] LOG:  waiting for WAL to become available at 0/25BB67D8
+2026-11-18T23:28:09.888223356Z 2026-11-18 23:28:09.888 UTC [13843] FATAL:  could not start WAL streaming: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:09.888237001Z 	DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:09.888721341Z 2026-11-18 23:28:09.888 UTC [75] LOG:  waiting for WAL to become available at 0/25BB67D8
+2026-11-18T23:28:11.897393775Z 2026-11-18 23:28:11.897 UTC [13852] FATAL:  could not start WAL streaming: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:11.897406714Z 	DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:11.897957033Z 2026-11-18 23:28:11.897 UTC [75] LOG:  waiting for WAL to become available at 0/25BB67D8
+2026-11-18T23:28:13.898301442Z 2026-11-18 23:28:13.897 UTC [13861] FATAL:  could not start WAL streaming: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:13.898333083Z 	DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:13.898739682Z 2026-11-18 23:28:13.898 UTC [75] LOG:  waiting for WAL to become available at 0/25BB67D8
+2026-11-18T23:28:15.903242853Z 2026-11-18 23:28:15.902 UTC [13871] FATAL:  could not start WAL streaming: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:15.903286818Z 	DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:15.903476795Z 2026-11-18 23:28:15.903 UTC [75] LOG:  waiting for WAL to become available at 0/25BB67D8
+2026-11-18T23:28:17.902108987Z 2026-11-18 23:28:17.901 UTC [13880] FATAL:  could not start WAL streaming: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:17.902157464Z 	DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:17.902516322Z 2026-11-18 23:28:17.902 UTC [75] LOG:  waiting for WAL to become available at 0/25BB67D8
+2026-11-18T23:28:19.901238017Z 2026-11-18 23:28:19.901 UTC [13889] FATAL:  could not start WAL streaming: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:19.901246854Z 	DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:19.901609163Z 2026-11-18 23:28:19.901 UTC [75] LOG:  waiting for WAL to become available at 0/25BB67D8
+2026-11-18T23:28:21.895342341Z 2026-11-18 23:28:21.895 UTC [13901] FATAL:  could not start WAL streaming: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:21.895367187Z 	DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:21.895551294Z 2026-11-18 23:28:21.895 UTC [75] LOG:  waiting for WAL to become available at 0/25BB67D8
+2026-11-18T23:28:23.900498468Z 2026-11-18 23:28:23.900 UTC [13910] FATAL:  could not start WAL streaming: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:23.900527307Z 	DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:23.901183731Z 2026-11-18 23:28:23.900 UTC [75] LOG:  waiting for WAL to become available at 0/25BB67D8
+2026-11-18T23:28:25.900283598Z 2026-11-18 23:28:25.900 UTC [13922] FATAL:  could not start WAL streaming: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:25.900306508Z 	DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:25.900481677Z 2026-11-18 23:28:25.900 UTC [75] LOG:  waiting for WAL to become available at 0/25BB67D8

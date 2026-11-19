@@ -1,0 +1,66 @@
+{
+  "label": "sync",
+  "leader": "repa-pg1",
+  "writes_per_run": 10000,
+  "warmup_writes": 1000,
+  "settings": {
+    "synchronous_standby_names": "FIRST 1 (pg2)",
+    "synchronous_commit": "on",
+    "replicas": [
+      {
+        "application_name": "pg2",
+        "state": "streaming",
+        "sync_state": "sync"
+      },
+      {
+        "application_name": "pg3",
+        "state": "streaming",
+        "sync_state": "async"
+      }
+    ]
+  },
+  "runs": [
+    {
+      "n": 10000,
+      "min": 3.257,
+      "p50": 5.88,
+      "p95": 8.073,
+      "p99": 9.876,
+      "max": 23.082,
+      "mean": 5.993,
+      "run": 1,
+      "seconds": 60.661,
+      "writes_per_second": 164.9
+    },
+    {
+      "n": 10000,
+      "min": 3.378,
+      "p50": 5.498,
+      "p95": 7.525,
+      "p99": 9.348,
+      "max": 1849.143,
+      "mean": 5.845,
+      "run": 2,
+      "seconds": 59.129,
+      "writes_per_second": 169.1
+    },
+    {
+      "n": 10000,
+      "min": 3.411,
+      "p50": 5.747,
+      "p95": 8.09,
+      "p99": 9.91,
+      "max": 1147.143,
+      "mean": 6.11,
+      "run": 3,
+      "seconds": 61.779,
+      "writes_per_second": 161.9
+    }
+  ],
+  "median_of_runs_ms": {
+    "p50": 5.747,
+    "p95": 8.073,
+    "p99": 9.876,
+    "mean": 5.993
+  }
+}

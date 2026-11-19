@@ -36,3 +36,8 @@ transactions.csv
 
 # Lab6_Hive: CSV генеруються, у репозиторії лише метадані генерації
 /Lab6_Hive/data/*.csv
+
+# Lab5_Replication: CSV генеруються generate_data.py, у репозиторії лише маніфести генерації
+/Lab5_Replication/data/*.csv
+# Покрокові журнали записів навантаження (до 9 МіБ кожен): підсумки лежать поруч у summary.json, report.json і verify.json
+/Lab5_Replication/results/**/journal.csv

@@ -1,0 +1,14 @@
+{
+  "node": "repa-pg1",
+  "waiting_for_sync_standby": [
+    {
+      "pid": 4940,
+      "application_name": "notes-app",
+      "state": "active",
+      "wait_event_type": "IPC",
+      "wait_event": "SyncRep",
+      "waiting_s": "31.726",
+      "query": "INSERT INTO notes (author_id, title, body) VALUES ($1, $2, $3) RETURNI"
+    }
+  ]
+}

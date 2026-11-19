@@ -1,0 +1,20 @@
+2026-11-19T00:37:52.997383544Z 
+2026-11-19T00:37:52.997442424Z PostgreSQL Database directory appears to contain a database; Skipping initialization
+2026-11-19T00:37:52.997450074Z 
+2026-11-19T00:37:53.052082762Z 2026-11-19 00:37:53.051 UTC [1] LOG:  starting PostgreSQL 18.1 (Debian 18.1-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+2026-11-19T00:37:53.052123049Z 2026-11-19 00:37:53.051 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2026-11-19T00:37:53.052128033Z 2026-11-19 00:37:53.051 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2026-11-19T00:37:53.066659279Z 2026-11-19 00:37:53.066 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-11-19T00:37:53.084242906Z 2026-11-19 00:37:53.083 UTC [32] LOG:  database system was interrupted while in recovery at log time 2026-11-19 00:37:43 UTC
+2026-11-19T00:37:53.084283407Z 2026-11-19 00:37:53.083 UTC [32] HINT:  If this has occurred more than once some data might be corrupted and you might need to choose an earlier recovery target.
+2026-11-19T00:37:53.310519835Z 2026-11-19 00:37:53.310 UTC [39] postgres@notes [unknown]: FATAL:  the database system is starting up
+2026-11-19T00:37:54.403037546Z 2026-11-19 00:37:54.402 UTC [32] LOG:  starting backup recovery with redo LSN 0/C000210, checkpoint LSN 0/C080B10, on timeline ID 1
+2026-11-19T00:37:54.403083408Z 2026-11-19 00:37:54.402 UTC [32] LOG:  entering standby mode
+2026-11-19T00:37:54.416942048Z 2026-11-19 00:37:54.416 UTC [32] LOG:  redo starts at 0/C000210
+2026-11-19T00:37:54.427664292Z 2026-11-19 00:37:54.427 UTC [32] LOG:  completed backup recovery with redo LSN 0/C000210 and end LSN 0/C11ECD0
+2026-11-19T00:37:54.610080975Z 2026-11-19 00:37:54.609 UTC [46] postgres@notes [unknown]: FATAL:  the database system is not yet accepting connections
+2026-11-19T00:37:54.610107673Z 2026-11-19 00:37:54.609 UTC [46] postgres@notes [unknown]: DETAIL:  Consistent recovery state has not been yet reached.
+2026-11-19T00:37:54.684944968Z 2026-11-19 00:37:54.684 UTC [32] LOG:  consistent recovery state reached at 0/1849B440
+2026-11-19T00:37:54.684964454Z 2026-11-19 00:37:54.684 UTC [32] LOG:  invalid record length at 0/1849B440: expected at least 24, got 0
+2026-11-19T00:37:54.684966907Z 2026-11-19 00:37:54.684 UTC [1] LOG:  database system is ready to accept read-only connections
+2026-11-19T00:37:54.700241710Z 2026-11-19 00:37:54.699 UTC [47] LOG:  started streaming WAL from primary at 0/18000000 on timeline 2

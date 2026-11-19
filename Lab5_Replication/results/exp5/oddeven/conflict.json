@@ -1,0 +1,81 @@
+{
+  "run": "oddeven-002256",
+  "at": 1795047795.257,
+  "partition_confirmed": true,
+  "case1_title_vs_title": {
+    "note_id": 4003,
+    "pg1": {
+      "id": 4003,
+      "title": "oddeven-002256/title set on pg1",
+      "body": "both leaders will change the title",
+      "updated_at": "2026-11-19 00:23:18.267130+00:00",
+      "committed_at": "2026-11-19 00:23:18.267232+00:00"
+    },
+    "pg2": {
+      "id": 4003,
+      "title": "oddeven-002256/title set on pg2",
+      "body": "both leaders will change the title",
+      "updated_at": "2026-11-19 00:23:19.273986+00:00",
+      "committed_at": "2026-11-19 00:23:19.274135+00:00"
+    }
+  },
+  "case3_delete_vs_update": {
+    "note_id": 4005,
+    "deleted_on_pg1": true,
+    "updated_on_pg2": true,
+    "pg2_row": {
+      "id": 4005,
+      "title": "oddeven-002256/delete-vs-update target (original)",
+      "body": "body changed on pg2 while pg1 deleted the note",
+      "updated_at": "2026-11-19 00:23:19.285651+00:00",
+      "committed_at": "2026-11-19 00:23:19.285748+00:00"
+    }
+  },
+  "case2_inserts": {
+    "ids_from_pg1": [
+      4009,
+      4011,
+      4013,
+      4015,
+      4017,
+      4019,
+      4021,
+      4023,
+      4025,
+      4027,
+      4029,
+      4031,
+      4033,
+      4035,
+      4037,
+      4039,
+      4041,
+      4043,
+      4045,
+      4047
+    ],
+    "ids_from_pg2": [
+      4002,
+      4004,
+      4006,
+      4008,
+      4010,
+      4012,
+      4014,
+      4016,
+      4018,
+      4020,
+      4022,
+      4024,
+      4026,
+      4028,
+      4030,
+      4032,
+      4034,
+      4036,
+      4038,
+      4040
+    ],
+    "same_id_issued_by_both": []
+  }
+}

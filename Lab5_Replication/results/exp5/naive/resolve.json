@@ -1,0 +1,14 @@
+{
+  "resolved": [
+    {
+      "subscription": "sub_pg1_from_pg2",
+      "on": "repb-pg1",
+      "skipped_up_to_publisher_lsn": "0/1E698A8"
+    },
+    {
+      "subscription": "sub_pg2_from_pg1",
+      "on": "repb-pg2",
+      "skipped_up_to_publisher_lsn": "0/1E41C58"
+    }
+  ]
+}

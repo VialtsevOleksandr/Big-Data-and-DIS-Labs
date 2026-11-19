@@ -1,0 +1,51 @@
+{
+  "run_id": "run1-003626",
+  "hosts": [
+    "repa-pg1",
+    "repa-pg2",
+    "repa-pg3"
+  ],
+  "rate_requested": 150.0,
+  "rate_acked": 148.43,
+  "seconds": 68.422,
+  "started_at": 1795048586.336909,
+  "ended_at": 1795048654.753008,
+  "attempts": 10263,
+  "ok": 10156,
+  "error": 1,
+  "no_leader": 106,
+  "skipped_ticks": 0,
+  "ok_by_node": {
+    "pg1": 3164,
+    "pg2": 6992
+  },
+  "connections": [
+    {
+      "at": 1795048586.348703,
+      "host": "repa-pg1",
+      "node": "pg1",
+      "seq": 1
+    },
+    {
+      "at": 1795048609.481655,
+      "host": "repa-pg2",
+      "node": "pg2",
+      "seq": 3272
+    }
+  ],
+  "ack_timeout_fired": 0,
+  "latency_ms": {
+    "n": 10156,
+    "min": 1.61,
+    "p50": 3.289,
+    "p95": 5.145,
+    "p99": 7.388,
+    "max": 1158.435,
+    "mean": 3.907
+  },
+  "longest_ack_gap": {
+    "seconds": 2.062,
+    "from": 1795048607.423893,
+    "to": 1795048609.486212
+  }
+}

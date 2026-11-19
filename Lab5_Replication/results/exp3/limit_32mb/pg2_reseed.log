@@ -1,0 +1,41 @@
+2026-11-18T23:28:29.488354763Z [bootstrap] pg2: empty data directory, cloning from repa-pg1
+2026-11-18T23:28:29.659807889Z 
+2026-11-18T23:28:29.738565051Z pg_basebackup: initiating base backup, waiting for checkpoint to complete
+2026-11-18T23:28:30.155629514Z pg_basebackup: checkpoint completed
+2026-11-18T23:28:30.155830943Z pg_basebackup: write-ahead log start point: 0/30000028 on timeline 1
+2026-11-18T23:28:30.155847719Z pg_basebackup: starting background WAL receiver
+2026-11-18T23:28:30.196363312Z pg_basebackup: created replication slot "pg2_slot"
+2026-11-18T23:28:30.756905164Z 250138/300765 kB (83%), 0/1 tablespace (...resql/18/docker/base/16384/16386)
+2026-11-18T23:28:30.960876344Z 300775/300775 kB (100%), 0/1 tablespace (...esql/18/docker/global/pg_control)
+2026-11-18T23:28:30.978209570Z 300775/300775 kB (100%), 1/1 tablespace                                         
+2026-11-18T23:28:30.978230016Z pg_basebackup: write-ahead log end point: 0/30000120
+2026-11-18T23:28:30.978232403Z pg_basebackup: waiting for background process to finish streaming ...
+2026-11-18T23:28:30.981669417Z pg_basebackup: syncing data to disk ...
+2026-11-18T23:28:34.604903569Z pg_basebackup: renaming backup_manifest.tmp to backup_manifest
+2026-11-18T23:28:34.612768404Z pg_basebackup: base backup completed
+2026-11-18T23:28:34.614780139Z [bootstrap] pg2: backup_label of the copy:
+2026-11-18T23:28:34.617252719Z START WAL LOCATION: 0/30000028 (file 000000010000000000000030)
+2026-11-18T23:28:34.617284996Z CHECKPOINT LOCATION: 0/30000080
+2026-11-18T23:28:34.617290222Z BACKUP METHOD: streamed
+2026-11-18T23:28:34.617294165Z BACKUP FROM: primary
+2026-11-18T23:28:34.617297829Z START TIME: 2026-11-18 23:28:30 UTC
+2026-11-18T23:28:34.617301644Z LABEL: pg_basebackup base backup
+2026-11-18T23:28:34.617305349Z START TIMELINE: 1
+2026-11-18T23:28:34.634329201Z [set-upstream] pg2 -> repa-pg1 (slot pg2_slot)
+2026-11-18T23:28:34.641333303Z [bootstrap] pg2: clone finished, starting as a follower of repa-pg1
+2026-11-18T23:28:34.698871354Z 
+2026-11-18T23:28:34.698915701Z PostgreSQL Database directory appears to contain a database; Skipping initialization
+2026-11-18T23:28:34.698921741Z 
+2026-11-18T23:28:34.799726495Z 2026-11-18 23:28:34.799 UTC [1] LOG:  starting PostgreSQL 18.1 (Debian 18.1-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+2026-11-18T23:28:34.800365989Z 2026-11-18 23:28:34.799 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2026-11-18T23:28:34.800396709Z 2026-11-18 23:28:34.799 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2026-11-18T23:28:34.815229843Z 2026-11-18 23:28:34.814 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-11-18T23:28:34.833352327Z 2026-11-18 23:28:34.832 UTC [66] LOG:  database system was interrupted; last known up at 2026-11-18 23:28:30 UTC
+2026-11-18T23:28:36.178342503Z 2026-11-18 23:28:36.178 UTC [74] postgres@notes [unknown]: FATAL:  the database system is starting up
+2026-11-18T23:28:36.197584735Z 2026-11-18 23:28:36.197 UTC [66] LOG:  starting backup recovery with redo LSN 0/30000028, checkpoint LSN 0/30000080, on timeline ID 1
+2026-11-18T23:28:36.197614681Z 2026-11-18 23:28:36.197 UTC [66] LOG:  entering standby mode
+2026-11-18T23:28:36.210295445Z 2026-11-18 23:28:36.210 UTC [66] LOG:  redo starts at 0/30000028
+2026-11-18T23:28:36.215322896Z 2026-11-18 23:28:36.215 UTC [66] LOG:  completed backup recovery with redo LSN 0/30000028 and end LSN 0/30000120
+2026-11-18T23:28:36.215355526Z 2026-11-18 23:28:36.215 UTC [66] LOG:  consistent recovery state reached at 0/30000120
+2026-11-18T23:28:36.215398095Z 2026-11-18 23:28:36.215 UTC [1] LOG:  database system is ready to accept read-only connections
+2026-11-18T23:28:36.238001752Z 2026-11-18 23:28:36.237 UTC [75] LOG:  started streaming WAL from primary at 0/31000000 on timeline 1

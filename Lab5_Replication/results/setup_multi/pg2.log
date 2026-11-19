@@ -1,0 +1,90 @@
+2026-11-19T00:22:39.495863675Z The files belonging to this database system will be owned by user "postgres".
+2026-11-19T00:22:39.495894226Z This user must also own the server process.
+2026-11-19T00:22:39.495897031Z 
+2026-11-19T00:22:39.495898727Z The database cluster will be initialized with locale "en_US.utf8".
+2026-11-19T00:22:39.495900520Z The default database encoding has accordingly been set to "UTF8".
+2026-11-19T00:22:39.495902256Z The default text search configuration will be set to "english".
+2026-11-19T00:22:39.495903884Z 
+2026-11-19T00:22:39.495905342Z Data page checksums are enabled.
+2026-11-19T00:22:39.495906960Z 
+2026-11-19T00:22:39.495910397Z fixing permissions on existing directory /var/lib/postgresql/18/docker ... ok
+2026-11-19T00:22:39.499596206Z creating subdirectories ... ok
+2026-11-19T00:22:39.499626765Z selecting dynamic shared memory implementation ... posix
+2026-11-19T00:22:39.514239528Z selecting default "max_connections" ... 100
+2026-11-19T00:22:39.535619488Z selecting default "shared_buffers" ... 128MB
+2026-11-19T00:22:39.544231477Z selecting default time zone ... Etc/UTC
+2026-11-19T00:22:39.544666011Z creating configuration files ... ok
+2026-11-19T00:22:39.668059200Z running bootstrap script ... ok
+2026-11-19T00:22:40.113890414Z performing post-bootstrap initialization ... ok
+2026-11-19T00:22:41.624551924Z initdb: warning: enabling "trust" authentication for local connections
+2026-11-19T00:22:41.624578681Z initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+2026-11-19T00:22:41.624758202Z syncing data to disk ... ok
+2026-11-19T00:22:41.624773682Z 
+2026-11-19T00:22:41.624777599Z 
+2026-11-19T00:22:41.624781149Z Success. You can now start the database server using:
+2026-11-19T00:22:41.624784908Z 
+2026-11-19T00:22:41.624788339Z     pg_ctl -D /var/lib/postgresql/18/docker -l logfile start
+2026-11-19T00:22:41.624792091Z 
+2026-11-19T00:22:41.708821677Z waiting for server to start....2026-11-19 00:22:41.708 UTC [51] LOG:  starting PostgreSQL 18.1 (Debian 18.1-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+2026-11-19T00:22:41.716604521Z 2026-11-19 00:22:41.716 UTC [51] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-11-19T00:22:41.747712620Z 2026-11-19 00:22:41.747 UTC [57] LOG:  database system was shut down at 2026-11-19 00:22:40 UTC
+2026-11-19T00:22:41.782591659Z 2026-11-19 00:22:41.782 UTC [51] LOG:  database system is ready to accept connections
+2026-11-19T00:22:41.863853101Z  done
+2026-11-19T00:22:41.863901864Z server started
+2026-11-19T00:22:42.120142374Z CREATE DATABASE
+2026-11-19T00:22:42.120725869Z 
+2026-11-19T00:22:42.121124382Z 
+2026-11-19T00:22:42.121139048Z /usr/local/bin/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/10-schema.sql
+2026-11-19T00:22:42.177337702Z CREATE TABLE
+2026-11-19T00:22:42.181303676Z CREATE INDEX
+2026-11-19T00:22:42.183743508Z 
+2026-11-19T00:22:42.183798343Z 
+2026-11-19T00:22:42.183812627Z /usr/local/bin/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/20-roles.sh
+2026-11-19T00:22:42.265840702Z CREATE ROLE
+2026-11-19T00:22:42.269021289Z GRANT
+2026-11-19T00:22:42.281414840Z CREATE ROLE
+2026-11-19T00:22:42.285083634Z GRANT ROLE
+2026-11-19T00:22:42.288957422Z ALTER TABLE
+2026-11-19T00:22:42.292249444Z 
+2026-11-19T00:22:42.292280163Z /usr/local/bin/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/30-publication.sql
+2026-11-19T00:22:42.338736211Z CREATE PUBLICATION
+2026-11-19T00:22:42.339836937Z 
+2026-11-19T00:22:42.339870195Z 
+2026-11-19T00:22:42.341212269Z waiting for server to shut down....2026-11-19 00:22:42.341 UTC [51] LOG:  received fast shutdown request
+2026-11-19T00:22:42.345716277Z 2026-11-19 00:22:42.345 UTC [51] LOG:  aborting any active transactions
+2026-11-19T00:22:42.348696215Z 2026-11-19 00:22:42.348 UTC [51] LOG:  background worker "logical replication launcher" (PID 60) exited with exit code 1
+2026-11-19T00:22:42.349050322Z 2026-11-19 00:22:42.348 UTC [55] LOG:  shutting down
+2026-11-19T00:22:42.354294139Z 2026-11-19 00:22:42.354 UTC [55] LOG:  checkpoint starting: shutdown immediate
+2026-11-19T00:22:42.766853728Z 2026-11-19 00:22:42.766 UTC [55] LOG:  checkpoint complete: wrote 972 buffers (3.0%), wrote 4 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.032 s, sync=0.365 s, total=0.418 s; sync files=323, longest=0.008 s, average=0.002 s; distance=4398 kB, estimate=4398 kB; lsn=0/1BAB390, redo lsn=0/1BAB390
+2026-11-19T00:22:42.786934994Z 2026-11-19 00:22:42.786 UTC [51] LOG:  database system is shut down
+2026-11-19T00:22:42.842918235Z  done
+2026-11-19T00:22:42.842961634Z server stopped
+2026-11-19T00:22:42.844759152Z 
+2026-11-19T00:22:42.844792179Z PostgreSQL init process complete; ready for start up.
+2026-11-19T00:22:42.844795944Z 
+2026-11-19T00:22:42.914061249Z 2026-11-19 00:22:42.913 UTC [1] LOG:  starting PostgreSQL 18.1 (Debian 18.1-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+2026-11-19T00:22:42.914100558Z 2026-11-19 00:22:42.913 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2026-11-19T00:22:42.914106295Z 2026-11-19 00:22:42.913 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2026-11-19T00:22:42.929087830Z 2026-11-19 00:22:42.928 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-11-19T00:22:42.948774705Z 2026-11-19 00:22:42.948 UTC [80] LOG:  database system was shut down at 2026-11-19 00:22:42 UTC
+2026-11-19T00:22:42.958455247Z 2026-11-19 00:22:42.957 UTC [1] LOG:  database system is ready to accept connections
+2026-11-19T00:22:45.703958001Z 2026-11-19 00:22:45.703 UTC [92] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: CREATE_REPLICATION_SLOT "sub_pg1_from_pg2" LOGICAL pgoutput (SNAPSHOT 'nothing')
+2026-11-19T00:22:45.704006694Z 2026-11-19 00:22:45.703 UTC [92] replicator@notes sub_pg1_from_pg2: STATEMENT:  CREATE_REPLICATION_SLOT "sub_pg1_from_pg2" LOGICAL pgoutput (SNAPSHOT 'nothing')
+2026-11-19T00:22:45.739067810Z 2026-11-19 00:22:45.738 UTC [92] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1BAC228
+2026-11-19T00:22:45.739098110Z 2026-11-19 00:22:45.738 UTC [92] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:22:45.739102258Z 2026-11-19 00:22:45.738 UTC [92] replicator@notes sub_pg1_from_pg2: STATEMENT:  CREATE_REPLICATION_SLOT "sub_pg1_from_pg2" LOGICAL pgoutput (SNAPSHOT 'nothing')
+2026-11-19T00:22:45.751527908Z 2026-11-19 00:22:45.751 UTC [92] replicator@notes sub_pg1_from_pg2: LOG:  released logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:22:45.751569953Z 2026-11-19 00:22:45.751 UTC [92] replicator@notes sub_pg1_from_pg2: STATEMENT:  CREATE_REPLICATION_SLOT "sub_pg1_from_pg2" LOGICAL pgoutput (SNAPSHOT 'nothing')
+2026-11-19T00:22:45.770591782Z 2026-11-19 00:22:45.770 UTC [94] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:22:45.770625834Z 2026-11-19 00:22:45.770 UTC [94] replicator@notes sub_pg1_from_pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:22:45.770814473Z 2026-11-19 00:22:45.770 UTC [94] replicator@notes sub_pg1_from_pg2: LOG:  received replication command: START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/0 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:22:45.770831994Z 2026-11-19 00:22:45.770 UTC [94] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/0 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:22:45.770837296Z 2026-11-19 00:22:45.770 UTC [94] replicator@notes sub_pg1_from_pg2: LOG:  acquired logical replication slot "sub_pg1_from_pg2"
+2026-11-19T00:22:45.770841708Z 2026-11-19 00:22:45.770 UTC [94] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/0 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:22:45.771432069Z 2026-11-19 00:22:45.771 UTC [94] replicator@notes sub_pg1_from_pg2: LOG:  starting logical decoding for slot "sub_pg1_from_pg2"
+2026-11-19T00:22:45.771451522Z 2026-11-19 00:22:45.771 UTC [94] replicator@notes sub_pg1_from_pg2: DETAIL:  Streaming transactions committing after 0/1BAC260, reading WAL from 0/1BAC228.
+2026-11-19T00:22:45.771455650Z 2026-11-19 00:22:45.771 UTC [94] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/0 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:22:45.771569996Z 2026-11-19 00:22:45.771 UTC [94] replicator@notes sub_pg1_from_pg2: LOG:  logical decoding found consistent point at 0/1BAC228
+2026-11-19T00:22:45.771594461Z 2026-11-19 00:22:45.771 UTC [94] replicator@notes sub_pg1_from_pg2: DETAIL:  There are no running transactions.
+2026-11-19T00:22:45.771597366Z 2026-11-19 00:22:45.771 UTC [94] replicator@notes sub_pg1_from_pg2: STATEMENT:  START_REPLICATION SLOT "sub_pg1_from_pg2" LOGICAL 0/0 (proto_version '4', streaming 'parallel', origin 'none', publication_names '"notes_pub"')
+2026-11-19T00:22:45.840400754Z 2026-11-19 00:22:45.840 UTC [95] LOG:  logical replication apply worker for subscription "sub_pg2_from_pg1" has started

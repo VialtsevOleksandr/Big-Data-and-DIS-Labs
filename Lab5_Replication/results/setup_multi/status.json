@@ -1,0 +1,108 @@
+[
+  {
+    "name": "pg1",
+    "notes": 2000,
+    "sequence": {
+      "increment_by": 2,
+      "last_value": 3999
+    },
+    "subscriptions": [
+      {
+        "subname": "sub_pg1_from_pg2",
+        "subenabled": true,
+        "worker_running": true,
+        "received_lsn": "0/1D93AB0",
+        "latest_end_lsn": "0/1D93AB0",
+        "last_msg_receipt_time": "2026-11-19 00:22:48.634299+00:00"
+      }
+    ],
+    "subscription_stats": [
+      {
+        "subid": 16405,
+        "subname": "sub_pg1_from_pg2",
+        "apply_error_count": 0,
+        "sync_error_count": 0,
+        "confl_insert_exists": 0,
+        "confl_update_origin_differs": 0,
+        "confl_update_exists": 0,
+        "confl_update_missing": 0,
+        "confl_delete_origin_differs": 0,
+        "confl_delete_missing": 0,
+        "confl_multiple_unique_conflicts": 0,
+        "stats_reset": null
+      }
+    ],
+    "slots_for_other_node": [
+      {
+        "slot_name": "sub_pg2_from_pg1",
+        "active": true,
+        "wal_status": "reserved",
+        "confirmed_flush_lsn": "0/1D80F68",
+        "not_confirmed_bytes": 0
+      }
+    ],
+    "host": "repb-pg1",
+    "track_commit_timestamp": "on",
+    "wal_level": "logical",
+    "published_tables": [
+      {
+        "pubname": "notes_pub",
+        "schemaname": "public",
+        "tablename": "notes"
+      }
+    ]
+  },
+  {
+    "name": "pg2",
+    "notes": 2000,
+    "sequence": {
+      "increment_by": 2,
+      "last_value": null
+    },
+    "subscriptions": [
+      {
+        "subname": "sub_pg2_from_pg1",
+        "subenabled": true,
+        "worker_running": true,
+        "received_lsn": "0/1D80F68",
+        "latest_end_lsn": "0/1D80F68",
+        "last_msg_receipt_time": "2026-11-19 00:22:48.424016+00:00"
+      }
+    ],
+    "subscription_stats": [
+      {
+        "subid": 16405,
+        "subname": "sub_pg2_from_pg1",
+        "apply_error_count": 0,
+        "sync_error_count": 0,
+        "confl_insert_exists": 0,
+        "confl_update_origin_differs": 0,
+        "confl_update_exists": 0,
+        "confl_update_missing": 0,
+        "confl_delete_origin_differs": 0,
+        "confl_delete_missing": 0,
+        "confl_multiple_unique_conflicts": 0,
+        "stats_reset": null
+      }
+    ],
+    "slots_for_other_node": [
+      {
+        "slot_name": "sub_pg1_from_pg2",
+        "active": true,
+        "wal_status": "reserved",
+        "confirmed_flush_lsn": "0/1D93AB0",
+        "not_confirmed_bytes": 0
+      }
+    ],
+    "host": "repb-pg2",
+    "track_commit_timestamp": "on",
+    "wal_level": "logical",
+    "published_tables": [
+      {
+        "pubname": "notes_pub",
+        "schemaname": "public",
+        "tablename": "notes"
+      }
+    ]
+  }
+]

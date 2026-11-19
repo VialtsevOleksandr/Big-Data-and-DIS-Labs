@@ -1,0 +1,42 @@
+{
+  "run_id": "add_follower-223059",
+  "hosts": [
+    "repa-pg1"
+  ],
+  "rate_requested": 100.0,
+  "rate_acked": 100.0,
+  "seconds": 37.822,
+  "started_at": 1795041059.838848,
+  "ended_at": 1795041097.654319,
+  "attempts": 3782,
+  "ok": 3782,
+  "error": 0,
+  "no_leader": 0,
+  "skipped_ticks": 0,
+  "ok_by_node": {
+    "pg1": 3782
+  },
+  "connections": [
+    {
+      "at": 1795041059.848663,
+      "host": "repa-pg1",
+      "node": "pg1",
+      "seq": 1
+    }
+  ],
+  "ack_timeout_fired": 0,
+  "latency_ms": {
+    "n": 3782,
+    "min": 2.621,
+    "p50": 5.326,
+    "p95": 13.957,
+    "p99": 22.774,
+    "max": 278.691,
+    "mean": 6.794
+  },
+  "longest_ack_gap": {
+    "seconds": 0.279,
+    "from": 1795041074.900244,
+    "to": 1795041075.178993
+  }
+}

@@ -1,0 +1,41 @@
+2026-11-19T00:36:47.431341544Z 2026-11-19 00:36:47.430 UTC [74] FATAL:  could not receive data from WAL stream: server closed the connection unexpectedly
+2026-11-19T00:36:47.431419314Z 		This probably means the server terminated abnormally
+2026-11-19T00:36:47.431429873Z 		before or while processing the request.
+2026-11-19T00:36:47.431443989Z 2026-11-19 00:36:47.431 UTC [73] LOG:  invalid record length at 0/14882490: expected at least 24, got 0
+2026-11-19T00:36:47.443561629Z 2026-11-19 00:36:47.443 UTC [438] FATAL:  streaming replication receiver "pg2" could not connect to the primary server: connection to server at "repa-pg1" (172.27.0.2), port 5432 failed: Connection refused
+2026-11-19T00:36:47.443586320Z 		Is the server running on that host and accepting TCP/IP connections?
+2026-11-19T00:36:47.443821681Z 2026-11-19 00:36:47.443 UTC [73] LOG:  waiting for WAL to become available at 0/148824A8
+2026-11-19T00:36:49.381139555Z 2026-11-19 00:36:49.380 UTC [73] LOG:  received promote request
+2026-11-19T00:36:49.381185948Z 2026-11-19 00:36:49.380 UTC [73] LOG:  redo done at 0/14882468 system usage: CPU: user: 0.81 s, system: 0.80 s, elapsed: 92.58 s
+2026-11-19T00:36:49.381198304Z 2026-11-19 00:36:49.380 UTC [73] LOG:  last completed transaction was at log time 2026-11-19 00:36:47.420686+00
+2026-11-19T00:36:49.391487631Z 2026-11-19 00:36:49.391 UTC [73] LOG:  selected new timeline ID: 2
+2026-11-19T00:36:49.452561440Z 2026-11-19 00:36:49.452 UTC [73] LOG:  archive recovery complete
+2026-11-19T00:36:49.462241670Z 2026-11-19 00:36:49.461 UTC [71] LOG:  checkpoint starting: force
+2026-11-19T00:36:49.467686094Z 2026-11-19 00:36:49.466 UTC [1] LOG:  database system is ready to accept connections
+2026-11-19T00:36:52.268761881Z 2026-11-19 00:36:52.268 UTC [71] LOG:  checkpoint complete: wrote 16461 buffers (50.2%), wrote 6 SLRU buffers; 0 WAL file(s) added, 0 removed, 18 recycled; write=0.163 s, sync=2.356 s, total=2.807 s; sync files=27, longest=2.258 s, average=0.088 s; distance=303625 kB, estimate=303625 kB; lsn=0/14928400, redo lsn=0/148824C8
+2026-11-19T00:36:52.268830597Z 2026-11-19 00:36:52.268 UTC [71] LOG:  checkpoint starting: immediate force wait
+2026-11-19T00:36:52.355804847Z 2026-11-19 00:36:52.355 UTC [71] LOG:  checkpoint complete: wrote 198 buffers (0.6%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.021 s, sync=0.020 s, total=0.088 s; sync files=7, longest=0.007 s, average=0.003 s; distance=1431 kB, estimate=273405 kB; lsn=0/14A272B8, redo lsn=0/149E83D0
+2026-11-19T00:36:57.293682558Z 2026-11-19 00:36:57.293 UTC [695] replicator@[unknown] pg3: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:36:57.293716707Z 2026-11-19 00:36:57.293 UTC [695] replicator@[unknown] pg3: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:36:57.293876129Z 2026-11-19 00:36:57.293 UTC [695] replicator@[unknown] pg3: LOG:  received replication command: TIMELINE_HISTORY 2
+2026-11-19T00:36:57.293888092Z 2026-11-19 00:36:57.293 UTC [695] replicator@[unknown] pg3: STATEMENT:  TIMELINE_HISTORY 2
+2026-11-19T00:36:57.307457978Z 2026-11-19 00:36:57.307 UTC [695] replicator@[unknown] pg3: LOG:  received replication command: START_REPLICATION SLOT "pg3_slot" 0/14000000 TIMELINE 1
+2026-11-19T00:36:57.307484569Z 2026-11-19 00:36:57.307 UTC [695] replicator@[unknown] pg3: STATEMENT:  START_REPLICATION SLOT "pg3_slot" 0/14000000 TIMELINE 1
+2026-11-19T00:36:57.307489232Z 2026-11-19 00:36:57.307 UTC [695] replicator@[unknown] pg3: LOG:  acquired physical replication slot "pg3_slot"
+2026-11-19T00:36:57.307492836Z 2026-11-19 00:36:57.307 UTC [695] replicator@[unknown] pg3: STATEMENT:  START_REPLICATION SLOT "pg3_slot" 0/14000000 TIMELINE 1
+2026-11-19T00:36:57.311738512Z 2026-11-19 00:36:57.311 UTC [695] replicator@[unknown] pg3: LOG:  released physical replication slot "pg3_slot"
+2026-11-19T00:36:57.311756879Z 2026-11-19 00:36:57.311 UTC [695] replicator@[unknown] pg3: STATEMENT:  START_REPLICATION SLOT "pg3_slot" 0/14000000 TIMELINE 1
+2026-11-19T00:36:57.312309230Z 2026-11-19 00:36:57.312 UTC [695] replicator@[unknown] pg3: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:36:57.312322583Z 2026-11-19 00:36:57.312 UTC [695] replicator@[unknown] pg3: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:36:57.312482293Z 2026-11-19 00:36:57.312 UTC [695] replicator@[unknown] pg3: LOG:  received replication command: START_REPLICATION SLOT "pg3_slot" 0/14000000 TIMELINE 2
+2026-11-19T00:36:57.312493939Z 2026-11-19 00:36:57.312 UTC [695] replicator@[unknown] pg3: STATEMENT:  START_REPLICATION SLOT "pg3_slot" 0/14000000 TIMELINE 2
+2026-11-19T00:36:57.312508921Z 2026-11-19 00:36:57.312 UTC [695] replicator@[unknown] pg3: LOG:  acquired physical replication slot "pg3_slot"
+2026-11-19T00:36:57.312510964Z 2026-11-19 00:36:57.312 UTC [695] replicator@[unknown] pg3: STATEMENT:  START_REPLICATION SLOT "pg3_slot" 0/14000000 TIMELINE 2
+2026-11-19T00:37:43.937186400Z 2026-11-19 00:37:43.936 UTC [71] LOG:  checkpoint starting: immediate force wait
+2026-11-19T00:37:44.392193257Z 2026-11-19 00:37:44.391 UTC [71] LOG:  checkpoint complete: wrote 7607 buffers (23.2%), wrote 4 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.173 s, sync=0.019 s, total=0.456 s; sync files=8, longest=0.011 s, average=0.003 s; distance=60107 kB, estimate=252076 kB; lsn=0/1849B3C8, redo lsn=0/1849B370
+2026-11-19T00:37:54.699675801Z 2026-11-19 00:37:54.699 UTC [925] replicator@[unknown] pg1: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-19T00:37:54.699732195Z 2026-11-19 00:37:54.699 UTC [925] replicator@[unknown] pg1: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-19T00:37:54.699738489Z 2026-11-19 00:37:54.699 UTC [925] replicator@[unknown] pg1: LOG:  received replication command: START_REPLICATION SLOT "pg1_slot" 0/18000000 TIMELINE 2
+2026-11-19T00:37:54.699742795Z 2026-11-19 00:37:54.699 UTC [925] replicator@[unknown] pg1: STATEMENT:  START_REPLICATION SLOT "pg1_slot" 0/18000000 TIMELINE 2
+2026-11-19T00:37:54.699746642Z 2026-11-19 00:37:54.699 UTC [925] replicator@[unknown] pg1: LOG:  acquired physical replication slot "pg1_slot"
+2026-11-19T00:37:54.699750431Z 2026-11-19 00:37:54.699 UTC [925] replicator@[unknown] pg1: STATEMENT:  START_REPLICATION SLOT "pg1_slot" 0/18000000 TIMELINE 2

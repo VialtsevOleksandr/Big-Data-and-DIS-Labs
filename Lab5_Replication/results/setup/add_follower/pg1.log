@@ -1,0 +1,132 @@
+2026-11-18T22:30:21.503085754Z The files belonging to this database system will be owned by user "postgres".
+2026-11-18T22:30:21.503157964Z This user must also own the server process.
+2026-11-18T22:30:21.503164292Z 
+2026-11-18T22:30:21.503186601Z The database cluster will be initialized with locale "en_US.utf8".
+2026-11-18T22:30:21.503191079Z The default database encoding has accordingly been set to "UTF8".
+2026-11-18T22:30:21.503194934Z The default text search configuration will be set to "english".
+2026-11-18T22:30:21.503198749Z 
+2026-11-18T22:30:21.503202114Z Data page checksums are enabled.
+2026-11-18T22:30:21.503205770Z 
+2026-11-18T22:30:21.503209309Z fixing permissions on existing directory /var/lib/postgresql/18/docker ... ok
+2026-11-18T22:30:21.508080430Z creating subdirectories ... ok
+2026-11-18T22:30:21.508116168Z selecting dynamic shared memory implementation ... posix
+2026-11-18T22:30:21.597041238Z selecting default "max_connections" ... 100
+2026-11-18T22:30:21.625338425Z selecting default "shared_buffers" ... 128MB
+2026-11-18T22:30:21.643973248Z selecting default time zone ... Etc/UTC
+2026-11-18T22:30:21.647748957Z creating configuration files ... ok
+2026-11-18T22:30:21.863315354Z running bootstrap script ... ok
+2026-11-18T22:30:22.378825630Z performing post-bootstrap initialization ... ok
+2026-11-18T22:30:23.592123361Z initdb: warning: enabling "trust" authentication for local connections
+2026-11-18T22:30:23.592144854Z syncing data to disk ... ok
+2026-11-18T22:30:23.592190838Z 
+2026-11-18T22:30:23.592195745Z 
+2026-11-18T22:30:23.592198746Z Success. You can now start the database server using:
+2026-11-18T22:30:23.592201913Z 
+2026-11-18T22:30:23.592204771Z     pg_ctl -D /var/lib/postgresql/18/docker -l logfile start
+2026-11-18T22:30:23.592172482Z initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+2026-11-18T22:30:23.592208063Z 
+2026-11-18T22:30:23.606741222Z 2026-11-18 22:30:23.606 GMT [46] LOG:  skipping missing configuration file "/var/lib/postgresql/node.conf"
+2026-11-18T22:30:23.609560289Z 2026-11-18 22:30:23.609 GMT [46] LOG:  skipping missing configuration file "/var/lib/postgresql/node.conf"
+2026-11-18T22:30:23.631004876Z waiting for server to start....2026-11-18 22:30:23.630 GMT [51] LOG:  skipping missing configuration file "/var/lib/postgresql/node.conf"
+2026-11-18T22:30:23.632833562Z 2026-11-18 22:30:23.632 GMT [51] LOG:  skipping missing configuration file "/var/lib/postgresql/node.conf"
+2026-11-18T22:30:23.658306579Z 2026-11-18 22:30:23.658 UTC [51] LOG:  starting PostgreSQL 18.1 (Debian 18.1-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+2026-11-18T22:30:23.665286213Z 2026-11-18 22:30:23.665 UTC [51] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-11-18T22:30:23.684654380Z 2026-11-18 22:30:23.684 UTC [57] LOG:  database system was shut down at 2026-11-18 22:30:22 UTC
+2026-11-18T22:30:23.703181142Z 2026-11-18 22:30:23.702 UTC [51] LOG:  database system is ready to accept connections
+2026-11-18T22:30:23.721693252Z  done
+2026-11-18T22:30:23.721722021Z server started
+2026-11-18T22:30:23.932669635Z CREATE DATABASE
+2026-11-18T22:30:23.933994710Z 
+2026-11-18T22:30:23.934265160Z 
+2026-11-18T22:30:23.934456844Z /usr/local/bin/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/10-schema.sql
+2026-11-18T22:30:23.992661488Z CREATE TABLE
+2026-11-18T22:30:23.996771867Z CREATE INDEX
+2026-11-18T22:30:23.998013651Z 
+2026-11-18T22:30:23.998036144Z 
+2026-11-18T22:30:23.998039729Z /usr/local/bin/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/20-roles.sh
+2026-11-18T22:30:24.051381962Z CREATE ROLE
+2026-11-18T22:30:24.056240166Z GRANT
+2026-11-18T22:30:24.063026977Z CREATE ROLE
+2026-11-18T22:30:24.066784122Z GRANT ROLE
+2026-11-18T22:30:24.070811586Z ALTER TABLE
+2026-11-18T22:30:24.073643837Z 
+2026-11-18T22:30:24.075197745Z waiting for server to shut down....2026-11-18 22:30:24.075 UTC [51] LOG:  received fast shutdown request
+2026-11-18T22:30:24.084354877Z 2026-11-18 22:30:24.083 UTC [51] LOG:  aborting any active transactions
+2026-11-18T22:30:24.087378082Z 2026-11-18 22:30:24.086 UTC [51] LOG:  background worker "logical replication launcher" (PID 60) exited with exit code 1
+2026-11-18T22:30:24.089018351Z 2026-11-18 22:30:24.088 UTC [55] LOG:  shutting down
+2026-11-18T22:30:24.098068878Z 2026-11-18 22:30:24.097 UTC [55] LOG:  checkpoint starting: shutdown immediate
+2026-11-18T22:30:24.519699020Z 2026-11-18 22:30:24.519 UTC [55] LOG:  checkpoint complete: wrote 965 buffers (2.9%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.027 s, sync=0.367 s, total=0.431 s; sync files=322, longest=0.023 s, average=0.002 s; distance=4387 kB, estimate=4387 kB; lsn=0/1BA84B8, redo lsn=0/1BA84B8
+2026-11-18T22:30:24.555021783Z 2026-11-18 22:30:24.554 UTC [51] LOG:  database system is shut down
+2026-11-18T22:30:24.576658851Z  done
+2026-11-18T22:30:24.576712305Z server stopped
+2026-11-18T22:30:24.579714519Z 
+2026-11-18T22:30:24.579761358Z PostgreSQL init process complete; ready for start up.
+2026-11-18T22:30:24.579768553Z 
+2026-11-18T22:30:24.595256414Z 2026-11-18 22:30:24.594 GMT [1] LOG:  skipping missing configuration file "/var/lib/postgresql/node.conf"
+2026-11-18T22:30:24.598508487Z 2026-11-18 22:30:24.598 GMT [1] LOG:  skipping missing configuration file "/var/lib/postgresql/node.conf"
+2026-11-18T22:30:24.623795933Z 2026-11-18 22:30:24.623 UTC [1] LOG:  starting PostgreSQL 18.1 (Debian 18.1-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+2026-11-18T22:30:24.624475524Z 2026-11-18 22:30:24.624 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2026-11-18T22:30:24.624497818Z 2026-11-18 22:30:24.624 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2026-11-18T22:30:24.638917210Z 2026-11-18 22:30:24.638 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-11-18T22:30:24.655497740Z 2026-11-18 22:30:24.655 UTC [78] LOG:  database system was shut down at 2026-11-18 22:30:24 UTC
+2026-11-18T22:30:24.667641554Z 2026-11-18 22:30:24.667 UTC [1] LOG:  database system is ready to accept connections
+2026-11-18T22:30:25.205497413Z 2026-11-18 22:30:25.204 UTC [84] replicator@[unknown] pg_basebackup: LOG:  received replication command: SHOW data_directory_mode
+2026-11-18T22:30:25.205542099Z 2026-11-18 22:30:25.204 UTC [84] replicator@[unknown] pg_basebackup: STATEMENT:  SHOW data_directory_mode
+2026-11-18T22:30:25.205710278Z 2026-11-18 22:30:25.205 UTC [84] replicator@[unknown] pg_basebackup: LOG:  received replication command: SHOW wal_segment_size
+2026-11-18T22:30:25.205738989Z 2026-11-18 22:30:25.205 UTC [84] replicator@[unknown] pg_basebackup: STATEMENT:  SHOW wal_segment_size
+2026-11-18T22:30:25.205994331Z 2026-11-18 22:30:25.205 UTC [84] replicator@[unknown] pg_basebackup: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T22:30:25.206029609Z 2026-11-18 22:30:25.205 UTC [84] replicator@[unknown] pg_basebackup: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T22:30:25.206683773Z 2026-11-18 22:30:25.206 UTC [84] replicator@[unknown] pg_basebackup: LOG:  received replication command: BASE_BACKUP ( LABEL 'pg_basebackup base backup',  PROGRESS,  CHECKPOINT 'fast',  WAIT 0,  MANIFEST 'yes',  TARGET 'client')
+2026-11-18T22:30:25.206703279Z 2026-11-18 22:30:25.206 UTC [84] replicator@[unknown] pg_basebackup: STATEMENT:  BASE_BACKUP ( LABEL 'pg_basebackup base backup',  PROGRESS,  CHECKPOINT 'fast',  WAIT 0,  MANIFEST 'yes',  TARGET 'client')
+2026-11-18T22:30:25.215856693Z 2026-11-18 22:30:25.215 UTC [76] LOG:  checkpoint starting: immediate force wait
+2026-11-18T22:30:25.328886726Z 2026-11-18 22:30:25.328 UTC [76] LOG:  checkpoint complete: wrote 0 buffers (0.0%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.017 s, sync=0.008 s, total=0.113 s; sync files=2, longest=0.004 s, average=0.004 s; distance=4446 kB, estimate=4446 kB; lsn=0/2000080, redo lsn=0/2000028
+2026-11-18T22:30:25.348204882Z 2026-11-18 22:30:25.347 UTC [85] replicator@[unknown] pg_basebackup: LOG:  received replication command: SHOW data_directory_mode
+2026-11-18T22:30:25.348253808Z 2026-11-18 22:30:25.347 UTC [85] replicator@[unknown] pg_basebackup: STATEMENT:  SHOW data_directory_mode
+2026-11-18T22:30:25.348488980Z 2026-11-18 22:30:25.348 UTC [85] replicator@[unknown] pg_basebackup: LOG:  received replication command: CREATE_REPLICATION_SLOT "pg2_slot" PHYSICAL ( RESERVE_WAL)
+2026-11-18T22:30:25.348522227Z 2026-11-18 22:30:25.348 UTC [85] replicator@[unknown] pg_basebackup: STATEMENT:  CREATE_REPLICATION_SLOT "pg2_slot" PHYSICAL ( RESERVE_WAL)
+2026-11-18T22:30:25.406411301Z 2026-11-18 22:30:25.406 UTC [85] replicator@[unknown] pg_basebackup: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T22:30:25.406459279Z 2026-11-18 22:30:25.406 UTC [85] replicator@[unknown] pg_basebackup: STATEMENT:  CREATE_REPLICATION_SLOT "pg2_slot" PHYSICAL ( RESERVE_WAL)
+2026-11-18T22:30:25.407746574Z 2026-11-18 22:30:25.407 UTC [85] replicator@[unknown] pg_basebackup: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T22:30:25.407757591Z 2026-11-18 22:30:25.407 UTC [85] replicator@[unknown] pg_basebackup: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T22:30:25.408034305Z 2026-11-18 22:30:25.407 UTC [85] replicator@[unknown] pg_basebackup: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/2000000 TIMELINE 1
+2026-11-18T22:30:25.408043134Z 2026-11-18 22:30:25.407 UTC [85] replicator@[unknown] pg_basebackup: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/2000000 TIMELINE 1
+2026-11-18T22:30:25.408045964Z 2026-11-18 22:30:25.407 UTC [85] replicator@[unknown] pg_basebackup: LOG:  acquired physical replication slot "pg2_slot"
+2026-11-18T22:30:25.408048133Z 2026-11-18 22:30:25.407 UTC [85] replicator@[unknown] pg_basebackup: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/2000000 TIMELINE 1
+2026-11-18T22:30:25.474054294Z 2026-11-18 22:30:25.473 UTC [85] replicator@[unknown] pg_basebackup: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T22:30:25.474095846Z 2026-11-18 22:30:25.473 UTC [85] replicator@[unknown] pg_basebackup: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/2000000 TIMELINE 1
+2026-11-18T22:30:28.556230424Z 2026-11-18 22:30:28.556 UTC [102] replicator@[unknown] pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T22:30:28.556261825Z 2026-11-18 22:30:28.556 UTC [102] replicator@[unknown] pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T22:30:28.556264818Z 2026-11-18 22:30:28.556 UTC [102] replicator@[unknown] pg2: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/3000000 TIMELINE 1
+2026-11-18T22:30:28.556267356Z 2026-11-18 22:30:28.556 UTC [102] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/3000000 TIMELINE 1
+2026-11-18T22:30:28.556343972Z 2026-11-18 22:30:28.556 UTC [102] replicator@[unknown] pg2: LOG:  acquired physical replication slot "pg2_slot"
+2026-11-18T22:30:28.556350960Z 2026-11-18 22:30:28.556 UTC [102] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/3000000 TIMELINE 1
+2026-11-18T22:31:13.585421325Z 2026-11-18 22:31:13.585 UTC [286] replicator@[unknown] pg_basebackup: LOG:  received replication command: SHOW data_directory_mode
+2026-11-18T22:31:13.585457890Z 2026-11-18 22:31:13.585 UTC [286] replicator@[unknown] pg_basebackup: STATEMENT:  SHOW data_directory_mode
+2026-11-18T22:31:13.585720523Z 2026-11-18 22:31:13.585 UTC [286] replicator@[unknown] pg_basebackup: LOG:  received replication command: SHOW wal_segment_size
+2026-11-18T22:31:13.585739053Z 2026-11-18 22:31:13.585 UTC [286] replicator@[unknown] pg_basebackup: STATEMENT:  SHOW wal_segment_size
+2026-11-18T22:31:13.586004330Z 2026-11-18 22:31:13.585 UTC [286] replicator@[unknown] pg_basebackup: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T22:31:13.586027558Z 2026-11-18 22:31:13.585 UTC [286] replicator@[unknown] pg_basebackup: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T22:31:13.586283129Z 2026-11-18 22:31:13.586 UTC [286] replicator@[unknown] pg_basebackup: LOG:  received replication command: BASE_BACKUP ( LABEL 'pg_basebackup base backup',  PROGRESS,  CHECKPOINT 'fast',  WAIT 0,  MANIFEST 'yes',  TARGET 'client')
+2026-11-18T22:31:13.586302121Z 2026-11-18 22:31:13.586 UTC [286] replicator@[unknown] pg_basebackup: STATEMENT:  BASE_BACKUP ( LABEL 'pg_basebackup base backup',  PROGRESS,  CHECKPOINT 'fast',  WAIT 0,  MANIFEST 'yes',  TARGET 'client')
+2026-11-18T22:31:13.599310902Z 2026-11-18 22:31:13.598 UTC [76] LOG:  checkpoint starting: immediate force wait
+2026-11-18T22:31:15.564820502Z 2026-11-18 22:31:15.564 UTC [76] LOG:  checkpoint complete: wrote 16373 buffers (50.0%), wrote 2 SLRU buffers; 0 WAL file(s) added, 0 removed, 10 recycled; write=0.326 s, sync=1.163 s, total=1.966 s; sync files=16, longest=1.018 s, average=0.073 s; distance=163840 kB, estimate=163840 kB; lsn=0/C124110, redo lsn=0/C000210
+2026-11-18T22:31:15.573623601Z 2026-11-18 22:31:15.573 UTC [295] replicator@[unknown] pg_basebackup: LOG:  received replication command: SHOW data_directory_mode
+2026-11-18T22:31:15.573996565Z 2026-11-18 22:31:15.573 UTC [295] replicator@[unknown] pg_basebackup: STATEMENT:  SHOW data_directory_mode
+2026-11-18T22:31:15.574009560Z 2026-11-18 22:31:15.573 UTC [295] replicator@[unknown] pg_basebackup: LOG:  received replication command: CREATE_REPLICATION_SLOT "pg3_slot" PHYSICAL ( RESERVE_WAL)
+2026-11-18T22:31:15.574036137Z 2026-11-18 22:31:15.573 UTC [295] replicator@[unknown] pg_basebackup: STATEMENT:  CREATE_REPLICATION_SLOT "pg3_slot" PHYSICAL ( RESERVE_WAL)
+2026-11-18T22:31:15.716295748Z 2026-11-18 22:31:15.715 UTC [295] replicator@[unknown] pg_basebackup: LOG:  released physical replication slot "pg3_slot"
+2026-11-18T22:31:15.716347175Z 2026-11-18 22:31:15.715 UTC [295] replicator@[unknown] pg_basebackup: STATEMENT:  CREATE_REPLICATION_SLOT "pg3_slot" PHYSICAL ( RESERVE_WAL)
+2026-11-18T22:31:15.717762905Z 2026-11-18 22:31:15.717 UTC [295] replicator@[unknown] pg_basebackup: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T22:31:15.717785952Z 2026-11-18 22:31:15.717 UTC [295] replicator@[unknown] pg_basebackup: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T22:31:15.717790959Z 2026-11-18 22:31:15.717 UTC [295] replicator@[unknown] pg_basebackup: LOG:  received replication command: START_REPLICATION SLOT "pg3_slot" 0/C000000 TIMELINE 1
+2026-11-18T22:31:15.717794951Z 2026-11-18 22:31:15.717 UTC [295] replicator@[unknown] pg_basebackup: STATEMENT:  START_REPLICATION SLOT "pg3_slot" 0/C000000 TIMELINE 1
+2026-11-18T22:31:15.717798473Z 2026-11-18 22:31:15.717 UTC [295] replicator@[unknown] pg_basebackup: LOG:  acquired physical replication slot "pg3_slot"
+2026-11-18T22:31:15.717801985Z 2026-11-18 22:31:15.717 UTC [295] replicator@[unknown] pg_basebackup: STATEMENT:  START_REPLICATION SLOT "pg3_slot" 0/C000000 TIMELINE 1
+2026-11-18T22:31:16.138457725Z 2026-11-18 22:31:16.138 UTC [295] replicator@[unknown] pg_basebackup: LOG:  released physical replication slot "pg3_slot"
+2026-11-18T22:31:16.138485066Z 2026-11-18 22:31:16.138 UTC [295] replicator@[unknown] pg_basebackup: STATEMENT:  START_REPLICATION SLOT "pg3_slot" 0/C000000 TIMELINE 1
+2026-11-18T22:31:29.647603681Z 2026-11-18 22:31:29.647 UTC [353] replicator@[unknown] pg3: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T22:31:29.647645794Z 2026-11-18 22:31:29.647 UTC [353] replicator@[unknown] pg3: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T22:31:29.647944394Z 2026-11-18 22:31:29.647 UTC [353] replicator@[unknown] pg3: LOG:  received replication command: START_REPLICATION SLOT "pg3_slot" 0/D000000 TIMELINE 1
+2026-11-18T22:31:29.647973553Z 2026-11-18 22:31:29.647 UTC [353] replicator@[unknown] pg3: STATEMENT:  START_REPLICATION SLOT "pg3_slot" 0/D000000 TIMELINE 1
+2026-11-18T22:31:29.647981255Z 2026-11-18 22:31:29.647 UTC [353] replicator@[unknown] pg3: LOG:  acquired physical replication slot "pg3_slot"
+2026-11-18T22:31:29.647986466Z 2026-11-18 22:31:29.647 UTC [353] replicator@[unknown] pg3: STATEMENT:  START_REPLICATION SLOT "pg3_slot" 0/D000000 TIMELINE 1

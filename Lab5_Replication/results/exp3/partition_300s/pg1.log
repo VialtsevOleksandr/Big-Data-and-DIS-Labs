@@ -1,0 +1,11 @@
+2026-11-18T23:41:58.999717501Z 2026-11-18 23:41:58.999 UTC [662] replicator@[unknown] pg2: LOG:  terminating walsender process due to replication timeout
+2026-11-18T23:41:58.999741411Z 2026-11-18 23:41:58.999 UTC [662] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/E000000 TIMELINE 1
+2026-11-18T23:41:59.000134263Z 2026-11-18 23:41:58.999 UTC [662] replicator@[unknown] pg2: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T23:45:58.126641187Z 2026-11-18 23:45:58.126 UTC [76] LOG:  checkpoint complete: wrote 6463 buffers (19.7%), wrote 5 SLRU buffers; 0 WAL file(s) added, 0 removed, 4 recycled; write=269.529 s, sync=0.053 s, total=269.682 s; sync files=18, longest=0.010 s, average=0.003 s; distance=66484 kB, estimate=154104 kB; lsn=0/14B04A28, redo lsn=0/100ED4C0
+2026-11-18T23:46:28.155389459Z 2026-11-18 23:46:28.154 UTC [76] LOG:  checkpoint starting: time
+2026-11-18T23:46:55.623508505Z 2026-11-18 23:46:55.623 UTC [2756] replicator@[unknown] pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T23:46:55.623542105Z 2026-11-18 23:46:55.623 UTC [2756] replicator@[unknown] pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T23:46:55.623545913Z 2026-11-18 23:46:55.623 UTC [2756] replicator@[unknown] pg2: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/10000000 TIMELINE 1
+2026-11-18T23:46:55.623549085Z 2026-11-18 23:46:55.623 UTC [2756] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/10000000 TIMELINE 1
+2026-11-18T23:46:55.623552007Z 2026-11-18 23:46:55.623 UTC [2756] replicator@[unknown] pg2: LOG:  acquired physical replication slot "pg2_slot"
+2026-11-18T23:46:55.623554770Z 2026-11-18 23:46:55.623 UTC [2756] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/10000000 TIMELINE 1

@@ -1,0 +1,19 @@
+00:36:26 run_id=run1-003626 rate=150.0/s hosts=repa-pg1,repa-pg2,repa-pg3 body=200B ack_timeout=0.0s catch_up=5.0s
+00:36:26 connected to leader pg1 (repa-pg1) at seq 1
+00:36:31 ok=750 error=0 no_leader=0 skipped=0 node=pg1
+00:36:36 ok=1501 error=0 no_leader=0 skipped=0 node=pg1
+00:36:41 ok=2251 error=0 no_leader=0 skipped=0 node=pg1
+00:36:46 ok=3002 error=0 no_leader=0 skipped=0 node=pg1
+00:36:47 lost connection to pg1 at seq 3165: OperationalError: consuming input failed: server closed the connection unexpectedly
+00:36:49 connected to leader pg2 (repa-pg2) at seq 3272
+00:36:51 ok=3205 error=1 no_leader=106 skipped=0 node=pg2
+00:36:56 ok=4469 error=1 no_leader=106 skipped=0 node=pg2
+00:37:01 ok=5220 error=1 no_leader=106 skipped=0 node=pg2
+00:37:06 ok=5970 error=1 no_leader=106 skipped=0 node=pg2
+00:37:11 ok=6721 error=1 no_leader=106 skipped=0 node=pg2
+00:37:16 ok=7471 error=1 no_leader=106 skipped=0 node=pg2
+00:37:21 ok=7907 error=1 no_leader=106 skipped=0 node=pg2
+00:37:26 ok=8972 error=1 no_leader=106 skipped=0 node=pg2
+00:37:31 ok=9722 error=1 no_leader=106 skipped=0 node=pg2
+00:37:34 STOP file found
+00:37:34 finished: ok=10156 error=1 no_leader=106 skipped=0

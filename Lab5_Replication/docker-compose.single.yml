@@ -1,0 +1,125 @@
+# Конфігурація A (single-leader): лідер pg1 і два фоловери pg2, pg3.
+# Механізм: вбудована потокова фізична реплікація PostgreSQL (WAL), слоти реплікації, pg_basebackup.
+#
+# Мережі:
+#   repa-repl      — лише вузли СУБД; саме її розриває `docker network disconnect repa-repl <вузол>`.
+#   repa-c1..c3    — по одній клієнтській мережі на вузол; у кожній є тільки цей вузол і застосунок.
+# Тому після від'єднання від repa-repl вузол працює і доступний застосунку, але інших вузлів не бачить.
+name: rep-single
+
+x-pg-env: &pg-env
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres_pw
+  POSTGRES_DB: notes
+  REPL_USER: replicator
+  REPL_PASSWORD: repl_pw
+  APP_USER: notes_app
+  APP_PASSWORD: notes_app_pw
+
+x-pg-healthcheck: &pg-healthcheck
+  # -h 127.0.0.1: під час initdb тимчасовий сервер слухає лише unix-сокет, тож вузол ще не «healthy».
+  test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U postgres -d notes -q"]
+  interval: 2s
+  timeout: 3s
+  retries: 150
+  start_period: 5s
+
+services:
+  pg1:
+    image: postgres:18.1
+    container_name: repa-pg1
+    hostname: repa-pg1
+    entrypoint: ["bash", "/opt/replication/node-entrypoint.sh"]
+    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf", "-c", "cluster_name=pg1"]
+    environment:
+      <<: *pg-env
+      NODE_NAME: pg1
+      # UPSTREAM_HOST не задано: том порожній -> звичайний initdb, вузол стартує лідером.
+    volumes:
+      - pg1-data:/var/lib/postgresql
+      - ./config/single/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+      - ./config/initdb/10-schema.sql:/docker-entrypoint-initdb.d/10-schema.sql:ro
+      - ./config/initdb/20-roles.sh:/docker-entrypoint-initdb.d/20-roles.sh:ro
+      - ./config/scripts:/opt/replication:ro
+    networks: [repl, c1]
+    ports: ["55431:5432"]
+    healthcheck: *pg-healthcheck
+
+  pg2:
+    image: postgres:18.1
+    container_name: repa-pg2
+    hostname: repa-pg2
+    entrypoint: ["bash", "/opt/replication/node-entrypoint.sh"]
+    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf", "-c", "cluster_name=pg2"]
+    environment:
+      <<: *pg-env
+      NODE_NAME: pg2
+      UPSTREAM_HOST: repa-pg1   # том порожній -> pg_basebackup з цього вузла
+    volumes:
+      - pg2-data:/var/lib/postgresql
+      - ./config/single/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+      - ./config/scripts:/opt/replication:ro
+    networks: [repl, c2]
+    ports: ["55432:5432"]
+    healthcheck: *pg-healthcheck
+
+  # Другий фоловер: профіль late, тому не стартує разом з усіма.
+  # Його додають окремою командою до лідера, який уже працює і приймає записи.
+  pg3:
+    image: postgres:18.1
+    container_name: repa-pg3
+    hostname: repa-pg3
+    profiles: ["late"]
+    entrypoint: ["bash", "/opt/replication/node-entrypoint.sh"]
+    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf", "-c", "cluster_name=pg3"]
+    environment:
+      <<: *pg-env
+      NODE_NAME: pg3
+      UPSTREAM_HOST: repa-pg1
+    volumes:
+      - pg3-data:/var/lib/postgresql
+      - ./config/single/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+      - ./config/scripts:/opt/replication:ro
+    networks: [repl, c3]
+    ports: ["55433:5432"]
+    healthcheck: *pg-healthcheck
+
+  app:
+    build: ./app
+    image: rep-notes-app:1.0
+    container_name: repa-app
+    init: true
+    command: ["sleep", "infinity"]
+    working_dir: /app
+    environment:
+      NOTES_DB: notes
+      NOTES_NODES: repa-pg1,repa-pg2,repa-pg3
+      NOTES_APP_USER: notes_app
+      NOTES_APP_PASSWORD: notes_app_pw
+      NOTES_ADMIN_USER: postgres
+      NOTES_ADMIN_PASSWORD: postgres_pw
+      NOTES_REPL_USER: replicator
+      NOTES_REPL_PASSWORD: repl_pw
+    volumes:
+      - ./app:/app
+      - ./results:/results
+      - ./data:/data:ro   # CSV, згенеровані на своїй машині через generate_data.py
+    networks: [c1, c2, c3]
+
+networks:
+  repl:
+    name: repa-repl
+  c1:
+    name: repa-c1
+  c2:
+    name: repa-c2
+  c3:
+    name: repa-c3
+
+volumes:
+  pg1-data:
+    name: repa-pg1-data
+  pg2-data:
+    name: repa-pg2-data
+  pg3-data:
+    name: repa-pg3-data

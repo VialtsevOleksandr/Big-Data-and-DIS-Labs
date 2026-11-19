@@ -1,0 +1,29 @@
+{
+  "new_leader": "repa-pg2",
+  "new_leader_name": "pg2",
+  "promote_started_at": 1795048609.380099,
+  "promote_finished_at": 1795048609.481041,
+  "promote_seconds": 0.101,
+  "candidates": [
+    {
+      "host": "repa-pg2",
+      "name": "pg2",
+      "receive_lsn": "0/14882490",
+      "replay_lsn": "0/14882490"
+    },
+    {
+      "host": "repa-pg3",
+      "name": "pg3",
+      "receive_lsn": "0/14882490",
+      "replay_lsn": "0/14882490"
+    }
+  ],
+  "other_followers": [
+    "repa-pg3"
+  ],
+  "slots_created_on_new_leader": [
+    "pg1_slot",
+    "pg3_slot"
+  ],
+  "new_leader_lsn": "0/14A9B858"
+}

@@ -1,0 +1,32 @@
+{
+  "at": 1795047209.281,
+  "max_slot_wal_keep_size": "-1",
+  "pg_wal_files": 11,
+  "pg_wal_mib": 176.0,
+  "slots": [
+    {
+      "slot_name": "pg2_slot",
+      "slot_type": "physical",
+      "active": false,
+      "restart_lsn": "0/18664B38",
+      "wal_status": "reserved",
+      "safe_wal_size": null,
+      "invalidation_reason": null,
+      "retained_bytes": 85826936,
+      "retained_mib": 81.851,
+      "safe_wal_mib": null
+    },
+    {
+      "slot_name": "pg3_slot",
+      "slot_type": "physical",
+      "active": true,
+      "restart_lsn": "0/1D83E8B0",
+      "wal_status": "reserved",
+      "safe_wal_size": null,
+      "invalidation_reason": null,
+      "retained_bytes": 0,
+      "retained_mib": 0.0,
+      "safe_wal_mib": null
+    }
+  ]
+}

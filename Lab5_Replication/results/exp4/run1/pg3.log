@@ -1,0 +1,18 @@
+2026-11-19T00:36:47.431512601Z 2026-11-19 00:36:47.430 UTC [84] FATAL:  could not receive data from WAL stream: server closed the connection unexpectedly
+2026-11-19T00:36:47.431546399Z 		This probably means the server terminated abnormally
+2026-11-19T00:36:47.431553871Z 		before or while processing the request.
+2026-11-19T00:36:47.431560605Z 2026-11-19 00:36:47.430 UTC [59] LOG:  invalid record length at 0/14882490: expected at least 24, got 0
+2026-11-19T00:36:47.441665790Z 2026-11-19 00:36:47.441 UTC [264] FATAL:  streaming replication receiver "pg3" could not connect to the primary server: connection to server at "repa-pg1" (172.27.0.2), port 5432 failed: Connection refused
+2026-11-19T00:36:47.441731705Z 		Is the server running on that host and accepting TCP/IP connections?
+2026-11-19T00:36:47.442203869Z 2026-11-19 00:36:47.441 UTC [59] LOG:  waiting for WAL to become available at 0/148824A8
+2026-11-19T00:36:53.418549441Z 2026-11-19 00:36:53.418 UTC [482] FATAL:  streaming replication receiver "pg3" could not connect to the primary server: could not translate host name "repa-pg1" to address: Name or service not known
+2026-11-19T00:36:53.922970341Z 2026-11-19 00:36:53.922 UTC [1] LOG:  received SIGHUP, reloading configuration files
+2026-11-19T00:36:53.926837064Z 2026-11-19 00:36:53.926 UTC [1] LOG:  parameter "primary_conninfo" changed to "host=repa-pg2 port=5432 user=replicator password=repl_pw application_name=pg3"
+2026-11-19T00:36:53.933570674Z 2026-11-19 00:36:53.933 UTC [59] LOG:  WAL receiver process shutdown requested
+2026-11-19T00:36:57.284468905Z 2026-11-19 00:36:57.284 UTC [510] FATAL:  streaming replication receiver "pg3" could not connect to the primary server: could not translate host name "repa-pg1" to address: Name or service not known
+2026-11-19T00:36:57.293881013Z 2026-11-19 00:36:57.293 UTC [528] LOG:  fetching timeline history file for timeline 2 from primary server
+2026-11-19T00:36:57.307661702Z 2026-11-19 00:36:57.307 UTC [528] LOG:  started streaming WAL from primary at 0/14000000 on timeline 1
+2026-11-19T00:36:57.311688183Z 2026-11-19 00:36:57.311 UTC [528] LOG:  replication terminated by primary server
+2026-11-19T00:36:57.311711257Z 2026-11-19 00:36:57.311 UTC [528] DETAIL:  End of WAL reached on timeline 1 at 0/14882490.
+2026-11-19T00:36:57.312066467Z 2026-11-19 00:36:57.311 UTC [59] LOG:  new target timeline is 2
+2026-11-19T00:36:57.312909485Z 2026-11-19 00:36:57.312 UTC [528] LOG:  restarted WAL streaming at 0/14000000 on timeline 2

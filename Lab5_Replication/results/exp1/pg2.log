@@ -1,0 +1,9 @@
+2026-11-18T22:38:03.104235263Z 2026-11-18 22:38:03.103 UTC [1] LOG:  received SIGHUP, reloading configuration files
+2026-11-18T22:39:57.294413867Z 2026-11-18 22:39:57.293 UTC [73] LOG:  restartpoint complete: wrote 16437 buffers (50.2%), wrote 4 SLRU buffers; 0 WAL file(s) added, 0 removed, 10 recycled; write=269.211 s, sync=0.081 s, total=269.496 s; sync files=27, longest=0.012 s, average=0.003 s; distance=163840 kB, estimate=163840 kB; lsn=0/C124110, redo lsn=0/C000210
+2026-11-18T22:39:57.294460601Z 2026-11-18 22:39:57.294 UTC [73] LOG:  recovery restart point at 0/C000210
+2026-11-18T22:39:57.294467571Z 2026-11-18 22:39:57.294 UTC [73] DETAIL:  Last completed transaction was at log time 2026-11-18 22:39:57.283039+00.
+2026-11-18T22:40:24.243195689Z 2026-11-18 22:40:24.242 UTC [1] LOG:  received SIGHUP, reloading configuration files
+2026-11-18T22:40:24.247552373Z 2026-11-18 22:40:24.247 UTC [1] LOG:  parameter "recovery_min_apply_delay" changed to "1s"
+2026-11-18T22:40:27.260711622Z 2026-11-18 22:40:27.260 UTC [73] LOG:  restartpoint starting: time
+2026-11-18T22:44:33.096769393Z 2026-11-18 22:44:33.096 UTC [1] LOG:  received SIGHUP, reloading configuration files
+2026-11-18T22:44:33.101657129Z 2026-11-18 22:44:33.101 UTC [1] LOG:  parameter "recovery_min_apply_delay" changed to "0"

@@ -1,0 +1,60 @@
+{
+  "dir": "/results/exp3/limit_32mb",
+  "attempts": 13101,
+  "by_status": {
+    "ok": 13101
+  },
+  "ok_by_node": {
+    "pg1": 13101
+  },
+  "first_sent": "2026-11-18 23:27:13.247Z",
+  "last_acked": "2026-11-18 23:28:19.801Z",
+  "latency_ms_all": {
+    "n": 13101,
+    "min": 1.836,
+    "p50": 3.861,
+    "p95": 5.686,
+    "p99": 7.614,
+    "max": 1074.875,
+    "mean": 4.182
+  },
+  "acks_slower_than_1s": 1,
+  "acks_with_server_warning": 0,
+  "first_server_warnings": [],
+  "longest_ack_gap": {
+    "seconds": 1.075,
+    "from": "2026-11-18 23:28:04.592Z",
+    "to": "2026-11-18 23:28:05.667Z",
+    "from_unix": 1795044484.592452,
+    "to_unix": 1795044485.667407,
+    "node_before": "pg1",
+    "node_after": "pg1",
+    "attempts_without_ack": 0
+  },
+  "window": {
+    "t0": "2026-11-18 23:27:24.286Z",
+    "t1": "2026-11-18 23:27:49.406Z",
+    "seconds": 25.119,
+    "attempts_sent": 5140,
+    "acked": 5140,
+    "not_acked": 0,
+    "latency_ms": {
+      "n": 5140,
+      "min": 1.836,
+      "p50": 3.647,
+      "p95": 5.346,
+      "p99": 6.846,
+      "max": 49.383,
+      "mean": 3.825
+    }
+  },
+  "failover": {
+    "node_before": "pg1",
+    "last_ack_before_fault": "2026-11-18 23:27:24.285Z",
+    "first_failed_attempt": null,
+    "node_after": null,
+    "first_ack_on_new_node": null,
+    "fault_to_first_ack_on_new_node_s": null,
+    "no_acks_for_s": null
+  }
+}

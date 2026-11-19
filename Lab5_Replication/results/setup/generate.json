@@ -1,0 +1,18 @@
+{
+  "source_file": "/data/notes_seed20050406_150000.csv",
+  "rows_in_file": 150000,
+  "file_sha256": "78e828383af705118f42932c14c2342440255e119470a42ae638c95369d3a83f",
+  "manifest": "/data/notes_seed20050406_150000.json",
+  "seed": 20050406,
+  "matches_manifest": true,
+  "notes_loaded": 150000,
+  "seconds": 10.045,
+  "dry_run": false,
+  "host": "repa-pg1",
+  "rows_before": 0,
+  "rows_after": 150000,
+  "min_id": 1,
+  "max_id": 150000,
+  "table_with_indexes_mib": 127.75,
+  "wal_generated_mib": 134.662
+}

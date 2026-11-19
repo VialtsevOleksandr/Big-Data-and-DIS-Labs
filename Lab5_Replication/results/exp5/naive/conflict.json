@@ -1,0 +1,102 @@
+{
+  "run": "naive-001529",
+  "at": 1795047348.19,
+  "partition_confirmed": true,
+  "case1_title_vs_title": {
+    "note_id": 4002,
+    "pg1": {
+      "id": 4002,
+      "title": "naive-001529/title set on pg1",
+      "body": "both leaders will change the title",
+      "updated_at": "2026-11-19 00:15:51.200303+00:00",
+      "committed_at": "2026-11-19 00:15:51.200352+00:00"
+    },
+    "pg2": {
+      "id": 4002,
+      "title": "naive-001529/title set on pg2",
+      "body": "both leaders will change the title",
+      "updated_at": "2026-11-19 00:15:52.209980+00:00",
+      "committed_at": "2026-11-19 00:15:52.210163+00:00"
+    }
+  },
+  "case3_delete_vs_update": {
+    "note_id": 4003,
+    "deleted_on_pg1": true,
+    "updated_on_pg2": true,
+    "pg2_row": {
+      "id": 4003,
+      "title": "naive-001529/delete-vs-update target (original)",
+      "body": "body changed on pg2 while pg1 deleted the note",
+      "updated_at": "2026-11-19 00:15:52.223888+00:00",
+      "committed_at": "2026-11-19 00:15:52.223944+00:00"
+    }
+  },
+  "case2_inserts": {
+    "ids_from_pg1": [
+      4005,
+      4006,
+      4007,
+      4008,
+      4009,
+      4010,
+      4011,
+      4012,
+      4013,
+      4014,
+      4015,
+      4016,
+      4017,
+      4018,
+      4019,
+      4020,
+      4021,
+      4022,
+      4023,
+      4024
+    ],
+    "ids_from_pg2": [
+      4005,
+      4006,
+      4007,
+      4008,
+      4009,
+      4010,
+      4011,
+      4012,
+      4013,
+      4014,
+      4015,
+      4016,
+      4017,
+      4018,
+      4019,
+      4020,
+      4021,
+      4022,
+      4023,
+      4024
+    ],
+    "same_id_issued_by_both": [
+      4005,
+      4006,
+      4007,
+      4008,
+      4009,
+      4010,
+      4011,
+      4012,
+      4013,
+      4014,
+      4015,
+      4016,
+      4017,
+      4018,
+      4019,
+      4020,
+      4021,
+      4022,
+      4023,
+      4024
+    ]
+  }
+}

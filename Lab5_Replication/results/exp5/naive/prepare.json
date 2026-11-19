@@ -1,0 +1,53 @@
+{
+  "run": "naive-001529",
+  "id_mode": "naive",
+  "ids_setup": {
+    "mode": "naive",
+    "highest_id_so_far": 3999,
+    "nodes": [
+      {
+        "host": "repb-pg1",
+        "increment_by": 1,
+        "next_id": 4000
+      },
+      {
+        "host": "repb-pg2",
+        "increment_by": 1,
+        "next_id": 4000
+      }
+    ]
+  },
+  "replication_check": {
+    "written_on_pg1": {
+      "note_id": 4000,
+      "visible_on_pg2_after_s": 0.003
+    },
+    "written_on_pg2": {
+      "note_id": 4001,
+      "visible_on_pg1_after_s": 0.023
+    },
+    "works_both_ways": true
+  },
+  "ids_before_partition": {
+    "mode": "naive",
+    "highest_id_so_far": 4004,
+    "nodes": [
+      {
+        "host": "repb-pg1",
+        "increment_by": 1,
+        "next_id": 4005
+      },
+      {
+        "host": "repb-pg2",
+        "increment_by": 1,
+        "next_id": 4005
+      }
+    ]
+  },
+  "targets": {
+    "title_note": 4002,
+    "delete_note": 4003,
+    "marker_note": 4004,
+    "replicated_to_both": true
+  }
+}

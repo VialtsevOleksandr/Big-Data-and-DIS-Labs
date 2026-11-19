@@ -1,0 +1,97 @@
+# Конфігурація B (multi-leader): два лідери pg1 і pg2.
+# Механізм: вбудована логічна реплікація PostgreSQL у два боки (publication + subscription, origin = none).
+# Підписки створює `python -m notes.multi setup` після старту обох вузлів (див. setup_multi.ps1).
+#
+# Мережі:
+#   repb-repl     — лише два лідери; її розриває `docker network disconnect repb-repl repb-pg2`.
+#   repb-c1, c2   — клієнтські: у кожній один лідер і застосунок.
+name: rep-multi
+
+x-pg-env: &pg-env
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres_pw
+  POSTGRES_DB: notes
+  REPL_USER: replicator
+  REPL_PASSWORD: repl_pw
+  APP_USER: notes_app
+  APP_PASSWORD: notes_app_pw
+
+x-pg-healthcheck: &pg-healthcheck
+  test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U postgres -d notes -q"]
+  interval: 2s
+  timeout: 3s
+  retries: 150
+  start_period: 5s
+
+services:
+  pg1:
+    image: postgres:18.1
+    container_name: repb-pg1
+    hostname: repb-pg1
+    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf", "-c", "cluster_name=pg1"]
+    environment:
+      <<: *pg-env
+      NODE_NAME: pg1
+    volumes:
+      - pg1-data:/var/lib/postgresql
+      - ./config/multi/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+      - ./config/initdb/10-schema.sql:/docker-entrypoint-initdb.d/10-schema.sql:ro
+      - ./config/initdb/20-roles.sh:/docker-entrypoint-initdb.d/20-roles.sh:ro
+      - ./config/multi/30-publication.sql:/docker-entrypoint-initdb.d/30-publication.sql:ro
+    networks: [repl, c1]
+    ports: ["55441:5432"]
+    healthcheck: *pg-healthcheck
+
+  pg2:
+    image: postgres:18.1
+    container_name: repb-pg2
+    hostname: repb-pg2
+    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf", "-c", "cluster_name=pg2"]
+    environment:
+      <<: *pg-env
+      NODE_NAME: pg2
+    volumes:
+      - pg2-data:/var/lib/postgresql
+      - ./config/multi/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+      - ./config/initdb/10-schema.sql:/docker-entrypoint-initdb.d/10-schema.sql:ro
+      - ./config/initdb/20-roles.sh:/docker-entrypoint-initdb.d/20-roles.sh:ro
+      - ./config/multi/30-publication.sql:/docker-entrypoint-initdb.d/30-publication.sql:ro
+    networks: [repl, c2]
+    ports: ["55442:5432"]
+    healthcheck: *pg-healthcheck
+
+  app:
+    build: ./app
+    image: rep-notes-app:1.0
+    container_name: repb-app
+    init: true
+    command: ["sleep", "infinity"]
+    working_dir: /app
+    environment:
+      NOTES_DB: notes
+      NOTES_NODES: repb-pg1,repb-pg2
+      NOTES_APP_USER: notes_app
+      NOTES_APP_PASSWORD: notes_app_pw
+      NOTES_ADMIN_USER: postgres
+      NOTES_ADMIN_PASSWORD: postgres_pw
+      NOTES_REPL_USER: replicator
+      NOTES_REPL_PASSWORD: repl_pw
+    volumes:
+      - ./app:/app
+      - ./results:/results
+      - ./data:/data:ro   # CSV, згенеровані на своїй машині через generate_data.py
+    networks: [c1, c2]
+
+networks:
+  repl:
+    name: repb-repl
+  c1:
+    name: repb-c1
+  c2:
+    name: repb-c2
+
+volumes:
+  pg1-data:
+    name: repb-pg1-data
+  pg2-data:
+    name: repb-pg2-data

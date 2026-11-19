@@ -1,0 +1,161 @@
+2026-11-18T23:27:34.370458092Z 2026-11-18 23:27:34.370 UTC [13035] replicator@[unknown] pg2: LOG:  terminating walsender process due to replication timeout
+2026-11-18T23:27:34.370498654Z 2026-11-18 23:27:34.370 UTC [13035] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/1D000000 TIMELINE 1
+2026-11-18T23:27:34.370505607Z 2026-11-18 23:27:34.370 UTC [13035] replicator@[unknown] pg2: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T23:27:46.156676511Z 2026-11-18 23:27:46.156 UTC [76] LOG:  checkpoint complete: wrote 4524 buffers (13.8%), wrote 4 SLRU buffers; 0 WAL file(s) added, 1 removed, 6 recycled; write=92.741 s, sync=0.100 s, total=93.028 s; sync files=16, longest=0.019 s, average=0.007 s; distance=37828 kB, estimate=74898 kB; lsn=0/281EEF18, redo lsn=0/24495F58
+2026-11-18T23:27:46.156794412Z 2026-11-18 23:27:46.156 UTC [76] LOG:  checkpoint starting: immediate force wait
+2026-11-18T23:27:46.703774766Z 2026-11-18 23:27:46.703 UTC [76] LOG:  invalidating obsolete replication slot "pg2_slot"
+2026-11-18T23:27:46.703815287Z 2026-11-18 23:27:46.703 UTC [76] DETAIL:  The slot's restart_lsn 0/25BB67C0 exceeds the limit by 4495424 bytes.
+2026-11-18T23:27:46.703820843Z 2026-11-18 23:27:46.703 UTC [76] HINT:  You might need to increase "max_slot_wal_keep_size".
+2026-11-18T23:27:46.778471051Z 2026-11-18 23:27:46.778 UTC [76] LOG:  checkpoint complete: wrote 7118 buffers (21.7%), wrote 2 SLRU buffers; 0 WAL file(s) added, 0 removed, 4 recycled; write=0.304 s, sync=0.059 s, total=0.622 s; sync files=12, longest=0.015 s, average=0.005 s; distance=63057 kB, estimate=73714 kB; lsn=0/28392938, redo lsn=0/2822A648
+2026-11-18T23:27:49.884322653Z 2026-11-18 23:27:49.883 UTC [13506] replicator@[unknown] pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T23:27:49.884355653Z 2026-11-18 23:27:49.883 UTC [13506] replicator@[unknown] pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T23:27:49.884996916Z 2026-11-18 23:27:49.884 UTC [13506] replicator@[unknown] pg2: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:27:49.885037286Z 2026-11-18 23:27:49.884 UTC [13506] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:27:49.886224818Z 2026-11-18 23:27:49.885 UTC [13506] replicator@[unknown] pg2: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:27:49.886260834Z 2026-11-18 23:27:49.885 UTC [13506] replicator@[unknown] pg2: DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:27:49.886267912Z 2026-11-18 23:27:49.885 UTC [13506] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:27:49.886273105Z 2026-11-18 23:27:49.885 UTC [13506] replicator@[unknown] pg2: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T23:27:51.887680028Z 2026-11-18 23:27:51.887 UTC [13516] replicator@[unknown] pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T23:27:51.887724631Z 2026-11-18 23:27:51.887 UTC [13516] replicator@[unknown] pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T23:27:51.888309829Z 2026-11-18 23:27:51.887 UTC [13516] replicator@[unknown] pg2: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:27:51.888360032Z 2026-11-18 23:27:51.887 UTC [13516] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:27:51.888366338Z 2026-11-18 23:27:51.888 UTC [13516] replicator@[unknown] pg2: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:27:51.888370810Z 2026-11-18 23:27:51.888 UTC [13516] replicator@[unknown] pg2: DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:27:51.888375234Z 2026-11-18 23:27:51.888 UTC [13516] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:27:51.888772722Z 2026-11-18 23:27:51.888 UTC [13516] replicator@[unknown] pg2: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T23:27:53.888284401Z 2026-11-18 23:27:53.887 UTC [13525] replicator@[unknown] pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T23:27:53.888327052Z 2026-11-18 23:27:53.887 UTC [13525] replicator@[unknown] pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T23:27:53.889112577Z 2026-11-18 23:27:53.888 UTC [13525] replicator@[unknown] pg2: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:27:53.889142989Z 2026-11-18 23:27:53.888 UTC [13525] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:27:53.889148372Z 2026-11-18 23:27:53.888 UTC [13525] replicator@[unknown] pg2: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:27:53.889152639Z 2026-11-18 23:27:53.888 UTC [13525] replicator@[unknown] pg2: DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:27:53.889156819Z 2026-11-18 23:27:53.888 UTC [13525] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:27:53.889160863Z 2026-11-18 23:27:53.888 UTC [13525] replicator@[unknown] pg2: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T23:27:55.883402388Z 2026-11-18 23:27:55.883 UTC [13534] replicator@[unknown] pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T23:27:55.883423956Z 2026-11-18 23:27:55.883 UTC [13534] replicator@[unknown] pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T23:27:55.883564221Z 2026-11-18 23:27:55.883 UTC [13534] replicator@[unknown] pg2: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:27:55.883589368Z 2026-11-18 23:27:55.883 UTC [13534] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:27:55.883592066Z 2026-11-18 23:27:55.883 UTC [13534] replicator@[unknown] pg2: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:27:55.883593840Z 2026-11-18 23:27:55.883 UTC [13534] replicator@[unknown] pg2: DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:27:55.883595576Z 2026-11-18 23:27:55.883 UTC [13534] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:27:55.883597396Z 2026-11-18 23:27:55.883 UTC [13534] replicator@[unknown] pg2: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T23:27:57.882675785Z 2026-11-18 23:27:57.882 UTC [13542] replicator@[unknown] pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T23:27:57.882708701Z 2026-11-18 23:27:57.882 UTC [13542] replicator@[unknown] pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T23:27:57.883023241Z 2026-11-18 23:27:57.882 UTC [13542] replicator@[unknown] pg2: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:27:57.883043745Z 2026-11-18 23:27:57.882 UTC [13542] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:27:57.883047669Z 2026-11-18 23:27:57.882 UTC [13542] replicator@[unknown] pg2: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:27:57.883050568Z 2026-11-18 23:27:57.882 UTC [13542] replicator@[unknown] pg2: DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:27:57.883053003Z 2026-11-18 23:27:57.882 UTC [13542] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:27:57.883055615Z 2026-11-18 23:27:57.882 UTC [13542] replicator@[unknown] pg2: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T23:27:59.908310006Z 2026-11-18 23:27:59.907 UTC [13544] replicator@[unknown] pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T23:27:59.908711109Z 2026-11-18 23:27:59.907 UTC [13544] replicator@[unknown] pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T23:27:59.908738354Z 2026-11-18 23:27:59.907 UTC [13544] replicator@[unknown] pg2: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:27:59.908746823Z 2026-11-18 23:27:59.907 UTC [13544] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:27:59.908754187Z 2026-11-18 23:27:59.908 UTC [13544] replicator@[unknown] pg2: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:27:59.908760520Z 2026-11-18 23:27:59.908 UTC [13544] replicator@[unknown] pg2: DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:27:59.908767445Z 2026-11-18 23:27:59.908 UTC [13544] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:27:59.908784944Z 2026-11-18 23:27:59.908 UTC [13544] replicator@[unknown] pg2: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T23:28:01.893939438Z 2026-11-18 23:28:01.893 UTC [13553] replicator@[unknown] pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T23:28:01.893985611Z 2026-11-18 23:28:01.893 UTC [13553] replicator@[unknown] pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T23:28:01.894567851Z 2026-11-18 23:28:01.894 UTC [13553] replicator@[unknown] pg2: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:01.894604415Z 2026-11-18 23:28:01.894 UTC [13553] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:01.894610490Z 2026-11-18 23:28:01.894 UTC [13553] replicator@[unknown] pg2: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:01.894632005Z 2026-11-18 23:28:01.894 UTC [13553] replicator@[unknown] pg2: DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:01.894636511Z 2026-11-18 23:28:01.894 UTC [13553] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:01.894640840Z 2026-11-18 23:28:01.894 UTC [13553] replicator@[unknown] pg2: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T23:28:03.895352962Z 2026-11-18 23:28:03.894 UTC [13562] replicator@[unknown] pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T23:28:03.895399976Z 2026-11-18 23:28:03.894 UTC [13562] replicator@[unknown] pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T23:28:03.895605632Z 2026-11-18 23:28:03.895 UTC [13562] replicator@[unknown] pg2: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:03.895614486Z 2026-11-18 23:28:03.895 UTC [13562] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:03.895618918Z 2026-11-18 23:28:03.895 UTC [13562] replicator@[unknown] pg2: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:03.895622978Z 2026-11-18 23:28:03.895 UTC [13562] replicator@[unknown] pg2: DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:03.895627060Z 2026-11-18 23:28:03.895 UTC [13562] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:03.895631472Z 2026-11-18 23:28:03.895 UTC [13562] replicator@[unknown] pg2: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T23:28:05.886154633Z 2026-11-18 23:28:05.885 UTC [13571] replicator@[unknown] pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T23:28:05.886186793Z 2026-11-18 23:28:05.885 UTC [13571] replicator@[unknown] pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T23:28:05.886196720Z 2026-11-18 23:28:05.886 UTC [13571] replicator@[unknown] pg2: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:05.886201191Z 2026-11-18 23:28:05.886 UTC [13571] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:05.886204496Z 2026-11-18 23:28:05.886 UTC [13571] replicator@[unknown] pg2: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:05.886207802Z 2026-11-18 23:28:05.886 UTC [13571] replicator@[unknown] pg2: DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:05.886211038Z 2026-11-18 23:28:05.886 UTC [13571] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:05.886324954Z 2026-11-18 23:28:05.886 UTC [13571] replicator@[unknown] pg2: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T23:28:07.893259449Z 2026-11-18 23:28:07.892 UTC [13580] replicator@[unknown] pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T23:28:07.893346775Z 2026-11-18 23:28:07.892 UTC [13580] replicator@[unknown] pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T23:28:07.893861310Z 2026-11-18 23:28:07.893 UTC [13580] replicator@[unknown] pg2: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:07.893901662Z 2026-11-18 23:28:07.893 UTC [13580] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:07.893908063Z 2026-11-18 23:28:07.893 UTC [13580] replicator@[unknown] pg2: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:07.893912667Z 2026-11-18 23:28:07.893 UTC [13580] replicator@[unknown] pg2: DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:07.893917389Z 2026-11-18 23:28:07.893 UTC [13580] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:07.894320850Z 2026-11-18 23:28:07.893 UTC [13580] replicator@[unknown] pg2: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T23:28:09.887677541Z 2026-11-18 23:28:09.887 UTC [13589] replicator@[unknown] pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T23:28:09.887711191Z 2026-11-18 23:28:09.887 UTC [13589] replicator@[unknown] pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T23:28:09.888039398Z 2026-11-18 23:28:09.887 UTC [13589] replicator@[unknown] pg2: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:09.888063802Z 2026-11-18 23:28:09.887 UTC [13589] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:09.888067679Z 2026-11-18 23:28:09.887 UTC [13589] replicator@[unknown] pg2: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:09.888070550Z 2026-11-18 23:28:09.887 UTC [13589] replicator@[unknown] pg2: DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:09.888073374Z 2026-11-18 23:28:09.887 UTC [13589] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:09.888076172Z 2026-11-18 23:28:09.887 UTC [13589] replicator@[unknown] pg2: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T23:28:11.896906855Z 2026-11-18 23:28:11.896 UTC [13599] replicator@[unknown] pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T23:28:11.896946796Z 2026-11-18 23:28:11.896 UTC [13599] replicator@[unknown] pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T23:28:11.897293323Z 2026-11-18 23:28:11.896 UTC [13599] replicator@[unknown] pg2: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:11.897327316Z 2026-11-18 23:28:11.896 UTC [13599] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:11.897333272Z 2026-11-18 23:28:11.896 UTC [13599] replicator@[unknown] pg2: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:11.897337760Z 2026-11-18 23:28:11.896 UTC [13599] replicator@[unknown] pg2: DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:11.897342235Z 2026-11-18 23:28:11.896 UTC [13599] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:11.897367966Z 2026-11-18 23:28:11.897 UTC [13599] replicator@[unknown] pg2: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T23:28:13.897914268Z 2026-11-18 23:28:13.897 UTC [13608] replicator@[unknown] pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T23:28:13.897944944Z 2026-11-18 23:28:13.897 UTC [13608] replicator@[unknown] pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T23:28:13.897948273Z 2026-11-18 23:28:13.897 UTC [13608] replicator@[unknown] pg2: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:13.897950762Z 2026-11-18 23:28:13.897 UTC [13608] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:13.897961595Z 2026-11-18 23:28:13.897 UTC [13608] replicator@[unknown] pg2: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:13.897964057Z 2026-11-18 23:28:13.897 UTC [13608] replicator@[unknown] pg2: DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:13.897966395Z 2026-11-18 23:28:13.897 UTC [13608] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:13.897968780Z 2026-11-18 23:28:13.897 UTC [13608] replicator@[unknown] pg2: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T23:28:15.901814730Z 2026-11-18 23:28:15.901 UTC [13617] replicator@[unknown] pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T23:28:15.901916316Z 2026-11-18 23:28:15.901 UTC [13617] replicator@[unknown] pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T23:28:15.903396348Z 2026-11-18 23:28:15.901 UTC [13617] replicator@[unknown] pg2: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:15.903409884Z 2026-11-18 23:28:15.901 UTC [13617] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:15.903414313Z 2026-11-18 23:28:15.902 UTC [13617] replicator@[unknown] pg2: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:15.903444614Z 2026-11-18 23:28:15.902 UTC [13617] replicator@[unknown] pg2: DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:15.903449523Z 2026-11-18 23:28:15.902 UTC [13617] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:15.903454137Z 2026-11-18 23:28:15.902 UTC [13617] replicator@[unknown] pg2: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T23:28:17.900337001Z 2026-11-18 23:28:17.899 UTC [13626] replicator@[unknown] pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T23:28:17.900395903Z 2026-11-18 23:28:17.899 UTC [13626] replicator@[unknown] pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T23:28:17.901611119Z 2026-11-18 23:28:17.900 UTC [13626] replicator@[unknown] pg2: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:17.901656068Z 2026-11-18 23:28:17.900 UTC [13626] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:17.901682137Z 2026-11-18 23:28:17.901 UTC [13626] replicator@[unknown] pg2: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:17.901687014Z 2026-11-18 23:28:17.901 UTC [13626] replicator@[unknown] pg2: DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:17.901691540Z 2026-11-18 23:28:17.901 UTC [13626] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:17.901696382Z 2026-11-18 23:28:17.901 UTC [13626] replicator@[unknown] pg2: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T23:28:19.900604535Z 2026-11-18 23:28:19.900 UTC [13635] replicator@[unknown] pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T23:28:19.900653151Z 2026-11-18 23:28:19.900 UTC [13635] replicator@[unknown] pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T23:28:19.901000821Z 2026-11-18 23:28:19.900 UTC [13635] replicator@[unknown] pg2: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:19.901046849Z 2026-11-18 23:28:19.900 UTC [13635] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:19.901053494Z 2026-11-18 23:28:19.900 UTC [13635] replicator@[unknown] pg2: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:19.901058768Z 2026-11-18 23:28:19.900 UTC [13635] replicator@[unknown] pg2: DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:19.901063661Z 2026-11-18 23:28:19.900 UTC [13635] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:19.901220814Z 2026-11-18 23:28:19.900 UTC [13635] replicator@[unknown] pg2: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T23:28:21.894953329Z 2026-11-18 23:28:21.894 UTC [13647] replicator@[unknown] pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T23:28:21.894981798Z 2026-11-18 23:28:21.894 UTC [13647] replicator@[unknown] pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T23:28:21.895122559Z 2026-11-18 23:28:21.895 UTC [13647] replicator@[unknown] pg2: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:21.895129550Z 2026-11-18 23:28:21.895 UTC [13647] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:21.895132054Z 2026-11-18 23:28:21.895 UTC [13647] replicator@[unknown] pg2: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:21.895146220Z 2026-11-18 23:28:21.895 UTC [13647] replicator@[unknown] pg2: DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:21.895148848Z 2026-11-18 23:28:21.895 UTC [13647] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:21.895188956Z 2026-11-18 23:28:21.895 UTC [13647] replicator@[unknown] pg2: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T23:28:23.899547741Z 2026-11-18 23:28:23.899 UTC [13657] replicator@[unknown] pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T23:28:23.899608132Z 2026-11-18 23:28:23.899 UTC [13657] replicator@[unknown] pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T23:28:23.900199114Z 2026-11-18 23:28:23.899 UTC [13657] replicator@[unknown] pg2: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:23.900225531Z 2026-11-18 23:28:23.899 UTC [13657] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:23.900229939Z 2026-11-18 23:28:23.899 UTC [13657] replicator@[unknown] pg2: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:23.900234002Z 2026-11-18 23:28:23.899 UTC [13657] replicator@[unknown] pg2: DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:23.900237674Z 2026-11-18 23:28:23.899 UTC [13657] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:23.900241356Z 2026-11-18 23:28:23.899 UTC [13657] replicator@[unknown] pg2: LOG:  released physical replication slot "pg2_slot"
+2026-11-18T23:28:25.899945008Z 2026-11-18 23:28:25.899 UTC [13669] replicator@[unknown] pg2: LOG:  received replication command: IDENTIFY_SYSTEM
+2026-11-18T23:28:25.899969733Z 2026-11-18 23:28:25.899 UTC [13669] replicator@[unknown] pg2: STATEMENT:  IDENTIFY_SYSTEM
+2026-11-18T23:28:25.900098241Z 2026-11-18 23:28:25.899 UTC [13669] replicator@[unknown] pg2: LOG:  received replication command: START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:25.900127069Z 2026-11-18 23:28:25.899 UTC [13669] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:25.900134486Z 2026-11-18 23:28:25.899 UTC [13669] replicator@[unknown] pg2: ERROR:  can no longer access replication slot "pg2_slot"
+2026-11-18T23:28:25.900139852Z 2026-11-18 23:28:25.899 UTC [13669] replicator@[unknown] pg2: DETAIL:  This replication slot has been invalidated due to "wal_removed".
+2026-11-18T23:28:25.900144418Z 2026-11-18 23:28:25.899 UTC [13669] replicator@[unknown] pg2: STATEMENT:  START_REPLICATION SLOT "pg2_slot" 0/25000000 TIMELINE 1
+2026-11-18T23:28:25.900148613Z 2026-11-18 23:28:25.899 UTC [13669] replicator@[unknown] pg2: LOG:  released physical replication slot "pg2_slot"
